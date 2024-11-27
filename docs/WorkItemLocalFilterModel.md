@@ -1,0 +1,28 @@
+# WorkItemLocalFilterModel
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **String** | Name of work item | [optional] 
+**ids** | **Set<UUID>** | Specifies a work item unique IDs to search for | [optional] 
+**globalIds** | **Set<Int64>** | Collection of global (integer) identifiers | [optional] 
+**attributes** | [String: Set<String>] | Custom attributes of work item | [optional] 
+**isDeleted** | **Bool** | Is result must consist of only actual/deleted work items | [optional] 
+**sectionIds** | **Set<UUID>** | Collection of section identifiers | [optional] 
+**createdByIds** | **Set<UUID>** | Collection of identifiers of users who created work item | [optional] 
+**modifiedByIds** | **Set<UUID>** | Collection of identifiers of users who applied last modification to work item | [optional] 
+**states** | Set<WorkItemStates> | Collection of states of work item | [optional] 
+**priorities** | Set<WorkItemPriorityModel> | Collection of priorities of work item | [optional] 
+**types** | Set<WorkItemEntityTypes> | Collection of types of work item | [optional] 
+**createdDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of creation date to search for | [optional] 
+**modifiedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of last modification date to search for | [optional] 
+**duration** | [**Int32RangeSelectorModel**](Int32RangeSelectorModel.md) | Specifies a work item duration range to search for | [optional] 
+**medianDuration** | [**Int64RangeSelectorModel**](Int64RangeSelectorModel.md) | Specifies a work item median duration range to search for | [optional] 
+**isAutomated** | **Bool** | Is result must consist of only manual/automated work items | [optional] 
+**tags** | **Set<String>** | Collection of tags | [optional] 
+**autoTestIds** | **Set<UUID>** | Collection of identifiers of linked autotests | [optional] 
+**workItemVersionIds** | **[UUID]** | Collection of identifiers work items versions. | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
