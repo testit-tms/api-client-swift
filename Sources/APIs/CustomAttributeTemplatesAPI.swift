@@ -13,6 +13,53 @@ import AnyCodable
 open class CustomAttributeTemplatesAPI {
 
     /**
+
+     - parameter name: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2CustomAttributesTemplatesExistsGet(name: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: CustomAttributeTemplateValidationResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2CustomAttributesTemplatesExistsGetWithRequestBuilder(name: name).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - GET /api/v2/customAttributes/templates/exists
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter name: (query)  (optional)
+     - returns: RequestBuilder<CustomAttributeTemplateValidationResult> 
+     */
+    open class func apiV2CustomAttributesTemplatesExistsGetWithRequestBuilder(name: String? = nil) -> RequestBuilder<CustomAttributeTemplateValidationResult> {
+        let localVariablePath = "/api/v2/customAttributes/templates/exists"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "name": (wrappedValue: name?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CustomAttributeTemplateValidationResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Exclude CustomAttributes from CustomAttributeTemplate
      
      - parameter id: (path) Attribute template internal (UUID) identifier 

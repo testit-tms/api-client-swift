@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct CustomAttributeSearchQueryModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let customAttributeIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let customAttributeTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let customAttributeIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let customAttributeTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Name of attribute */
     public var name: String?
     /** Unique IDs of projects where attribute is in use */

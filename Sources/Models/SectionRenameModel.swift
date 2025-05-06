@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct SectionRenameModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var id: UUID
     public var name: String
 
@@ -35,3 +35,6 @@ public struct SectionRenameModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension SectionRenameModel: Identifiable {}

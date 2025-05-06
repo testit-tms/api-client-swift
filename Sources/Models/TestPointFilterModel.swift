@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TestPointFilterModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Specifies a test point test plan IDS to search for */
     public var testPlanIds: [UUID]?
     /** Specifies a test point test suite IDs to search for */
@@ -24,7 +24,10 @@ public struct TestPointFilterModel: Codable, JSONEncodable, Hashable {
     /** Specifies a test point work item is deleted flag to search for */
     public var workItemIsDeleted: Bool?
     /** Specifies a test point statuses to search for */
+    @available(*, deprecated, message: "This property is deprecated.")
     public var statuses: [TestPointStatus]?
+    /** Specifies a test point status codes to search for */
+    public var statusCodes: [String]?
     /** Specifies a test point priorities to search for */
     public var priorities: [WorkItemPriorityModel]?
     /** Specifies a test point automation status to search for */
@@ -60,13 +63,14 @@ public struct TestPointFilterModel: Codable, JSONEncodable, Hashable {
     /** Specifies a work item last editor IDs to search for */
     public var workItemModifiedByIds: [UUID]?
 
-    public init(testPlanIds: [UUID]? = nil, testSuiteIds: [UUID]? = nil, workItemGlobalIds: [Int64]? = nil, workItemMedianDuration: Int64RangeSelectorModel? = nil, workItemIsDeleted: Bool? = nil, statuses: [TestPointStatus]? = nil, priorities: [WorkItemPriorityModel]? = nil, isAutomated: Bool? = nil, name: String? = nil, configurationIds: [UUID]? = nil, testerIds: [UUID]? = nil, duration: Int64RangeSelectorModel? = nil, sectionIds: [UUID]? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: [UUID]? = nil, tags: [String]? = nil, attributes: [String: Set<String>]? = nil, workItemCreatedDate: DateTimeRangeSelectorModel? = nil, workItemCreatedByIds: [UUID]? = nil, workItemModifiedDate: DateTimeRangeSelectorModel? = nil, workItemModifiedByIds: [UUID]? = nil) {
+    public init(testPlanIds: [UUID]? = nil, testSuiteIds: [UUID]? = nil, workItemGlobalIds: [Int64]? = nil, workItemMedianDuration: Int64RangeSelectorModel? = nil, workItemIsDeleted: Bool? = nil, statuses: [TestPointStatus]? = nil, statusCodes: [String]? = nil, priorities: [WorkItemPriorityModel]? = nil, isAutomated: Bool? = nil, name: String? = nil, configurationIds: [UUID]? = nil, testerIds: [UUID]? = nil, duration: Int64RangeSelectorModel? = nil, sectionIds: [UUID]? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: [UUID]? = nil, tags: [String]? = nil, attributes: [String: Set<String>]? = nil, workItemCreatedDate: DateTimeRangeSelectorModel? = nil, workItemCreatedByIds: [UUID]? = nil, workItemModifiedDate: DateTimeRangeSelectorModel? = nil, workItemModifiedByIds: [UUID]? = nil) {
         self.testPlanIds = testPlanIds
         self.testSuiteIds = testSuiteIds
         self.workItemGlobalIds = workItemGlobalIds
         self.workItemMedianDuration = workItemMedianDuration
         self.workItemIsDeleted = workItemIsDeleted
         self.statuses = statuses
+        self.statusCodes = statusCodes
         self.priorities = priorities
         self.isAutomated = isAutomated
         self.name = name
@@ -93,6 +97,7 @@ public struct TestPointFilterModel: Codable, JSONEncodable, Hashable {
         case workItemMedianDuration
         case workItemIsDeleted
         case statuses
+        case statusCodes
         case priorities
         case isAutomated
         case name
@@ -122,6 +127,7 @@ public struct TestPointFilterModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(workItemMedianDuration, forKey: .workItemMedianDuration)
         try container.encodeIfPresent(workItemIsDeleted, forKey: .workItemIsDeleted)
         try container.encodeIfPresent(statuses, forKey: .statuses)
+        try container.encodeIfPresent(statusCodes, forKey: .statusCodes)
         try container.encodeIfPresent(priorities, forKey: .priorities)
         try container.encodeIfPresent(isAutomated, forKey: .isAutomated)
         try container.encodeIfPresent(name, forKey: .name)

@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct AutoTestModel: Codable, JSONEncodable, Hashable {
 
-    static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Global ID of the autotest */
     public var globalId: Int64
     /** Indicates if the autotest is deleted */
@@ -36,6 +36,8 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
     public var lastTestRunName: String?
     /** Unique ID of the autotest last test result */
     public var lastTestResultId: UUID?
+    /** Configuration of the autotest last test result */
+    public var lastTestResultConfiguration: ConfigurationShortModel?
     /** Outcome of the autotest last test result */
     public var lastTestResultOutcome: String?
     /** Stability percentage of the autotest */
@@ -69,7 +71,7 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
     /** External key of the autotest */
     public var externalKey: String?
 
-    public init(globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultOutcome: String? = nil, stabilityPercentage: Int? = nil, externalId: String, links: [LinkPutModel]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepModel]? = nil, setup: [AutoTestStepModel]? = nil, teardown: [AutoTestStepModel]? = nil, title: String? = nil, description: String? = nil, labels: [LabelShortModel]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil) {
+    public init(globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShortModel? = nil, lastTestResultOutcome: String? = nil, stabilityPercentage: Int? = nil, externalId: String, links: [LinkPutModel]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepModel]? = nil, setup: [AutoTestStepModel]? = nil, teardown: [AutoTestStepModel]? = nil, title: String? = nil, description: String? = nil, labels: [LabelShortModel]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil) {
         self.globalId = globalId
         self.isDeleted = isDeleted
         self.mustBeApproved = mustBeApproved
@@ -81,6 +83,7 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
         self.lastTestRunId = lastTestRunId
         self.lastTestRunName = lastTestRunName
         self.lastTestResultId = lastTestResultId
+        self.lastTestResultConfiguration = lastTestResultConfiguration
         self.lastTestResultOutcome = lastTestResultOutcome
         self.stabilityPercentage = stabilityPercentage
         self.externalId = externalId
@@ -111,6 +114,7 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
         case lastTestRunId
         case lastTestRunName
         case lastTestResultId
+        case lastTestResultConfiguration
         case lastTestResultOutcome
         case stabilityPercentage
         case externalId
@@ -144,6 +148,7 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(lastTestRunId, forKey: .lastTestRunId)
         try container.encodeIfPresent(lastTestRunName, forKey: .lastTestRunName)
         try container.encodeIfPresent(lastTestResultId, forKey: .lastTestResultId)
+        try container.encodeIfPresent(lastTestResultConfiguration, forKey: .lastTestResultConfiguration)
         try container.encodeIfPresent(lastTestResultOutcome, forKey: .lastTestResultOutcome)
         try container.encodeIfPresent(stabilityPercentage, forKey: .stabilityPercentage)
         try container.encode(externalId, forKey: .externalId)
@@ -163,3 +168,6 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension AutoTestModel: Identifiable {}

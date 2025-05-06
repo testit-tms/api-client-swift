@@ -4,12 +4,62 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apiV2CustomAttributesExistsGet**](CustomAttributesAPI.md#apiv2customattributesexistsget) | **GET** /api/v2/customAttributes/exists | 
 [**apiV2CustomAttributesGlobalIdDelete**](CustomAttributesAPI.md#apiv2customattributesglobaliddelete) | **DELETE** /api/v2/customAttributes/global/{id} | Delete global attribute
 [**apiV2CustomAttributesGlobalIdPut**](CustomAttributesAPI.md#apiv2customattributesglobalidput) | **PUT** /api/v2/customAttributes/global/{id} | Edit global attribute
 [**apiV2CustomAttributesGlobalPost**](CustomAttributesAPI.md#apiv2customattributesglobalpost) | **POST** /api/v2/customAttributes/global | Create global attribute
 [**apiV2CustomAttributesIdGet**](CustomAttributesAPI.md#apiv2customattributesidget) | **GET** /api/v2/customAttributes/{id} | Get attribute
 [**apiV2CustomAttributesSearchPost**](CustomAttributesAPI.md#apiv2customattributessearchpost) | **POST** /api/v2/customAttributes/search | Search for attributes
 
+
+# **apiV2CustomAttributesExistsGet**
+```swift
+    open class func apiV2CustomAttributesExistsGet(name: String? = nil, isGlobal: Bool? = nil, completion: @escaping (_ data: CustomAttributeValidationResult?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let name = "name_example" // String |  (optional)
+let isGlobal = true // Bool |  (optional)
+
+CustomAttributesAPI.apiV2CustomAttributesExistsGet(name: name, isGlobal: isGlobal) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String** |  | [optional] 
+ **isGlobal** | **Bool** |  | [optional] 
+
+### Return type
+
+[**CustomAttributeValidationResult**](CustomAttributeValidationResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2CustomAttributesGlobalIdDelete**
 ```swift
@@ -21,7 +71,7 @@ Delete global attribute
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Unique ID of attribute
 
@@ -69,7 +119,7 @@ Edit global attribute
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Unique ID of attribute
 let globalCustomAttributeUpdateModel = GlobalCustomAttributeUpdateModel(name: "name_example", options: [CustomAttributeOptionModel(id: 123, isDeleted: false, value: "value_example", isDefault: false)], isEnabled: false, isRequired: false) // GlobalCustomAttributeUpdateModel |  (optional)
@@ -119,7 +169,7 @@ Create global attribute
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let globalCustomAttributePostModel = GlobalCustomAttributePostModel(name: "name_example", isEnabled: false, isRequired: false, options: [CustomAttributeOptionPostModel(value: "value_example", isDefault: false)], type: CustomAttributeTypesEnum()) // GlobalCustomAttributePostModel |  (optional)
 
@@ -167,7 +217,7 @@ Get attribute
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Unique ID of attribute
 
@@ -215,7 +265,7 @@ Search for attributes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)

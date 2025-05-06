@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct WorkItemCommentPutModel: Codable, JSONEncodable, Hashable {
 
-    static let textRule = StringRule(minLength: 1, maxLength: 1024, pattern: nil)
+    public static let textRule = StringRule(minLength: 1, maxLength: 1024, pattern: nil)
     /** Text of the comment */
     public var text: String
     /** Unique ID of the comment */
@@ -37,3 +37,6 @@ public struct WorkItemCommentPutModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension WorkItemCommentPutModel: Identifiable {}

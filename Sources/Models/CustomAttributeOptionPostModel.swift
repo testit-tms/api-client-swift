@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CustomAttributeOptionPostModel: Codable, JSONEncodable, Hashable {
 
-    static let valueRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let valueRule = StringRule(minLength: 0, maxLength: 1024, pattern: nil)
     /** Value of the attribute option */
     public var value: String?
     /** Indicates if the attribute option is used by default */

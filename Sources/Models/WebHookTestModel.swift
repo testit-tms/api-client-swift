@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct WebHookTestModel: Codable, JSONEncodable, Hashable {
 
-    static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Request method of the webhook */
     public var requestType: RequestTypeModel
     /** Request URL of the webhook */

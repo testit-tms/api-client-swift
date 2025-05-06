@@ -19,7 +19,7 @@ Search for custom attributes templates
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = "projectId_example" // String | 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -81,7 +81,7 @@ Delete CustomAttributeTemplate from Project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let templateId = 987 // UUID | CustomAttributeTemplate internal (UUID) identifier
@@ -133,7 +133,7 @@ Add CustomAttributeTemplate to Project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let templateId = 987 // UUID | CustomAttributeTemplate internal (UUID) identifier

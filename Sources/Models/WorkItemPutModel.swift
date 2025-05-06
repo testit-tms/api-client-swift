@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct WorkItemPutModel: Codable, JSONEncodable, Hashable {
 
-    static let durationRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
-    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let durationRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
+    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var attachments: [AttachmentPutModel]
     public var iterations: [IterationPutModel]?
     public var autoTests: [AutoTestIdModel]?
@@ -92,3 +92,6 @@ public struct WorkItemPutModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension WorkItemPutModel: Identifiable {}

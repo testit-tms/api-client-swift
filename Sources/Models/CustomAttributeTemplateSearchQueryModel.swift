@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct CustomAttributeTemplateSearchQueryModel: Codable, JSONEncodable, Hashable {
 
-    static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let customAttributeTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let customAttributeTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var name: String?
     public var projectIds: Set<UUID>?
     public var customAttributeTypes: Set<CustomAttributeTypesEnum>?

@@ -13,6 +13,56 @@ import AnyCodable
 open class CustomAttributesAPI {
 
     /**
+
+     - parameter name: (query)  (optional)
+     - parameter isGlobal: (query)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2CustomAttributesExistsGet(name: String? = nil, isGlobal: Bool? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: CustomAttributeValidationResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2CustomAttributesExistsGetWithRequestBuilder(name: name, isGlobal: isGlobal).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - GET /api/v2/customAttributes/exists
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter name: (query)  (optional)
+     - parameter isGlobal: (query)  (optional)
+     - returns: RequestBuilder<CustomAttributeValidationResult> 
+     */
+    open class func apiV2CustomAttributesExistsGetWithRequestBuilder(name: String? = nil, isGlobal: Bool? = nil) -> RequestBuilder<CustomAttributeValidationResult> {
+        let localVariablePath = "/api/v2/customAttributes/exists"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "name": (wrappedValue: name?.encodeToJSON(), isExplode: true),
+            "isGlobal": (wrappedValue: isGlobal?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CustomAttributeValidationResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Delete global attribute
      
      - parameter id: (path) Unique ID of attribute 

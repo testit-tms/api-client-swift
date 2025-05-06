@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AutoTestNamespaceModel: Codable, JSONEncodable, Hashable {
 
-    static let classesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let classesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var name: String?
     public var classes: Set<String>?
 

@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let entityTypeNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let sectionNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let entityTypeNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let sectionNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Work Item internal unique identifier */
     public var id: UUID
     /** Work Item version identifier */
@@ -144,3 +144,6 @@ public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension WorkItemShortModel: Identifiable {}

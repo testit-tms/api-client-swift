@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TestSuiteV2TreeModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** nested enumeration of children is allowed */
     @available(*, deprecated, message: "This property is deprecated.")
     public var children: [TestSuiteV2TreeModel]?
@@ -73,3 +73,6 @@ public struct TestSuiteV2TreeModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension TestSuiteV2TreeModel: Identifiable {}

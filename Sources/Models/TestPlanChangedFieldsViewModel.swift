@@ -14,10 +14,10 @@ public struct TestPlanChangedFieldsViewModel: Codable, JSONEncodable, Hashable {
 
     public var name: StringChangedFieldWithDiffsViewModel?
     public var description: StringChangedFieldWithDiffsViewModel?
-    public var productName: StringChangedFieldViewModel?
-    public var build: StringChangedFieldViewModel?
+    public var productName: StringChangedFieldWithDiffsViewModel?
+    public var build: StringChangedFieldWithDiffsViewModel?
     public var period: PeriodViewModelChangedFieldViewModel?
-    public var status: StringChangedFieldViewModel?
+    public var status: StringChangedFieldWithDiffsViewModel?
     public var tags: StringArrayChangedFieldViewModel?
     public var testSuite: TestSuiteChangeViewModelChangedFieldViewModel?
     public var testPoints: TestPointChangeViewModelChangedFieldViewModel?
@@ -26,7 +26,7 @@ public struct TestPlanChangedFieldsViewModel: Codable, JSONEncodable, Hashable {
     public var hasAutomaticDurationTimer: BooleanNullableChangedFieldViewModel?
     public var attributes: [String: CustomAttributeChangeModel]?
 
-    public init(name: StringChangedFieldWithDiffsViewModel? = nil, description: StringChangedFieldWithDiffsViewModel? = nil, productName: StringChangedFieldViewModel? = nil, build: StringChangedFieldViewModel? = nil, period: PeriodViewModelChangedFieldViewModel? = nil, status: StringChangedFieldViewModel? = nil, tags: StringArrayChangedFieldViewModel? = nil, testSuite: TestSuiteChangeViewModelChangedFieldViewModel? = nil, testPoints: TestPointChangeViewModelChangedFieldViewModel? = nil, testResults: TestResultChangeViewModelChangedFieldViewModel? = nil, locking: BooleanChangedFieldViewModel? = nil, hasAutomaticDurationTimer: BooleanNullableChangedFieldViewModel? = nil, attributes: [String: CustomAttributeChangeModel]? = nil) {
+    public init(name: StringChangedFieldWithDiffsViewModel? = nil, description: StringChangedFieldWithDiffsViewModel? = nil, productName: StringChangedFieldWithDiffsViewModel? = nil, build: StringChangedFieldWithDiffsViewModel? = nil, period: PeriodViewModelChangedFieldViewModel? = nil, status: StringChangedFieldWithDiffsViewModel? = nil, tags: StringArrayChangedFieldViewModel? = nil, testSuite: TestSuiteChangeViewModelChangedFieldViewModel? = nil, testPoints: TestPointChangeViewModelChangedFieldViewModel? = nil, testResults: TestResultChangeViewModelChangedFieldViewModel? = nil, locking: BooleanChangedFieldViewModel? = nil, hasAutomaticDurationTimer: BooleanNullableChangedFieldViewModel? = nil, attributes: [String: CustomAttributeChangeModel]? = nil) {
         self.name = name
         self.description = description
         self.productName = productName

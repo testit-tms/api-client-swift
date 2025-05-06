@@ -15,13 +15,13 @@ open class TestRunsAPI {
     /**
      Delete multiple test runs
      
-     - parameter testRunSelectModel: (body)  (optional)
+     - parameter testRunSelectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestRunsDelete(testRunSelectModel: TestRunSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestRunsDeleteWithRequestBuilder(testRunSelectModel: testRunSelectModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestRunsDelete(testRunSelectApiModel: TestRunSelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsDeleteWithRequestBuilder(testRunSelectApiModel: testRunSelectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -38,13 +38,13 @@ open class TestRunsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testRunSelectModel: (body)  (optional)
+     - parameter testRunSelectApiModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func apiV2TestRunsDeleteWithRequestBuilder(testRunSelectModel: TestRunSelectModel? = nil) -> RequestBuilder<Int> {
+    open class func apiV2TestRunsDeleteWithRequestBuilder(testRunSelectApiModel: TestRunSelectApiModel? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/testRuns"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunSelectModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunSelectApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -57,6 +57,55 @@ open class TestRunsAPI {
         let localVariableRequestBuilder: RequestBuilder<Int>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Get autotest classes and namespaces in test run
+     
+     - parameter id: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2TestRunsIdAutoTestsNamespacesGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: AutoTestNamespacesCountResponse?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsIdAutoTestsNamespacesGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get autotest classes and namespaces in test run
+     - GET /api/v2/testRuns/{id}/autoTestsNamespaces
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter id: (path)  
+     - returns: RequestBuilder<AutoTestNamespacesCountResponse> 
+     */
+    open class func apiV2TestRunsIdAutoTestsNamespacesGetWithRequestBuilder(id: UUID) -> RequestBuilder<AutoTestNamespacesCountResponse> {
+        var localVariablePath = "/api/v2/testRuns/{id}/autoTestsNamespaces"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AutoTestNamespacesCountResponse>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -160,6 +209,57 @@ open class TestRunsAPI {
     }
 
     /**
+     Manual autotests rerun in test run
+     
+     - parameter id: (path)  
+     - parameter manualRerunSelectTestResultsApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2TestRunsIdRerunsPost(id: UUID, manualRerunSelectTestResultsApiModel: ManualRerunSelectTestResultsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ManualRerunApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsIdRerunsPostWithRequestBuilder(id: id, manualRerunSelectTestResultsApiModel: manualRerunSelectTestResultsApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Manual autotests rerun in test run
+     - POST /api/v2/testRuns/{id}/reruns
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter id: (path)  
+     - parameter manualRerunSelectTestResultsApiModel: (body)  (optional)
+     - returns: RequestBuilder<ManualRerunApiResult> 
+     */
+    open class func apiV2TestRunsIdRerunsPostWithRequestBuilder(id: UUID, manualRerunSelectTestResultsApiModel: ManualRerunSelectTestResultsApiModel? = nil) -> RequestBuilder<ManualRerunApiResult> {
+        var localVariablePath = "/api/v2/testRuns/{id}/reruns"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: manualRerunSelectTestResultsApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ManualRerunApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Restore test run from the archive
      
      - parameter id: (path) Unique ID of the test run 
@@ -213,13 +313,13 @@ open class TestRunsAPI {
      Search for the test run test results and build statistics
      
      - parameter id: (path) Test run unique ID 
-     - parameter testResultsLocalFilterModel: (body)  (optional)
+     - parameter testRunStatisticsFilterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestRunsIdStatisticsFilterPost(id: UUID, testResultsLocalFilterModel: TestResultsLocalFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestResultsStatisticsGetModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestRunsIdStatisticsFilterPostWithRequestBuilder(id: id, testResultsLocalFilterModel: testResultsLocalFilterModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestRunsIdStatisticsFilterPost(id: UUID, testRunStatisticsFilterApiModel: TestRunStatisticsFilterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestResultsStatisticsApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsIdStatisticsFilterPostWithRequestBuilder(id: id, testRunStatisticsFilterApiModel: testRunStatisticsFilterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -236,16 +336,16 @@ open class TestRunsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test run unique ID 
-     - parameter testResultsLocalFilterModel: (body)  (optional)
-     - returns: RequestBuilder<TestResultsStatisticsGetModel> 
+     - parameter testRunStatisticsFilterApiModel: (body)  (optional)
+     - returns: RequestBuilder<TestResultsStatisticsApiResult> 
      */
-    open class func apiV2TestRunsIdStatisticsFilterPostWithRequestBuilder(id: UUID, testResultsLocalFilterModel: TestResultsLocalFilterModel? = nil) -> RequestBuilder<TestResultsStatisticsGetModel> {
+    open class func apiV2TestRunsIdStatisticsFilterPostWithRequestBuilder(id: UUID, testRunStatisticsFilterApiModel: TestRunStatisticsFilterApiModel? = nil) -> RequestBuilder<TestResultsStatisticsApiResult> {
         var localVariablePath = "/api/v2/testRuns/{id}/statistics/filter"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testResultsLocalFilterModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunStatisticsFilterApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -255,7 +355,7 @@ open class TestRunsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestResultsStatisticsGetModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestResultsStatisticsApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -268,7 +368,7 @@ open class TestRunsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestRunsIdTestPointsResultsGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestPointResultModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2TestRunsIdTestPointsResultsGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestPointResultApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TestRunsIdTestPointsResultsGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -286,9 +386,9 @@ open class TestRunsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test run unique ID 
-     - returns: RequestBuilder<[TestPointResultModel]> 
+     - returns: RequestBuilder<[TestPointResultApiResult]> 
      */
-    open class func apiV2TestRunsIdTestPointsResultsGetWithRequestBuilder(id: UUID) -> RequestBuilder<[TestPointResultModel]> {
+    open class func apiV2TestRunsIdTestPointsResultsGetWithRequestBuilder(id: UUID) -> RequestBuilder<[TestPointResultApiResult]> {
         var localVariablePath = "/api/v2/testRuns/{id}/testPoints/results"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -304,7 +404,7 @@ open class TestRunsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestPointResultModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestPointResultApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -412,13 +512,13 @@ open class TestRunsAPI {
     /**
      Permanently delete multiple test runs from archive
      
-     - parameter testRunSelectModel: (body)  (optional)
+     - parameter testRunSelectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestRunsPurgeBulkPost(testRunSelectModel: TestRunSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestRunsPurgeBulkPostWithRequestBuilder(testRunSelectModel: testRunSelectModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestRunsPurgeBulkPost(testRunSelectApiModel: TestRunSelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsPurgeBulkPostWithRequestBuilder(testRunSelectApiModel: testRunSelectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -435,13 +535,13 @@ open class TestRunsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testRunSelectModel: (body)  (optional)
+     - parameter testRunSelectApiModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func apiV2TestRunsPurgeBulkPostWithRequestBuilder(testRunSelectModel: TestRunSelectModel? = nil) -> RequestBuilder<Int> {
+    open class func apiV2TestRunsPurgeBulkPostWithRequestBuilder(testRunSelectApiModel: TestRunSelectApiModel? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/testRuns/purge/bulk"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunSelectModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunSelectApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -459,13 +559,13 @@ open class TestRunsAPI {
     /**
      Restore multiple test runs from the archive
      
-     - parameter testRunSelectModel: (body)  (optional)
+     - parameter testRunSelectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestRunsRestoreBulkPost(testRunSelectModel: TestRunSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestRunsRestoreBulkPostWithRequestBuilder(testRunSelectModel: testRunSelectModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestRunsRestoreBulkPost(testRunSelectApiModel: TestRunSelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsRestoreBulkPostWithRequestBuilder(testRunSelectApiModel: testRunSelectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -482,13 +582,13 @@ open class TestRunsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testRunSelectModel: (body)  (optional)
+     - parameter testRunSelectApiModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func apiV2TestRunsRestoreBulkPostWithRequestBuilder(testRunSelectModel: TestRunSelectModel? = nil) -> RequestBuilder<Int> {
+    open class func apiV2TestRunsRestoreBulkPostWithRequestBuilder(testRunSelectApiModel: TestRunSelectApiModel? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/testRuns/restore/bulk"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunSelectModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunSelectApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -511,13 +611,13 @@ open class TestRunsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter testRunFilterModel: (body)  (optional)
+     - parameter testRunFilterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestRunsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testRunFilterModel: TestRunFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunShortGetModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestRunsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testRunFilterModel: testRunFilterModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestRunsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testRunFilterApiModel: TestRunFilterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunShortApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testRunFilterApiModel: testRunFilterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -539,13 +639,13 @@ open class TestRunsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter testRunFilterModel: (body)  (optional)
-     - returns: RequestBuilder<[TestRunShortGetModel]> 
+     - parameter testRunFilterApiModel: (body)  (optional)
+     - returns: RequestBuilder<[TestRunShortApiResult]> 
      */
-    open class func apiV2TestRunsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testRunFilterModel: TestRunFilterModel? = nil) -> RequestBuilder<[TestRunShortGetModel]> {
+    open class func apiV2TestRunsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testRunFilterApiModel: TestRunFilterApiModel? = nil) -> RequestBuilder<[TestRunShortApiResult]> {
         let localVariablePath = "/api/v2/testRuns/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunFilterModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunFilterApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -562,7 +662,7 @@ open class TestRunsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestRunShortGetModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestRunShortApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -570,13 +670,13 @@ open class TestRunsAPI {
     /**
      Update multiple test runs
      
-     - parameter testRunUpdateMultipleModel: (body)  (optional)
+     - parameter updateMultipleTestRunsApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestRunsUpdateMultiplePost(testRunUpdateMultipleModel: TestRunUpdateMultipleModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestRunsUpdateMultiplePostWithRequestBuilder(testRunUpdateMultipleModel: testRunUpdateMultipleModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestRunsUpdateMultiplePost(updateMultipleTestRunsApiModel: UpdateMultipleTestRunsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsUpdateMultiplePostWithRequestBuilder(updateMultipleTestRunsApiModel: updateMultipleTestRunsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -592,13 +692,13 @@ open class TestRunsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testRunUpdateMultipleModel: (body)  (optional)
+     - parameter updateMultipleTestRunsApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2TestRunsUpdateMultiplePostWithRequestBuilder(testRunUpdateMultipleModel: TestRunUpdateMultipleModel? = nil) -> RequestBuilder<Void> {
+    open class func apiV2TestRunsUpdateMultiplePostWithRequestBuilder(updateMultipleTestRunsApiModel: UpdateMultipleTestRunsApiModel? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/testRuns/updateMultiple"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunUpdateMultipleModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateMultipleTestRunsApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -666,13 +766,13 @@ open class TestRunsAPI {
     /**
      Create test runs based on autotests and configurations
      
-     - parameter testRunFillByAutoTestsPostModel: (body)  (optional)
+     - parameter createTestRunAndFillByAutoTestsApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createAndFillByAutoTests(testRunFillByAutoTestsPostModel: TestRunFillByAutoTestsPostModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2GetModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return createAndFillByAutoTestsWithRequestBuilder(testRunFillByAutoTestsPostModel: testRunFillByAutoTestsPostModel).execute(apiResponseQueue) { result in
+    open class func createAndFillByAutoTests(createTestRunAndFillByAutoTestsApiModel: CreateTestRunAndFillByAutoTestsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return createAndFillByAutoTestsWithRequestBuilder(createTestRunAndFillByAutoTestsApiModel: createTestRunAndFillByAutoTestsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -689,13 +789,13 @@ open class TestRunsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testRunFillByAutoTestsPostModel: (body)  (optional)
-     - returns: RequestBuilder<TestRunV2GetModel> 
+     - parameter createTestRunAndFillByAutoTestsApiModel: (body)  (optional)
+     - returns: RequestBuilder<TestRunV2ApiResult> 
      */
-    open class func createAndFillByAutoTestsWithRequestBuilder(testRunFillByAutoTestsPostModel: TestRunFillByAutoTestsPostModel? = nil) -> RequestBuilder<TestRunV2GetModel> {
+    open class func createAndFillByAutoTestsWithRequestBuilder(createTestRunAndFillByAutoTestsApiModel: CreateTestRunAndFillByAutoTestsApiModel? = nil) -> RequestBuilder<TestRunV2ApiResult> {
         let localVariablePath = "/api/v2/testRuns/byAutoTests"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunFillByAutoTestsPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTestRunAndFillByAutoTestsApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -705,7 +805,7 @@ open class TestRunsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestRunV2GetModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestRunV2ApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -713,13 +813,13 @@ open class TestRunsAPI {
     /**
      Create test runs picking the needed test points
      
-     - parameter testRunFillByConfigurationsPostModel: (body)  (optional)
+     - parameter createTestRunAndFillByConfigurationsApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createAndFillByConfigurations(testRunFillByConfigurationsPostModel: TestRunFillByConfigurationsPostModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2GetModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return createAndFillByConfigurationsWithRequestBuilder(testRunFillByConfigurationsPostModel: testRunFillByConfigurationsPostModel).execute(apiResponseQueue) { result in
+    open class func createAndFillByConfigurations(createTestRunAndFillByConfigurationsApiModel: CreateTestRunAndFillByConfigurationsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return createAndFillByConfigurationsWithRequestBuilder(createTestRunAndFillByConfigurationsApiModel: createTestRunAndFillByConfigurationsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -736,13 +836,13 @@ open class TestRunsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testRunFillByConfigurationsPostModel: (body)  (optional)
-     - returns: RequestBuilder<TestRunV2GetModel> 
+     - parameter createTestRunAndFillByConfigurationsApiModel: (body)  (optional)
+     - returns: RequestBuilder<TestRunV2ApiResult> 
      */
-    open class func createAndFillByConfigurationsWithRequestBuilder(testRunFillByConfigurationsPostModel: TestRunFillByConfigurationsPostModel? = nil) -> RequestBuilder<TestRunV2GetModel> {
+    open class func createAndFillByConfigurationsWithRequestBuilder(createTestRunAndFillByConfigurationsApiModel: CreateTestRunAndFillByConfigurationsApiModel? = nil) -> RequestBuilder<TestRunV2ApiResult> {
         let localVariablePath = "/api/v2/testRuns/byConfigurations"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunFillByConfigurationsPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTestRunAndFillByConfigurationsApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -752,7 +852,7 @@ open class TestRunsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestRunV2GetModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestRunV2ApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -760,13 +860,13 @@ open class TestRunsAPI {
     /**
      Create test run based on configurations and work items
      
-     - parameter testRunFillByWorkItemsPostModel: (body)  (optional)
+     - parameter createTestRunAndFillByWorkItemsApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createAndFillByWorkItems(testRunFillByWorkItemsPostModel: TestRunFillByWorkItemsPostModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2GetModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return createAndFillByWorkItemsWithRequestBuilder(testRunFillByWorkItemsPostModel: testRunFillByWorkItemsPostModel).execute(apiResponseQueue) { result in
+    open class func createAndFillByWorkItems(createTestRunAndFillByWorkItemsApiModel: CreateTestRunAndFillByWorkItemsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return createAndFillByWorkItemsWithRequestBuilder(createTestRunAndFillByWorkItemsApiModel: createTestRunAndFillByWorkItemsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -783,13 +883,13 @@ open class TestRunsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testRunFillByWorkItemsPostModel: (body)  (optional)
-     - returns: RequestBuilder<TestRunV2GetModel> 
+     - parameter createTestRunAndFillByWorkItemsApiModel: (body)  (optional)
+     - returns: RequestBuilder<TestRunV2ApiResult> 
      */
-    open class func createAndFillByWorkItemsWithRequestBuilder(testRunFillByWorkItemsPostModel: TestRunFillByWorkItemsPostModel? = nil) -> RequestBuilder<TestRunV2GetModel> {
+    open class func createAndFillByWorkItemsWithRequestBuilder(createTestRunAndFillByWorkItemsApiModel: CreateTestRunAndFillByWorkItemsApiModel? = nil) -> RequestBuilder<TestRunV2ApiResult> {
         let localVariablePath = "/api/v2/testRuns/byWorkItems"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunFillByWorkItemsPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTestRunAndFillByWorkItemsApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -799,7 +899,7 @@ open class TestRunsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestRunV2GetModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestRunV2ApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -807,13 +907,13 @@ open class TestRunsAPI {
     /**
      Create empty TestRun
      
-     - parameter testRunV2PostShortModel: (body)  (optional)
+     - parameter createEmptyTestRunApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createEmpty(testRunV2PostShortModel: TestRunV2PostShortModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2GetModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return createEmptyWithRequestBuilder(testRunV2PostShortModel: testRunV2PostShortModel).execute(apiResponseQueue) { result in
+    open class func createEmpty(createEmptyTestRunApiModel: CreateEmptyTestRunApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return createEmptyWithRequestBuilder(createEmptyTestRunApiModel: createEmptyTestRunApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -830,13 +930,13 @@ open class TestRunsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testRunV2PostShortModel: (body)  (optional)
-     - returns: RequestBuilder<TestRunV2GetModel> 
+     - parameter createEmptyTestRunApiModel: (body)  (optional)
+     - returns: RequestBuilder<TestRunV2ApiResult> 
      */
-    open class func createEmptyWithRequestBuilder(testRunV2PostShortModel: TestRunV2PostShortModel? = nil) -> RequestBuilder<TestRunV2GetModel> {
+    open class func createEmptyWithRequestBuilder(createEmptyTestRunApiModel: CreateEmptyTestRunApiModel? = nil) -> RequestBuilder<TestRunV2ApiResult> {
         let localVariablePath = "/api/v2/testRuns"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunV2PostShortModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createEmptyTestRunApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -846,7 +946,7 @@ open class TestRunsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestRunV2GetModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestRunV2ApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -859,7 +959,7 @@ open class TestRunsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTestRunById(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2GetModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getTestRunById(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return getTestRunByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -878,9 +978,9 @@ open class TestRunsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test Run internal identifier (GUID format) 
-     - returns: RequestBuilder<TestRunV2GetModel> 
+     - returns: RequestBuilder<TestRunV2ApiResult> 
      */
-    open class func getTestRunByIdWithRequestBuilder(id: UUID) -> RequestBuilder<TestRunV2GetModel> {
+    open class func getTestRunByIdWithRequestBuilder(id: UUID) -> RequestBuilder<TestRunV2ApiResult> {
         var localVariablePath = "/api/v2/testRuns/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -896,7 +996,7 @@ open class TestRunsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestRunV2GetModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestRunV2ApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -1056,13 +1156,13 @@ open class TestRunsAPI {
     /**
      Update empty TestRun
      
-     - parameter testRunV2PutModel: (body)  (optional)
+     - parameter updateEmptyTestRunApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateEmpty(testRunV2PutModel: TestRunV2PutModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateEmptyWithRequestBuilder(testRunV2PutModel: testRunV2PutModel).execute(apiResponseQueue) { result in
+    open class func updateEmpty(updateEmptyTestRunApiModel: UpdateEmptyTestRunApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateEmptyWithRequestBuilder(updateEmptyTestRunApiModel: updateEmptyTestRunApiModel).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -1079,13 +1179,13 @@ open class TestRunsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testRunV2PutModel: (body)  (optional)
+     - parameter updateEmptyTestRunApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func updateEmptyWithRequestBuilder(testRunV2PutModel: TestRunV2PutModel? = nil) -> RequestBuilder<Void> {
+    open class func updateEmptyWithRequestBuilder(updateEmptyTestRunApiModel: UpdateEmptyTestRunApiModel? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/testRuns"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testRunV2PutModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateEmptyTestRunApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 

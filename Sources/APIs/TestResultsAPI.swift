@@ -13,14 +13,113 @@ import AnyCodable
 open class TestResultsAPI {
 
     /**
+
+     - parameter externalProjectId: (path)  
+     - parameter testResultsSelectApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPost(externalProjectId: UUID, testResultsSelectApiModel: TestResultsSelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetExternalFormApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPostWithRequestBuilder(externalProjectId: externalProjectId, testResultsSelectApiModel: testResultsSelectApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /api/v2/testResults/external-projects/{externalProjectId}/defects/external-forms
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter externalProjectId: (path)  
+     - parameter testResultsSelectApiModel: (body)  (optional)
+     - returns: RequestBuilder<GetExternalFormApiResult> 
+     */
+    open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPostWithRequestBuilder(externalProjectId: UUID, testResultsSelectApiModel: TestResultsSelectApiModel? = nil) -> RequestBuilder<GetExternalFormApiResult> {
+        var localVariablePath = "/api/v2/testResults/external-projects/{externalProjectId}/defects/external-forms"
+        let externalProjectIdPreEscape = "\(APIHelper.mapValueToPathItem(externalProjectId))"
+        let externalProjectIdPostEscape = externalProjectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{externalProjectId}", with: externalProjectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testResultsSelectApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetExternalFormApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+
+     - parameter externalProjectId: (path)  
+     - parameter createDefectApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsPost(externalProjectId: UUID, createDefectApiModel: CreateDefectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: DefectApiModel?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestResultsExternalProjectsExternalProjectIdDefectsPostWithRequestBuilder(externalProjectId: externalProjectId, createDefectApiModel: createDefectApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /api/v2/testResults/external-projects/{externalProjectId}/defects
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter externalProjectId: (path)  
+     - parameter createDefectApiModel: (body)  (optional)
+     - returns: RequestBuilder<DefectApiModel> 
+     */
+    open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsPostWithRequestBuilder(externalProjectId: UUID, createDefectApiModel: CreateDefectApiModel? = nil) -> RequestBuilder<DefectApiModel> {
+        var localVariablePath = "/api/v2/testResults/external-projects/{externalProjectId}/defects"
+        let externalProjectIdPreEscape = "\(APIHelper.mapValueToPathItem(externalProjectId))"
+        let externalProjectIdPostEscape = externalProjectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{externalProjectId}", with: externalProjectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createDefectApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DefectApiModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Get test result by ID aggregated with previous results
      
      - parameter id: (path) Test result unique ID 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
-    open class func apiV2TestResultsIdAggregatedGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestResultModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2TestResultsIdAggregatedGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestResultResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TestResultsIdAggregatedGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -38,9 +137,10 @@ open class TestResultsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test result unique ID 
-     - returns: RequestBuilder<TestResultModel> 
+     - returns: RequestBuilder<TestResultResponse> 
      */
-    open class func apiV2TestResultsIdAggregatedGetWithRequestBuilder(id: UUID) -> RequestBuilder<TestResultModel> {
+    @available(*, deprecated, message: "This operation is deprecated.")
+    open class func apiV2TestResultsIdAggregatedGetWithRequestBuilder(id: UUID) -> RequestBuilder<TestResultResponse> {
         var localVariablePath = "/api/v2/testResults/{id}/aggregated"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -56,7 +156,7 @@ open class TestResultsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestResultModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestResultResponse>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -172,7 +272,7 @@ open class TestResultsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestResultsIdGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestResultModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2TestResultsIdGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestResultResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TestResultsIdGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -190,9 +290,9 @@ open class TestResultsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test result unique ID 
-     - returns: RequestBuilder<TestResultModel> 
+     - returns: RequestBuilder<TestResultResponse> 
      */
-    open class func apiV2TestResultsIdGetWithRequestBuilder(id: UUID) -> RequestBuilder<TestResultModel> {
+    open class func apiV2TestResultsIdGetWithRequestBuilder(id: UUID) -> RequestBuilder<TestResultResponse> {
         var localVariablePath = "/api/v2/testResults/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -208,7 +308,7 @@ open class TestResultsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestResultModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestResultResponse>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -217,13 +317,13 @@ open class TestResultsAPI {
      Edit test result by ID
      
      - parameter id: (path) Test result unique ID 
-     - parameter testResultUpdateModel: (body)  (optional)
+     - parameter testResultUpdateV2Request: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestResultsIdPut(id: UUID, testResultUpdateModel: TestResultUpdateModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestResultsIdPutWithRequestBuilder(id: id, testResultUpdateModel: testResultUpdateModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestResultsIdPut(id: UUID, testResultUpdateV2Request: TestResultUpdateV2Request? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestResultsIdPutWithRequestBuilder(id: id, testResultUpdateV2Request: testResultUpdateV2Request).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -240,16 +340,16 @@ open class TestResultsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test result unique ID 
-     - parameter testResultUpdateModel: (body)  (optional)
+     - parameter testResultUpdateV2Request: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2TestResultsIdPutWithRequestBuilder(id: UUID, testResultUpdateModel: TestResultUpdateModel? = nil) -> RequestBuilder<Void> {
+    open class func apiV2TestResultsIdPutWithRequestBuilder(id: UUID, testResultUpdateV2Request: TestResultUpdateV2Request? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/testResults/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testResultUpdateModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testResultUpdateV2Request)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -265,6 +365,55 @@ open class TestResultsAPI {
     }
 
     /**
+     Get reruns
+     
+     - parameter id: (path) Test result unique ID 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2TestResultsIdRerunsGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: RerunsModel?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestResultsIdRerunsGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get reruns
+     - GET /api/v2/testResults/{id}/reruns
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter id: (path) Test result unique ID 
+     - returns: RequestBuilder<RerunsModel> 
+     */
+    open class func apiV2TestResultsIdRerunsGetWithRequestBuilder(id: UUID) -> RequestBuilder<RerunsModel> {
+        var localVariablePath = "/api/v2/testResults/{id}/reruns"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<RerunsModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Search for test results
      
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -272,13 +421,13 @@ open class TestResultsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter testResultsFilterModel: (body)  (optional)
+     - parameter testResultsFilterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestResultsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testResultsFilterModel: TestResultsFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestResultShortGetModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestResultsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testResultsFilterModel: testResultsFilterModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestResultsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testResultsFilterApiModel: TestResultsFilterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestResultShortResponse]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestResultsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testResultsFilterApiModel: testResultsFilterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -300,13 +449,13 @@ open class TestResultsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter testResultsFilterModel: (body)  (optional)
-     - returns: RequestBuilder<[TestResultShortGetModel]> 
+     - parameter testResultsFilterApiModel: (body)  (optional)
+     - returns: RequestBuilder<[TestResultShortResponse]> 
      */
-    open class func apiV2TestResultsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testResultsFilterModel: TestResultsFilterModel? = nil) -> RequestBuilder<[TestResultShortGetModel]> {
+    open class func apiV2TestResultsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testResultsFilterApiModel: TestResultsFilterApiModel? = nil) -> RequestBuilder<[TestResultShortResponse]> {
         let localVariablePath = "/api/v2/testResults/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testResultsFilterModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testResultsFilterApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -323,7 +472,7 @@ open class TestResultsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestResultShortGetModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestResultShortResponse]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -331,13 +480,13 @@ open class TestResultsAPI {
     /**
      Search for test results and extract statistics
      
-     - parameter testResultsFilterModel: (body)  (optional)
+     - parameter testResultsFilterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestResultsStatisticsFilterPost(testResultsFilterModel: TestResultsFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestResultsStatisticsGetModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestResultsStatisticsFilterPostWithRequestBuilder(testResultsFilterModel: testResultsFilterModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestResultsStatisticsFilterPost(testResultsFilterApiModel: TestResultsFilterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestResultsStatisticsApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestResultsStatisticsFilterPostWithRequestBuilder(testResultsFilterApiModel: testResultsFilterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -353,13 +502,13 @@ open class TestResultsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter testResultsFilterModel: (body)  (optional)
-     - returns: RequestBuilder<TestResultsStatisticsGetModel> 
+     - parameter testResultsFilterApiModel: (body)  (optional)
+     - returns: RequestBuilder<TestResultsStatisticsApiResult> 
      */
-    open class func apiV2TestResultsStatisticsFilterPostWithRequestBuilder(testResultsFilterModel: TestResultsFilterModel? = nil) -> RequestBuilder<TestResultsStatisticsGetModel> {
+    open class func apiV2TestResultsStatisticsFilterPostWithRequestBuilder(testResultsFilterApiModel: TestResultsFilterApiModel? = nil) -> RequestBuilder<TestResultsStatisticsApiResult> {
         let localVariablePath = "/api/v2/testResults/statistics/filter"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testResultsFilterModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testResultsFilterApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -369,7 +518,7 @@ open class TestResultsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestResultsStatisticsGetModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestResultsStatisticsApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

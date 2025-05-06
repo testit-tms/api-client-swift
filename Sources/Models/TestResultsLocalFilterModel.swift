@@ -12,12 +12,15 @@ import AnyCodable
 
 public struct TestResultsLocalFilterModel: Codable, JSONEncodable, Hashable {
 
-    static let namespaceRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let classNameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let namespaceRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let classNameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Specifies a test result configuration IDs to search for */
     public var configurationIds: [UUID]?
     /** Specifies a test result outcomes to search for */
+    @available(*, deprecated, message: "This property is deprecated.")
     public var outcomes: [TestResultOutcome]?
+    /** Specifies a test result status codes to search for */
+    public var statusCodes: [String]?
     /** Specifies a test result failure categories to search for */
     public var failureCategories: [FailureCategoryModel]?
     /** Specifies a test result namespace to search for */
@@ -25,9 +28,10 @@ public struct TestResultsLocalFilterModel: Codable, JSONEncodable, Hashable {
     /** Specifies a test result class name to search for */
     public var className: String?
 
-    public init(configurationIds: [UUID]? = nil, outcomes: [TestResultOutcome]? = nil, failureCategories: [FailureCategoryModel]? = nil, namespace: String? = nil, className: String? = nil) {
+    public init(configurationIds: [UUID]? = nil, outcomes: [TestResultOutcome]? = nil, statusCodes: [String]? = nil, failureCategories: [FailureCategoryModel]? = nil, namespace: String? = nil, className: String? = nil) {
         self.configurationIds = configurationIds
         self.outcomes = outcomes
+        self.statusCodes = statusCodes
         self.failureCategories = failureCategories
         self.namespace = namespace
         self.className = className
@@ -36,6 +40,7 @@ public struct TestResultsLocalFilterModel: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case configurationIds
         case outcomes
+        case statusCodes
         case failureCategories
         case namespace
         case className
@@ -47,6 +52,7 @@ public struct TestResultsLocalFilterModel: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(configurationIds, forKey: .configurationIds)
         try container.encodeIfPresent(outcomes, forKey: .outcomes)
+        try container.encodeIfPresent(statusCodes, forKey: .statusCodes)
         try container.encodeIfPresent(failureCategories, forKey: .failureCategories)
         try container.encodeIfPresent(namespace, forKey: .namespace)
         try container.encodeIfPresent(className, forKey: .className)

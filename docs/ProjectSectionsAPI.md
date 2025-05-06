@@ -19,7 +19,7 @@ Get project sections
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)

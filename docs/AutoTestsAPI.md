@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apiV2AutoTestsDelete**](AutoTestsAPI.md#apiv2autotestsdelete) | **DELETE** /api/v2/autoTests | Delete autotests
 [**apiV2AutoTestsFlakyBulkPost**](AutoTestsAPI.md#apiv2autotestsflakybulkpost) | **POST** /api/v2/autoTests/flaky/bulk | Set \&quot;Flaky\&quot; status for multiple autotests
 [**apiV2AutoTestsIdPatch**](AutoTestsAPI.md#apiv2autotestsidpatch) | **PATCH** /api/v2/autoTests/{id} | Patch auto test
 [**apiV2AutoTestsIdTestResultsSearchPost**](AutoTestsAPI.md#apiv2autotestsidtestresultssearchpost) | **POST** /api/v2/autoTests/{id}/testResults/search | Get test results history for autotest
@@ -19,16 +20,63 @@ Method | HTTP request | Description
 [**getAutoTestById**](AutoTestsAPI.md#getautotestbyid) | **GET** /api/v2/autoTests/{id} | Get autotest by internal or global ID
 [**getAutoTestChronology**](AutoTestsAPI.md#getautotestchronology) | **GET** /api/v2/autoTests/{id}/chronology | Get autotest chronology
 [**getTestRuns**](AutoTestsAPI.md#gettestruns) | **GET** /api/v2/autoTests/{id}/testRuns | Get completed tests runs for autotests
-[**getWorkItemResults**](AutoTestsAPI.md#getworkitemresults) | **GET** /api/v2/autoTests/{id}/testResultHistory | 
 [**getWorkItemsLinkedToAutoTest**](AutoTestsAPI.md#getworkitemslinkedtoautotest) | **GET** /api/v2/autoTests/{id}/workItems | Get work items linked to autotest
 [**linkAutoTestToWorkItem**](AutoTestsAPI.md#linkautotesttoworkitem) | **POST** /api/v2/autoTests/{id}/workItems | Link autotest with work items
 [**updateAutoTest**](AutoTestsAPI.md#updateautotest) | **PUT** /api/v2/autoTests | Update autotest
 [**updateMultiple**](AutoTestsAPI.md#updatemultiple) | **PUT** /api/v2/autoTests/bulk | Update multiple autotests
 
 
+# **apiV2AutoTestsDelete**
+```swift
+    open class func apiV2AutoTestsDelete(autoTestBulkDeleteApiModel: AutoTestBulkDeleteApiModel? = nil, completion: @escaping (_ data: AutoTestBulkDeleteApiResult?, _ error: Error?) -> Void)
+```
+
+Delete autotests
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let autoTestBulkDeleteApiModel = AutoTestBulkDeleteApiModel(autoTestSelect: AutoTestSelectModel(filter: AutoTestFilterModel(projectIds: [123], externalIds: ["externalIds_example"], globalIds: [123], name: "name_example", isFlaky: false, mustBeApproved: false, stabilityPercentage: Int64RangeSelectorModel(from: 123, to: 123), createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], isDeleted: false, namespace: "namespace_example", isEmptyNamespace: false, className: "className_example", isEmptyClassName: false, lastTestResultOutcome: AutotestResultOutcome(), lastTestResultStatusCode: "lastTestResultStatusCode_example", externalKey: "externalKey_example", lastTestResultConfigurationIds: [123]), extractionModel: AutoTestsExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123])))) // AutoTestBulkDeleteApiModel |  (optional)
+
+// Delete autotests
+AutoTestsAPI.apiV2AutoTestsDelete(autoTestBulkDeleteApiModel: autoTestBulkDeleteApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **autoTestBulkDeleteApiModel** | [**AutoTestBulkDeleteApiModel**](AutoTestBulkDeleteApiModel.md) |  | [optional] 
+
+### Return type
+
+[**AutoTestBulkDeleteApiResult**](AutoTestBulkDeleteApiResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2AutoTestsFlakyBulkPost**
 ```swift
-    open class func apiV2AutoTestsFlakyBulkPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, flakyBulkModel: FlakyBulkModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func apiV2AutoTestsFlakyBulkPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autoTestFlakyBulkApiModel: AutoTestFlakyBulkApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Set \"Flaky\" status for multiple autotests
@@ -38,17 +86,17 @@ User permissions for project:  - Read only  - Execute  - Write  - Full control
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let flakyBulkModel = FlakyBulkModel(autotestSelect: AutotestSelectModel(filter: AutotestFilterModel(projectIds: [123], externalIds: ["externalIds_example"], globalIds: [123], name: "name_example", isFlaky: false, mustBeApproved: false, stabilityPercentage: Int64RangeSelectorModel(from: 123, to: 123), createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], isDeleted: false, namespace: "namespace_example", isEmptyNamespace: false, className: "className_example", isEmptyClassName: false, lastTestResultOutcome: AutotestResultOutcome(), externalKey: "externalKey_example"), extractionModel: AutotestsExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))), value: false) // FlakyBulkModel |  (optional)
+let autoTestFlakyBulkApiModel = AutoTestFlakyBulkApiModel(autoTestSelect: AutoTestSelectApiModel(filter: AutoTestFilterApiModel(projectIds: [123], externalIds: ["externalIds_example"], globalIds: [123], name: "name_example", isFlaky: false, mustBeApproved: false, stabilityPercentage: Int64RangeSelectorModel(from: 123, to: 123), createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], isDeleted: false, namespace: "namespace_example", isEmptyNamespace: false, className: "className_example", isEmptyClassName: false, lastTestResultOutcome: AutotestResultOutcome(), lastTestResultStatusCode: "lastTestResultStatusCode_example", externalKey: "externalKey_example", lastTestResultConfigurationIds: [123]), extractionModel: AutoTestExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))), value: false) // AutoTestFlakyBulkApiModel |  (optional)
 
 // Set \"Flaky\" status for multiple autotests
-AutoTestsAPI.apiV2AutoTestsFlakyBulkPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, flakyBulkModel: flakyBulkModel) { (response, error) in
+AutoTestsAPI.apiV2AutoTestsFlakyBulkPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autoTestFlakyBulkApiModel: autoTestFlakyBulkApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -69,7 +117,7 @@ Name | Type | Description  | Notes
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String** | Property name for searching | [optional] 
  **searchValue** | **String** | Value for searching | [optional] 
- **flakyBulkModel** | [**FlakyBulkModel**](FlakyBulkModel.md) |  | [optional] 
+ **autoTestFlakyBulkApiModel** | [**AutoTestFlakyBulkApiModel**](AutoTestFlakyBulkApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -98,7 +146,7 @@ See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 690
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Global Id of auto test
 let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
@@ -140,7 +188,7 @@ Void (empty response body)
 
 # **apiV2AutoTestsIdTestResultsSearchPost**
 ```swift
-    open class func apiV2AutoTestsIdTestResultsSearchPost(id: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autotestHistoricalResultSelectModel: AutotestHistoricalResultSelectModel? = nil, completion: @escaping (_ data: [AutotestResultHistoricalGetModel]?, _ error: Error?) -> Void)
+    open class func apiV2AutoTestsIdTestResultsSearchPost(id: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autoTestResultHistorySelectApiModel: AutoTestResultHistorySelectApiModel? = nil, completion: @escaping (_ data: [AutoTestResultHistoryApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get test results history for autotest
@@ -150,7 +198,7 @@ Get test results history for autotest
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Autotest identifier
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -158,10 +206,10 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let autotestHistoricalResultSelectModel = AutotestHistoricalResultSelectModel(outcomes: [AutotestResultOutcome()], testPlanIds: [123], testRunIds: [123], configurationIds: [123], launchSource: "launchSource_example", userIds: [123], duration: Int64RangeSelectorModel(from: 123, to: 123)) // AutotestHistoricalResultSelectModel |  (optional)
+let autoTestResultHistorySelectApiModel = AutoTestResultHistorySelectApiModel(outcomes: [AutotestResultOutcome()], statusCodes: ["statusCodes_example"], testPlanIds: [123], testRunIds: [123], configurationIds: [123], launchSource: "launchSource_example", userIds: [123], duration: Int64RangeSelectorModel(from: 123, to: 123)) // AutoTestResultHistorySelectApiModel |  (optional)
 
 // Get test results history for autotest
-AutoTestsAPI.apiV2AutoTestsIdTestResultsSearchPost(id: id, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autotestHistoricalResultSelectModel: autotestHistoricalResultSelectModel) { (response, error) in
+AutoTestsAPI.apiV2AutoTestsIdTestResultsSearchPost(id: id, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autoTestResultHistorySelectApiModel: autoTestResultHistorySelectApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -183,11 +231,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String** | Property name for searching | [optional] 
  **searchValue** | **String** | Value for searching | [optional] 
- **autotestHistoricalResultSelectModel** | [**AutotestHistoricalResultSelectModel**](AutotestHistoricalResultSelectModel.md) |  | [optional] 
+ **autoTestResultHistorySelectApiModel** | [**AutoTestResultHistorySelectApiModel**](AutoTestResultHistorySelectApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[AutotestResultHistoricalGetModel]**](AutotestResultHistoricalGetModel.md)
+[**[AutoTestResultHistoryApiResult]**](AutoTestResultHistoryApiResult.md)
 
 ### Authorization
 
@@ -212,7 +260,7 @@ User permissions for project:  - Read only  - Execute  - Write  - Full control
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 
@@ -262,7 +310,7 @@ User permissions for project:  - Read only  - Execute  - Write  - Full control
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 let workItemId = 987 // UUID | 
@@ -304,7 +352,7 @@ Void (empty response body)
 
 # **apiV2AutoTestsSearchPost**
 ```swift
-    open class func apiV2AutoTestsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autotestsSelectModel: AutotestsSelectModel? = nil, completion: @escaping (_ data: [AutoTestModel]?, _ error: Error?) -> Void)
+    open class func apiV2AutoTestsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autoTestSearchApiModel: AutoTestSearchApiModel? = nil, completion: @escaping (_ data: [AutoTestApiResult]?, _ error: Error?) -> Void)
 ```
 
 Search for autotests
@@ -312,17 +360,17 @@ Search for autotests
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let autotestsSelectModel = AutotestsSelectModel(filter: AutotestFilterModel(projectIds: [123], externalIds: ["externalIds_example"], globalIds: [123], name: "name_example", isFlaky: false, mustBeApproved: false, stabilityPercentage: Int64RangeSelectorModel(from: 123, to: 123), createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], isDeleted: false, namespace: "namespace_example", isEmptyNamespace: false, className: "className_example", isEmptyClassName: false, lastTestResultOutcome: AutotestResultOutcome(), externalKey: "externalKey_example"), includes: SearchAutoTestsQueryIncludesModel(includeSteps: false, includeLinks: false, includeLabels: false)) // AutotestsSelectModel |  (optional)
+let autoTestSearchApiModel = AutoTestSearchApiModel(filter: AutoTestFilterApiModel(projectIds: [123], externalIds: ["externalIds_example"], globalIds: [123], name: "name_example", isFlaky: false, mustBeApproved: false, stabilityPercentage: Int64RangeSelectorModel(from: 123, to: 123), createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], isDeleted: false, namespace: "namespace_example", isEmptyNamespace: false, className: "className_example", isEmptyClassName: false, lastTestResultOutcome: AutotestResultOutcome(), lastTestResultStatusCode: "lastTestResultStatusCode_example", externalKey: "externalKey_example", lastTestResultConfigurationIds: [123]), includes: AutoTestSearchIncludeApiModel(includeSteps: false, includeLinks: false, includeLabels: false)) // AutoTestSearchApiModel |  (optional)
 
 // Search for autotests
-AutoTestsAPI.apiV2AutoTestsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autotestsSelectModel: autotestsSelectModel) { (response, error) in
+AutoTestsAPI.apiV2AutoTestsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autoTestSearchApiModel: autoTestSearchApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -343,11 +391,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String** | Property name for searching | [optional] 
  **searchValue** | **String** | Value for searching | [optional] 
- **autotestsSelectModel** | [**AutotestsSelectModel**](AutotestsSelectModel.md) |  | [optional] 
+ **autoTestSearchApiModel** | [**AutoTestSearchApiModel**](AutoTestSearchApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[AutoTestModel]**](AutoTestModel.md)
+[**[AutoTestApiResult]**](AutoTestApiResult.md)
 
 ### Authorization
 
@@ -372,7 +420,7 @@ Create autotest
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let autoTestPostModel = AutoTestPostModel(workItemIdsForLinkWithAutoTest: [123], shouldCreateWorkItem: false, attributes: "TODO", externalId: "externalId_example", links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example") // AutoTestPostModel |  (optional)
 
@@ -422,7 +470,7 @@ Create multiple autotests
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let autoTestPostModel = [AutoTestPostModel(workItemIdsForLinkWithAutoTest: [123], shouldCreateWorkItem: false, attributes: "TODO", externalId: "externalId_example", links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example")] // [AutoTestPostModel] |  (optional)
 
@@ -472,7 +520,7 @@ Delete autotest
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Autotest internal (UUID) or global (integer) identifier
 
@@ -522,7 +570,7 @@ Unlink autotest from work item
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Autotest internal (UUID) or global (integer) identifier
 let workItemId = "workItemId_example" // String | Work item internal (UUID) or global (integer) identifier (optional)
@@ -572,7 +620,7 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = 987 // UUID | Project internal ID (optional)
 let externalId = "externalId_example" // String | Autotest external ID (optional)
@@ -671,7 +719,7 @@ Get average autotest duration
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Autotest internal (UUID) or global (integer) identifier
 
@@ -721,7 +769,7 @@ Get autotest by internal or global ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Autotest internal (UUID) or global (integer) identifier
 
@@ -771,7 +819,7 @@ Get autotest chronology
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Autotest internal (UUID) or global (integer) identifier
 
@@ -811,7 +859,7 @@ Name | Type | Description  | Notes
 
 # **getTestRuns**
 ```swift
-    open class func getTestRuns(id: String, completion: @escaping (_ data: [TestRunShortModel]?, _ error: Error?) -> Void)
+    open class func getTestRuns(id: String, completion: @escaping (_ data: [TestRunByAutoTestApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get completed tests runs for autotests
@@ -821,7 +869,7 @@ Get completed tests runs for autotests
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Autotest internal (UUID) or global (integer) identifier
 
@@ -846,82 +894,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TestRunShortModel]**](TestRunShortModel.md)
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getWorkItemResults**
-```swift
-    open class func getWorkItemResults(id: String, from: Date? = nil, to: Date? = nil, configurationIds: [UUID]? = nil, testPlanIds: [UUID]? = nil, userIds: [UUID]? = nil, outcomes: [String]? = nil, isAutomated: Bool? = nil, automated: Bool? = nil, testRunIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestResultHistoryReportModel]?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
-
-let id = "id_example" // String | 
-let from = Date() // Date | Take results from this date (optional)
-let to = Date() // Date | Take results until this date (optional)
-let configurationIds = [123] // [UUID] | Identifiers of test result configurations (optional)
-let testPlanIds = [123] // [UUID] | Identifiers of test plans which contain test results (optional)
-let userIds = [123] // [UUID] | Identifiers of users who set test results (optional)
-let outcomes = ["inner_example"] // [String] | List of outcomes of test results (optional)
-let isAutomated = true // Bool | OBSOLETE: Use `Automated` instead (optional)
-let automated = true // Bool | If result must consist of only manual/automated test results (optional)
-let testRunIds = [123] // [UUID] | Identifiers of test runs which contain test results (optional)
-let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
-let take = 987 // Int | Amount of items to be taken (limit) (optional)
-let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
-let searchField = "searchField_example" // String | Property name for searching (optional)
-let searchValue = "searchValue_example" // String | Value for searching (optional)
-
-AutoTestsAPI.getWorkItemResults(id: id, from: from, to: to, configurationIds: configurationIds, testPlanIds: testPlanIds, userIds: userIds, outcomes: outcomes, isAutomated: isAutomated, automated: automated, testRunIds: testRunIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String** |  | 
- **from** | **Date** | Take results from this date | [optional] 
- **to** | **Date** | Take results until this date | [optional] 
- **configurationIds** | [**[UUID]**](UUID.md) | Identifiers of test result configurations | [optional] 
- **testPlanIds** | [**[UUID]**](UUID.md) | Identifiers of test plans which contain test results | [optional] 
- **userIds** | [**[UUID]**](UUID.md) | Identifiers of users who set test results | [optional] 
- **outcomes** | [**[String]**](String.md) | List of outcomes of test results | [optional] 
- **isAutomated** | **Bool** | OBSOLETE: Use &#x60;Automated&#x60; instead | [optional] 
- **automated** | **Bool** | If result must consist of only manual/automated test results | [optional] 
- **testRunIds** | [**[UUID]**](UUID.md) | Identifiers of test runs which contain test results | [optional] 
- **skip** | **Int** | Amount of items to be skipped (offset) | [optional] 
- **take** | **Int** | Amount of items to be taken (limit) | [optional] 
- **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
- **searchField** | **String** | Property name for searching | [optional] 
- **searchValue** | **String** | Value for searching | [optional] 
-
-### Return type
-
-[**[TestResultHistoryReportModel]**](TestResultHistoryReportModel.md)
+[**[TestRunByAutoTestApiResult]**](TestRunByAutoTestApiResult.md)
 
 ### Authorization
 
@@ -946,7 +919,7 @@ Get work items linked to autotest
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Specifies the autotest entity ID.   You can copy it from the address bar in your web browser or use autotest GUID.
 let isDeleted = true // Bool | Specifies that a test is deleted or still relevant. (optional)
@@ -1000,7 +973,7 @@ Link autotest with work items
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Autotest internal (UUID) or global (integer) identifier
 let workItemIdModel = WorkItemIdModel(id: "id_example") // WorkItemIdModel |  (optional)
@@ -1052,7 +1025,7 @@ Update autotest
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let autoTestPutModel = AutoTestPutModel(id: 123, workItemIdsForLinkWithAutoTest: [123], externalId: "externalId_example", links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example") // AutoTestPutModel |  (optional)
 
@@ -1102,7 +1075,7 @@ Update multiple autotests
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let autoTestPutModel = [AutoTestPutModel(id: 123, workItemIdsForLinkWithAutoTest: [123], externalId: "externalId_example", links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example")] // [AutoTestPutModel] |  (optional)
 

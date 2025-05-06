@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct WorkItemIdModel: Codable, JSONEncodable, Hashable {
 
-    static let idRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let idRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Used for search WorkItem. Internal identifier has a Guid data format. Global identifier has an integer data format */
     public var id: String
 
@@ -32,3 +32,6 @@ public struct WorkItemIdModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension WorkItemIdModel: Identifiable {}

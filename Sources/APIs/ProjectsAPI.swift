@@ -66,13 +66,13 @@ open class ProjectsAPI {
 
     /**
 
-     - parameter projectPostModel: (body)  (optional)
+     - parameter createProjectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ProjectsDemoPost(projectPostModel: ProjectPostModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ProjectsDemoPostWithRequestBuilder(projectPostModel: projectPostModel).execute(apiResponseQueue) { result in
+    open class func apiV2ProjectsDemoPost(createProjectApiModel: CreateProjectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: DemoProjectApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsDemoPostWithRequestBuilder(createProjectApiModel: createProjectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -87,13 +87,13 @@ open class ProjectsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter projectPostModel: (body)  (optional)
-     - returns: RequestBuilder<ProjectModel> 
+     - parameter createProjectApiModel: (body)  (optional)
+     - returns: RequestBuilder<DemoProjectApiResult> 
      */
-    open class func apiV2ProjectsDemoPostWithRequestBuilder(projectPostModel: ProjectPostModel? = nil) -> RequestBuilder<ProjectModel> {
+    open class func apiV2ProjectsDemoPostWithRequestBuilder(createProjectApiModel: CreateProjectApiModel? = nil) -> RequestBuilder<DemoProjectApiResult> {
         let localVariablePath = "/api/v2/projects/demo"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createProjectApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -103,7 +103,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProjectModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DemoProjectApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -625,8 +625,8 @@ open class ProjectsAPI {
      Get Project TestRuns full models
      
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
-     - parameter includeTestResults: (query)  (optional, default to false)
-     - parameter mustAggregateTestResults: (query)  (optional, default to true)
+     - parameter includeTestResults: (query)  (optional)
+     - parameter mustAggregateTestResults: (query)  (optional)
      - parameter notStarted: (query)  (optional)
      - parameter inProgress: (query)  (optional)
      - parameter stopped: (query)  (optional)
@@ -643,7 +643,7 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ProjectsIdTestRunsFullGet(id: String, includeTestResults: Bool? = nil, mustAggregateTestResults: Bool? = nil, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2ProjectsIdTestRunsFullGet(id: String, includeTestResults: Bool? = nil, mustAggregateTestResults: Bool? = nil, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ProjectsIdTestRunsFullGetWithRequestBuilder(id: id, includeTestResults: includeTestResults, mustAggregateTestResults: mustAggregateTestResults, notStarted: notStarted, inProgress: inProgress, stopped: stopped, completed: completed, createdDateFrom: createdDateFrom, createdDateTo: createdDateTo, testPlanId: testPlanId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -663,8 +663,8 @@ open class ProjectsAPI {
        - name: Bearer or PrivateToken
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
-     - parameter includeTestResults: (query)  (optional, default to false)
-     - parameter mustAggregateTestResults: (query)  (optional, default to true)
+     - parameter includeTestResults: (query)  (optional)
+     - parameter mustAggregateTestResults: (query)  (optional)
      - parameter notStarted: (query)  (optional)
      - parameter inProgress: (query)  (optional)
      - parameter stopped: (query)  (optional)
@@ -677,9 +677,9 @@ open class ProjectsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[TestRunModel]> 
+     - returns: RequestBuilder<[TestRunApiResult]> 
      */
-    open class func apiV2ProjectsIdTestRunsFullGetWithRequestBuilder(id: String, includeTestResults: Bool? = nil, mustAggregateTestResults: Bool? = nil, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TestRunModel]> {
+    open class func apiV2ProjectsIdTestRunsFullGetWithRequestBuilder(id: String, includeTestResults: Bool? = nil, mustAggregateTestResults: Bool? = nil, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TestRunApiResult]> {
         var localVariablePath = "/api/v2/projects/{id}/testRuns/full"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -711,7 +711,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestRunModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestRunApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -868,7 +868,7 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProjectModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProjectShortModel]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ProjectsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectsFilterModel: projectsFilterModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -892,9 +892,9 @@ open class ProjectsAPI {
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
      - parameter projectsFilterModel: (body)  (optional)
-     - returns: RequestBuilder<[ProjectModel]> 
+     - returns: RequestBuilder<[ProjectShortModel]> 
      */
-    open class func apiV2ProjectsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil) -> RequestBuilder<[ProjectModel]> {
+    open class func apiV2ProjectsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil) -> RequestBuilder<[ProjectShortModel]> {
         let localVariablePath = "/api/v2/projects/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectsFilterModel)
@@ -914,172 +914,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ProjectModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-     Import project from JSON file in background job
-     
-     - parameter file: (form)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    @discardableResult
-    open class func backgroundImportProject(file: URL? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: UUID?, _ error: Error?) -> Void)) -> RequestTask {
-        return backgroundImportProjectWithRequestBuilder(file: file).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Import project from JSON file in background job
-     - POST /api/v2/projects/import/json
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
-     - parameter file: (form)  (optional)
-     - returns: RequestBuilder<UUID> 
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    open class func backgroundImportProjectWithRequestBuilder(file: URL? = nil) -> RequestBuilder<UUID> {
-        let localVariablePath = "/api/v2/projects/import/json"
-        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableFormParams: [String: Any?] = [
-            "file": file?.encodeToJSON(),
-        ]
-
-        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
-        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "multipart/form-data",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<UUID>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-     Import project from Zip file in background job
-     
-     - parameter file: (form)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    @discardableResult
-    open class func backgroundImportZipProject(file: URL? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: UUID?, _ error: Error?) -> Void)) -> RequestTask {
-        return backgroundImportZipProjectWithRequestBuilder(file: file).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Import project from Zip file in background job
-     - POST /api/v2/projects/import/zip
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
-     - parameter file: (form)  (optional)
-     - returns: RequestBuilder<UUID> 
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    open class func backgroundImportZipProjectWithRequestBuilder(file: URL? = nil) -> RequestBuilder<UUID> {
-        let localVariablePath = "/api/v2/projects/import/zip"
-        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableFormParams: [String: Any?] = [
-            "file": file?.encodeToJSON(),
-        ]
-
-        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
-        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "multipart/form-data",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<UUID>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-     Import project from JSON file
-     
-     - parameter includeAttachments: (query) Enables attachment import. (optional, default to false)
-     - parameter file: (form) Select file (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    @discardableResult
-    open class func callImport(includeAttachments: Bool? = nil, file: URL? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return callImportWithRequestBuilder(includeAttachments: includeAttachments, file: file).execute(apiResponseQueue) { result in
-            switch result {
-            case .success:
-                completion((), nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Import project from JSON file
-     - POST /api/v2/projects/import
-     -      <b>A project can only be exported to another TMS instance, different from the one it was imported from.</b>     This method imports a `.json` file with a project to the test management system.   In the body of the request, send the `.json` file received by the `POST /api/v2/projects/export` method:       ```              curl -X POST \"http://{domain.com}/api/v2/projects/import\" \\              -H \"accept: /\" -H \"Authorization: PrivateToken {token}\" -H \"Content-Type: multipart/form-data\" \\              -F \"file=@import.txt;type=text/plain\"              ```                   In the second instance, a project with the name of the imported one is created.              User attributes and the test library (along with content and structure) are imported.                 Test plan execution history from the first instance of TMS cannot be transferred.
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
-     - parameter includeAttachments: (query) Enables attachment import. (optional, default to false)
-     - parameter file: (form) Select file (optional)
-     - returns: RequestBuilder<Void> 
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    open class func callImportWithRequestBuilder(includeAttachments: Bool? = nil, file: URL? = nil) -> RequestBuilder<Void> {
-        let localVariablePath = "/api/v2/projects/import"
-        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableFormParams: [String: Any?] = [
-            "file": file?.encodeToJSON(),
-        ]
-
-        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
-        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "includeAttachments": (wrappedValue: includeAttachments?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "multipart/form-data",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ProjectShortModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -1087,13 +922,13 @@ open class ProjectsAPI {
     /**
      Create project
      
-     - parameter projectPostModel: (body)  (optional)
+     - parameter createProjectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createProject(projectPostModel: ProjectPostModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return createProjectWithRequestBuilder(projectPostModel: projectPostModel).execute(apiResponseQueue) { result in
+    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectModel?, _ error: Error?) -> Void)) -> RequestTask {
+        return createProjectWithRequestBuilder(createProjectApiModel: createProjectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -1110,13 +945,13 @@ open class ProjectsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter projectPostModel: (body)  (optional)
+     - parameter createProjectApiModel: (body)  (optional)
      - returns: RequestBuilder<ProjectModel> 
      */
-    open class func createProjectWithRequestBuilder(projectPostModel: ProjectPostModel? = nil) -> RequestBuilder<ProjectModel> {
+    open class func createProjectWithRequestBuilder(createProjectApiModel: CreateProjectApiModel? = nil) -> RequestBuilder<ProjectModel> {
         let localVariablePath = "/api/v2/projects"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createProjectApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -1195,7 +1030,7 @@ open class ProjectsAPI {
      */
     @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
-    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProjectModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProjectShortModel]?, _ error: Error?) -> Void)) -> RequestTask {
         return getAllProjectsWithRequestBuilder(isDeleted: isDeleted, projectName: projectName, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1221,10 +1056,10 @@ open class ProjectsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[ProjectModel]> 
+     - returns: RequestBuilder<[ProjectShortModel]> 
      */
     @available(*, deprecated, message: "This operation is deprecated.")
-    open class func getAllProjectsWithRequestBuilder(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ProjectModel]> {
+    open class func getAllProjectsWithRequestBuilder(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ProjectShortModel]> {
         let localVariablePath = "/api/v2/projects"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -1246,7 +1081,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ProjectModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ProjectShortModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -1410,10 +1245,10 @@ open class ProjectsAPI {
      Get project test runs
      
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
-     - parameter notStarted: (query)  (optional)
-     - parameter inProgress: (query)  (optional)
-     - parameter stopped: (query)  (optional)
-     - parameter completed: (query)  (optional)
+     - parameter notStarted: (query)  
+     - parameter inProgress: (query)  
+     - parameter stopped: (query)  
+     - parameter completed: (query)  
      - parameter createdDateFrom: (query)  (optional)
      - parameter createdDateTo: (query)  (optional)
      - parameter testPlanId: (query)  (optional)
@@ -1426,7 +1261,7 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTestRunsByProjectId(id: String, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunV2GetModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getTestRunsByProjectId(id: String, notStarted: Bool, inProgress: Bool, stopped: Bool, completed: Bool, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunV2ApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return getTestRunsByProjectIdWithRequestBuilder(id: id, notStarted: notStarted, inProgress: inProgress, stopped: stopped, completed: completed, createdDateFrom: createdDateFrom, createdDateTo: createdDateTo, testPlanId: testPlanId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1446,10 +1281,10 @@ open class ProjectsAPI {
        - name: Bearer or PrivateToken
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
-     - parameter notStarted: (query)  (optional)
-     - parameter inProgress: (query)  (optional)
-     - parameter stopped: (query)  (optional)
-     - parameter completed: (query)  (optional)
+     - parameter notStarted: (query)  
+     - parameter inProgress: (query)  
+     - parameter stopped: (query)  
+     - parameter completed: (query)  
      - parameter createdDateFrom: (query)  (optional)
      - parameter createdDateTo: (query)  (optional)
      - parameter testPlanId: (query)  (optional)
@@ -1458,9 +1293,9 @@ open class ProjectsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[TestRunV2GetModel]> 
+     - returns: RequestBuilder<[TestRunV2ApiResult]> 
      */
-    open class func getTestRunsByProjectIdWithRequestBuilder(id: String, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TestRunV2GetModel]> {
+    open class func getTestRunsByProjectIdWithRequestBuilder(id: String, notStarted: Bool, inProgress: Bool, stopped: Bool, completed: Bool, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TestRunV2ApiResult]> {
         var localVariablePath = "/api/v2/projects/{id}/testRuns"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1470,10 +1305,10 @@ open class ProjectsAPI {
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "notStarted": (wrappedValue: notStarted?.encodeToJSON(), isExplode: true),
-            "inProgress": (wrappedValue: inProgress?.encodeToJSON(), isExplode: true),
-            "stopped": (wrappedValue: stopped?.encodeToJSON(), isExplode: true),
-            "completed": (wrappedValue: completed?.encodeToJSON(), isExplode: true),
+            "notStarted": (wrappedValue: notStarted.encodeToJSON(), isExplode: true),
+            "inProgress": (wrappedValue: inProgress.encodeToJSON(), isExplode: true),
+            "stopped": (wrappedValue: stopped.encodeToJSON(), isExplode: true),
+            "completed": (wrappedValue: completed.encodeToJSON(), isExplode: true),
             "createdDateFrom": (wrappedValue: createdDateFrom?.encodeToJSON(), isExplode: true),
             "createdDateTo": (wrappedValue: createdDateTo?.encodeToJSON(), isExplode: true),
             "testPlanId": (wrappedValue: testPlanId?.encodeToJSON(), isExplode: true),
@@ -1490,7 +1325,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestRunV2GetModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestRunV2ApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -1498,13 +1333,13 @@ open class ProjectsAPI {
     /**
      Update project
      
-     - parameter projectPutModel: (body)  (optional)
+     - parameter updateProjectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateProject(projectPutModel: ProjectPutModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateProjectWithRequestBuilder(projectPutModel: projectPutModel).execute(apiResponseQueue) { result in
+    open class func updateProject(updateProjectApiModel: UpdateProjectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateProjectWithRequestBuilder(updateProjectApiModel: updateProjectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -1521,13 +1356,13 @@ open class ProjectsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter projectPutModel: (body)  (optional)
+     - parameter updateProjectApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func updateProjectWithRequestBuilder(projectPutModel: ProjectPutModel? = nil) -> RequestBuilder<Void> {
+    open class func updateProjectWithRequestBuilder(updateProjectApiModel: UpdateProjectApiModel? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/projects"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectPutModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateProjectApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 

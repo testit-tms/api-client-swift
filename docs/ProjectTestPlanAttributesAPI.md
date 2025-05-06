@@ -23,7 +23,7 @@ Add attributes to project's test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -75,7 +75,7 @@ Delete attribute from project's test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let attributeId = 987 // UUID | 
@@ -127,7 +127,7 @@ Get project's test plan attributes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -175,7 +175,7 @@ Search for attributes used in the project test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = "projectId_example" // String | Unique or global project ID
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -237,7 +237,7 @@ Update attribute of project's test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let customAttributeTestPlanProjectRelationPutModel = CustomAttributeTestPlanProjectRelationPutModel(id: 123, isEnabled: false, isRequired: false) // CustomAttributeTestPlanProjectRelationPutModel |  (optional)

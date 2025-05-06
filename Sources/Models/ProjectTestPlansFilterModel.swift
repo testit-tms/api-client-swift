@@ -12,15 +12,15 @@ import AnyCodable
 
 public struct ProjectTestPlansFilterModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let descriptionRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let buildRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let productNameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let statusRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let automaticDurationTimerRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let tagNamesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let descriptionRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let buildRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let productNameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let statusRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let automaticDurationTimerRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let tagNamesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var name: String?
     public var description: String?
     public var build: String?

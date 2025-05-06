@@ -26,7 +26,7 @@ See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 690
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Section internal (UUID) identifier
 let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
@@ -78,7 +78,7 @@ Create section
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let sectionPostModel = SectionPostModel(name: "name_example", projectId: 123, parentId: 123, preconditionSteps: [StepPostModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], postconditionSteps: [nil], attachments: [AttachmentPutModel(id: 123)]) // SectionPostModel |  (optional)
 
@@ -128,7 +128,7 @@ Delete section
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Section internal (UUID) identifier
 
@@ -178,7 +178,7 @@ Get section
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Section internal (UUID) identifier
 let isDeleted = DeletionState() // DeletionState |  (optional)
@@ -230,7 +230,7 @@ Get section work items
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Section internal (UUID) identifier
 let isDeleted = true // Bool | Requested section is deleted (optional) (default to false)
@@ -294,7 +294,7 @@ Move section with all work items into another section
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let sectionMoveModel = SectionMoveModel(id: 123, oldParentId: 123, parentId: 123, nextSectionId: 123) // SectionMoveModel |  (optional)
 
@@ -344,7 +344,7 @@ Rename section
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let sectionRenameModel = SectionRenameModel(id: 123, name: "name_example") // SectionRenameModel |  (optional)
 
@@ -394,7 +394,7 @@ Update section
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let sectionPutModel = SectionPutModel(id: 123, name: "name_example", projectId: 123, parentId: 123, preconditionSteps: [StepPutModel(id: 123, action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], postconditionSteps: [nil], attachments: [AttachmentPutModel(id: 123)]) // SectionPutModel |  (optional)
 

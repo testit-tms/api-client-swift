@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**apiV2TestPlansIdHistoryGet**](TestPlansAPI.md#apiv2testplansidhistoryget) | **GET** /api/v2/testPlans/{id}/history | Get TestPlan history
 [**apiV2TestPlansIdLinksGet**](TestPlansAPI.md#apiv2testplansidlinksget) | **GET** /api/v2/testPlans/{id}/links | Get Links of TestPlan
 [**apiV2TestPlansIdPatch**](TestPlansAPI.md#apiv2testplansidpatch) | **PATCH** /api/v2/testPlans/{id} | Patch test plan
+[**apiV2TestPlansIdSummariesGet**](TestPlansAPI.md#apiv2testplansidsummariesget) | **GET** /api/v2/testPlans/{id}/summaries | Get summary by TestPlan
 [**apiV2TestPlansIdTestPointsLastResultsGet**](TestPlansAPI.md#apiv2testplansidtestpointslastresultsget) | **GET** /api/v2/testPlans/{id}/testPoints/lastResults | Get TestPoints with last result from TestPlan
 [**apiV2TestPlansIdTestPointsResetPost**](TestPlansAPI.md#apiv2testplansidtestpointsresetpost) | **POST** /api/v2/testPlans/{id}/testPoints/reset | Reset TestPoints status of TestPlan
 [**apiV2TestPlansIdTestPointsTesterDelete**](TestPlansAPI.md#apiv2testplansidtestpointstesterdelete) | **DELETE** /api/v2/testPlans/{id}/testPoints/tester | Unassign users from multiple test points
@@ -46,10 +47,10 @@ Add test-points to TestPlan with sections
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
-let workItemSelectModel = WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], autoTestIds: [123], workItemVersionIds: [123]), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectModel | Filter object to retrieve work items for test-suite's project (optional)
+let workItemSelectModel = WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], autoTestIds: [123], workItemVersionIds: [123]), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectModel | Filter object to retrieve work items for test-suite's project (optional)
 
 // Add test-points to TestPlan with sections
 TestPlansAPI.addTestPointsWithSections(id: id, workItemSelectModel: workItemSelectModel) { (response, error) in
@@ -98,7 +99,7 @@ Add WorkItems to TestPlan with Sections as TestSuites
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -150,7 +151,7 @@ Get analytics by TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -198,7 +199,7 @@ Distribute test points between the users
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan unique or global ID
 let testers = [123] // Set<UUID> | Specifies a project user IDs to distribute (optional)
@@ -250,7 +251,7 @@ Get TestPlan configurations
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -300,7 +301,7 @@ Export TestPoints from TestPlan in xls format
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 let timeZoneOffsetInMinutes = 987 // Int64 |  (optional)
@@ -354,7 +355,7 @@ Export TestResults history from TestPlan in xls format
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 let mustReturnOnlyLastTestResult = true // Bool |  (optional)
@@ -412,7 +413,7 @@ Get TestPlan history
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -472,7 +473,7 @@ Get Links of TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 let skip = 987 // Int |  (optional)
@@ -528,7 +529,7 @@ See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 690
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Unique ID of the test plan
 let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
@@ -568,9 +569,59 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2TestPlansIdSummariesGet**
+```swift
+    open class func apiV2TestPlansIdSummariesGet(id: String, completion: @escaping (_ data: TestPlanSummaryModel?, _ error: Error?) -> Void)
+```
+
+Get summary by TestPlan
+
+ Use case   User sets test plan identifier   User runs method execution   System returns summary by test plan
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
+
+// Get summary by TestPlan
+TestPlansAPI.apiV2TestPlansIdSummariesGet(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** | Test plan internal (guid format) or global (int  format) identifier | 
+
+### Return type
+
+[**TestPlanSummaryModel**](TestPlanSummaryModel.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2TestPlansIdTestPointsLastResultsGet**
 ```swift
-    open class func apiV2TestPlansIdTestPointsLastResultsGet(id: String, testerId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestPointWithLastResultModel]?, _ error: Error?) -> Void)
+    open class func apiV2TestPlansIdTestPointsLastResultsGet(id: String, testerId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestPointWithLastResultResponseModel]?, _ error: Error?) -> Void)
 ```
 
 Get TestPoints with last result from TestPlan
@@ -580,7 +631,7 @@ Get TestPoints with last result from TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 let testerId = 987 // UUID |  (optional)
@@ -617,7 +668,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TestPointWithLastResultModel]**](TestPointWithLastResultModel.md)
+[**[TestPointWithLastResultResponseModel]**](TestPointWithLastResultResponseModel.md)
 
 ### Authorization
 
@@ -642,7 +693,7 @@ Reset TestPoints status of TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -692,10 +743,10 @@ Unassign users from multiple test points
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the test plan
-let testPointSelectModel = TestPointSelectModel(filter: TestPointFilterModel(testPlanIds: [123], testSuiteIds: [123], workItemGlobalIds: [123], workItemMedianDuration: Int64RangeSelectorModel(from: 123, to: 123), workItemIsDeleted: false, statuses: [TestPointStatus()], priorities: [WorkItemPriorityModel()], isAutomated: false, name: "name_example", configurationIds: [123], testerIds: [123], duration: nil, sectionIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], tags: ["tags_example"], attributes: "TODO", workItemCreatedDate: nil, workItemCreatedByIds: [123], workItemModifiedDate: nil, workItemModifiedByIds: [123]), extractionModel: TestPointsExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPointSelectModel |  (optional)
+let testPointSelectModel = TestPointSelectModel(filter: TestPointFilterModel(testPlanIds: [123], testSuiteIds: [123], workItemGlobalIds: [123], workItemMedianDuration: Int64RangeSelectorModel(from: 123, to: 123), workItemIsDeleted: false, statuses: [TestPointStatus()], statusCodes: ["statusCodes_example"], priorities: [WorkItemPriorityModel()], isAutomated: false, name: "name_example", configurationIds: [123], testerIds: [123], duration: nil, sectionIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], tags: ["tags_example"], attributes: "TODO", workItemCreatedDate: nil, workItemCreatedByIds: [123], workItemModifiedDate: nil, workItemModifiedByIds: [123]), extractionModel: TestPointsExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPointSelectModel |  (optional)
 
 // Unassign users from multiple test points
 TestPlansAPI.apiV2TestPlansIdTestPointsTesterDelete(id: id, testPointSelectModel: testPointSelectModel) { (response, error) in
@@ -742,11 +793,11 @@ Assign user as a tester to multiple test points
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the test plan
 let userId = 987 // UUID | Unique ID of the user
-let testPointSelectModel = TestPointSelectModel(filter: TestPointFilterModel(testPlanIds: [123], testSuiteIds: [123], workItemGlobalIds: [123], workItemMedianDuration: Int64RangeSelectorModel(from: 123, to: 123), workItemIsDeleted: false, statuses: [TestPointStatus()], priorities: [WorkItemPriorityModel()], isAutomated: false, name: "name_example", configurationIds: [123], testerIds: [123], duration: nil, sectionIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], tags: ["tags_example"], attributes: "TODO", workItemCreatedDate: nil, workItemCreatedByIds: [123], workItemModifiedDate: nil, workItemModifiedByIds: [123]), extractionModel: TestPointsExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPointSelectModel |  (optional)
+let testPointSelectModel = TestPointSelectModel(filter: TestPointFilterModel(testPlanIds: [123], testSuiteIds: [123], workItemGlobalIds: [123], workItemMedianDuration: Int64RangeSelectorModel(from: 123, to: 123), workItemIsDeleted: false, statuses: [TestPointStatus()], statusCodes: ["statusCodes_example"], priorities: [WorkItemPriorityModel()], isAutomated: false, name: "name_example", configurationIds: [123], testerIds: [123], duration: nil, sectionIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], tags: ["tags_example"], attributes: "TODO", workItemCreatedDate: nil, workItemCreatedByIds: [123], workItemModifiedDate: nil, workItemModifiedByIds: [123]), extractionModel: TestPointsExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPointSelectModel |  (optional)
 
 // Assign user as a tester to multiple test points
 TestPlansAPI.apiV2TestPlansIdTestPointsTesterUserIdPost(id: id, userId: userId, testPointSelectModel: testPointSelectModel) { (response, error) in
@@ -786,7 +837,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestPlansIdTestRunsGet**
 ```swift
-    open class func apiV2TestPlansIdTestRunsGet(id: String, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestRunModel]?, _ error: Error?) -> Void)
+    open class func apiV2TestPlansIdTestRunsGet(id: String, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestRunApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get TestRuns of TestPlan
@@ -796,7 +847,7 @@ Get TestRuns of TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 let notStarted = true // Bool |  (optional)
@@ -839,7 +890,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TestRunModel]**](TestRunModel.md)
+[**[TestRunApiResult]**](TestRunApiResult.md)
 
 ### Authorization
 
@@ -854,7 +905,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestPlansIdTestRunsSearchPost**
 ```swift
-    open class func apiV2TestPlansIdTestRunsSearchPost(id: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testRunSearchQueryModel: TestRunSearchQueryModel? = nil, completion: @escaping (_ data: [TestRunModel]?, _ error: Error?) -> Void)
+    open class func apiV2TestPlansIdTestRunsSearchPost(id: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, searchTestRunsApiModel: SearchTestRunsApiModel? = nil, completion: @escaping (_ data: [TestRunApiResult]?, _ error: Error?) -> Void)
 ```
 
 Search TestRuns of TestPlan
@@ -864,7 +915,7 @@ Search TestRuns of TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -872,10 +923,10 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let testRunSearchQueryModel = TestRunSearchQueryModel(name: "name_example", states: [TestRunState()], startedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), completedDate: nil, createdByIds: [123], modifiedByIds: [123]) // TestRunSearchQueryModel |  (optional)
+let searchTestRunsApiModel = SearchTestRunsApiModel(name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], startedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), completedDate: nil, createdByIds: [123], modifiedByIds: [123]) // SearchTestRunsApiModel |  (optional)
 
 // Search TestRuns of TestPlan
-TestPlansAPI.apiV2TestPlansIdTestRunsSearchPost(id: id, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testRunSearchQueryModel: testRunSearchQueryModel) { (response, error) in
+TestPlansAPI.apiV2TestPlansIdTestRunsSearchPost(id: id, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, searchTestRunsApiModel: searchTestRunsApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -897,11 +948,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String** | Property name for searching | [optional] 
  **searchValue** | **String** | Value for searching | [optional] 
- **testRunSearchQueryModel** | [**TestRunSearchQueryModel**](TestRunSearchQueryModel.md) |  | [optional] 
+ **searchTestRunsApiModel** | [**SearchTestRunsApiModel**](SearchTestRunsApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[TestRunModel]**](TestRunModel.md)
+[**[TestRunApiResult]**](TestRunApiResult.md)
 
 ### Authorization
 
@@ -924,7 +975,7 @@ Get last modification date of test plan's test results
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan unique or global ID
 
@@ -974,7 +1025,7 @@ Send unlock TestPlan notification
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -1024,7 +1075,7 @@ Get TestPlans short models by Project identifiers
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let isDeleted = true // Bool |  (optional)
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -1076,7 +1127,7 @@ Clone TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -1126,7 +1177,7 @@ Complete TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -1166,7 +1217,7 @@ Void (empty response body)
 
 # **createTestPlan**
 ```swift
-    open class func createTestPlan(testPlanPostModel: TestPlanPostModel? = nil, completion: @escaping (_ data: TestPlanModel?, _ error: Error?) -> Void)
+    open class func createTestPlan(createTestPlanApiModel: CreateTestPlanApiModel? = nil, completion: @escaping (_ data: TestPlanModel?, _ error: Error?) -> Void)
 ```
 
 Create TestPlan
@@ -1176,12 +1227,12 @@ Create TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testPlanPostModel = TestPlanPostModel(tags: [TagPostModel(name: "name_example")], name: "name_example", startDate: Date(), endDate: Date(), description: "description_example", build: "build_example", projectId: 123, productName: "productName_example", hasAutomaticDurationTimer: true, attributes: "TODO") // TestPlanPostModel |  (optional)
+let createTestPlanApiModel = CreateTestPlanApiModel(tags: [TagPostModel(name: "name_example")], name: "name_example", startDate: Date(), endDate: Date(), description: "description_example", build: "build_example", projectId: 123, productName: "productName_example", hasAutomaticDurationTimer: false, attributes: "TODO", testSuite: TestSuiteTestPlanApiModel(name: "name_example", configurationIds: [123], type: TestSuiteType(), saveStructure: false, workItemsSelector: WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], autoTestIds: [123], workItemVersionIds: [123]), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)))) // CreateTestPlanApiModel |  (optional)
 
 // Create TestPlan
-TestPlansAPI.createTestPlan(testPlanPostModel: testPlanPostModel) { (response, error) in
+TestPlansAPI.createTestPlan(createTestPlanApiModel: createTestPlanApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1197,7 +1248,7 @@ TestPlansAPI.createTestPlan(testPlanPostModel: testPlanPostModel) { (response, e
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testPlanPostModel** | [**TestPlanPostModel**](TestPlanPostModel.md) |  | [optional] 
+ **createTestPlanApiModel** | [**CreateTestPlanApiModel**](CreateTestPlanApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -1226,7 +1277,7 @@ Delete TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -1276,7 +1327,7 @@ Get TestPlan by Id
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -1326,7 +1377,7 @@ Get TestSuites Tree By Id
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -1376,7 +1427,7 @@ Pause TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -1424,7 +1475,7 @@ Permanently delete test plan from archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the test plan
 
@@ -1474,7 +1525,7 @@ Restore TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -1524,7 +1575,7 @@ Start TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int  format) identifier
 
@@ -1564,7 +1615,7 @@ Void (empty response body)
 
 # **updateTestPlan**
 ```swift
-    open class func updateTestPlan(testPlanPutModel: TestPlanPutModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateTestPlan(updateTestPlanApiModel: UpdateTestPlanApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update TestPlan
@@ -1574,12 +1625,12 @@ Update TestPlan
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testPlanPutModel = TestPlanPutModel(id: 123, lockedById: 123, tags: [TagPostModel(name: "name_example")], name: "name_example", startDate: Date(), endDate: Date(), description: "description_example", build: "build_example", projectId: 123, productName: "productName_example", hasAutomaticDurationTimer: true, attributes: "TODO") // TestPlanPutModel |  (optional)
+let updateTestPlanApiModel = UpdateTestPlanApiModel(id: 123, lockedById: 123, name: "name_example", startDate: Date(), endDate: Date(), description: "description_example", build: "build_example", projectId: 123, productName: "productName_example", hasAutomaticDurationTimer: false, attributes: "TODO", tags: [TagApiModel(name: "name_example")]) // UpdateTestPlanApiModel |  (optional)
 
 // Update TestPlan
-TestPlansAPI.updateTestPlan(testPlanPutModel: testPlanPutModel) { (response, error) in
+TestPlansAPI.updateTestPlan(updateTestPlanApiModel: updateTestPlanApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1595,7 +1646,7 @@ TestPlansAPI.updateTestPlan(testPlanPutModel: testPlanPutModel) { (response, err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testPlanPutModel** | [**TestPlanPutModel**](TestPlanPutModel.md) |  | [optional] 
+ **updateTestPlanApiModel** | [**UpdateTestPlanApiModel**](UpdateTestPlanApiModel.md) |  | [optional] 
 
 ### Return type
 

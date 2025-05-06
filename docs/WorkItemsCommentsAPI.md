@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**apiV2WorkItemsCommentsCommentIdDelete**](WorkItemsCommentsAPI.md#apiv2workitemscommentscommentiddelete) | **DELETE** /api/v2/workItems/comments/{commentId} | Delete WorkItem comment
 [**apiV2WorkItemsCommentsPost**](WorkItemsCommentsAPI.md#apiv2workitemscommentspost) | **POST** /api/v2/workItems/comments | Create WorkItem comment
 [**apiV2WorkItemsCommentsPut**](WorkItemsCommentsAPI.md#apiv2workitemscommentsput) | **PUT** /api/v2/workItems/comments | Update work item comment
+[**apiV2WorkItemsIdCommentsCountGet**](WorkItemsCommentsAPI.md#apiv2workitemsidcommentscountget) | **GET** /api/v2/workItems/{id}/comments/count | Get work item comments count
 [**apiV2WorkItemsIdCommentsGet**](WorkItemsCommentsAPI.md#apiv2workitemsidcommentsget) | **GET** /api/v2/workItems/{id}/comments | Get work item comments
 
 
@@ -22,7 +23,7 @@ Delete WorkItem comment
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let commentId = 987 // UUID | Comment internal (guid format) identifier
 
@@ -72,7 +73,7 @@ Create WorkItem comment
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let workItemCommentPostModel = WorkItemCommentPostModel(text: "text_example", workItemId: 123) // WorkItemCommentPostModel |  (optional)
 
@@ -120,7 +121,7 @@ Update work item comment
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let workItemCommentPutModel = WorkItemCommentPutModel(text: "text_example", id: 123) // WorkItemCommentPutModel |  (optional)
 
@@ -158,6 +159,54 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2WorkItemsIdCommentsCountGet**
+```swift
+    open class func apiV2WorkItemsIdCommentsCountGet(id: String, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+```
+
+Get work item comments count
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let id = "id_example" // String | Unique or global ID of the work item
+
+// Get work item comments count
+WorkItemsCommentsAPI.apiV2WorkItemsIdCommentsCountGet(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** | Unique or global ID of the work item | 
+
+### Return type
+
+**Int**
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2WorkItemsIdCommentsGet**
 ```swift
     open class func apiV2WorkItemsIdCommentsGet(id: String, completion: @escaping (_ data: [WorkItemCommentModel]?, _ error: Error?) -> Void)
@@ -168,7 +217,7 @@ Get work item comments
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the work item
 

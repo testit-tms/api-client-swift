@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **workItemMedianDuration** | [**Int64RangeSelectorModel**](Int64RangeSelectorModel.md) | Specifies a test point work item median duration range to search for | [optional] 
 **workItemIsDeleted** | **Bool** | Specifies a test point work item is deleted flag to search for | [optional] 
 **statuses** | [TestPointStatus] | Specifies a test point statuses to search for | [optional] 
+**statusCodes** | **[String]** | Specifies a test point status codes to search for | [optional] 
 **priorities** | [WorkItemPriorityModel] | Specifies a test point priorities to search for | [optional] 
 **isAutomated** | **Bool** | Specifies a test point automation status to search for | [optional] 
 **name** | **String** | Specifies a test point name to search for | [optional] 

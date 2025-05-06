@@ -20,7 +20,7 @@ open class TestPointsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestPointsIdTestRunsGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2TestPointsIdTestRunsGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TestPointsIdTestRunsGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -38,9 +38,9 @@ open class TestPointsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test point unique ID 
-     - returns: RequestBuilder<[TestRunModel]> 
+     - returns: RequestBuilder<[TestRunApiResult]> 
      */
-    open class func apiV2TestPointsIdTestRunsGetWithRequestBuilder(id: UUID) -> RequestBuilder<[TestRunModel]> {
+    open class func apiV2TestPointsIdTestRunsGetWithRequestBuilder(id: UUID) -> RequestBuilder<[TestRunApiResult]> {
         var localVariablePath = "/api/v2/testPoints/{id}/testRuns"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -56,7 +56,7 @@ open class TestPointsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestRunModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestRunApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -118,13 +118,13 @@ open class TestPointsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter testPointFilterModel: (body)  (optional)
+     - parameter testPointFilterRequestModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestPointsSearchIdPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testPointFilterModel: TestPointFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [UUID]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestPointsSearchIdPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testPointFilterModel: testPointFilterModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestPointsSearchIdPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testPointFilterRequestModel: TestPointFilterRequestModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [UUID]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestPointsSearchIdPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testPointFilterRequestModel: testPointFilterRequestModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -146,13 +146,13 @@ open class TestPointsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter testPointFilterModel: (body)  (optional)
+     - parameter testPointFilterRequestModel: (body)  (optional)
      - returns: RequestBuilder<[UUID]> 
      */
-    open class func apiV2TestPointsSearchIdPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testPointFilterModel: TestPointFilterModel? = nil) -> RequestBuilder<[UUID]> {
+    open class func apiV2TestPointsSearchIdPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testPointFilterRequestModel: TestPointFilterRequestModel? = nil) -> RequestBuilder<[UUID]> {
         let localVariablePath = "/api/v2/testPoints/search/id"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testPointFilterModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testPointFilterRequestModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -182,13 +182,13 @@ open class TestPointsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter testPointFilterModel: (body)  (optional)
+     - parameter testPointFilterRequestModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestPointsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testPointFilterModel: TestPointFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestPointShortGetModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TestPointsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testPointFilterModel: testPointFilterModel).execute(apiResponseQueue) { result in
+    open class func apiV2TestPointsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testPointFilterRequestModel: TestPointFilterRequestModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestPointShortResponseModel]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestPointsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testPointFilterRequestModel: testPointFilterRequestModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -210,13 +210,13 @@ open class TestPointsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter testPointFilterModel: (body)  (optional)
-     - returns: RequestBuilder<[TestPointShortGetModel]> 
+     - parameter testPointFilterRequestModel: (body)  (optional)
+     - returns: RequestBuilder<[TestPointShortResponseModel]> 
      */
-    open class func apiV2TestPointsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testPointFilterModel: TestPointFilterModel? = nil) -> RequestBuilder<[TestPointShortGetModel]> {
+    open class func apiV2TestPointsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testPointFilterRequestModel: TestPointFilterRequestModel? = nil) -> RequestBuilder<[TestPointShortResponseModel]> {
         let localVariablePath = "/api/v2/testPoints/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testPointFilterModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testPointFilterRequestModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -233,7 +233,7 @@ open class TestPointsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestPointShortGetModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestPointShortResponseModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

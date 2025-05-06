@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct AutoTestPostModel: Codable, JSONEncodable, Hashable {
 
-    static let workItemIdsForLinkWithAutoTestRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let workItemIdsForLinkWithAutoTestRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Specifies the IDs of work items to link your autotest to. You can specify several IDs. */
     public var workItemIdsForLinkWithAutoTest: Set<UUID>?
     /** Creates a test case linked to the autotest. */

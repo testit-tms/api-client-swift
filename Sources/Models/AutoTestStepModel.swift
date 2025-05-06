@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AutoTestStepModel: Codable, JSONEncodable, Hashable {
 
-    static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Step name. */
     public var title: String
     /** Detailed step description. It appears when the step is unfolded. */

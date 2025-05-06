@@ -5,8 +5,10 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**apiV2TestRunsDelete**](TestRunsAPI.md#apiv2testrunsdelete) | **DELETE** /api/v2/testRuns | Delete multiple test runs
+[**apiV2TestRunsIdAutoTestsNamespacesGet**](TestRunsAPI.md#apiv2testrunsidautotestsnamespacesget) | **GET** /api/v2/testRuns/{id}/autoTestsNamespaces | Get autotest classes and namespaces in test run
 [**apiV2TestRunsIdDelete**](TestRunsAPI.md#apiv2testrunsiddelete) | **DELETE** /api/v2/testRuns/{id} | Delete test run
 [**apiV2TestRunsIdPurgePost**](TestRunsAPI.md#apiv2testrunsidpurgepost) | **POST** /api/v2/testRuns/{id}/purge | Permanently delete test run from archive
+[**apiV2TestRunsIdRerunsPost**](TestRunsAPI.md#apiv2testrunsidrerunspost) | **POST** /api/v2/testRuns/{id}/reruns | Manual autotests rerun in test run
 [**apiV2TestRunsIdRestorePost**](TestRunsAPI.md#apiv2testrunsidrestorepost) | **POST** /api/v2/testRuns/{id}/restore | Restore test run from the archive
 [**apiV2TestRunsIdStatisticsFilterPost**](TestRunsAPI.md#apiv2testrunsidstatisticsfilterpost) | **POST** /api/v2/testRuns/{id}/statistics/filter | Search for the test run test results and build statistics
 [**apiV2TestRunsIdTestPointsResultsGet**](TestRunsAPI.md#apiv2testrunsidtestpointsresultsget) | **GET** /api/v2/testRuns/{id}/testPoints/results | Get test results from the test run grouped by test points
@@ -30,7 +32,7 @@ Method | HTTP request | Description
 
 # **apiV2TestRunsDelete**
 ```swift
-    open class func apiV2TestRunsDelete(testRunSelectModel: TestRunSelectModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func apiV2TestRunsDelete(testRunSelectApiModel: TestRunSelectApiModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Delete multiple test runs
@@ -40,12 +42,12 @@ Delete multiple test runs
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testRunSelectModel = TestRunSelectModel(filter: TestRunFilterModel(projectIds: [123], name: "name_example", states: [TestRunState()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], failureCategory: [FailureCategoryModel()], completedDate: nil), extractionModel: TestRunExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectModel |  (optional)
+let testRunSelectApiModel = TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectApiModel |  (optional)
 
 // Delete multiple test runs
-TestRunsAPI.apiV2TestRunsDelete(testRunSelectModel: testRunSelectModel) { (response, error) in
+TestRunsAPI.apiV2TestRunsDelete(testRunSelectApiModel: testRunSelectApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -61,7 +63,7 @@ TestRunsAPI.apiV2TestRunsDelete(testRunSelectModel: testRunSelectModel) { (respo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testRunSelectModel** | [**TestRunSelectModel**](TestRunSelectModel.md) |  | [optional] 
+ **testRunSelectApiModel** | [**TestRunSelectApiModel**](TestRunSelectApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -78,6 +80,54 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2TestRunsIdAutoTestsNamespacesGet**
+```swift
+    open class func apiV2TestRunsIdAutoTestsNamespacesGet(id: UUID, completion: @escaping (_ data: AutoTestNamespacesCountResponse?, _ error: Error?) -> Void)
+```
+
+Get autotest classes and namespaces in test run
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let id = 987 // UUID | 
+
+// Get autotest classes and namespaces in test run
+TestRunsAPI.apiV2TestRunsIdAutoTestsNamespacesGet(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID** |  | 
+
+### Return type
+
+[**AutoTestNamespacesCountResponse**](AutoTestNamespacesCountResponse.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2TestRunsIdDelete**
 ```swift
     open class func apiV2TestRunsIdDelete(id: UUID, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -90,7 +140,7 @@ Delete test run
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test run internal (UUID) identifier
 
@@ -140,7 +190,7 @@ Permanently delete test run from archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test run internal (UUID) identifier
 
@@ -178,6 +228,56 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2TestRunsIdRerunsPost**
+```swift
+    open class func apiV2TestRunsIdRerunsPost(id: UUID, manualRerunSelectTestResultsApiModel: ManualRerunSelectTestResultsApiModel? = nil, completion: @escaping (_ data: ManualRerunApiResult?, _ error: Error?) -> Void)
+```
+
+Manual autotests rerun in test run
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let id = 987 // UUID | 
+let manualRerunSelectTestResultsApiModel = ManualRerunSelectTestResultsApiModel(filter: TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]), extractionModel: ManualRerunTestResultApiModel(testResultIds: GuidExtractionModel(include: [123], exclude: [123]))) // ManualRerunSelectTestResultsApiModel |  (optional)
+
+// Manual autotests rerun in test run
+TestRunsAPI.apiV2TestRunsIdRerunsPost(id: id, manualRerunSelectTestResultsApiModel: manualRerunSelectTestResultsApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID** |  | 
+ **manualRerunSelectTestResultsApiModel** | [**ManualRerunSelectTestResultsApiModel**](ManualRerunSelectTestResultsApiModel.md) |  | [optional] 
+
+### Return type
+
+[**ManualRerunApiResult**](ManualRerunApiResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2TestRunsIdRestorePost**
 ```swift
     open class func apiV2TestRunsIdRestorePost(id: UUID, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -190,7 +290,7 @@ Restore test run from the archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Unique ID of the test run
 
@@ -230,7 +330,7 @@ Void (empty response body)
 
 # **apiV2TestRunsIdStatisticsFilterPost**
 ```swift
-    open class func apiV2TestRunsIdStatisticsFilterPost(id: UUID, testResultsLocalFilterModel: TestResultsLocalFilterModel? = nil, completion: @escaping (_ data: TestResultsStatisticsGetModel?, _ error: Error?) -> Void)
+    open class func apiV2TestRunsIdStatisticsFilterPost(id: UUID, testRunStatisticsFilterApiModel: TestRunStatisticsFilterApiModel? = nil, completion: @escaping (_ data: TestResultsStatisticsApiResult?, _ error: Error?) -> Void)
 ```
 
 Search for the test run test results and build statistics
@@ -238,13 +338,13 @@ Search for the test run test results and build statistics
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test run unique ID
-let testResultsLocalFilterModel = TestResultsLocalFilterModel(configurationIds: [123], outcomes: [TestResultOutcome()], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example") // TestResultsLocalFilterModel |  (optional)
+let testRunStatisticsFilterApiModel = TestRunStatisticsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example") // TestRunStatisticsFilterApiModel |  (optional)
 
 // Search for the test run test results and build statistics
-TestRunsAPI.apiV2TestRunsIdStatisticsFilterPost(id: id, testResultsLocalFilterModel: testResultsLocalFilterModel) { (response, error) in
+TestRunsAPI.apiV2TestRunsIdStatisticsFilterPost(id: id, testRunStatisticsFilterApiModel: testRunStatisticsFilterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -261,11 +361,11 @@ TestRunsAPI.apiV2TestRunsIdStatisticsFilterPost(id: id, testResultsLocalFilterMo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **UUID** | Test run unique ID | 
- **testResultsLocalFilterModel** | [**TestResultsLocalFilterModel**](TestResultsLocalFilterModel.md) |  | [optional] 
+ **testRunStatisticsFilterApiModel** | [**TestRunStatisticsFilterApiModel**](TestRunStatisticsFilterApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**TestResultsStatisticsGetModel**](TestResultsStatisticsGetModel.md)
+[**TestResultsStatisticsApiResult**](TestResultsStatisticsApiResult.md)
 
 ### Authorization
 
@@ -280,7 +380,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestRunsIdTestPointsResultsGet**
 ```swift
-    open class func apiV2TestRunsIdTestPointsResultsGet(id: UUID, completion: @escaping (_ data: [TestPointResultModel]?, _ error: Error?) -> Void)
+    open class func apiV2TestRunsIdTestPointsResultsGet(id: UUID, completion: @escaping (_ data: [TestPointResultApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get test results from the test run grouped by test points
@@ -288,7 +388,7 @@ Get test results from the test run grouped by test points
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test run unique ID
 
@@ -313,7 +413,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TestPointResultModel]**](TestPointResultModel.md)
+[**[TestPointResultApiResult]**](TestPointResultApiResult.md)
 
 ### Authorization
 
@@ -336,10 +436,10 @@ Partial edit of multiple test results in the test run
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test run unique ID
-let testRunTestResultsPartialBulkSetModel = TestRunTestResultsPartialBulkSetModel(selector: TestRunTestResultsSelectModel(filter: TestResultsLocalFilterModel(configurationIds: [123], outcomes: [TestResultOutcome()], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example"), testResultIdsExtractionModel: GuidExtractionModel(include: [123], exclude: [123])), resultReasonIds: [123], links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], comment: "comment_example", attachmentIds: [123]) // TestRunTestResultsPartialBulkSetModel |  (optional)
+let testRunTestResultsPartialBulkSetModel = TestRunTestResultsPartialBulkSetModel(selector: TestRunTestResultsSelectModel(filter: TestResultsLocalFilterModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example"), testResultIdsExtractionModel: GuidExtractionModel(include: [123], exclude: [123])), resultReasonIds: [123], links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], comment: "comment_example", attachmentIds: [123]) // TestRunTestResultsPartialBulkSetModel |  (optional)
 
 // Partial edit of multiple test results in the test run
 TestRunsAPI.apiV2TestRunsIdTestResultsBulkPut(id: id, testRunTestResultsPartialBulkSetModel: testRunTestResultsPartialBulkSetModel) { (response, error) in
@@ -386,7 +486,7 @@ Get modification date of last test result of the test run
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test run unique ID
 
@@ -426,7 +526,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestRunsPurgeBulkPost**
 ```swift
-    open class func apiV2TestRunsPurgeBulkPost(testRunSelectModel: TestRunSelectModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func apiV2TestRunsPurgeBulkPost(testRunSelectApiModel: TestRunSelectApiModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Permanently delete multiple test runs from archive
@@ -436,12 +536,12 @@ Permanently delete multiple test runs from archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testRunSelectModel = TestRunSelectModel(filter: TestRunFilterModel(projectIds: [123], name: "name_example", states: [TestRunState()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], failureCategory: [FailureCategoryModel()], completedDate: nil), extractionModel: TestRunExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectModel |  (optional)
+let testRunSelectApiModel = TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectApiModel |  (optional)
 
 // Permanently delete multiple test runs from archive
-TestRunsAPI.apiV2TestRunsPurgeBulkPost(testRunSelectModel: testRunSelectModel) { (response, error) in
+TestRunsAPI.apiV2TestRunsPurgeBulkPost(testRunSelectApiModel: testRunSelectApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -457,7 +557,7 @@ TestRunsAPI.apiV2TestRunsPurgeBulkPost(testRunSelectModel: testRunSelectModel) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testRunSelectModel** | [**TestRunSelectModel**](TestRunSelectModel.md) |  | [optional] 
+ **testRunSelectApiModel** | [**TestRunSelectApiModel**](TestRunSelectApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -476,7 +576,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestRunsRestoreBulkPost**
 ```swift
-    open class func apiV2TestRunsRestoreBulkPost(testRunSelectModel: TestRunSelectModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func apiV2TestRunsRestoreBulkPost(testRunSelectApiModel: TestRunSelectApiModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Restore multiple test runs from the archive
@@ -486,12 +586,12 @@ Restore multiple test runs from the archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testRunSelectModel = TestRunSelectModel(filter: TestRunFilterModel(projectIds: [123], name: "name_example", states: [TestRunState()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], failureCategory: [FailureCategoryModel()], completedDate: nil), extractionModel: TestRunExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectModel |  (optional)
+let testRunSelectApiModel = TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectApiModel |  (optional)
 
 // Restore multiple test runs from the archive
-TestRunsAPI.apiV2TestRunsRestoreBulkPost(testRunSelectModel: testRunSelectModel) { (response, error) in
+TestRunsAPI.apiV2TestRunsRestoreBulkPost(testRunSelectApiModel: testRunSelectApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -507,7 +607,7 @@ TestRunsAPI.apiV2TestRunsRestoreBulkPost(testRunSelectModel: testRunSelectModel)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testRunSelectModel** | [**TestRunSelectModel**](TestRunSelectModel.md) |  | [optional] 
+ **testRunSelectApiModel** | [**TestRunSelectApiModel**](TestRunSelectApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -526,7 +626,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestRunsSearchPost**
 ```swift
-    open class func apiV2TestRunsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testRunFilterModel: TestRunFilterModel? = nil, completion: @escaping (_ data: [TestRunShortGetModel]?, _ error: Error?) -> Void)
+    open class func apiV2TestRunsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testRunFilterApiModel: TestRunFilterApiModel? = nil, completion: @escaping (_ data: [TestRunShortApiResult]?, _ error: Error?) -> Void)
 ```
 
 Search for test runs
@@ -534,17 +634,17 @@ Search for test runs
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let testRunFilterModel = TestRunFilterModel(projectIds: [123], name: "name_example", states: [TestRunState()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], failureCategory: [FailureCategoryModel()], completedDate: nil) // TestRunFilterModel |  (optional)
+let testRunFilterApiModel = TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]) // TestRunFilterApiModel |  (optional)
 
 // Search for test runs
-TestRunsAPI.apiV2TestRunsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testRunFilterModel: testRunFilterModel) { (response, error) in
+TestRunsAPI.apiV2TestRunsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testRunFilterApiModel: testRunFilterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -565,11 +665,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String** | Property name for searching | [optional] 
  **searchValue** | **String** | Value for searching | [optional] 
- **testRunFilterModel** | [**TestRunFilterModel**](TestRunFilterModel.md) |  | [optional] 
+ **testRunFilterApiModel** | [**TestRunFilterApiModel**](TestRunFilterApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[TestRunShortGetModel]**](TestRunShortGetModel.md)
+[**[TestRunShortApiResult]**](TestRunShortApiResult.md)
 
 ### Authorization
 
@@ -584,7 +684,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestRunsUpdateMultiplePost**
 ```swift
-    open class func apiV2TestRunsUpdateMultiplePost(testRunUpdateMultipleModel: TestRunUpdateMultipleModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func apiV2TestRunsUpdateMultiplePost(updateMultipleTestRunsApiModel: UpdateMultipleTestRunsApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update multiple test runs
@@ -592,12 +692,12 @@ Update multiple test runs
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testRunUpdateMultipleModel = TestRunUpdateMultipleModel(selectModel: TestRunSelectModel(filter: TestRunFilterModel(projectIds: [123], name: "name_example", states: [TestRunState()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], failureCategory: [FailureCategoryModel()], completedDate: nil), extractionModel: TestRunExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))), description: "description_example", attachmentUpdateScheme: UpdateAttachmentShortModel(action: ActionUpdate(), attachmentIds: [123]), linkUpdateScheme: UpdateLinkShortModel(action: nil, links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)])) // TestRunUpdateMultipleModel |  (optional)
+let updateMultipleTestRunsApiModel = UpdateMultipleTestRunsApiModel(selectModel: TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))), description: "description_example", attachmentUpdateScheme: UpdateMultipleAttachmentsApiModel(action: ActionUpdate(), attachmentIds: [123]), linkUpdateScheme: UpdateMultipleLinksApiModel(action: nil, links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)])) // UpdateMultipleTestRunsApiModel |  (optional)
 
 // Update multiple test runs
-TestRunsAPI.apiV2TestRunsUpdateMultiplePost(testRunUpdateMultipleModel: testRunUpdateMultipleModel) { (response, error) in
+TestRunsAPI.apiV2TestRunsUpdateMultiplePost(updateMultipleTestRunsApiModel: updateMultipleTestRunsApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -613,7 +713,7 @@ TestRunsAPI.apiV2TestRunsUpdateMultiplePost(testRunUpdateMultipleModel: testRunU
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testRunUpdateMultipleModel** | [**TestRunUpdateMultipleModel**](TestRunUpdateMultipleModel.md) |  | [optional] 
+ **updateMultipleTestRunsApiModel** | [**UpdateMultipleTestRunsApiModel**](UpdateMultipleTestRunsApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -642,7 +742,7 @@ Complete TestRun
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test Run internal identifier (GUID format)
 
@@ -682,7 +782,7 @@ Void (empty response body)
 
 # **createAndFillByAutoTests**
 ```swift
-    open class func createAndFillByAutoTests(testRunFillByAutoTestsPostModel: TestRunFillByAutoTestsPostModel? = nil, completion: @escaping (_ data: TestRunV2GetModel?, _ error: Error?) -> Void)
+    open class func createAndFillByAutoTests(createTestRunAndFillByAutoTestsApiModel: CreateTestRunAndFillByAutoTestsApiModel? = nil, completion: @escaping (_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)
 ```
 
 Create test runs based on autotests and configurations
@@ -692,12 +792,12 @@ This method creates a test run based on an autotest and a configuration.  The di
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testRunFillByAutoTestsPostModel = TestRunFillByAutoTestsPostModel(projectId: 123, name: "name_example", configurationIds: [123], autoTestExternalIds: ["autoTestExternalIds_example"], description: "description_example", launchSource: "launchSource_example", attachments: [AttachmentPutModel(id: 123)], links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // TestRunFillByAutoTestsPostModel |  (optional)
+let createTestRunAndFillByAutoTestsApiModel = CreateTestRunAndFillByAutoTestsApiModel(projectId: 123, name: "name_example", configurationIds: [123], autoTestExternalIds: ["autoTestExternalIds_example"], description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // CreateTestRunAndFillByAutoTestsApiModel |  (optional)
 
 // Create test runs based on autotests and configurations
-TestRunsAPI.createAndFillByAutoTests(testRunFillByAutoTestsPostModel: testRunFillByAutoTestsPostModel) { (response, error) in
+TestRunsAPI.createAndFillByAutoTests(createTestRunAndFillByAutoTestsApiModel: createTestRunAndFillByAutoTestsApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -713,11 +813,11 @@ TestRunsAPI.createAndFillByAutoTests(testRunFillByAutoTestsPostModel: testRunFil
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testRunFillByAutoTestsPostModel** | [**TestRunFillByAutoTestsPostModel**](TestRunFillByAutoTestsPostModel.md) |  | [optional] 
+ **createTestRunAndFillByAutoTestsApiModel** | [**CreateTestRunAndFillByAutoTestsApiModel**](CreateTestRunAndFillByAutoTestsApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**TestRunV2GetModel**](TestRunV2GetModel.md)
+[**TestRunV2ApiResult**](TestRunV2ApiResult.md)
 
 ### Authorization
 
@@ -732,7 +832,7 @@ Name | Type | Description  | Notes
 
 # **createAndFillByConfigurations**
 ```swift
-    open class func createAndFillByConfigurations(testRunFillByConfigurationsPostModel: TestRunFillByConfigurationsPostModel? = nil, completion: @escaping (_ data: TestRunV2GetModel?, _ error: Error?) -> Void)
+    open class func createAndFillByConfigurations(createTestRunAndFillByConfigurationsApiModel: CreateTestRunAndFillByConfigurationsApiModel? = nil, completion: @escaping (_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)
 ```
 
 Create test runs picking the needed test points
@@ -742,12 +842,12 @@ This method creates a test run based on a combination of a configuration and a w
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testRunFillByConfigurationsPostModel = TestRunFillByConfigurationsPostModel(testPointSelectors: [TestPointSelector(configurationId: 123, workItemIds: [123])], projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AttachmentPutModel(id: 123)], links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // TestRunFillByConfigurationsPostModel |  (optional)
+let createTestRunAndFillByConfigurationsApiModel = CreateTestRunAndFillByConfigurationsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], testPointSelectors: [TestPointSelector(configurationId: 123, workItemIds: [123])]) // CreateTestRunAndFillByConfigurationsApiModel |  (optional)
 
 // Create test runs picking the needed test points
-TestRunsAPI.createAndFillByConfigurations(testRunFillByConfigurationsPostModel: testRunFillByConfigurationsPostModel) { (response, error) in
+TestRunsAPI.createAndFillByConfigurations(createTestRunAndFillByConfigurationsApiModel: createTestRunAndFillByConfigurationsApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -763,11 +863,11 @@ TestRunsAPI.createAndFillByConfigurations(testRunFillByConfigurationsPostModel: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testRunFillByConfigurationsPostModel** | [**TestRunFillByConfigurationsPostModel**](TestRunFillByConfigurationsPostModel.md) |  | [optional] 
+ **createTestRunAndFillByConfigurationsApiModel** | [**CreateTestRunAndFillByConfigurationsApiModel**](CreateTestRunAndFillByConfigurationsApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**TestRunV2GetModel**](TestRunV2GetModel.md)
+[**TestRunV2ApiResult**](TestRunV2ApiResult.md)
 
 ### Authorization
 
@@ -782,7 +882,7 @@ Name | Type | Description  | Notes
 
 # **createAndFillByWorkItems**
 ```swift
-    open class func createAndFillByWorkItems(testRunFillByWorkItemsPostModel: TestRunFillByWorkItemsPostModel? = nil, completion: @escaping (_ data: TestRunV2GetModel?, _ error: Error?) -> Void)
+    open class func createAndFillByWorkItems(createTestRunAndFillByWorkItemsApiModel: CreateTestRunAndFillByWorkItemsApiModel? = nil, completion: @escaping (_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)
 ```
 
 Create test run based on configurations and work items
@@ -792,12 +892,12 @@ This method creates a test run based on a combination of configuration and work 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testRunFillByWorkItemsPostModel = TestRunFillByWorkItemsPostModel(configurationIds: [123], workItemIds: [123], projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AttachmentPutModel(id: 123)], links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // TestRunFillByWorkItemsPostModel |  (optional)
+let createTestRunAndFillByWorkItemsApiModel = CreateTestRunAndFillByWorkItemsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], configurationIds: [123], workItemIds: [123]) // CreateTestRunAndFillByWorkItemsApiModel |  (optional)
 
 // Create test run based on configurations and work items
-TestRunsAPI.createAndFillByWorkItems(testRunFillByWorkItemsPostModel: testRunFillByWorkItemsPostModel) { (response, error) in
+TestRunsAPI.createAndFillByWorkItems(createTestRunAndFillByWorkItemsApiModel: createTestRunAndFillByWorkItemsApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -813,11 +913,11 @@ TestRunsAPI.createAndFillByWorkItems(testRunFillByWorkItemsPostModel: testRunFil
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testRunFillByWorkItemsPostModel** | [**TestRunFillByWorkItemsPostModel**](TestRunFillByWorkItemsPostModel.md) |  | [optional] 
+ **createTestRunAndFillByWorkItemsApiModel** | [**CreateTestRunAndFillByWorkItemsApiModel**](CreateTestRunAndFillByWorkItemsApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**TestRunV2GetModel**](TestRunV2GetModel.md)
+[**TestRunV2ApiResult**](TestRunV2ApiResult.md)
 
 ### Authorization
 
@@ -832,7 +932,7 @@ Name | Type | Description  | Notes
 
 # **createEmpty**
 ```swift
-    open class func createEmpty(testRunV2PostShortModel: TestRunV2PostShortModel? = nil, completion: @escaping (_ data: TestRunV2GetModel?, _ error: Error?) -> Void)
+    open class func createEmpty(createEmptyTestRunApiModel: CreateEmptyTestRunApiModel? = nil, completion: @escaping (_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)
 ```
 
 Create empty TestRun
@@ -842,12 +942,12 @@ Create empty TestRun
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testRunV2PostShortModel = TestRunV2PostShortModel(projectId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AttachmentPutModel(id: 123)], links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // TestRunV2PostShortModel |  (optional)
+let createEmptyTestRunApiModel = CreateEmptyTestRunApiModel(projectId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // CreateEmptyTestRunApiModel |  (optional)
 
 // Create empty TestRun
-TestRunsAPI.createEmpty(testRunV2PostShortModel: testRunV2PostShortModel) { (response, error) in
+TestRunsAPI.createEmpty(createEmptyTestRunApiModel: createEmptyTestRunApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -863,11 +963,11 @@ TestRunsAPI.createEmpty(testRunV2PostShortModel: testRunV2PostShortModel) { (res
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testRunV2PostShortModel** | [**TestRunV2PostShortModel**](TestRunV2PostShortModel.md) |  | [optional] 
+ **createEmptyTestRunApiModel** | [**CreateEmptyTestRunApiModel**](CreateEmptyTestRunApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**TestRunV2GetModel**](TestRunV2GetModel.md)
+[**TestRunV2ApiResult**](TestRunV2ApiResult.md)
 
 ### Authorization
 
@@ -882,7 +982,7 @@ Name | Type | Description  | Notes
 
 # **getTestRunById**
 ```swift
-    open class func getTestRunById(id: UUID, completion: @escaping (_ data: TestRunV2GetModel?, _ error: Error?) -> Void)
+    open class func getTestRunById(id: UUID, completion: @escaping (_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)
 ```
 
 Get TestRun by Id
@@ -892,7 +992,7 @@ Get TestRun by Id
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test Run internal identifier (GUID format)
 
@@ -917,7 +1017,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TestRunV2GetModel**](TestRunV2GetModel.md)
+[**TestRunV2ApiResult**](TestRunV2ApiResult.md)
 
 ### Authorization
 
@@ -942,7 +1042,7 @@ This method sends test results to the test management system.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test Run internal identifier (GUID format)
 let autoTestResultsForTestRunModel = [AutoTestResultsForTestRunModel(configurationId: 123, links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], failureReasonNames: [FailureCategoryModel()], autoTestExternalId: "autoTestExternalId_example", outcome: AvailableTestResultOutcome(), message: "message_example", traces: "traces_example", startedOn: Date(), completedOn: Date(), duration: 123, attachments: [AttachmentPutModel(id: 123)], parameters: "TODO", properties: "TODO", stepResults: [AttachmentPutModelAutoTestStepResultsModel(title: "title_example", description: "description_example", info: "info_example", startedOn: Date(), completedOn: Date(), duration: 123, outcome: nil, stepResults: [nil], attachments: [nil], parameters: "TODO")], setupResults: [nil], teardownResults: [nil])] // [AutoTestResultsForTestRunModel] |  (optional)
@@ -994,7 +1094,7 @@ Start TestRun
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test Run internal identifier (GUID format)
 
@@ -1044,7 +1144,7 @@ Stop TestRun
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test Run internal identifier (GUID format)
 
@@ -1084,7 +1184,7 @@ Void (empty response body)
 
 # **updateEmpty**
 ```swift
-    open class func updateEmpty(testRunV2PutModel: TestRunV2PutModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateEmpty(updateEmptyTestRunApiModel: UpdateEmptyTestRunApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update empty TestRun
@@ -1094,12 +1194,12 @@ Update empty TestRun
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testRunV2PutModel = TestRunV2PutModel(id: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AttachmentPutModel(id: 123)], links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // TestRunV2PutModel |  (optional)
+let updateEmptyTestRunApiModel = UpdateEmptyTestRunApiModel(id: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [UpdateLinkApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // UpdateEmptyTestRunApiModel |  (optional)
 
 // Update empty TestRun
-TestRunsAPI.updateEmpty(testRunV2PutModel: testRunV2PutModel) { (response, error) in
+TestRunsAPI.updateEmpty(updateEmptyTestRunApiModel: updateEmptyTestRunApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1115,7 +1215,7 @@ TestRunsAPI.updateEmpty(testRunV2PutModel: testRunV2PutModel) { (response, error
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testRunV2PutModel** | [**TestRunV2PutModel**](TestRunV2PutModel.md) |  | [optional] 
+ **updateEmptyTestRunApiModel** | [**UpdateEmptyTestRunApiModel**](UpdateEmptyTestRunApiModel.md) |  | [optional] 
 
 ### Return type
 

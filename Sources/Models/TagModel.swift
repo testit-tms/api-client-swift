@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TagModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID
     public var name: String
     public var createdDate: Date
@@ -51,3 +51,6 @@ public struct TagModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension TagModel: Identifiable {}

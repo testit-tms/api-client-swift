@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apiV2CustomAttributesTemplatesExistsGet**](CustomAttributeTemplatesAPI.md#apiv2customattributestemplatesexistsget) | **GET** /api/v2/customAttributes/templates/exists | 
 [**apiV2CustomAttributesTemplatesIdCustomAttributesExcludePost**](CustomAttributeTemplatesAPI.md#apiv2customattributestemplatesidcustomattributesexcludepost) | **POST** /api/v2/customAttributes/templates/{id}/customAttributes/exclude | Exclude CustomAttributes from CustomAttributeTemplate
 [**apiV2CustomAttributesTemplatesIdCustomAttributesIncludePost**](CustomAttributeTemplatesAPI.md#apiv2customattributestemplatesidcustomattributesincludepost) | **POST** /api/v2/customAttributes/templates/{id}/customAttributes/include | Include CustomAttributes to CustomAttributeTemplate
 [**apiV2CustomAttributesTemplatesIdDelete**](CustomAttributeTemplatesAPI.md#apiv2customattributestemplatesiddelete) | **DELETE** /api/v2/customAttributes/templates/{id} | Delete CustomAttributeTemplate
@@ -13,6 +14,53 @@ Method | HTTP request | Description
 [**apiV2CustomAttributesTemplatesPut**](CustomAttributeTemplatesAPI.md#apiv2customattributestemplatesput) | **PUT** /api/v2/customAttributes/templates | Update custom attributes template
 [**apiV2CustomAttributesTemplatesSearchPost**](CustomAttributeTemplatesAPI.md#apiv2customattributestemplatessearchpost) | **POST** /api/v2/customAttributes/templates/search | Search CustomAttributeTemplates
 
+
+# **apiV2CustomAttributesTemplatesExistsGet**
+```swift
+    open class func apiV2CustomAttributesTemplatesExistsGet(name: String? = nil, completion: @escaping (_ data: CustomAttributeTemplateValidationResult?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let name = "name_example" // String |  (optional)
+
+CustomAttributeTemplatesAPI.apiV2CustomAttributesTemplatesExistsGet(name: name) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String** |  | [optional] 
+
+### Return type
+
+[**CustomAttributeTemplateValidationResult**](CustomAttributeTemplateValidationResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2CustomAttributesTemplatesIdCustomAttributesExcludePost**
 ```swift
@@ -26,7 +74,7 @@ Exclude CustomAttributes from CustomAttributeTemplate
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Attribute template internal (UUID) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -78,7 +126,7 @@ Include CustomAttributes to CustomAttributeTemplate
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Attribute template internal (UUID) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -130,7 +178,7 @@ Delete CustomAttributeTemplate
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Attribute template internal (UUID) identifier
 
@@ -180,7 +228,7 @@ Get CustomAttributeTemplate by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | CustomAttributeTemplate internal (UUID) identifier
 
@@ -230,7 +278,7 @@ Get CustomAttributeTemplate by name
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let name = "name_example" // String | CustomAttributeTemplate name for search
 
@@ -280,7 +328,7 @@ Create CustomAttributeTemplate
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let customAttributeTemplatePostModel = CustomAttributeTemplatePostModel(customAttributeIds: [123], name: "name_example") // CustomAttributeTemplatePostModel |  (optional)
 
@@ -328,7 +376,7 @@ Update custom attributes template
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let customAttributeTemplatePutModel = CustomAttributeTemplatePutModel(id: 123, customAttributeIds: [123], name: "name_example") // CustomAttributeTemplatePutModel |  (optional)
 
@@ -378,7 +426,7 @@ Search CustomAttributeTemplates
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)

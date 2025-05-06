@@ -13,6 +13,50 @@ import AnyCodable
 open class WebhooksAPI {
 
     /**
+
+     - parameter webhooksDeleteApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2WebhooksDelete(webhooksDeleteApiModel: WebhooksDeleteApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WebhooksDeleteWithRequestBuilder(webhooksDeleteApiModel: webhooksDeleteApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - DELETE /api/v2/webhooks
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter webhooksDeleteApiModel: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func apiV2WebhooksDeleteWithRequestBuilder(webhooksDeleteApiModel: WebhooksDeleteApiModel? = nil) -> RequestBuilder<Void> {
+        let localVariablePath = "/api/v2/webhooks"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: webhooksDeleteApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Get all webhooks
      
      - parameter projectId: (query) Project unique ID (optional)
@@ -254,6 +298,50 @@ open class WebhooksAPI {
         let localVariableRequestBuilder: RequestBuilder<WebHookModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+
+     - parameter webhooksUpdateApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2WebhooksPut(webhooksUpdateApiModel: WebhooksUpdateApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WebhooksUpdateApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WebhooksPutWithRequestBuilder(webhooksUpdateApiModel: webhooksUpdateApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - PUT /api/v2/webhooks
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter webhooksUpdateApiModel: (body)  (optional)
+     - returns: RequestBuilder<WebhooksUpdateApiResult> 
+     */
+    open class func apiV2WebhooksPutWithRequestBuilder(webhooksUpdateApiModel: WebhooksUpdateApiModel? = nil) -> RequestBuilder<WebhooksUpdateApiResult> {
+        let localVariablePath = "/api/v2/webhooks"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: webhooksUpdateApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<WebhooksUpdateApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**

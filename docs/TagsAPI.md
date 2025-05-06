@@ -25,7 +25,7 @@ Delete tags
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let tagSelectModel = TagSelectModel(filter: TagsFilterModel(name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123]), extractionModel: TagExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TagSelectModel |  (optional)
 
@@ -75,7 +75,7 @@ Get all Tags
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 
 // Get all Tags
@@ -121,7 +121,7 @@ Delete tag
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Tag internal (UUID) identifier
 
@@ -171,7 +171,7 @@ Create tag
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let tagPostModel = TagPostModel(name: "name_example") // TagPostModel |  (optional)
 
@@ -221,7 +221,7 @@ Update tag
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID |  (optional)
 let tagPutModel = TagPutModel(name: "name_example") // TagPutModel |  (optional)
@@ -273,7 +273,7 @@ Search tags
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -331,7 +331,7 @@ Get all Tags that are used in TestPlans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
