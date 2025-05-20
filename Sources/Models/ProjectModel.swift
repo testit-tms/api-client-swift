@@ -47,6 +47,7 @@ public struct ProjectModel: Codable, JSONEncodable, Hashable {
     /** Type of the project */
     public var type: ProjectTypeModel
     /** Indicates if the status \"Flaky/Stable\" sets automatically */
+    @available(*, deprecated, message: "This property is deprecated.")
     public var isFlakyAuto: Bool
 
     public init(id: UUID, description: String? = nil, name: String, isFavorite: Bool, attributesScheme: [CustomAttributeModel]? = nil, testPlansAttributesScheme: [CustomAttributeModel]? = nil, testCasesCount: Int? = nil, sharedStepsCount: Int? = nil, checkListsCount: Int? = nil, autoTestsCount: Int? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectTypeModel, isFlakyAuto: Bool) {
@@ -116,3 +117,6 @@ public struct ProjectModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension ProjectModel: Identifiable {}

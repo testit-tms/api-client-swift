@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct SharedStepReferenceSectionsQueryFilterModel: Codable, JSONEncodable, Hashable {
 
-    static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Name of section */
     public var name: String?
     /** Collection of identifiers of users who created work item */

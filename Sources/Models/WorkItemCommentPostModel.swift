@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct WorkItemCommentPostModel: Codable, JSONEncodable, Hashable {
 
-    static let textRule = StringRule(minLength: 1, maxLength: 1024, pattern: nil)
+    public static let textRule = StringRule(minLength: 1, maxLength: 1024, pattern: nil)
     public var text: String
     public var workItemId: UUID
 

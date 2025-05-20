@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ConfigurationPostModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var description: String?
     public var parameters: [String: String]
     /** This property is used to link configuration with project */

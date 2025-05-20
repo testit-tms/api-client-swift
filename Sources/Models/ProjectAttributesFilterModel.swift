@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ProjectAttributesFilterModel: Codable, JSONEncodable, Hashable {
 
-    static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Specifies an attribute name to search for */
     public var name: String
     /** Specifies an attribute mandatory status to search for */

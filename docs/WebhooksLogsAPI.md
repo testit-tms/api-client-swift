@@ -19,7 +19,7 @@ Get all webhook logs
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectId = 987 // UUID | Project unique ID (optional)
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -77,7 +77,7 @@ Delete webhook log by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Webhook log unique ID
 
@@ -125,7 +125,7 @@ Get webhook log by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Webhook log unique ID
 

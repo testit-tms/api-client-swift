@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct ParameterPostModel: Codable, JSONEncodable, Hashable {
 
-    static let valueRule = StringRule(minLength: 0, maxLength: 1500, pattern: nil)
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let valueRule = StringRule(minLength: 0, maxLength: 1500, pattern: nil)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Value of the parameter */
     public var value: String
     /** Key of the parameter */

@@ -21,9 +21,6 @@ Method | HTTP request | Description
 [**apiV2ProjectsPurgeBulkPost**](ProjectsAPI.md#apiv2projectspurgebulkpost) | **POST** /api/v2/projects/purge/bulk | Purge multiple projects
 [**apiV2ProjectsRestoreBulkPost**](ProjectsAPI.md#apiv2projectsrestorebulkpost) | **POST** /api/v2/projects/restore/bulk | Restore multiple projects
 [**apiV2ProjectsSearchPost**](ProjectsAPI.md#apiv2projectssearchpost) | **POST** /api/v2/projects/search | Search for projects
-[**backgroundImportProject**](ProjectsAPI.md#backgroundimportproject) | **POST** /api/v2/projects/import/json | Import project from JSON file in background job
-[**backgroundImportZipProject**](ProjectsAPI.md#backgroundimportzipproject) | **POST** /api/v2/projects/import/zip | Import project from Zip file in background job
-[**callImport**](ProjectsAPI.md#callimport) | **POST** /api/v2/projects/import | Import project from JSON file
 [**createProject**](ProjectsAPI.md#createproject) | **POST** /api/v2/projects | Create project
 [**deleteProjectAutoTests**](ProjectsAPI.md#deleteprojectautotests) | **DELETE** /api/v2/projects/{id}/autoTests | Delete all autotests from project
 [**getAllProjects**](ProjectsAPI.md#getallprojects) | **GET** /api/v2/projects | Get all projects
@@ -46,7 +43,7 @@ Add global attributes to project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -88,7 +85,7 @@ Void (empty response body)
 
 # **apiV2ProjectsDemoPost**
 ```swift
-    open class func apiV2ProjectsDemoPost(projectPostModel: ProjectPostModel? = nil, completion: @escaping (_ data: ProjectModel?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsDemoPost(createProjectApiModel: CreateProjectApiModel? = nil, completion: @escaping (_ data: DemoProjectApiResult?, _ error: Error?) -> Void)
 ```
 
 
@@ -96,11 +93,11 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let projectPostModel = ProjectPostModel(description: "description_example", name: "name_example", isFavorite: false, isFlakyAuto: false) // ProjectPostModel |  (optional)
+let createProjectApiModel = CreateProjectApiModel(name: "name_example", description: "description_example", isFavorite: false, workflowId: 123) // CreateProjectApiModel |  (optional)
 
-ProjectsAPI.apiV2ProjectsDemoPost(projectPostModel: projectPostModel) { (response, error) in
+ProjectsAPI.apiV2ProjectsDemoPost(createProjectApiModel: createProjectApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -116,11 +113,11 @@ ProjectsAPI.apiV2ProjectsDemoPost(projectPostModel: projectPostModel) { (respons
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectPostModel** | [**ProjectPostModel**](ProjectPostModel.md) |  | [optional] 
+ **createProjectApiModel** | [**CreateProjectApiModel**](CreateProjectApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**ProjectModel**](ProjectModel.md)
+[**DemoProjectApiResult**](DemoProjectApiResult.md)
 
 ### Authorization
 
@@ -143,7 +140,7 @@ Archive project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the project
 
@@ -191,7 +188,7 @@ Get failure classes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the project
 let isDeleted = true // Bool |  (optional)
@@ -241,7 +238,7 @@ Mark Project as favorite
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -291,7 +288,7 @@ Get Project filters
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -341,7 +338,7 @@ See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 690
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Unique or global Id of project
 let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
@@ -391,7 +388,7 @@ Purge the project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the project
 
@@ -439,7 +436,7 @@ Restore archived project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the project
 
@@ -489,7 +486,7 @@ Delete attribute from project's test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let attributeId = 987 // UUID | 
@@ -541,7 +538,7 @@ Update attribute of project's test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let customAttributeTestPlanProjectRelationPutModel = CustomAttributeTestPlanProjectRelationPutModel(id: 123, isEnabled: false, isRequired: false) // CustomAttributeTestPlanProjectRelationPutModel |  (optional)
@@ -593,7 +590,7 @@ Get active Project TestRuns
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -633,7 +630,7 @@ Name | Type | Description  | Notes
 
 # **apiV2ProjectsIdTestRunsFullGet**
 ```swift
-    open class func apiV2ProjectsIdTestRunsFullGet(id: String, includeTestResults: Bool? = nil, mustAggregateTestResults: Bool? = nil, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestRunModel]?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsIdTestRunsFullGet(id: String, includeTestResults: Bool? = nil, mustAggregateTestResults: Bool? = nil, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestRunApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get Project TestRuns full models
@@ -643,11 +640,11 @@ Get Project TestRuns full models
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
-let includeTestResults = true // Bool |  (optional) (default to false)
-let mustAggregateTestResults = true // Bool |  (optional) (default to true)
+let includeTestResults = true // Bool |  (optional)
+let mustAggregateTestResults = true // Bool |  (optional)
 let notStarted = true // Bool |  (optional)
 let inProgress = true // Bool |  (optional)
 let stopped = true // Bool |  (optional)
@@ -679,8 +676,8 @@ ProjectsAPI.apiV2ProjectsIdTestRunsFullGet(id: id, includeTestResults: includeTe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** | Project internal (UUID) or global (integer) identifier | 
- **includeTestResults** | **Bool** |  | [optional] [default to false]
- **mustAggregateTestResults** | **Bool** |  | [optional] [default to true]
+ **includeTestResults** | **Bool** |  | [optional] 
+ **mustAggregateTestResults** | **Bool** |  | [optional] 
  **notStarted** | **Bool** |  | [optional] 
  **inProgress** | **Bool** |  | [optional] 
  **stopped** | **Bool** |  | [optional] 
@@ -696,7 +693,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TestRunModel]**](TestRunModel.md)
+[**[TestRunApiResult]**](TestRunApiResult.md)
 
 ### Authorization
 
@@ -719,7 +716,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let name = "name_example" // String | 
 
@@ -766,7 +763,7 @@ Purge multiple projects
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
 
@@ -814,7 +811,7 @@ Restore multiple projects
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
 
@@ -854,7 +851,7 @@ Name | Type | Description  | Notes
 
 # **apiV2ProjectsSearchPost**
 ```swift
-    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, completion: @escaping (_ data: [ProjectModel]?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, completion: @escaping (_ data: [ProjectShortModel]?, _ error: Error?) -> Void)
 ```
 
 Search for projects
@@ -862,7 +859,7 @@ Search for projects
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -897,7 +894,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ProjectModel]**](ProjectModel.md)
+[**[ProjectShortModel]**](ProjectShortModel.md)
 
 ### Authorization
 
@@ -910,157 +907,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **backgroundImportProject**
-```swift
-    open class func backgroundImportProject(file: URL? = nil, completion: @escaping (_ data: UUID?, _ error: Error?) -> Void)
-```
-
-Import project from JSON file in background job
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
-
-let file = URL(string: "https://example.com")! // URL |  (optional)
-
-// Import project from JSON file in background job
-ProjectsAPI.backgroundImportProject(file: file) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file** | **URL** |  | [optional] 
-
-### Return type
-
-**UUID**
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data, application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **backgroundImportZipProject**
-```swift
-    open class func backgroundImportZipProject(file: URL? = nil, completion: @escaping (_ data: UUID?, _ error: Error?) -> Void)
-```
-
-Import project from Zip file in background job
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
-
-let file = URL(string: "https://example.com")! // URL |  (optional)
-
-// Import project from Zip file in background job
-ProjectsAPI.backgroundImportZipProject(file: file) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file** | **URL** |  | [optional] 
-
-### Return type
-
-**UUID**
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data, application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **callImport**
-```swift
-    open class func callImport(includeAttachments: Bool? = nil, file: URL? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
-```
-
-Import project from JSON file
-
-     <b>A project can only be exported to another TMS instance, different from the one it was imported from.</b>     This method imports a `.json` file with a project to the test management system.   In the body of the request, send the `.json` file received by the `POST /api/v2/projects/export` method:       ```              curl -X POST \"http://{domain.com}/api/v2/projects/import\" \\              -H \"accept: /\" -H \"Authorization: PrivateToken {token}\" -H \"Content-Type: multipart/form-data\" \\              -F \"file=@import.txt;type=text/plain\"              ```                   In the second instance, a project with the name of the imported one is created.              User attributes and the test library (along with content and structure) are imported.                 Test plan execution history from the first instance of TMS cannot be transferred.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
-
-let includeAttachments = true // Bool | Enables attachment import. (optional) (default to false)
-let file = URL(string: "https://example.com")! // URL | Select file (optional)
-
-// Import project from JSON file
-ProjectsAPI.callImport(includeAttachments: includeAttachments, file: file) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **includeAttachments** | **Bool** | Enables attachment import. | [optional] [default to false]
- **file** | **URL** | Select file | [optional] 
-
-### Return type
-
-Void (empty response body)
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **createProject**
 ```swift
-    open class func createProject(projectPostModel: ProjectPostModel? = nil, completion: @escaping (_ data: ProjectModel?, _ error: Error?) -> Void)
+    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, completion: @escaping (_ data: ProjectModel?, _ error: Error?) -> Void)
 ```
 
 Create project
@@ -1070,12 +919,12 @@ Create project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let projectPostModel = ProjectPostModel(description: "description_example", name: "name_example", isFavorite: false, isFlakyAuto: false) // ProjectPostModel |  (optional)
+let createProjectApiModel = CreateProjectApiModel(name: "name_example", description: "description_example", isFavorite: false, workflowId: 123) // CreateProjectApiModel |  (optional)
 
 // Create project
-ProjectsAPI.createProject(projectPostModel: projectPostModel) { (response, error) in
+ProjectsAPI.createProject(createProjectApiModel: createProjectApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1091,7 +940,7 @@ ProjectsAPI.createProject(projectPostModel: projectPostModel) { (response, error
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectPostModel** | [**ProjectPostModel**](ProjectPostModel.md) |  | [optional] 
+ **createProjectApiModel** | [**CreateProjectApiModel**](CreateProjectApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -1118,7 +967,7 @@ Delete all autotests from project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the project
 
@@ -1158,7 +1007,7 @@ Void (empty response body)
 
 # **getAllProjects**
 ```swift
-    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ProjectModel]?, _ error: Error?) -> Void)
+    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ProjectShortModel]?, _ error: Error?) -> Void)
 ```
 
 Get all projects
@@ -1168,7 +1017,7 @@ Get all projects
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let isDeleted = true // Bool | If result must consist of only actual/deleted parameters (optional)
 let projectName = "projectName_example" // String |  (optional)
@@ -1205,7 +1054,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ProjectModel]**](ProjectModel.md)
+[**[ProjectShortModel]**](ProjectShortModel.md)
 
 ### Authorization
 
@@ -1230,7 +1079,7 @@ Get namespaces of autotests in project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -1280,7 +1129,7 @@ Get project by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -1330,7 +1179,7 @@ Get project test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let isDeleted = true // Bool | If result must consist of only actual/archived test plans (optional)
@@ -1372,7 +1221,7 @@ Name | Type | Description  | Notes
 
 # **getTestRunsByProjectId**
 ```swift
-    open class func getTestRunsByProjectId(id: String, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestRunV2GetModel]?, _ error: Error?) -> Void)
+    open class func getTestRunsByProjectId(id: String, notStarted: Bool, inProgress: Bool, stopped: Bool, completed: Bool, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestRunV2ApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get project test runs
@@ -1382,13 +1231,13 @@ Get project test runs
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
-let notStarted = true // Bool |  (optional)
-let inProgress = true // Bool |  (optional)
-let stopped = true // Bool |  (optional)
-let completed = true // Bool |  (optional)
+let notStarted = true // Bool | 
+let inProgress = true // Bool | 
+let stopped = true // Bool | 
+let completed = true // Bool | 
 let createdDateFrom = Date() // Date |  (optional)
 let createdDateTo = Date() // Date |  (optional)
 let testPlanId = 987 // UUID |  (optional)
@@ -1416,10 +1265,10 @@ ProjectsAPI.getTestRunsByProjectId(id: id, notStarted: notStarted, inProgress: i
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** | Project internal (UUID) or global (integer) identifier | 
- **notStarted** | **Bool** |  | [optional] 
- **inProgress** | **Bool** |  | [optional] 
- **stopped** | **Bool** |  | [optional] 
- **completed** | **Bool** |  | [optional] 
+ **notStarted** | **Bool** |  | 
+ **inProgress** | **Bool** |  | 
+ **stopped** | **Bool** |  | 
+ **completed** | **Bool** |  | 
  **createdDateFrom** | **Date** |  | [optional] 
  **createdDateTo** | **Date** |  | [optional] 
  **testPlanId** | **UUID** |  | [optional] 
@@ -1431,7 +1280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TestRunV2GetModel]**](TestRunV2GetModel.md)
+[**[TestRunV2ApiResult]**](TestRunV2ApiResult.md)
 
 ### Authorization
 
@@ -1446,7 +1295,7 @@ Name | Type | Description  | Notes
 
 # **updateProject**
 ```swift
-    open class func updateProject(projectPutModel: ProjectPutModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateProject(updateProjectApiModel: UpdateProjectApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update project
@@ -1456,12 +1305,12 @@ Update project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let projectPutModel = ProjectPutModel(id: 123, description: "description_example", name: "name_example", isFavorite: false, isFlakyAuto: false, type: ProjectTypeModel()) // ProjectPutModel |  (optional)
+let updateProjectApiModel = UpdateProjectApiModel(id: 123, name: "name_example", description: "description_example", isFavorite: false, workflowId: 123) // UpdateProjectApiModel |  (optional)
 
 // Update project
-ProjectsAPI.updateProject(projectPutModel: projectPutModel) { (response, error) in
+ProjectsAPI.updateProject(updateProjectApiModel: updateProjectApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1477,7 +1326,7 @@ ProjectsAPI.updateProject(projectPutModel: projectPutModel) { (response, error) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectPutModel** | [**ProjectPutModel**](ProjectPutModel.md) |  | [optional] 
+ **updateProjectApiModel** | [**UpdateProjectApiModel**](UpdateProjectApiModel.md) |  | [optional] 
 
 ### Return type
 

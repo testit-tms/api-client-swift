@@ -33,7 +33,7 @@ Create multiple parameters
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let parameterPostModel = [ParameterPostModel(value: "value_example", name: "name_example")] // [ParameterPostModel] |  (optional)
 
@@ -83,7 +83,7 @@ Update multiple parameters
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let parameterPutModel = [ParameterPutModel(id: 123, value: "value_example", name: "name_example")] // [ParameterPutModel] |  (optional)
 
@@ -133,7 +133,7 @@ Get parameters as group
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let isDeleted = true // Bool |  (optional)
 let parameterKeyIds = [123] // Set<UUID> |  (optional)
@@ -195,7 +195,7 @@ Check existence parameter key in system
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let name = "name_example" // String | 
 
@@ -245,7 +245,7 @@ Get all parameter key values
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let key = "key_example" // String | Parameter key (string format)
 
@@ -295,7 +295,7 @@ Get all parameter keys
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 
 // Get all parameter keys
@@ -339,7 +339,7 @@ Search for parameters as group
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -397,7 +397,7 @@ Search for parameters
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -457,7 +457,7 @@ Create parameter
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let parameterPostModel = ParameterPostModel(value: "value_example", name: "name_example") // ParameterPostModel |  (optional)
 
@@ -507,7 +507,7 @@ Deletes parameter and all it's values
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let name = "name_example" // String | Name of the parameter
 
@@ -557,7 +557,7 @@ Deletes parameter and all it's values by parameter key identifier
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let keyId = 987 // UUID | Identifier of the parameter key
 
@@ -607,7 +607,7 @@ Delete parameter
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Parameter internal (UUID) identifier
 
@@ -657,7 +657,7 @@ Get all parameters
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let isDeleted = true // Bool | If result must consist of only actual/deleted parameters (optional)
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -717,7 +717,7 @@ Get parameter by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Parameter internal (UUID) identifier
 
@@ -767,7 +767,7 @@ Update parameter
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let parameterPutModel = ParameterPutModel(id: 123, value: "value_example", name: "name_example") // ParameterPutModel |  (optional)
 

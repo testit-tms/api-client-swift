@@ -397,6 +397,7 @@ open class WorkItemsAPI {
      - parameter testPlanIds: (query) Identifiers of test plans which contain test results (optional)
      - parameter userIds: (query) Identifiers of users who set test results (optional)
      - parameter outcomes: (query) List of outcomes of test results (optional)
+     - parameter statusCodes: (query) List of status codes of test results (optional)
      - parameter isAutomated: (query) OBSOLETE: Use &#x60;Automated&#x60; instead (optional)
      - parameter automated: (query) If result must consist of only manual/automated test results (optional)
      - parameter testRunIds: (query) Identifiers of test runs which contain test results (optional)
@@ -409,8 +410,8 @@ open class WorkItemsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2WorkItemsIdTestResultsHistoryGet(id: UUID, from: Date? = nil, to: Date? = nil, configurationIds: [UUID]? = nil, testPlanIds: [UUID]? = nil, userIds: [UUID]? = nil, outcomes: [String]? = nil, isAutomated: Bool? = nil, automated: Bool? = nil, testRunIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestResultHistoryReportModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2WorkItemsIdTestResultsHistoryGetWithRequestBuilder(id: id, from: from, to: to, configurationIds: configurationIds, testPlanIds: testPlanIds, userIds: userIds, outcomes: outcomes, isAutomated: isAutomated, automated: automated, testRunIds: testRunIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
+    open class func apiV2WorkItemsIdTestResultsHistoryGet(id: UUID, from: Date? = nil, to: Date? = nil, configurationIds: [UUID]? = nil, testPlanIds: [UUID]? = nil, userIds: [UUID]? = nil, outcomes: [String]? = nil, statusCodes: [String]? = nil, isAutomated: Bool? = nil, automated: Bool? = nil, testRunIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestResultHistoryReportApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WorkItemsIdTestResultsHistoryGetWithRequestBuilder(id: id, from: from, to: to, configurationIds: configurationIds, testPlanIds: testPlanIds, userIds: userIds, outcomes: outcomes, statusCodes: statusCodes, isAutomated: isAutomated, automated: automated, testRunIds: testRunIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -435,6 +436,7 @@ open class WorkItemsAPI {
      - parameter testPlanIds: (query) Identifiers of test plans which contain test results (optional)
      - parameter userIds: (query) Identifiers of users who set test results (optional)
      - parameter outcomes: (query) List of outcomes of test results (optional)
+     - parameter statusCodes: (query) List of status codes of test results (optional)
      - parameter isAutomated: (query) OBSOLETE: Use &#x60;Automated&#x60; instead (optional)
      - parameter automated: (query) If result must consist of only manual/automated test results (optional)
      - parameter testRunIds: (query) Identifiers of test runs which contain test results (optional)
@@ -443,9 +445,9 @@ open class WorkItemsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[TestResultHistoryReportModel]> 
+     - returns: RequestBuilder<[TestResultHistoryReportApiResult]> 
      */
-    open class func apiV2WorkItemsIdTestResultsHistoryGetWithRequestBuilder(id: UUID, from: Date? = nil, to: Date? = nil, configurationIds: [UUID]? = nil, testPlanIds: [UUID]? = nil, userIds: [UUID]? = nil, outcomes: [String]? = nil, isAutomated: Bool? = nil, automated: Bool? = nil, testRunIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TestResultHistoryReportModel]> {
+    open class func apiV2WorkItemsIdTestResultsHistoryGetWithRequestBuilder(id: UUID, from: Date? = nil, to: Date? = nil, configurationIds: [UUID]? = nil, testPlanIds: [UUID]? = nil, userIds: [UUID]? = nil, outcomes: [String]? = nil, statusCodes: [String]? = nil, isAutomated: Bool? = nil, automated: Bool? = nil, testRunIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TestResultHistoryReportApiResult]> {
         var localVariablePath = "/api/v2/workItems/{id}/testResults/history"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -461,6 +463,7 @@ open class WorkItemsAPI {
             "testPlanIds": (wrappedValue: testPlanIds?.encodeToJSON(), isExplode: true),
             "userIds": (wrappedValue: userIds?.encodeToJSON(), isExplode: true),
             "outcomes": (wrappedValue: outcomes?.encodeToJSON(), isExplode: true),
+            "statusCodes": (wrappedValue: statusCodes?.encodeToJSON(), isExplode: true),
             "isAutomated": (wrappedValue: isAutomated?.encodeToJSON(), isExplode: true),
             "automated": (wrappedValue: automated?.encodeToJSON(), isExplode: true),
             "testRunIds": (wrappedValue: testRunIds?.encodeToJSON(), isExplode: true),
@@ -477,7 +480,7 @@ open class WorkItemsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestResultHistoryReportModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestResultHistoryReportApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -538,6 +541,68 @@ open class WorkItemsAPI {
     }
 
     /**
+
+     - parameter skip: (query) Amount of items to be skipped (offset) (optional)
+     - parameter take: (query) Amount of items to be taken (limit) (optional)
+     - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
+     - parameter searchField: (query) Property name for searching (optional)
+     - parameter searchValue: (query) Value for searching (optional)
+     - parameter workItemLinkUrlApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2WorkItemsLinksUrlsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemLinkUrlApiModel: WorkItemLinkUrlApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: SearchWorkItemLinkUrlsApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WorkItemsLinksUrlsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemLinkUrlApiModel: workItemLinkUrlApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /api/v2/workItems/links/urls/search
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
+     - parameter skip: (query) Amount of items to be skipped (offset) (optional)
+     - parameter take: (query) Amount of items to be taken (limit) (optional)
+     - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
+     - parameter searchField: (query) Property name for searching (optional)
+     - parameter searchValue: (query) Value for searching (optional)
+     - parameter workItemLinkUrlApiModel: (body)  (optional)
+     - returns: RequestBuilder<SearchWorkItemLinkUrlsApiResult> 
+     */
+    open class func apiV2WorkItemsLinksUrlsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemLinkUrlApiModel: WorkItemLinkUrlApiModel? = nil) -> RequestBuilder<SearchWorkItemLinkUrlsApiResult> {
+        let localVariablePath = "/api/v2/workItems/links/urls/search"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: workItemLinkUrlApiModel)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "Skip": (wrappedValue: skip?.encodeToJSON(), isExplode: true),
+            "Take": (wrappedValue: take?.encodeToJSON(), isExplode: true),
+            "OrderBy": (wrappedValue: orderBy?.encodeToJSON(), isExplode: true),
+            "SearchField": (wrappedValue: searchField?.encodeToJSON(), isExplode: true),
+            "SearchValue": (wrappedValue: searchValue?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SearchWorkItemLinkUrlsApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Move WorkItem to another section
      
      - parameter workItemMovePostModel: (body)  (optional)
@@ -592,13 +657,13 @@ open class WorkItemsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter workItemSelectModel: (body)  (optional)
+     - parameter workItemSelectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2WorkItemsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectModel: WorkItemSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [WorkItemShortModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2WorkItemsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectModel: workItemSelectModel).execute(apiResponseQueue) { result in
+    open class func apiV2WorkItemsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectApiModel: WorkItemSelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [WorkItemShortApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WorkItemsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -620,13 +685,13 @@ open class WorkItemsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter workItemSelectModel: (body)  (optional)
-     - returns: RequestBuilder<[WorkItemShortModel]> 
+     - parameter workItemSelectApiModel: (body)  (optional)
+     - returns: RequestBuilder<[WorkItemShortApiResult]> 
      */
-    open class func apiV2WorkItemsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectModel: WorkItemSelectModel? = nil) -> RequestBuilder<[WorkItemShortModel]> {
+    open class func apiV2WorkItemsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectApiModel: WorkItemSelectApiModel? = nil) -> RequestBuilder<[WorkItemShortApiResult]> {
         let localVariablePath = "/api/v2/workItems/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: workItemSelectModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: workItemSelectApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -643,7 +708,7 @@ open class WorkItemsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[WorkItemShortModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[WorkItemShortApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

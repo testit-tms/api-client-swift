@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct WebHookPostModel: Codable, JSONEncodable, Hashable {
 
-    static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Unique ID of the webhook project */
     public var projectId: UUID
     /** Type of event which triggers the webhook */

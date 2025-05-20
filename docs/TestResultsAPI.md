@@ -4,11 +4,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPost**](TestResultsAPI.md#apiv2testresultsexternalprojectsexternalprojectiddefectsexternalformspost) | **POST** /api/v2/testResults/external-projects/{externalProjectId}/defects/external-forms | 
+[**apiV2TestResultsExternalProjectsExternalProjectIdDefectsPost**](TestResultsAPI.md#apiv2testresultsexternalprojectsexternalprojectiddefectspost) | **POST** /api/v2/testResults/external-projects/{externalProjectId}/defects | 
 [**apiV2TestResultsIdAggregatedGet**](TestResultsAPI.md#apiv2testresultsidaggregatedget) | **GET** /api/v2/testResults/{id}/aggregated | Get test result by ID aggregated with previous results
 [**apiV2TestResultsIdAttachmentsAttachmentIdPut**](TestResultsAPI.md#apiv2testresultsidattachmentsattachmentidput) | **PUT** /api/v2/testResults/{id}/attachments/{attachmentId} | Attach file to the test result
 [**apiV2TestResultsIdAttachmentsInfoGet**](TestResultsAPI.md#apiv2testresultsidattachmentsinfoget) | **GET** /api/v2/testResults/{id}/attachments/info | Get test result attachments meta-information
 [**apiV2TestResultsIdGet**](TestResultsAPI.md#apiv2testresultsidget) | **GET** /api/v2/testResults/{id} | Get test result by ID
 [**apiV2TestResultsIdPut**](TestResultsAPI.md#apiv2testresultsidput) | **PUT** /api/v2/testResults/{id} | Edit test result by ID
+[**apiV2TestResultsIdRerunsGet**](TestResultsAPI.md#apiv2testresultsidrerunsget) | **GET** /api/v2/testResults/{id}/reruns | Get reruns
 [**apiV2TestResultsSearchPost**](TestResultsAPI.md#apiv2testresultssearchpost) | **POST** /api/v2/testResults/search | Search for test results
 [**apiV2TestResultsStatisticsFilterPost**](TestResultsAPI.md#apiv2testresultsstatisticsfilterpost) | **POST** /api/v2/testResults/statistics/filter | Search for test results and extract statistics
 [**createAttachment**](TestResultsAPI.md#createattachment) | **POST** /api/v2/testResults/{id}/attachments | Upload and link attachment to TestResult
@@ -18,9 +21,107 @@ Method | HTTP request | Description
 [**getAttachments**](TestResultsAPI.md#getattachments) | **GET** /api/v2/testResults/{id}/attachments | Get all attachments of TestResult
 
 
+# **apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPost**
+```swift
+    open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPost(externalProjectId: UUID, testResultsSelectApiModel: TestResultsSelectApiModel? = nil, completion: @escaping (_ data: GetExternalFormApiResult?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let externalProjectId = 987 // UUID | 
+let testResultsSelectApiModel = TestResultsSelectApiModel(filter: TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]), extractionModel: TestResultsExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestResultsSelectApiModel |  (optional)
+
+TestResultsAPI.apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPost(externalProjectId: externalProjectId, testResultsSelectApiModel: testResultsSelectApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **externalProjectId** | **UUID** |  | 
+ **testResultsSelectApiModel** | [**TestResultsSelectApiModel**](TestResultsSelectApiModel.md) |  | [optional] 
+
+### Return type
+
+[**GetExternalFormApiResult**](GetExternalFormApiResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **apiV2TestResultsExternalProjectsExternalProjectIdDefectsPost**
+```swift
+    open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsPost(externalProjectId: UUID, createDefectApiModel: CreateDefectApiModel? = nil, completion: @escaping (_ data: DefectApiModel?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let externalProjectId = 987 // UUID | 
+let createDefectApiModel = CreateDefectApiModel(testResultIds: [123], form: ExternalFormCreateModel(possibleValues: "TODO", fields: [ExternalFormFieldModel(fieldId: "fieldId_example", fieldName: "fieldName_example", helpText: "helpText_example", type: "type_example", arrayValuesType: "arrayValuesType_example", defaultValue: 123, isCustomValueAllowed: false, autoCompleteUrl: "autoCompleteUrl_example", controlType: "controlType_example", minLength: 123, maxLength: 123, isRequired: false, min: 123, max: 123)], links: [ExternalFormLinkModel(name: "name_example", url: "url_example")], values: "TODO")) // CreateDefectApiModel |  (optional)
+
+TestResultsAPI.apiV2TestResultsExternalProjectsExternalProjectIdDefectsPost(externalProjectId: externalProjectId, createDefectApiModel: createDefectApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **externalProjectId** | **UUID** |  | 
+ **createDefectApiModel** | [**CreateDefectApiModel**](CreateDefectApiModel.md) |  | [optional] 
+
+### Return type
+
+[**DefectApiModel**](DefectApiModel.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2TestResultsIdAggregatedGet**
 ```swift
-    open class func apiV2TestResultsIdAggregatedGet(id: UUID, completion: @escaping (_ data: TestResultModel?, _ error: Error?) -> Void)
+    open class func apiV2TestResultsIdAggregatedGet(id: UUID, completion: @escaping (_ data: TestResultResponse?, _ error: Error?) -> Void)
 ```
 
 Get test result by ID aggregated with previous results
@@ -28,7 +129,7 @@ Get test result by ID aggregated with previous results
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test result unique ID
 
@@ -53,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TestResultModel**](TestResultModel.md)
+[**TestResultResponse**](TestResultResponse.md)
 
 ### Authorization
 
@@ -76,7 +177,7 @@ Attach file to the test result
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test result unique ID
 let attachmentId = 987 // UUID | Attachment unique ID
@@ -126,7 +227,7 @@ Get test result attachments meta-information
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test result unique ID
 
@@ -166,7 +267,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestResultsIdGet**
 ```swift
-    open class func apiV2TestResultsIdGet(id: UUID, completion: @escaping (_ data: TestResultModel?, _ error: Error?) -> Void)
+    open class func apiV2TestResultsIdGet(id: UUID, completion: @escaping (_ data: TestResultResponse?, _ error: Error?) -> Void)
 ```
 
 Get test result by ID
@@ -174,7 +275,7 @@ Get test result by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test result unique ID
 
@@ -199,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TestResultModel**](TestResultModel.md)
+[**TestResultResponse**](TestResultResponse.md)
 
 ### Authorization
 
@@ -214,7 +315,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestResultsIdPut**
 ```swift
-    open class func apiV2TestResultsIdPut(id: UUID, testResultUpdateModel: TestResultUpdateModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func apiV2TestResultsIdPut(id: UUID, testResultUpdateV2Request: TestResultUpdateV2Request? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Edit test result by ID
@@ -222,13 +323,13 @@ Edit test result by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test result unique ID
-let testResultUpdateModel = TestResultUpdateModel(failureClassIds: [123], outcome: TestResultOutcome(), comment: "comment_example", links: [LinkModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], stepResults: [StepResultModel(stepId: 123, outcome: "outcome_example", sharedStepVersionId: 123, sharedStepResults: [SharedStepResultModel(stepId: 123, outcome: "outcome_example")], comment: StepCommentModel(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [AttachmentModel(fileId: "fileId_example", type: "type_example", size: 123, createdDate: Date(), modifiedDate: Date(), createdById: 123, modifiedById: 123, name: "name_example", id: 123)], testResultId: 123, createdById: 123, modifiedById: 123, createdDate: Date(), modifiedDate: Date()))], attachments: [AttachmentPutModel(id: 123)], durationInMs: 123, duration: 123, stepComments: [TestResultStepCommentPutModel(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [nil])], setupResults: [AttachmentPutModelAutoTestStepResultsModel(title: "title_example", description: "description_example", info: "info_example", startedOn: Date(), completedOn: Date(), duration: 123, outcome: AvailableTestResultOutcome(), stepResults: [nil], attachments: [nil], parameters: "TODO")], teardownResults: [nil], message: "message_example", trace: "trace_example") // TestResultUpdateModel |  (optional)
+let testResultUpdateV2Request = TestResultUpdateV2Request(failureClassIds: [123], outcome: TestResultOutcome(), statusCode: "statusCode_example", comment: "comment_example", links: [Link(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], stepResults: [StepResultApiModel(stepId: 123, outcome: "outcome_example", sharedStepVersionId: 123, sharedStepResults: [SharedStepResultApiModel(stepId: 123, outcome: "outcome_example")], comment: StepCommentApiModel(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [AttachmentApiResult(id: 123, fileId: "fileId_example", type: "type_example", size: 123, createdDate: Date(), modifiedDate: Date(), createdById: 123, modifiedById: 123, name: "name_example")], testResultId: 123, createdById: 123, modifiedById: 123, createdDate: Date(), modifiedDate: Date()))], attachments: [AttachmentUpdateRequest(id: 123)], durationInMs: 123, duration: 123, stepComments: [TestResultStepCommentUpdateRequest(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [nil])], setupResults: [AutoTestStepResultUpdateRequest(title: "title_example", description: "description_example", info: "info_example", startedOn: Date(), completedOn: Date(), duration: 123, outcome: AvailableTestResultOutcome(), stepResults: [nil], attachments: [nil], parameters: "TODO")], teardownResults: [nil], message: "message_example", trace: "trace_example") // TestResultUpdateV2Request |  (optional)
 
 // Edit test result by ID
-TestResultsAPI.apiV2TestResultsIdPut(id: id, testResultUpdateModel: testResultUpdateModel) { (response, error) in
+TestResultsAPI.apiV2TestResultsIdPut(id: id, testResultUpdateV2Request: testResultUpdateV2Request) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -245,7 +346,7 @@ TestResultsAPI.apiV2TestResultsIdPut(id: id, testResultUpdateModel: testResultUp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **UUID** | Test result unique ID | 
- **testResultUpdateModel** | [**TestResultUpdateModel**](TestResultUpdateModel.md) |  | [optional] 
+ **testResultUpdateV2Request** | [**TestResultUpdateV2Request**](TestResultUpdateV2Request.md) |  | [optional] 
 
 ### Return type
 
@@ -262,9 +363,57 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2TestResultsIdRerunsGet**
+```swift
+    open class func apiV2TestResultsIdRerunsGet(id: UUID, completion: @escaping (_ data: RerunsModel?, _ error: Error?) -> Void)
+```
+
+Get reruns
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let id = 987 // UUID | Test result unique ID
+
+// Get reruns
+TestResultsAPI.apiV2TestResultsIdRerunsGet(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID** | Test result unique ID | 
+
+### Return type
+
+[**RerunsModel**](RerunsModel.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2TestResultsSearchPost**
 ```swift
-    open class func apiV2TestResultsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testResultsFilterModel: TestResultsFilterModel? = nil, completion: @escaping (_ data: [TestResultShortGetModel]?, _ error: Error?) -> Void)
+    open class func apiV2TestResultsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, testResultsFilterApiModel: TestResultsFilterApiModel? = nil, completion: @escaping (_ data: [TestResultShortResponse]?, _ error: Error?) -> Void)
 ```
 
 Search for test results
@@ -272,17 +421,17 @@ Search for test results
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let testResultsFilterModel = TestResultsFilterModel(testRunIds: [123], autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], configurationIds: [123], outcomes: [TestResultOutcome()], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example") // TestResultsFilterModel |  (optional)
+let testResultsFilterApiModel = TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]) // TestResultsFilterApiModel |  (optional)
 
 // Search for test results
-TestResultsAPI.apiV2TestResultsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testResultsFilterModel: testResultsFilterModel) { (response, error) in
+TestResultsAPI.apiV2TestResultsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testResultsFilterApiModel: testResultsFilterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -303,11 +452,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String** | Property name for searching | [optional] 
  **searchValue** | **String** | Value for searching | [optional] 
- **testResultsFilterModel** | [**TestResultsFilterModel**](TestResultsFilterModel.md) |  | [optional] 
+ **testResultsFilterApiModel** | [**TestResultsFilterApiModel**](TestResultsFilterApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[TestResultShortGetModel]**](TestResultShortGetModel.md)
+[**[TestResultShortResponse]**](TestResultShortResponse.md)
 
 ### Authorization
 
@@ -322,7 +471,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestResultsStatisticsFilterPost**
 ```swift
-    open class func apiV2TestResultsStatisticsFilterPost(testResultsFilterModel: TestResultsFilterModel? = nil, completion: @escaping (_ data: TestResultsStatisticsGetModel?, _ error: Error?) -> Void)
+    open class func apiV2TestResultsStatisticsFilterPost(testResultsFilterApiModel: TestResultsFilterApiModel? = nil, completion: @escaping (_ data: TestResultsStatisticsApiResult?, _ error: Error?) -> Void)
 ```
 
 Search for test results and extract statistics
@@ -330,12 +479,12 @@ Search for test results and extract statistics
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
-let testResultsFilterModel = TestResultsFilterModel(testRunIds: [123], autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], configurationIds: [123], outcomes: [TestResultOutcome()], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example") // TestResultsFilterModel |  (optional)
+let testResultsFilterApiModel = TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]) // TestResultsFilterApiModel |  (optional)
 
 // Search for test results and extract statistics
-TestResultsAPI.apiV2TestResultsStatisticsFilterPost(testResultsFilterModel: testResultsFilterModel) { (response, error) in
+TestResultsAPI.apiV2TestResultsStatisticsFilterPost(testResultsFilterApiModel: testResultsFilterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -351,11 +500,11 @@ TestResultsAPI.apiV2TestResultsStatisticsFilterPost(testResultsFilterModel: test
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testResultsFilterModel** | [**TestResultsFilterModel**](TestResultsFilterModel.md) |  | [optional] 
+ **testResultsFilterApiModel** | [**TestResultsFilterApiModel**](TestResultsFilterApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**TestResultsStatisticsGetModel**](TestResultsStatisticsGetModel.md)
+[**TestResultsStatisticsApiResult**](TestResultsStatisticsApiResult.md)
 
 ### Authorization
 
@@ -380,7 +529,7 @@ Upload and link attachment to TestResult
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test result internal identifier (guid format)
 let file = URL(string: "https://example.com")! // URL | Select file (optional)
@@ -432,7 +581,7 @@ Remove attachment and unlink from TestResult
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test result internal identifier (guid format)
 let attachmentId = 987 // UUID | Attachment internal identifier (guid format)
@@ -484,7 +633,7 @@ Get attachment of TestResult
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let attachmentId = 987 // UUID | Attachment internal identifier (guid format)
 let id = 987 // UUID | Test result internal identifier (guid format)
@@ -546,7 +695,7 @@ Get Metadata of TestResult's attachment
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test result internal identifier (guid format)
 let attachmentId = 987 // UUID | Attachment internal identifier (guid format)
@@ -598,7 +747,7 @@ Get all attachments of TestResult
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Test result internal identifier (guid format)
 

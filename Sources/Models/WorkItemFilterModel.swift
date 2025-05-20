@@ -13,20 +13,20 @@ import AnyCodable
 /** Collection of filters to apply to search */
 public struct WorkItemFilterModel: Codable, JSONEncodable, Hashable {
 
-    static let includeIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let excludeIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let idsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let sectionIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let statesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let prioritiesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let autoTestIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let includeIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let excludeIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let idsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let sectionIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let statesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let prioritiesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let autoTestIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Name or identifier (UUID) of work item */
     public var nameOrId: String?
     /** Collection of identifiers of work items which need to be included in result regardless of filtering */
@@ -35,6 +35,8 @@ public struct WorkItemFilterModel: Codable, JSONEncodable, Hashable {
     public var excludeIds: Set<UUID>?
     /** Collection of project identifiers */
     public var projectIds: Set<UUID>?
+    /** Specifies a work item filter by its links */
+    public var links: WorkItemLinkFilterModel?
     /** Name of work item */
     public var name: String?
     /** Specifies a work item unique IDs to search for */
@@ -74,11 +76,12 @@ public struct WorkItemFilterModel: Codable, JSONEncodable, Hashable {
     /** Collection of identifiers work items versions. */
     public var workItemVersionIds: [UUID]?
 
-    public init(nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, projectIds: Set<UUID>? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil) {
+    public init(nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, projectIds: Set<UUID>? = nil, links: WorkItemLinkFilterModel? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil) {
         self.nameOrId = nameOrId
         self.includeIds = includeIds
         self.excludeIds = excludeIds
         self.projectIds = projectIds
+        self.links = links
         self.name = name
         self.ids = ids
         self.globalIds = globalIds
@@ -105,6 +108,7 @@ public struct WorkItemFilterModel: Codable, JSONEncodable, Hashable {
         case includeIds
         case excludeIds
         case projectIds
+        case links
         case name
         case ids
         case globalIds
@@ -134,6 +138,7 @@ public struct WorkItemFilterModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(includeIds, forKey: .includeIds)
         try container.encodeIfPresent(excludeIds, forKey: .excludeIds)
         try container.encodeIfPresent(projectIds, forKey: .projectIds)
+        try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(ids, forKey: .ids)
         try container.encodeIfPresent(globalIds, forKey: .globalIds)

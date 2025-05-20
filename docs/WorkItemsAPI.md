@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**apiV2WorkItemsIdLikesGet**](WorkItemsAPI.md#apiv2workitemsidlikesget) | **GET** /api/v2/workItems/{id}/likes | Get likes of WorkItem
 [**apiV2WorkItemsIdTestResultsHistoryGet**](WorkItemsAPI.md#apiv2workitemsidtestresultshistoryget) | **GET** /api/v2/workItems/{id}/testResults/history | Get test results history of WorkItem
 [**apiV2WorkItemsIdVersionVersionIdActualPost**](WorkItemsAPI.md#apiv2workitemsidversionversionidactualpost) | **POST** /api/v2/workItems/{id}/version/{versionId}/actual | Set WorkItem as actual
+[**apiV2WorkItemsLinksUrlsSearchPost**](WorkItemsAPI.md#apiv2workitemslinksurlssearchpost) | **POST** /api/v2/workItems/links/urls/search | 
 [**apiV2WorkItemsMovePost**](WorkItemsAPI.md#apiv2workitemsmovepost) | **POST** /api/v2/workItems/move | Move WorkItem to another section
 [**apiV2WorkItemsSearchPost**](WorkItemsAPI.md#apiv2workitemssearchpost) | **POST** /api/v2/workItems/search | Search for work items
 [**apiV2WorkItemsSharedStepIdReferencesSectionsPost**](WorkItemsAPI.md#apiv2workitemssharedstepidreferencessectionspost) | **POST** /api/v2/workItems/{sharedStepId}/references/sections | Get SharedStep references in sections
@@ -43,7 +44,7 @@ Upload and link attachment to WorkItem
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | Work item internal identifier (guid format)
 let file = URL(string: "https://example.com")! // URL | Select file (optional)
@@ -95,7 +96,7 @@ Transform CheckList to TestCase
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 
@@ -145,7 +146,7 @@ Get change history of WorkItem
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -205,7 +206,7 @@ Delete like from WorkItem
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 
@@ -255,7 +256,7 @@ Set like to WorkItem
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 
@@ -305,7 +306,7 @@ Get likes count of WorkItem
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 
@@ -355,7 +356,7 @@ Get likes of WorkItem
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 
@@ -395,7 +396,7 @@ Name | Type | Description  | Notes
 
 # **apiV2WorkItemsIdTestResultsHistoryGet**
 ```swift
-    open class func apiV2WorkItemsIdTestResultsHistoryGet(id: UUID, from: Date? = nil, to: Date? = nil, configurationIds: [UUID]? = nil, testPlanIds: [UUID]? = nil, userIds: [UUID]? = nil, outcomes: [String]? = nil, isAutomated: Bool? = nil, automated: Bool? = nil, testRunIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestResultHistoryReportModel]?, _ error: Error?) -> Void)
+    open class func apiV2WorkItemsIdTestResultsHistoryGet(id: UUID, from: Date? = nil, to: Date? = nil, configurationIds: [UUID]? = nil, testPlanIds: [UUID]? = nil, userIds: [UUID]? = nil, outcomes: [String]? = nil, statusCodes: [String]? = nil, isAutomated: Bool? = nil, automated: Bool? = nil, testRunIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestResultHistoryReportApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get test results history of WorkItem
@@ -405,7 +406,7 @@ Get test results history of WorkItem
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 let from = Date() // Date | Take results from this date (optional)
@@ -414,6 +415,7 @@ let configurationIds = [123] // [UUID] | Identifiers of test result configuratio
 let testPlanIds = [123] // [UUID] | Identifiers of test plans which contain test results (optional)
 let userIds = [123] // [UUID] | Identifiers of users who set test results (optional)
 let outcomes = ["inner_example"] // [String] | List of outcomes of test results (optional)
+let statusCodes = ["inner_example"] // [String] | List of status codes of test results (optional)
 let isAutomated = true // Bool | OBSOLETE: Use `Automated` instead (optional)
 let automated = true // Bool | If result must consist of only manual/automated test results (optional)
 let testRunIds = [123] // [UUID] | Identifiers of test runs which contain test results (optional)
@@ -424,7 +426,7 @@ let searchField = "searchField_example" // String | Property name for searching 
 let searchValue = "searchValue_example" // String | Value for searching (optional)
 
 // Get test results history of WorkItem
-WorkItemsAPI.apiV2WorkItemsIdTestResultsHistoryGet(id: id, from: from, to: to, configurationIds: configurationIds, testPlanIds: testPlanIds, userIds: userIds, outcomes: outcomes, isAutomated: isAutomated, automated: automated, testRunIds: testRunIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue) { (response, error) in
+WorkItemsAPI.apiV2WorkItemsIdTestResultsHistoryGet(id: id, from: from, to: to, configurationIds: configurationIds, testPlanIds: testPlanIds, userIds: userIds, outcomes: outcomes, statusCodes: statusCodes, isAutomated: isAutomated, automated: automated, testRunIds: testRunIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -447,6 +449,7 @@ Name | Type | Description  | Notes
  **testPlanIds** | [**[UUID]**](UUID.md) | Identifiers of test plans which contain test results | [optional] 
  **userIds** | [**[UUID]**](UUID.md) | Identifiers of users who set test results | [optional] 
  **outcomes** | [**[String]**](String.md) | List of outcomes of test results | [optional] 
+ **statusCodes** | [**[String]**](String.md) | List of status codes of test results | [optional] 
  **isAutomated** | **Bool** | OBSOLETE: Use &#x60;Automated&#x60; instead | [optional] 
  **automated** | **Bool** | If result must consist of only manual/automated test results | [optional] 
  **testRunIds** | [**[UUID]**](UUID.md) | Identifiers of test runs which contain test results | [optional] 
@@ -458,7 +461,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TestResultHistoryReportModel]**](TestResultHistoryReportModel.md)
+[**[TestResultHistoryReportApiResult]**](TestResultHistoryReportApiResult.md)
 
 ### Authorization
 
@@ -483,7 +486,7 @@ Set WorkItem as actual
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 let versionId = 987 // UUID | 
@@ -523,6 +526,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2WorkItemsLinksUrlsSearchPost**
+```swift
+    open class func apiV2WorkItemsLinksUrlsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemLinkUrlApiModel: WorkItemLinkUrlApiModel? = nil, completion: @escaping (_ data: SearchWorkItemLinkUrlsApiResult?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
+let take = 987 // Int | Amount of items to be taken (limit) (optional)
+let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
+let searchField = "searchField_example" // String | Property name for searching (optional)
+let searchValue = "searchValue_example" // String | Value for searching (optional)
+let workItemLinkUrlApiModel = WorkItemLinkUrlApiModel(filter: WorkItemLinkUrlFilterApiModel(types: [WorkItemEntityTypes()], searchUrl: "searchUrl_example"), extractionModel: WorkItemLinkExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), workItemIds: nil, linkUrls: StringExtractionModel(include: ["include_example"], exclude: ["exclude_example"]))) // WorkItemLinkUrlApiModel |  (optional)
+
+WorkItemsAPI.apiV2WorkItemsLinksUrlsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemLinkUrlApiModel: workItemLinkUrlApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **skip** | **Int** | Amount of items to be skipped (offset) | [optional] 
+ **take** | **Int** | Amount of items to be taken (limit) | [optional] 
+ **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
+ **searchField** | **String** | Property name for searching | [optional] 
+ **searchValue** | **String** | Value for searching | [optional] 
+ **workItemLinkUrlApiModel** | [**WorkItemLinkUrlApiModel**](WorkItemLinkUrlApiModel.md) |  | [optional] 
+
+### Return type
+
+[**SearchWorkItemLinkUrlsApiResult**](SearchWorkItemLinkUrlsApiResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2WorkItemsMovePost**
 ```swift
     open class func apiV2WorkItemsMovePost(workItemMovePostModel: WorkItemMovePostModel? = nil, completion: @escaping (_ data: WorkItemShortModel?, _ error: Error?) -> Void)
@@ -535,7 +595,7 @@ Move WorkItem to another section
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let workItemMovePostModel = WorkItemMovePostModel(id: 123, newSectionId: 123, oldSectionId: 123, nextWorkItemId: 123) // WorkItemMovePostModel |  (optional)
 
@@ -575,7 +635,7 @@ Name | Type | Description  | Notes
 
 # **apiV2WorkItemsSearchPost**
 ```swift
-    open class func apiV2WorkItemsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectModel: WorkItemSelectModel? = nil, completion: @escaping (_ data: [WorkItemShortModel]?, _ error: Error?) -> Void)
+    open class func apiV2WorkItemsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectApiModel: WorkItemSelectApiModel? = nil, completion: @escaping (_ data: [WorkItemShortApiResult]?, _ error: Error?) -> Void)
 ```
 
 Search for work items
@@ -583,17 +643,17 @@ Search for work items
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let workItemSelectModel = WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], autoTestIds: [123], workItemVersionIds: [123]), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectModel |  (optional)
+let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false)), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
 
 // Search for work items
-WorkItemsAPI.apiV2WorkItemsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectModel: workItemSelectModel) { (response, error) in
+WorkItemsAPI.apiV2WorkItemsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -614,11 +674,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String** | Property name for searching | [optional] 
  **searchValue** | **String** | Value for searching | [optional] 
- **workItemSelectModel** | [**WorkItemSelectModel**](WorkItemSelectModel.md) |  | [optional] 
+ **workItemSelectApiModel** | [**WorkItemSelectApiModel**](WorkItemSelectApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[WorkItemShortModel]**](WorkItemShortModel.md)
+[**[WorkItemShortApiResult]**](WorkItemShortApiResult.md)
 
 ### Authorization
 
@@ -643,7 +703,7 @@ Get SharedStep references in sections
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let sharedStepId = 987 // UUID | 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -705,7 +765,7 @@ Get SharedStep references in work items
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let sharedStepId = 987 // UUID | 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -767,7 +827,7 @@ Get SharedStep references
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let sharedStepId = 987 // UUID | 
 
@@ -817,7 +877,7 @@ Create Test Case, Checklist or Shared Step
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let workItemPostModel = WorkItemPostModel(entityTypeName: WorkItemEntityTypes(), description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), steps: [StepPostModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagPostModel(name: "name_example")], attachments: [AttachmentPutModel(id: 123)], iterations: [IterationPutModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example", projectId: 123, sectionId: 123, autoTests: [AutoTestIdModel(id: 123)]) // WorkItemPostModel |  (optional)
 
@@ -867,7 +927,7 @@ Delete all links AutoTests from WorkItem by Id or GlobalId
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 
@@ -917,7 +977,7 @@ Delete Test Case, Checklist or Shared Step by Id or GlobalId
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 
@@ -967,7 +1027,7 @@ Get all AutoTests linked to WorkItem by Id or GlobalId
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 
@@ -1015,7 +1075,7 @@ Get iterations by work item Id or GlobalId
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 let versionId = 987 // UUID | WorkItem version (guid format) identifier (optional)
@@ -1069,7 +1129,7 @@ Get Test Case, Checklist or Shared Step by Id or GlobalId
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 let versionId = 987 // UUID | WorkItem version (guid format) identifier\" (optional)
@@ -1123,7 +1183,7 @@ Get WorkItem chronology by Id or GlobalId
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | 
 
@@ -1173,7 +1233,7 @@ Get WorkItem versions
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 let workItemVersionId = 987 // UUID | WorkItem version (guid format)  identifier\" (optional)
@@ -1225,7 +1285,7 @@ Permanently delete test case, checklist or shared steps from archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the work item
 
@@ -1273,7 +1333,7 @@ Restore test case, checklist or shared steps from archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = "id_example" // String | Unique or global ID of the work item
 
@@ -1323,7 +1383,7 @@ Update Test Case, Checklist or Shared Step
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let workItemPutModel = WorkItemPutModel(attachments: [AttachmentPutModel(id: 123)], iterations: [IterationPutModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], id: 123, sectionId: 123, description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), steps: [StepPutModel(id: 123, action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagPutModel(name: "name_example")], links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example") // WorkItemPutModel |  (optional)
 

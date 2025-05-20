@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TestSuiteV2PostModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Unique ID of the parent test suite in hierarchy */
     public var parentId: UUID?
     /** Unique ID of test plan to which the test suite belongs */

@@ -159,13 +159,13 @@ open class ProjectWorkItemsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter workItemSelectModel: (body)  (optional)
+     - parameter workItemSelectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ProjectsProjectIdWorkItemsSearchPost(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectModel: WorkItemSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [WorkItemShortModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ProjectsProjectIdWorkItemsSearchPostWithRequestBuilder(projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectModel: workItemSelectModel).execute(apiResponseQueue) { result in
+    open class func apiV2ProjectsProjectIdWorkItemsSearchPost(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectApiModel: WorkItemSelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [WorkItemShortApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsProjectIdWorkItemsSearchPostWithRequestBuilder(projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -188,16 +188,16 @@ open class ProjectWorkItemsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter workItemSelectModel: (body)  (optional)
-     - returns: RequestBuilder<[WorkItemShortModel]> 
+     - parameter workItemSelectApiModel: (body)  (optional)
+     - returns: RequestBuilder<[WorkItemShortApiResult]> 
      */
-    open class func apiV2ProjectsProjectIdWorkItemsSearchPostWithRequestBuilder(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectModel: WorkItemSelectModel? = nil) -> RequestBuilder<[WorkItemShortModel]> {
+    open class func apiV2ProjectsProjectIdWorkItemsSearchPostWithRequestBuilder(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectApiModel: WorkItemSelectApiModel? = nil) -> RequestBuilder<[WorkItemShortApiResult]> {
         var localVariablePath = "/api/v2/projects/{projectId}/workItems/search"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: workItemSelectModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: workItemSelectApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -214,7 +214,7 @@ open class ProjectWorkItemsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[WorkItemShortModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[WorkItemShortApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

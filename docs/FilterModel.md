@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **modifiedDate** | **Date** |  | [optional] 
 **createdById** | **UUID** |  | 
 **modifiedById** | **UUID** |  | [optional] 
-**data** | [**WorkItemSearchQueryModel**](WorkItemSearchQueryModel.md) |  | 
+**data** | [**WorkItemSearchQueryModel**](WorkItemSearchQueryModel.md) |  | [optional] 
 **projectId** | **UUID** |  | 
 **fieldsToShow** | **AnyCodable** |  | [optional] 
 **name** | **String** |  | 

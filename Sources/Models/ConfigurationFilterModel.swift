@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct ConfigurationFilterModel: Codable, JSONEncodable, Hashable {
 
-    static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Collection of identifiers of projects from which configurations will be taken */
     public var projectIds: Set<UUID>?
     /** Filter to search by name (case-insensitive, partial match) */

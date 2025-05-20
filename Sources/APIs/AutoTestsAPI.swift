@@ -13,6 +13,52 @@ import AnyCodable
 open class AutoTestsAPI {
 
     /**
+     Delete autotests
+     
+     - parameter autoTestBulkDeleteApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2AutoTestsDelete(autoTestBulkDeleteApiModel: AutoTestBulkDeleteApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: AutoTestBulkDeleteApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2AutoTestsDeleteWithRequestBuilder(autoTestBulkDeleteApiModel: autoTestBulkDeleteApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Delete autotests
+     - DELETE /api/v2/autoTests
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter autoTestBulkDeleteApiModel: (body)  (optional)
+     - returns: RequestBuilder<AutoTestBulkDeleteApiResult> 
+     */
+    open class func apiV2AutoTestsDeleteWithRequestBuilder(autoTestBulkDeleteApiModel: AutoTestBulkDeleteApiModel? = nil) -> RequestBuilder<AutoTestBulkDeleteApiResult> {
+        let localVariablePath = "/api/v2/autoTests"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: autoTestBulkDeleteApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AutoTestBulkDeleteApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Set \"Flaky\" status for multiple autotests
      
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -20,13 +66,13 @@ open class AutoTestsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter flakyBulkModel: (body)  (optional)
+     - parameter autoTestFlakyBulkApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2AutoTestsFlakyBulkPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, flakyBulkModel: FlakyBulkModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2AutoTestsFlakyBulkPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, flakyBulkModel: flakyBulkModel).execute(apiResponseQueue) { result in
+    open class func apiV2AutoTestsFlakyBulkPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autoTestFlakyBulkApiModel: AutoTestFlakyBulkApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2AutoTestsFlakyBulkPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autoTestFlakyBulkApiModel: autoTestFlakyBulkApiModel).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -49,13 +95,13 @@ open class AutoTestsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter flakyBulkModel: (body)  (optional)
+     - parameter autoTestFlakyBulkApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2AutoTestsFlakyBulkPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, flakyBulkModel: FlakyBulkModel? = nil) -> RequestBuilder<Void> {
+    open class func apiV2AutoTestsFlakyBulkPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autoTestFlakyBulkApiModel: AutoTestFlakyBulkApiModel? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/autoTests/flaky/bulk"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: flakyBulkModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: autoTestFlakyBulkApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -138,13 +184,13 @@ open class AutoTestsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter autotestHistoricalResultSelectModel: (body)  (optional)
+     - parameter autoTestResultHistorySelectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2AutoTestsIdTestResultsSearchPost(id: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autotestHistoricalResultSelectModel: AutotestHistoricalResultSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AutotestResultHistoricalGetModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2AutoTestsIdTestResultsSearchPostWithRequestBuilder(id: id, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autotestHistoricalResultSelectModel: autotestHistoricalResultSelectModel).execute(apiResponseQueue) { result in
+    open class func apiV2AutoTestsIdTestResultsSearchPost(id: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autoTestResultHistorySelectApiModel: AutoTestResultHistorySelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AutoTestResultHistoryApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2AutoTestsIdTestResultsSearchPostWithRequestBuilder(id: id, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autoTestResultHistorySelectApiModel: autoTestResultHistorySelectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -168,16 +214,16 @@ open class AutoTestsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter autotestHistoricalResultSelectModel: (body)  (optional)
-     - returns: RequestBuilder<[AutotestResultHistoricalGetModel]> 
+     - parameter autoTestResultHistorySelectApiModel: (body)  (optional)
+     - returns: RequestBuilder<[AutoTestResultHistoryApiResult]> 
      */
-    open class func apiV2AutoTestsIdTestResultsSearchPostWithRequestBuilder(id: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autotestHistoricalResultSelectModel: AutotestHistoricalResultSelectModel? = nil) -> RequestBuilder<[AutotestResultHistoricalGetModel]> {
+    open class func apiV2AutoTestsIdTestResultsSearchPostWithRequestBuilder(id: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autoTestResultHistorySelectApiModel: AutoTestResultHistorySelectApiModel? = nil) -> RequestBuilder<[AutoTestResultHistoryApiResult]> {
         var localVariablePath = "/api/v2/autoTests/{id}/testResults/search"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: autotestHistoricalResultSelectModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: autoTestResultHistorySelectApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -194,7 +240,7 @@ open class AutoTestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AutotestResultHistoricalGetModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[AutoTestResultHistoryApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -312,13 +358,13 @@ open class AutoTestsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter autotestsSelectModel: (body)  (optional)
+     - parameter autoTestSearchApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2AutoTestsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autotestsSelectModel: AutotestsSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AutoTestModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2AutoTestsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autotestsSelectModel: autotestsSelectModel).execute(apiResponseQueue) { result in
+    open class func apiV2AutoTestsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autoTestSearchApiModel: AutoTestSearchApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AutoTestApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2AutoTestsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, autoTestSearchApiModel: autoTestSearchApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -340,13 +386,13 @@ open class AutoTestsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter autotestsSelectModel: (body)  (optional)
-     - returns: RequestBuilder<[AutoTestModel]> 
+     - parameter autoTestSearchApiModel: (body)  (optional)
+     - returns: RequestBuilder<[AutoTestApiResult]> 
      */
-    open class func apiV2AutoTestsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autotestsSelectModel: AutotestsSelectModel? = nil) -> RequestBuilder<[AutoTestModel]> {
+    open class func apiV2AutoTestsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, autoTestSearchApiModel: AutoTestSearchApiModel? = nil) -> RequestBuilder<[AutoTestApiResult]> {
         let localVariablePath = "/api/v2/autoTests/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: autotestsSelectModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: autoTestSearchApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -363,7 +409,7 @@ open class AutoTestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AutoTestModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[AutoTestApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -850,7 +896,7 @@ open class AutoTestsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTestRuns(id: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunShortModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getTestRuns(id: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestRunByAutoTestApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return getTestRunsWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -869,9 +915,9 @@ open class AutoTestsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Autotest internal (UUID) or global (integer) identifier 
-     - returns: RequestBuilder<[TestRunShortModel]> 
+     - returns: RequestBuilder<[TestRunByAutoTestApiResult]> 
      */
-    open class func getTestRunsWithRequestBuilder(id: String) -> RequestBuilder<[TestRunShortModel]> {
+    open class func getTestRunsWithRequestBuilder(id: String) -> RequestBuilder<[TestRunByAutoTestApiResult]> {
         var localVariablePath = "/api/v2/autoTests/{id}/testRuns"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -887,101 +933,7 @@ open class AutoTestsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestRunShortModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter id: (path)  
-     - parameter from: (query) Take results from this date (optional)
-     - parameter to: (query) Take results until this date (optional)
-     - parameter configurationIds: (query) Identifiers of test result configurations (optional)
-     - parameter testPlanIds: (query) Identifiers of test plans which contain test results (optional)
-     - parameter userIds: (query) Identifiers of users who set test results (optional)
-     - parameter outcomes: (query) List of outcomes of test results (optional)
-     - parameter isAutomated: (query) OBSOLETE: Use &#x60;Automated&#x60; instead (optional)
-     - parameter automated: (query) If result must consist of only manual/automated test results (optional)
-     - parameter testRunIds: (query) Identifiers of test runs which contain test results (optional)
-     - parameter skip: (query) Amount of items to be skipped (offset) (optional)
-     - parameter take: (query) Amount of items to be taken (limit) (optional)
-     - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
-     - parameter searchField: (query) Property name for searching (optional)
-     - parameter searchValue: (query) Value for searching (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    @discardableResult
-    open class func getWorkItemResults(id: String, from: Date? = nil, to: Date? = nil, configurationIds: [UUID]? = nil, testPlanIds: [UUID]? = nil, userIds: [UUID]? = nil, outcomes: [String]? = nil, isAutomated: Bool? = nil, automated: Bool? = nil, testRunIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestResultHistoryReportModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return getWorkItemResultsWithRequestBuilder(id: id, from: from, to: to, configurationIds: configurationIds, testPlanIds: testPlanIds, userIds: userIds, outcomes: outcomes, isAutomated: isAutomated, automated: automated, testRunIds: testRunIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /api/v2/autoTests/{id}/testResultHistory
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
-     - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
-     - parameter id: (path)  
-     - parameter from: (query) Take results from this date (optional)
-     - parameter to: (query) Take results until this date (optional)
-     - parameter configurationIds: (query) Identifiers of test result configurations (optional)
-     - parameter testPlanIds: (query) Identifiers of test plans which contain test results (optional)
-     - parameter userIds: (query) Identifiers of users who set test results (optional)
-     - parameter outcomes: (query) List of outcomes of test results (optional)
-     - parameter isAutomated: (query) OBSOLETE: Use &#x60;Automated&#x60; instead (optional)
-     - parameter automated: (query) If result must consist of only manual/automated test results (optional)
-     - parameter testRunIds: (query) Identifiers of test runs which contain test results (optional)
-     - parameter skip: (query) Amount of items to be skipped (offset) (optional)
-     - parameter take: (query) Amount of items to be taken (limit) (optional)
-     - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
-     - parameter searchField: (query) Property name for searching (optional)
-     - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[TestResultHistoryReportModel]> 
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    open class func getWorkItemResultsWithRequestBuilder(id: String, from: Date? = nil, to: Date? = nil, configurationIds: [UUID]? = nil, testPlanIds: [UUID]? = nil, userIds: [UUID]? = nil, outcomes: [String]? = nil, isAutomated: Bool? = nil, automated: Bool? = nil, testRunIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TestResultHistoryReportModel]> {
-        var localVariablePath = "/api/v2/autoTests/{id}/testResultHistory"
-        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
-        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "from": (wrappedValue: from?.encodeToJSON(), isExplode: true),
-            "to": (wrappedValue: to?.encodeToJSON(), isExplode: true),
-            "configurationIds": (wrappedValue: configurationIds?.encodeToJSON(), isExplode: true),
-            "testPlanIds": (wrappedValue: testPlanIds?.encodeToJSON(), isExplode: true),
-            "userIds": (wrappedValue: userIds?.encodeToJSON(), isExplode: true),
-            "outcomes": (wrappedValue: outcomes?.encodeToJSON(), isExplode: true),
-            "isAutomated": (wrappedValue: isAutomated?.encodeToJSON(), isExplode: true),
-            "automated": (wrappedValue: automated?.encodeToJSON(), isExplode: true),
-            "testRunIds": (wrappedValue: testRunIds?.encodeToJSON(), isExplode: true),
-            "Skip": (wrappedValue: skip?.encodeToJSON(), isExplode: true),
-            "Take": (wrappedValue: take?.encodeToJSON(), isExplode: true),
-            "OrderBy": (wrappedValue: orderBy?.encodeToJSON(), isExplode: true),
-            "SearchField": (wrappedValue: searchField?.encodeToJSON(), isExplode: true),
-            "SearchValue": (wrappedValue: searchValue?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<[TestResultHistoryReportModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestRunByAutoTestApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

@@ -23,7 +23,7 @@ Get unread Notifications total in last 7 days
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let isRead = true // Bool |  (optional)
 
@@ -73,7 +73,7 @@ Get all Notifications for current User
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let notificationType = NotificationTypeModel() // NotificationTypeModel |  (optional)
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -133,7 +133,7 @@ Set Notification as read
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let id = 987 // UUID | 
 
@@ -183,7 +183,7 @@ Set all Notifications as read
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 
 // Set all Notifications as read
@@ -229,7 +229,7 @@ Search Notifications for current User
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
+import OpenAPIClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)

@@ -77,3 +77,6 @@ public struct ConfigurationModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension ConfigurationModel: Identifiable {}

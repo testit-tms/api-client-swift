@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct SectionPostModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var name: String
     public var projectId: UUID
     public var parentId: UUID?

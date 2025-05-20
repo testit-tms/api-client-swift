@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **includeIds** | **Set<UUID>** | Collection of identifiers of work items which need to be included in result regardless of filtering | [optional] 
 **excludeIds** | **Set<UUID>** | Collection of identifiers of work items which need to be excluded from result regardless of filtering | [optional] 
 **projectIds** | **Set<UUID>** | Collection of project identifiers | [optional] 
+**links** | [**WorkItemLinkFilterModel**](WorkItemLinkFilterModel.md) | Specifies a work item filter by its links | [optional] 
 **name** | **String** | Name of work item | [optional] 
 **ids** | **Set<UUID>** | Specifies a work item unique IDs to search for | [optional] 
 **globalIds** | **Set<Int64>** | Collection of global (integer) identifiers | [optional] 

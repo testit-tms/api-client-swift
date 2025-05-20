@@ -128,6 +128,55 @@ open class AttachmentsAPI {
     }
 
     /**
+     Get attachment metadata
+     
+     - parameter id: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2AttachmentsIdMetadataGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: AttachmentModel?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2AttachmentsIdMetadataGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get attachment metadata
+     - GET /api/v2/attachments/{id}/metadata
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter id: (path)  
+     - returns: RequestBuilder<AttachmentModel> 
+     */
+    open class func apiV2AttachmentsIdMetadataGetWithRequestBuilder(id: UUID) -> RequestBuilder<AttachmentModel> {
+        var localVariablePath = "/api/v2/attachments/{id}/metadata"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AttachmentModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Get size of attachments storage in bytes
      
      - parameter apiResponseQueue: The queue on which api response is dispatched.

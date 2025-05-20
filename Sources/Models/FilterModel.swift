@@ -16,7 +16,7 @@ public struct FilterModel: Codable, JSONEncodable, Hashable {
     public var modifiedDate: Date?
     public var createdById: UUID
     public var modifiedById: UUID?
-    public var data: WorkItemSearchQueryModel
+    public var data: WorkItemSearchQueryModel?
     public var projectId: UUID
     public var fieldsToShow: AnyCodable?
     public var name: String
@@ -25,7 +25,7 @@ public struct FilterModel: Codable, JSONEncodable, Hashable {
     /** Indicates if the entity is deleted */
     public var isDeleted: Bool
 
-    public init(createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, data: WorkItemSearchQueryModel, projectId: UUID, fieldsToShow: AnyCodable? = nil, name: String, id: UUID, isDeleted: Bool) {
+    public init(createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, data: WorkItemSearchQueryModel? = nil, projectId: UUID, fieldsToShow: AnyCodable? = nil, name: String, id: UUID, isDeleted: Bool) {
         self.createdDate = createdDate
         self.modifiedDate = modifiedDate
         self.createdById = createdById
@@ -59,7 +59,7 @@ public struct FilterModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)
         try container.encode(createdById, forKey: .createdById)
         try container.encodeIfPresent(modifiedById, forKey: .modifiedById)
-        try container.encode(data, forKey: .data)
+        try container.encodeIfPresent(data, forKey: .data)
         try container.encode(projectId, forKey: .projectId)
         try container.encodeIfPresent(fieldsToShow, forKey: .fieldsToShow)
         try container.encode(name, forKey: .name)
@@ -68,3 +68,6 @@ public struct FilterModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension FilterModel: Identifiable {}

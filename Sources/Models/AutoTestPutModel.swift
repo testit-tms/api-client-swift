@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct AutoTestPutModel: Codable, JSONEncodable, Hashable {
 
-    static let workItemIdsForLinkWithAutoTestRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let workItemIdsForLinkWithAutoTestRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Used for search autotest. If value is null or equals Guid mask filled with zeros, search will be executed using ExternalId */
     public var id: UUID?
     public var workItemIdsForLinkWithAutoTest: Set<UUID>?
@@ -108,3 +108,6 @@ public struct AutoTestPutModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension AutoTestPutModel: Identifiable {}

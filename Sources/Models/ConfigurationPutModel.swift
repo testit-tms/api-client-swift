@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ConfigurationPutModel: Codable, JSONEncodable, Hashable {
 
-    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID
     public var description: String?
     public var parameters: [String: String]
@@ -52,3 +52,6 @@ public struct ConfigurationPutModel: Codable, JSONEncodable, Hashable {
     }
 }
 
+
+@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
+extension ConfigurationPutModel: Identifiable {}

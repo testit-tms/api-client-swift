@@ -156,6 +156,55 @@ open class WorkItemsCommentsAPI {
     }
 
     /**
+     Get work item comments count
+     
+     - parameter id: (path) Unique or global ID of the work item 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2WorkItemsIdCommentsCountGet(id: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WorkItemsIdCommentsCountGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get work item comments count
+     - GET /api/v2/workItems/{id}/comments/count
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter id: (path) Unique or global ID of the work item 
+     - returns: RequestBuilder<Int> 
+     */
+    open class func apiV2WorkItemsIdCommentsCountGetWithRequestBuilder(id: String) -> RequestBuilder<Int> {
+        var localVariablePath = "/api/v2/workItems/{id}/comments/count"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Int>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Get work item comments
      
      - parameter id: (path) Unique or global ID of the work item 
