@@ -25,7 +25,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let name = "name_example" // String |  (optional)
 
@@ -69,12 +69,12 @@ Name | Type | Description  | Notes
 
 Exclude CustomAttributes from CustomAttributeTemplate
 
- Use case   User sets attribute template internal identifier   User sets attribute internal identifiers    User runs method execution   System delete attributes from attributes tempalte
+ Use case  User sets attribute template internal identifier  User sets attribute internal identifiers  User runs method execution  System delete attributes from attributes tempalte
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Attribute template internal (UUID) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -121,12 +121,12 @@ Void (empty response body)
 
 Include CustomAttributes to CustomAttributeTemplate
 
- Use case   User sets attribute template internal identifier   User sets attribute internal identifiers    User runs method execution   System add attributes to attributes tempalte
+ Use case  User sets attribute template internal identifier  User sets attribute internal identifiers  User runs method execution  System add attributes to attributes tempalte
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Attribute template internal (UUID) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -173,12 +173,12 @@ Void (empty response body)
 
 Delete CustomAttributeTemplate
 
- Use case   User sets attribute template internal identifier   User runs method execution   System search and delete attribute template   System returns no content response
+ Use case  User sets attribute template internal identifier  User runs method execution  System search and delete attribute template  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Attribute template internal (UUID) identifier
 
@@ -223,12 +223,12 @@ Void (empty response body)
 
 Get CustomAttributeTemplate by ID
 
- Use case   User sets attribute template internal identifier    User runs method execution   System return attribute template (listed in response example)
+ Use case  User sets attribute template internal identifier  User runs method execution  System return attribute template (listed in response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | CustomAttributeTemplate internal (UUID) identifier
 
@@ -273,12 +273,12 @@ Name | Type | Description  | Notes
 
 Get CustomAttributeTemplate by name
 
- Use case   User sets attribute template name   User runs method execution   System search and return list of attribute templates (listed in response example)
+ Use case  User sets attribute template name  User runs method execution  System search and return list of attribute templates (listed in response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let name = "name_example" // String | CustomAttributeTemplate name for search
 
@@ -323,12 +323,12 @@ Name | Type | Description  | Notes
 
 Create CustomAttributeTemplate
 
- Use case   User sets attribute template parameters (listed in request example)   User runs method execution   System creates attribute template   System returns attribute template model (example listed in response parameters)
+ Use case  User sets attribute template parameters (listed in request example)  User runs method execution  System creates attribute template  System returns attribute template model (example listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let customAttributeTemplatePostModel = CustomAttributeTemplatePostModel(customAttributeIds: [123], name: "name_example") // CustomAttributeTemplatePostModel |  (optional)
 
@@ -376,7 +376,7 @@ Update custom attributes template
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let customAttributeTemplatePutModel = CustomAttributeTemplatePutModel(id: 123, customAttributeIds: [123], name: "name_example") // CustomAttributeTemplatePutModel |  (optional)
 
@@ -421,12 +421,12 @@ Void (empty response body)
 
 Search CustomAttributeTemplates
 
- Use case   User sets search params model (listed in request example)   User runs method execution   System return attribute templates (listed in response example)
+ Use case  User sets search params model (listed in request example)  User runs method execution  System return attribute templates (listed in response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)

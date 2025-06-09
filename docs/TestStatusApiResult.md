@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | 
 **name** | **String** |  | 
-**type** | [**TestStatusType**](TestStatusType.md) | Collection of possible status types | 
+**type** | [**TestStatusApiType**](TestStatusApiType.md) | Collection of possible status types | 
 **isSystem** | **Bool** |  | 
 **code** | **String** |  | 
 **description** | **String** |  | [optional] 

@@ -22,7 +22,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let name = "name_example" // String |  (optional)
 let isGlobal = true // Bool |  (optional)
@@ -71,7 +71,7 @@ Delete global attribute
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Unique ID of attribute
 
@@ -119,7 +119,7 @@ Edit global attribute
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Unique ID of attribute
 let globalCustomAttributeUpdateModel = GlobalCustomAttributeUpdateModel(name: "name_example", options: [CustomAttributeOptionModel(id: 123, isDeleted: false, value: "value_example", isDefault: false)], isEnabled: false, isRequired: false) // GlobalCustomAttributeUpdateModel |  (optional)
@@ -169,7 +169,7 @@ Create global attribute
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let globalCustomAttributePostModel = GlobalCustomAttributePostModel(name: "name_example", isEnabled: false, isRequired: false, options: [CustomAttributeOptionPostModel(value: "value_example", isDefault: false)], type: CustomAttributeTypesEnum()) // GlobalCustomAttributePostModel |  (optional)
 
@@ -217,7 +217,7 @@ Get attribute
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Unique ID of attribute
 
@@ -265,7 +265,7 @@ Search for attributes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)

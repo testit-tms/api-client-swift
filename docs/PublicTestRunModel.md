@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **autoTests** | [AutoTestModel] |  | 
 **testPoints** | [PublicTestPointModel] |  | 
 **status** | **String** |  | 
+**statusModel** | [**TestStatusModel**](TestStatusModel.md) |  | 
 **customParameters** | **[String: String]** |  | [optional] 
 **testRunDescription** | **String** |  | [optional] 
 

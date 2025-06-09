@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **modifiedDate** | **Date** | Date and time of the latest modification of Work Item | [optional] 
 **state** | [**WorkItemStates**](WorkItemStates.md) | The current state of Work Item | 
 **priority** | [**WorkItemPriorityModel**](WorkItemPriorityModel.md) | Work Item priority level | 
+**sourceType** | [**WorkItemSourceTypeModel**](WorkItemSourceTypeModel.md) | Work Item source type | 
 **isDeleted** | **Bool** | Flag determining whether Work Item is deleted | 
 **tagNames** | **[String]** | Array of tag names of Work Item | [optional] 
 **iterations** | [IterationModel] | Set of iterations related to Work Item | 

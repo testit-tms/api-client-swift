@@ -31,7 +31,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let externalProjectId = 987 // UUID | 
 let testResultsSelectApiModel = TestResultsSelectApiModel(filter: TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]), extractionModel: TestResultsExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestResultsSelectApiModel |  (optional)
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let externalProjectId = 987 // UUID | 
 let createDefectApiModel = CreateDefectApiModel(testResultIds: [123], form: ExternalFormCreateModel(possibleValues: "TODO", fields: [ExternalFormFieldModel(fieldId: "fieldId_example", fieldName: "fieldName_example", helpText: "helpText_example", type: "type_example", arrayValuesType: "arrayValuesType_example", defaultValue: 123, isCustomValueAllowed: false, autoCompleteUrl: "autoCompleteUrl_example", controlType: "controlType_example", minLength: 123, maxLength: 123, isRequired: false, min: 123, max: 123)], links: [ExternalFormLinkModel(name: "name_example", url: "url_example")], values: "TODO")) // CreateDefectApiModel |  (optional)
@@ -129,7 +129,7 @@ Get test result by ID aggregated with previous results
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result unique ID
 
@@ -177,7 +177,7 @@ Attach file to the test result
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result unique ID
 let attachmentId = 987 // UUID | Attachment unique ID
@@ -227,7 +227,7 @@ Get test result attachments meta-information
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result unique ID
 
@@ -275,7 +275,7 @@ Get test result by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result unique ID
 
@@ -323,7 +323,7 @@ Edit test result by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result unique ID
 let testResultUpdateV2Request = TestResultUpdateV2Request(failureClassIds: [123], outcome: TestResultOutcome(), statusCode: "statusCode_example", comment: "comment_example", links: [Link(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], stepResults: [StepResultApiModel(stepId: 123, outcome: "outcome_example", sharedStepVersionId: 123, sharedStepResults: [SharedStepResultApiModel(stepId: 123, outcome: "outcome_example")], comment: StepCommentApiModel(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [AttachmentApiResult(id: 123, fileId: "fileId_example", type: "type_example", size: 123, createdDate: Date(), modifiedDate: Date(), createdById: 123, modifiedById: 123, name: "name_example")], testResultId: 123, createdById: 123, modifiedById: 123, createdDate: Date(), modifiedDate: Date()))], attachments: [AttachmentUpdateRequest(id: 123)], durationInMs: 123, duration: 123, stepComments: [TestResultStepCommentUpdateRequest(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [nil])], setupResults: [AutoTestStepResultUpdateRequest(title: "title_example", description: "description_example", info: "info_example", startedOn: Date(), completedOn: Date(), duration: 123, outcome: AvailableTestResultOutcome(), stepResults: [nil], attachments: [nil], parameters: "TODO")], teardownResults: [nil], message: "message_example", trace: "trace_example") // TestResultUpdateV2Request |  (optional)
@@ -373,7 +373,7 @@ Get reruns
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result unique ID
 
@@ -421,7 +421,7 @@ Search for test results
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -479,7 +479,7 @@ Search for test results and extract statistics
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let testResultsFilterApiModel = TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]) // TestResultsFilterApiModel |  (optional)
 
@@ -524,12 +524,12 @@ Name | Type | Description  | Notes
 
 Upload and link attachment to TestResult
 
- Use case   User sets testResultId   User attaches a file   System creates attachment and links it to the test result   System returns attachment identifier
+ Use case  User sets testResultId  User attaches a file  System creates attachment and links it to the test result  System returns attachment identifier
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result internal identifier (guid format)
 let file = URL(string: "https://example.com")! // URL | Select file (optional)
@@ -576,12 +576,12 @@ Void (empty response body)
 
 Remove attachment and unlink from TestResult
 
- Use case   User sets testResultId and attachmentId   User attaches a file   User runs method execution   System deletes attachment and unlinks it from the test result   System returns attachment identifier
+ Use case  User sets testResultId and attachmentId  User attaches a file  User runs method execution  System deletes attachment and unlinks it from the test result  System returns attachment identifier
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result internal identifier (guid format)
 let attachmentId = 987 // UUID | Attachment internal identifier (guid format)
@@ -628,12 +628,12 @@ Void (empty response body)
 
 Get attachment of TestResult
 
- Use case   User sets attachmentId and testResultId   [Optional] User sets resize configuration   User runs method execution   System search attachments by the attachmentId and the testResultId                         [Optional] If resize configuration is set, System resizes the attachment according to the resize                      configuration                     [Optional] Otherwise, System does not resize the attachment   System returns attachment as a file
+ Use case  User sets attachmentId and testResultId  [Optional] User sets resize configuration  User runs method execution  System search attachments by the attachmentId and the testResultId  [Optional] If resize configuration is set, System resizes the attachment according to the resize                     configuration  [Optional] Otherwise, System does not resize the attachment  System returns attachment as a file
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let attachmentId = 987 // UUID | Attachment internal identifier (guid format)
 let id = 987 // UUID | Test result internal identifier (guid format)
@@ -690,12 +690,12 @@ Void (empty response body)
 
 Get Metadata of TestResult's attachment
 
- Use case   User sets attachmentId and testResultId   User runs method execution   System search attachment by the attachmentId and the testResultId   System returns attachment data
+ Use case  User sets attachmentId and testResultId  User runs method execution  System search attachment by the attachmentId and the testResultId  System returns attachment data
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result internal identifier (guid format)
 let attachmentId = 987 // UUID | Attachment internal identifier (guid format)
@@ -742,12 +742,12 @@ Name | Type | Description  | Notes
 
 Get all attachments of TestResult
 
- Use case   User sets testResultId   User runs method execution   System search all attachments of the test result   System returns attachments enumeration
+ Use case  User sets testResultId  User runs method execution  System search all attachments of the test result  System returns attachments enumeration
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Test result internal identifier (guid format)
 

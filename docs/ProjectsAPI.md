@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**apiV2ProjectsPurgeBulkPost**](ProjectsAPI.md#apiv2projectspurgebulkpost) | **POST** /api/v2/projects/purge/bulk | Purge multiple projects
 [**apiV2ProjectsRestoreBulkPost**](ProjectsAPI.md#apiv2projectsrestorebulkpost) | **POST** /api/v2/projects/restore/bulk | Restore multiple projects
 [**apiV2ProjectsSearchPost**](ProjectsAPI.md#apiv2projectssearchpost) | **POST** /api/v2/projects/search | Search for projects
+[**apiV2ProjectsShortsPost**](ProjectsAPI.md#apiv2projectsshortspost) | **POST** /api/v2/projects/shorts | Get projects short models
 [**createProject**](ProjectsAPI.md#createproject) | **POST** /api/v2/projects | Create project
 [**deleteProjectAutoTests**](ProjectsAPI.md#deleteprojectautotests) | **DELETE** /api/v2/projects/{id}/autoTests | Delete all autotests from project
 [**getAllProjects**](ProjectsAPI.md#getallprojects) | **GET** /api/v2/projects | Get all projects
@@ -38,12 +39,12 @@ Method | HTTP request | Description
 
 Add global attributes to project
 
- Use case   User sets project internal or global identifier and attributes identifiers   System search project   System relates global attributes with project   System returns no content response
+ Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -93,7 +94,7 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let createProjectApiModel = CreateProjectApiModel(name: "name_example", description: "description_example", isFavorite: false, workflowId: 123) // CreateProjectApiModel |  (optional)
 
@@ -140,7 +141,7 @@ Archive project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the project
 
@@ -188,7 +189,7 @@ Get failure classes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the project
 let isDeleted = true // Bool |  (optional)
@@ -238,7 +239,7 @@ Mark Project as favorite
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -283,12 +284,12 @@ Void (empty response body)
 
 Get Project filters
 
- Use case   User sets project internal or global identifier    User runs method execution   System returns project filters
+ Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -338,7 +339,7 @@ See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 690
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Unique or global Id of project
 let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
@@ -388,7 +389,7 @@ Purge the project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the project
 
@@ -436,7 +437,7 @@ Restore archived project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the project
 
@@ -481,12 +482,12 @@ Void (empty response body)
 
 Delete attribute from project's test plans
 
- Use case   User sets project internal or global identifier and attribute identifier   User runs method execution   System updates project and delete attribute from project for test plans   System returns no content response
+ Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let attributeId = 987 // UUID | 
@@ -533,12 +534,12 @@ Void (empty response body)
 
 Update attribute of project's test plans
 
- Use case   User sets project internal or global identifier and attribute model   User runs method execution   System updates project and project attribute for test plan   System returns no content response
+ Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let customAttributeTestPlanProjectRelationPutModel = CustomAttributeTestPlanProjectRelationPutModel(id: 123, isEnabled: false, isRequired: false) // CustomAttributeTestPlanProjectRelationPutModel |  (optional)
@@ -585,12 +586,12 @@ Void (empty response body)
 
 Get active Project TestRuns
 
- Use case   User sets project internal or global identifier    User runs method execution   System returns active testruns
+ Use case  User sets project internal or global identifier  User runs method execution  System returns active testruns
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -635,12 +636,12 @@ Name | Type | Description  | Notes
 
 Get Project TestRuns full models
 
- Use case   User sets project internal or global identifier    User sets query params    User runs method execution   System returns project test runs full models
+ Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let includeTestResults = true // Bool |  (optional)
@@ -716,7 +717,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let name = "name_example" // String | 
 
@@ -763,7 +764,7 @@ Purge multiple projects
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
 
@@ -811,7 +812,7 @@ Restore multiple projects
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
 
@@ -859,7 +860,7 @@ Search for projects
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -907,6 +908,56 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2ProjectsShortsPost**
+```swift
+    open class func apiV2ProjectsShortsPost(getShortProjectsApiModel: GetShortProjectsApiModel? = nil, completion: @escaping (_ data: ProjectShortApiResultReply?, _ error: Error?) -> Void)
+```
+
+Get projects short models
+
+ Use case  User sets query params  User runs method execution  System return projects short models
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let getShortProjectsApiModel = GetShortProjectsApiModel(inquiry: Inquiry(filter: CompositeFilter(filters: [123], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), permissionName: "permissionName_example", permissionType: "permissionType_example") // GetShortProjectsApiModel |  (optional)
+
+// Get projects short models
+ProjectsAPI.apiV2ProjectsShortsPost(getShortProjectsApiModel: getShortProjectsApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **getShortProjectsApiModel** | [**GetShortProjectsApiModel**](GetShortProjectsApiModel.md) |  | [optional] 
+
+### Return type
+
+[**ProjectShortApiResultReply**](ProjectShortApiResultReply.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **createProject**
 ```swift
     open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, completion: @escaping (_ data: ProjectModel?, _ error: Error?) -> Void)
@@ -914,12 +965,12 @@ Name | Type | Description  | Notes
 
 Create project
 
- Use case   User sets project parameters (listed in request example) and runs method execution   System creates project   System returns project model (example listed in response parameters)
+ Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let createProjectApiModel = CreateProjectApiModel(name: "name_example", description: "description_example", isFavorite: false, workflowId: 123) // CreateProjectApiModel |  (optional)
 
@@ -967,7 +1018,7 @@ Delete all autotests from project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the project
 
@@ -1012,12 +1063,12 @@ Void (empty response body)
 
 Get all projects
 
- Use case   [Optional] User sets isDeleted field value   [Optional] If User sets isDeleted field value as true, System search all deleted projects   [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted   If User did not set isDeleted field value, System search all projects   System returns array of all found projects(listed in response model)
+ Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let isDeleted = true // Bool | If result must consist of only actual/deleted parameters (optional)
 let projectName = "projectName_example" // String |  (optional)
@@ -1074,12 +1125,12 @@ Name | Type | Description  | Notes
 
 Get namespaces of autotests in project
 
- Use case   User sets project internal or global identifier and runs method execution   System search project   System search all autotest related to the project   System returns array of autotest with namespaces and classnames (listed in response)
+ Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -1124,12 +1175,12 @@ Name | Type | Description  | Notes
 
 Get project by ID
 
- Use case   User sets project internal or global identifier and runs method execution   System search project   System returns project (example listed in response parameters)
+ Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -1174,12 +1225,12 @@ Name | Type | Description  | Notes
 
 Get project test plans
 
- Use case   User sets project internal or global identifier   [Optional] User sets isDeleted field value   User runs method execution   System search project   [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project   [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted   [Optional] If User did not set isDeleted field value, System search all v related to project   System returns array of found test plans (listed in response model)
+ Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let isDeleted = true // Bool | If result must consist of only actual/archived test plans (optional)
@@ -1226,12 +1277,12 @@ Name | Type | Description  | Notes
 
 Get project test runs
 
- Use case   User sets project internal or global identifier   User runs method execution   System search project   System search all test runs related to project   System returns array of found test runs (listed in response model)
+ Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
 let notStarted = true // Bool | 
@@ -1300,12 +1351,12 @@ Name | Type | Description  | Notes
 
 Update project
 
- Use case   User sets project parameters (listed in request example) and runs method execution   System updates project   System returns updated project model (example listed in response parameters)
+ Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let updateProjectApiModel = UpdateProjectApiModel(id: 123, name: "name_example", description: "description_example", isFavorite: false, workflowId: 123) // UpdateProjectApiModel |  (optional)
 

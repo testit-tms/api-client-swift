@@ -5,7 +5,6 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**apiV2TagsDelete**](TagsAPI.md#apiv2tagsdelete) | **DELETE** /api/v2/tags | Delete tags
-[**apiV2TagsGet**](TagsAPI.md#apiv2tagsget) | **GET** /api/v2/tags | Get all Tags
 [**apiV2TagsIdDelete**](TagsAPI.md#apiv2tagsiddelete) | **DELETE** /api/v2/tags/{id} | Delete tag
 [**apiV2TagsPost**](TagsAPI.md#apiv2tagspost) | **POST** /api/v2/tags | Create tag
 [**apiV2TagsPut**](TagsAPI.md#apiv2tagsput) | **PUT** /api/v2/tags | Update tag
@@ -15,22 +14,22 @@ Method | HTTP request | Description
 
 # **apiV2TagsDelete**
 ```swift
-    open class func apiV2TagsDelete(tagSelectModel: TagSelectModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func apiV2TagsDelete(selectTagsApiModel: SelectTagsApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Delete tags
 
- Use case   User sets collection of tags internal (guid format) identifiers   System searches and deletes a collection of tags
+ Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let tagSelectModel = TagSelectModel(filter: TagsFilterModel(name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123]), extractionModel: TagExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TagSelectModel |  (optional)
+let selectTagsApiModel = SelectTagsApiModel(filter: TagsFilterApiModel(name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123]), extractionModel: TagsExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // SelectTagsApiModel |  (optional)
 
 // Delete tags
-TagsAPI.apiV2TagsDelete(tagSelectModel: tagSelectModel) { (response, error) in
+TagsAPI.apiV2TagsDelete(selectTagsApiModel: selectTagsApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,7 +45,7 @@ TagsAPI.apiV2TagsDelete(tagSelectModel: tagSelectModel) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagSelectModel** | [**TagSelectModel**](TagSelectModel.md) |  | [optional] 
+ **selectTagsApiModel** | [**SelectTagsApiModel**](SelectTagsApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -63,52 +62,6 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2TagsGet**
-```swift
-    open class func apiV2TagsGet(completion: @escaping (_ data: [TagModel]?, _ error: Error?) -> Void)
-```
-
-Get all Tags
-
- Use case   User runs method execution   System returns tags (listed in the response example)
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-
-// Get all Tags
-TagsAPI.apiV2TagsGet() { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**[TagModel]**](TagModel.md)
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **apiV2TagsIdDelete**
 ```swift
     open class func apiV2TagsIdDelete(id: UUID, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -116,12 +69,12 @@ This endpoint does not need any parameter.
 
 Delete tag
 
- Use case   User sets tag internal (guid format) identifier   System search and delete tag
+ Use case  User sets tag internal (guid format) identifier  System search and delete tag
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Tag internal (UUID) identifier
 
@@ -161,22 +114,22 @@ Void (empty response body)
 
 # **apiV2TagsPost**
 ```swift
-    open class func apiV2TagsPost(tagPostModel: TagPostModel? = nil, completion: @escaping (_ data: TagModel?, _ error: Error?) -> Void)
+    open class func apiV2TagsPost(createTagApiModel: CreateTagApiModel? = nil, completion: @escaping (_ data: TagApiResult?, _ error: Error?) -> Void)
 ```
 
 Create tag
 
- Use case   User sets tag model (listed in the request example)   User runs method execution   System creates tag   System returns tag model (listed in the response example)
+ Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let tagPostModel = TagPostModel(name: "name_example") // TagPostModel |  (optional)
+let createTagApiModel = CreateTagApiModel(name: "name_example") // CreateTagApiModel |  (optional)
 
 // Create tag
-TagsAPI.apiV2TagsPost(tagPostModel: tagPostModel) { (response, error) in
+TagsAPI.apiV2TagsPost(createTagApiModel: createTagApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -192,11 +145,11 @@ TagsAPI.apiV2TagsPost(tagPostModel: tagPostModel) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagPostModel** | [**TagPostModel**](TagPostModel.md) |  | [optional] 
+ **createTagApiModel** | [**CreateTagApiModel**](CreateTagApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**TagModel**](TagModel.md)
+[**TagApiResult**](TagApiResult.md)
 
 ### Authorization
 
@@ -211,23 +164,23 @@ Name | Type | Description  | Notes
 
 # **apiV2TagsPut**
 ```swift
-    open class func apiV2TagsPut(id: UUID? = nil, tagPutModel: TagPutModel? = nil, completion: @escaping (_ data: TagModel?, _ error: Error?) -> Void)
+    open class func apiV2TagsPut(id: UUID? = nil, updateTagApiModel: UpdateTagApiModel? = nil, completion: @escaping (_ data: TagApiResult?, _ error: Error?) -> Void)
 ```
 
 Update tag
 
- Use case   User sets tag ID and model (listed in the request example)   User runs method execution   System updates tag   System returns tag model (listed in the response example)
+ Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID |  (optional)
-let tagPutModel = TagPutModel(name: "name_example") // TagPutModel |  (optional)
+let updateTagApiModel = UpdateTagApiModel(name: "name_example") // UpdateTagApiModel |  (optional)
 
 // Update tag
-TagsAPI.apiV2TagsPut(id: id, tagPutModel: tagPutModel) { (response, error) in
+TagsAPI.apiV2TagsPut(id: id, updateTagApiModel: updateTagApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -244,11 +197,11 @@ TagsAPI.apiV2TagsPut(id: id, tagPutModel: tagPutModel) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **UUID** |  | [optional] 
- **tagPutModel** | [**TagPutModel**](TagPutModel.md) |  | [optional] 
+ **updateTagApiModel** | [**UpdateTagApiModel**](UpdateTagApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**TagModel**](TagModel.md)
+[**TagApiResult**](TagApiResult.md)
 
 ### Authorization
 
@@ -263,17 +216,17 @@ Name | Type | Description  | Notes
 
 # **apiV2TagsSearchGet**
 ```swift
-    open class func apiV2TagsSearchGet(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TagModel]?, _ error: Error?) -> Void)
+    open class func apiV2TagsSearchGet(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TagApiResult]?, _ error: Error?) -> Void)
 ```
 
 Search tags
 
- Use case   User runs method execution   System returns collection of tags (listed in the response example)
+ Use case  User runs method execution  System returns collection of tags (listed in the response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -306,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TagModel]**](TagModel.md)
+[**[TagApiResult]**](TagApiResult.md)
 
 ### Authorization
 
@@ -321,17 +274,17 @@ Name | Type | Description  | Notes
 
 # **apiV2TagsTestPlansTagsGet**
 ```swift
-    open class func apiV2TagsTestPlansTagsGet(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TagModel]?, _ error: Error?) -> Void)
+    open class func apiV2TagsTestPlansTagsGet(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TagApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get all Tags that are used in TestPlans
 
- Use case   User runs method execution   System returns tags (listed in the response example)
+ Use case  User runs method execution  System returns tags (listed in the response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -364,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TagModel]**](TagModel.md)
+[**[TagApiResult]**](TagApiResult.md)
 
 ### Authorization
 

@@ -21,11 +21,13 @@ public struct PublicTestRunModel: Codable, JSONEncodable, Hashable {
     public var configurations: [ConfigurationModel]
     public var autoTests: [AutoTestModel]
     public var testPoints: [PublicTestPointModel]
+    @available(*, deprecated, message: "This property is deprecated.")
     public var status: String
+    public var statusModel: TestStatusModel
     public var customParameters: [String: String]?
     public var testRunDescription: String?
 
-    public init(testRunId: UUID, testPlanId: UUID? = nil, testPlanGlobalId: Int64, name: String, productName: String? = nil, build: String? = nil, configurations: [ConfigurationModel], autoTests: [AutoTestModel], testPoints: [PublicTestPointModel], status: String, customParameters: [String: String]? = nil, testRunDescription: String? = nil) {
+    public init(testRunId: UUID, testPlanId: UUID? = nil, testPlanGlobalId: Int64, name: String, productName: String? = nil, build: String? = nil, configurations: [ConfigurationModel], autoTests: [AutoTestModel], testPoints: [PublicTestPointModel], status: String, statusModel: TestStatusModel, customParameters: [String: String]? = nil, testRunDescription: String? = nil) {
         self.testRunId = testRunId
         self.testPlanId = testPlanId
         self.testPlanGlobalId = testPlanGlobalId
@@ -36,6 +38,7 @@ public struct PublicTestRunModel: Codable, JSONEncodable, Hashable {
         self.autoTests = autoTests
         self.testPoints = testPoints
         self.status = status
+        self.statusModel = statusModel
         self.customParameters = customParameters
         self.testRunDescription = testRunDescription
     }
@@ -51,6 +54,7 @@ public struct PublicTestRunModel: Codable, JSONEncodable, Hashable {
         case autoTests
         case testPoints
         case status
+        case statusModel
         case customParameters
         case testRunDescription
     }
@@ -69,6 +73,7 @@ public struct PublicTestRunModel: Codable, JSONEncodable, Hashable {
         try container.encode(autoTests, forKey: .autoTests)
         try container.encode(testPoints, forKey: .testPoints)
         try container.encode(status, forKey: .status)
+        try container.encode(statusModel, forKey: .statusModel)
         try container.encodeIfPresent(customParameters, forKey: .customParameters)
         try container.encodeIfPresent(testRunDescription, forKey: .testRunDescription)
     }

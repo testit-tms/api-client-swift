@@ -15,13 +15,13 @@ open class TagsAPI {
     /**
      Delete tags
      
-     - parameter tagSelectModel: (body)  (optional)
+     - parameter selectTagsApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TagsDelete(tagSelectModel: TagSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TagsDeleteWithRequestBuilder(tagSelectModel: tagSelectModel).execute(apiResponseQueue) { result in
+    open class func apiV2TagsDelete(selectTagsApiModel: SelectTagsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TagsDeleteWithRequestBuilder(selectTagsApiModel: selectTagsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -34,17 +34,17 @@ open class TagsAPI {
     /**
      Delete tags
      - DELETE /api/v2/tags
-     -  Use case   User sets collection of tags internal (guid format) identifiers   System searches and deletes a collection of tags
+     -  Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter tagSelectModel: (body)  (optional)
+     - parameter selectTagsApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2TagsDeleteWithRequestBuilder(tagSelectModel: TagSelectModel? = nil) -> RequestBuilder<Void> {
+    open class func apiV2TagsDeleteWithRequestBuilder(selectTagsApiModel: SelectTagsApiModel? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/tags"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tagSelectModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: selectTagsApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -57,53 +57,6 @@ open class TagsAPI {
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-     Get all Tags
-     
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    @discardableResult
-    open class func apiV2TagsGet(apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TagModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TagsGetWithRequestBuilder().execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Get all Tags
-     - GET /api/v2/tags
-     -  Use case   User runs method execution   System returns tags (listed in the response example)
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
-     - returns: RequestBuilder<[TagModel]> 
-     */
-    @available(*, deprecated, message: "This operation is deprecated.")
-    open class func apiV2TagsGetWithRequestBuilder() -> RequestBuilder<[TagModel]> {
-        let localVariablePath = "/api/v2/tags"
-        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<[TagModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -128,7 +81,7 @@ open class TagsAPI {
     /**
      Delete tag
      - DELETE /api/v2/tags/{id}
-     -  Use case   User sets tag internal (guid format) identifier   System search and delete tag
+     -  Use case  User sets tag internal (guid format) identifier  System search and delete tag
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -159,13 +112,13 @@ open class TagsAPI {
     /**
      Create tag
      
-     - parameter tagPostModel: (body)  (optional)
+     - parameter createTagApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TagsPost(tagPostModel: TagPostModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TagModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TagsPostWithRequestBuilder(tagPostModel: tagPostModel).execute(apiResponseQueue) { result in
+    open class func apiV2TagsPost(createTagApiModel: CreateTagApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TagApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TagsPostWithRequestBuilder(createTagApiModel: createTagApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -178,17 +131,17 @@ open class TagsAPI {
     /**
      Create tag
      - POST /api/v2/tags
-     -  Use case   User sets tag model (listed in the request example)   User runs method execution   System creates tag   System returns tag model (listed in the response example)
+     -  Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter tagPostModel: (body)  (optional)
-     - returns: RequestBuilder<TagModel> 
+     - parameter createTagApiModel: (body)  (optional)
+     - returns: RequestBuilder<TagApiResult> 
      */
-    open class func apiV2TagsPostWithRequestBuilder(tagPostModel: TagPostModel? = nil) -> RequestBuilder<TagModel> {
+    open class func apiV2TagsPostWithRequestBuilder(createTagApiModel: CreateTagApiModel? = nil) -> RequestBuilder<TagApiResult> {
         let localVariablePath = "/api/v2/tags"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tagPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTagApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -198,7 +151,7 @@ open class TagsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TagModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TagApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -207,13 +160,13 @@ open class TagsAPI {
      Update tag
      
      - parameter id: (query)  (optional)
-     - parameter tagPutModel: (body)  (optional)
+     - parameter updateTagApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TagsPut(id: UUID? = nil, tagPutModel: TagPutModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TagModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2TagsPutWithRequestBuilder(id: id, tagPutModel: tagPutModel).execute(apiResponseQueue) { result in
+    open class func apiV2TagsPut(id: UUID? = nil, updateTagApiModel: UpdateTagApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TagApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TagsPutWithRequestBuilder(id: id, updateTagApiModel: updateTagApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -226,18 +179,18 @@ open class TagsAPI {
     /**
      Update tag
      - PUT /api/v2/tags
-     -  Use case   User sets tag ID and model (listed in the request example)   User runs method execution   System updates tag   System returns tag model (listed in the response example)
+     -  Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (query)  (optional)
-     - parameter tagPutModel: (body)  (optional)
-     - returns: RequestBuilder<TagModel> 
+     - parameter updateTagApiModel: (body)  (optional)
+     - returns: RequestBuilder<TagApiResult> 
      */
-    open class func apiV2TagsPutWithRequestBuilder(id: UUID? = nil, tagPutModel: TagPutModel? = nil) -> RequestBuilder<TagModel> {
+    open class func apiV2TagsPutWithRequestBuilder(id: UUID? = nil, updateTagApiModel: UpdateTagApiModel? = nil) -> RequestBuilder<TagApiResult> {
         let localVariablePath = "/api/v2/tags"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tagPutModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateTagApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -250,7 +203,7 @@ open class TagsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TagModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TagApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -267,7 +220,7 @@ open class TagsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TagsSearchGet(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TagModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2TagsSearchGet(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TagApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TagsSearchGetWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -281,7 +234,7 @@ open class TagsAPI {
     /**
      Search tags
      - GET /api/v2/tags/search
-     -  Use case   User runs method execution   System returns collection of tags (listed in the response example)
+     -  Use case  User runs method execution  System returns collection of tags (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -291,9 +244,9 @@ open class TagsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[TagModel]> 
+     - returns: RequestBuilder<[TagApiResult]> 
      */
-    open class func apiV2TagsSearchGetWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TagModel]> {
+    open class func apiV2TagsSearchGetWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TagApiResult]> {
         let localVariablePath = "/api/v2/tags/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -313,7 +266,7 @@ open class TagsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TagModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TagApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -330,7 +283,7 @@ open class TagsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TagsTestPlansTagsGet(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TagModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2TagsTestPlansTagsGet(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TagApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TagsTestPlansTagsGetWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -344,7 +297,7 @@ open class TagsAPI {
     /**
      Get all Tags that are used in TestPlans
      - GET /api/v2/tags/testPlansTags
-     -  Use case   User runs method execution   System returns tags (listed in the response example)
+     -  Use case  User runs method execution  System returns tags (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -354,9 +307,9 @@ open class TagsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[TagModel]> 
+     - returns: RequestBuilder<[TagApiResult]> 
      */
-    open class func apiV2TagsTestPlansTagsGetWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TagModel]> {
+    open class func apiV2TagsTestPlansTagsGetWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[TagApiResult]> {
         let localVariablePath = "/api/v2/tags/testPlansTags"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -376,7 +329,7 @@ open class TagsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TagModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TagApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

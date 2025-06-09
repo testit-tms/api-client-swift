@@ -329,7 +329,7 @@ open class TestSuitesAPI {
     /**
      Delete TestSuite
      - DELETE /api/v2/testSuites/{id}
-     -  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System deletes test suite   System returns no content response
+     -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System deletes test suite  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -379,7 +379,7 @@ open class TestSuitesAPI {
     /**
      Get Configurations By Id
      - GET /api/v2/testSuites/{id}/configurations
-     -  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search configurations related to the test points   System returns configurations array
+     -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configurations related to the test points  System returns configurations array
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -429,7 +429,7 @@ open class TestSuitesAPI {
     /**
      Get TestPoints By Id
      - GET /api/v2/testSuites/{id}/testPoints
-     -  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System returns test points array
+     -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System returns test points array
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -479,7 +479,7 @@ open class TestSuitesAPI {
     /**
      Get TestResults By Id
      - GET /api/v2/testSuites/{id}/testResults
-     -  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search test results related to the test points   System returns test results array
+     -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search test results related to the test points  System returns test results array
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -529,7 +529,7 @@ open class TestSuitesAPI {
     /**
      Get TestSuite by Id
      - GET /api/v2/testSuites/{id}
-     -  Use case   User sets test suite identifier   User runs method execution   System search test suite by identifier   System returns test suite
+     -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System returns test suite
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -586,7 +586,7 @@ open class TestSuitesAPI {
     /**
      Search WorkItems
      - POST /api/v2/testSuites/{id}/workItems/search
-     -  Use case   User sets test suite identifier   [Optional] User sets filter   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search work items related to the test points                         [Optional] User sets filter, system applies filter                     System returns work items array
+     -  Use case  User sets test suite identifier  [Optional] User sets filter  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search work items related to the test points  [Optional] User sets filter, system applies filter  System returns work items array
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -652,7 +652,7 @@ open class TestSuitesAPI {
     /**
      Set Configurations By TestSuite Id
      - POST /api/v2/testSuites/{id}/configurations
-     -  Use case   User sets test suite identifier   User sets collection of configuration identifiers   User runs method execution   System search test suite by identifier   System search test points related to the test suite   System search configuration   System restores(if exist) or creates test points with listed configuration   System returns no content response
+     -  Use case  User sets test suite identifier  User sets collection of configuration identifiers  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configuration  System restores(if exist) or creates test points with listed configuration  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

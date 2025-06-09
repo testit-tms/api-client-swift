@@ -14,12 +14,12 @@ Method | HTTP request | Description
 
 Get project sections
 
- Use case   User sets project internal or global identifier and runs method execution   System search project   System search all sections related to the project   System returns array of sections (listed in response)
+ Use case  User sets project internal or global identifier and runs method execution  System search project  System search all sections related to the project  System returns array of sections (listed in response)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)

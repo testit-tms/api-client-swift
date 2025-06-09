@@ -18,12 +18,12 @@ Method | HTTP request | Description
 
 Delete WorkItem comment
 
- Use case   User sets comment identifier   User runs method execution   System delete comment    System returns success status code
+ Use case  User sets comment identifier  User runs method execution  System delete comment  System returns success status code
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let commentId = 987 // UUID | Comment internal (guid format) identifier
 
@@ -68,12 +68,12 @@ Void (empty response body)
 
 Create WorkItem comment
 
- Use case   User sets comment properties (listed in request parameters)   User runs method execution   System creates comment    System returns comment model (listed in response parameters)
+ Use case  User sets comment properties (listed in request parameters)  User runs method execution  System creates comment  System returns comment model (listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let workItemCommentPostModel = WorkItemCommentPostModel(text: "text_example", workItemId: 123) // WorkItemCommentPostModel |  (optional)
 
@@ -121,7 +121,7 @@ Update work item comment
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let workItemCommentPutModel = WorkItemCommentPutModel(text: "text_example", id: 123) // WorkItemCommentPutModel |  (optional)
 
@@ -169,7 +169,7 @@ Get work item comments count
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the work item
 
@@ -217,7 +217,7 @@ Get work item comments
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the work item
 

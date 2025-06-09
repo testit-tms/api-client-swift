@@ -25,6 +25,7 @@ public struct SharedStepReferenceModel: Codable, JSONEncodable, Hashable {
     public var modifiedDate: Date?
     public var state: String
     public var priority: WorkItemPriorityModel
+    public var sourceType: WorkItemSourceTypeModel
     public var isDeleted: Bool
     /** used for versioning changes in workitem */
     public var versionId: UUID
@@ -32,7 +33,7 @@ public struct SharedStepReferenceModel: Codable, JSONEncodable, Hashable {
     public var sectionId: UUID
     public var tags: [TagModel]?
 
-    public init(id: UUID, globalId: Int64, name: String, entityTypeName: String, hasThisSharedStepAsStep: Bool, hasThisSharedStepAsPrecondition: Bool, hasThisSharedStepAsPostcondition: Bool, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: String, priority: WorkItemPriorityModel, isDeleted: Bool, versionId: UUID, isAutomated: Bool, sectionId: UUID, tags: [TagModel]? = nil) {
+    public init(id: UUID, globalId: Int64, name: String, entityTypeName: String, hasThisSharedStepAsStep: Bool, hasThisSharedStepAsPrecondition: Bool, hasThisSharedStepAsPostcondition: Bool, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: String, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, isDeleted: Bool, versionId: UUID, isAutomated: Bool, sectionId: UUID, tags: [TagModel]? = nil) {
         self.id = id
         self.globalId = globalId
         self.name = name
@@ -46,6 +47,7 @@ public struct SharedStepReferenceModel: Codable, JSONEncodable, Hashable {
         self.modifiedDate = modifiedDate
         self.state = state
         self.priority = priority
+        self.sourceType = sourceType
         self.isDeleted = isDeleted
         self.versionId = versionId
         self.isAutomated = isAutomated
@@ -67,6 +69,7 @@ public struct SharedStepReferenceModel: Codable, JSONEncodable, Hashable {
         case modifiedDate
         case state
         case priority
+        case sourceType
         case isDeleted
         case versionId
         case isAutomated
@@ -91,6 +94,7 @@ public struct SharedStepReferenceModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)
         try container.encode(state, forKey: .state)
         try container.encode(priority, forKey: .priority)
+        try container.encode(sourceType, forKey: .sourceType)
         try container.encode(isDeleted, forKey: .isDeleted)
         try container.encode(versionId, forKey: .versionId)
         try container.encode(isAutomated, forKey: .isAutomated)

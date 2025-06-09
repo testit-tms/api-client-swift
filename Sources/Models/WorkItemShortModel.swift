@@ -53,6 +53,8 @@ public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
     public var state: WorkItemStates
     /** Work Item priority level */
     public var priority: WorkItemPriorityModel
+    /** Work Item source type */
+    public var sourceType: WorkItemSourceTypeModel
     /** Flag determining whether Work Item is deleted */
     public var isDeleted: Bool
     /** Array of tag names of Work Item */
@@ -62,7 +64,7 @@ public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
     /** Set of links related to Work Item */
     public var links: [LinkShortModel]
 
-    public init(id: UUID, versionId: UUID, versionNumber: Int, name: String, entityTypeName: String, projectId: UUID, sectionId: UUID, sectionName: String, isAutomated: Bool, globalId: Int64, duration: Int, medianDuration: Int64? = nil, attributes: [String: AnyCodable]? = nil, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, isDeleted: Bool, tagNames: [String]? = nil, iterations: [IterationModel], links: [LinkShortModel]) {
+    public init(id: UUID, versionId: UUID, versionNumber: Int, name: String, entityTypeName: String, projectId: UUID, sectionId: UUID, sectionName: String, isAutomated: Bool, globalId: Int64, duration: Int, medianDuration: Int64? = nil, attributes: [String: AnyCodable]? = nil, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, isDeleted: Bool, tagNames: [String]? = nil, iterations: [IterationModel], links: [LinkShortModel]) {
         self.id = id
         self.versionId = versionId
         self.versionNumber = versionNumber
@@ -82,6 +84,7 @@ public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
         self.modifiedDate = modifiedDate
         self.state = state
         self.priority = priority
+        self.sourceType = sourceType
         self.isDeleted = isDeleted
         self.tagNames = tagNames
         self.iterations = iterations
@@ -108,6 +111,7 @@ public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
         case modifiedDate
         case state
         case priority
+        case sourceType
         case isDeleted
         case tagNames
         case iterations
@@ -137,6 +141,7 @@ public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)
         try container.encode(state, forKey: .state)
         try container.encode(priority, forKey: .priority)
+        try container.encode(sourceType, forKey: .sourceType)
         try container.encode(isDeleted, forKey: .isDeleted)
         try container.encodeIfPresent(tagNames, forKey: .tagNames)
         try container.encode(iterations, forKey: .iterations)

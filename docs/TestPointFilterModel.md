@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **statuses** | [TestPointStatus] | Specifies a test point statuses to search for | [optional] 
 **statusCodes** | **[String]** | Specifies a test point status codes to search for | [optional] 
 **priorities** | [WorkItemPriorityModel] | Specifies a test point priorities to search for | [optional] 
+**sourceTypes** | [WorkItemSourceTypeModel] | Specifies a test point source types to search for | [optional] 
 **isAutomated** | **Bool** | Specifies a test point automation status to search for | [optional] 
 **name** | **String** | Specifies a test point name to search for | [optional] 
 **configurationIds** | **[UUID]** | Specifies a test point configuration IDs to search for | [optional] 

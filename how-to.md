@@ -9,7 +9,7 @@
 ```
 2. 
 ```
-openapi-generator-cli generate -i  https://team-okp8.testit.software/swagger/v2/swagger.json -g swift5 --skip-validate-spec -o  ($PWD).path --additional-properties=swiftPackagePath=Sources,projectName=TestitApiClient,nonPublicApi=false
+openapi-generator-cli generate -i  https://team-okp8.testit.software/swagger/v2/swagger.json -g swift5 --skip-validate-spec -o  . --additional-properties=swiftPackagePath=Sources,projectName=TestitApiClient,nonPublicApi=false
 ```
 
 // https://openapi-generator.tech/docs/generators/swift5/

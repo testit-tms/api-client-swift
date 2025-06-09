@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **includeName** | **Bool** |  | 
 **includeSection** | **Bool** |  | 
 **includePriority** | **Bool** |  | 
+**includeSourceType** | **Bool** |  | 
 **includeAutomated** | **Bool** |  | 
 **includeStatus** | **Bool** |  | 
 **includeDuration** | **Bool** |  | 

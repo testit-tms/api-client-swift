@@ -19,12 +19,12 @@ Method | HTTP request | Description
 
 Create project attribute
 
- Use case   User sets attribute parameters (listed in request example) and runs method execution   System search project   System creates attribute and relates it to the project   System returns project attribute properties (example listed in response parameters)
+ Use case  User sets attribute parameters (listed in request example) and runs method execution  System search project  System creates attribute and relates it to the project  System returns project attribute properties (example listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let customAttributePostModel = CustomAttributePostModel(options: [CustomAttributeOptionPostModel(value: "value_example", isDefault: false)], type: CustomAttributeTypesEnum(), name: "name_example", isEnabled: false, isRequired: false, isGlobal: false) // CustomAttributePostModel |  (optional)
@@ -71,12 +71,12 @@ Name | Type | Description  | Notes
 
 Delete project attribute
 
- Use case   User sets project identifier and runs method execution   User sets attribute identifier   User runs method execution   System search project   System search and delete attribute   System returns no content response
+ Use case  User sets project identifier and runs method execution  User sets attribute identifier  User runs method execution  System search project  System search and delete attribute  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let attributeId = 987 // UUID | Project attribute internal (UUID)
@@ -123,12 +123,12 @@ Void (empty response body)
 
 Get project attribute
 
- Use case   User sets project internal or global identifier   User sets project attribute identifier   User runs method execution   System search project   System search project attribute    System returns project attribute (listed in response model)
+ Use case  User sets project internal or global identifier  User sets project attribute identifier  User runs method execution  System search project  System search project attribute  System returns project attribute (listed in response model)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let attributeId = 987 // UUID | Project attribute internal (UUID) or global (integer) identifier
@@ -175,12 +175,12 @@ Name | Type | Description  | Notes
 
 Get project attributes
 
- Use case   User sets project internal or global identifier   [Optional] User sets isDeleted field value   User runs method execution   System search project   [Optional] If User sets isDeleted field value as true, System search all deleted attributes related to project   [Optional] If User sets isDeleted field value as false, System search all attributes related to project which are not deleted   [Optional] If User did not set isDeleted field value, System search all attributes related to project   System returns array of found attributes (listed in response model)
+ Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted attributes related to project  [Optional] If User sets isDeleted field value as false, System search all attributes related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all attributes related to project  System returns array of found attributes (listed in response model)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let isDeleted = DeletionState() // DeletionState |  (optional)
@@ -230,7 +230,7 @@ Search for attributes used in the project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Unique or global project ID
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -290,7 +290,7 @@ Edit attribute of the project
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Unique or global project ID
 let customAttributePutModel = CustomAttributePutModel(id: 123, options: [CustomAttributeOptionModel(id: 123, isDeleted: false, value: "value_example", isDefault: false)], type: CustomAttributeTypesEnum(), isDeleted: false, name: "name_example", isEnabled: false, isRequired: false, isGlobal: false) // CustomAttributePutModel |  (optional)

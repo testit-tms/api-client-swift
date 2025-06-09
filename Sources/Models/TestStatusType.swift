@@ -10,11 +10,10 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Collection of possible status types */
 public enum TestStatusType: String, Codable, CaseIterable {
-    case pending = "Pending"
-    case inProgress = "InProgress"
-    case succeeded = "Succeeded"
     case failed = "Failed"
+    case inProgress = "InProgress"
     case incomplete = "Incomplete"
+    case succeeded = "Succeeded"
+    case pending = "Pending"
 }

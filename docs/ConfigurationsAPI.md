@@ -28,7 +28,7 @@ Create configurations by parameters
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let configurationByParametersModel = ConfigurationByParametersModel(projectId: 123, parameterIds: [123]) // ConfigurationByParametersModel |  (optional)
 
@@ -76,7 +76,7 @@ Delete multiple configurations
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let configurationSelectModel = ConfigurationSelectModel(filter: ConfigurationFilterModel(projectIds: [123], name: "name_example", isDeleted: false, globalIds: [123]), extractionModel: ConfigurationExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]), projectIds: nil)) // ConfigurationSelectModel |  (optional)
 
@@ -124,7 +124,7 @@ Delete configuration
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the configuration
 
@@ -174,7 +174,7 @@ See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 690
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Unique ID of the configuration
 let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
@@ -224,7 +224,7 @@ Permanently delete configuration from archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the configuration
 
@@ -272,7 +272,7 @@ Restore configuration from the archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the configuration
 
@@ -320,7 +320,7 @@ Permanently delete multiple archived configurations
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let configurationSelectModel = ConfigurationSelectModel(filter: ConfigurationFilterModel(projectIds: [123], name: "name_example", isDeleted: false, globalIds: [123]), extractionModel: ConfigurationExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]), projectIds: nil)) // ConfigurationSelectModel |  (optional)
 
@@ -368,7 +368,7 @@ Edit configuration
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let configurationPutModel = ConfigurationPutModel(id: 123, description: "description_example", parameters: "TODO", projectId: 123, isDefault: true, name: "name_example") // ConfigurationPutModel |  (optional)
 
@@ -416,7 +416,7 @@ Restore multiple configurations from the archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let configurationSelectModel = ConfigurationSelectModel(filter: ConfigurationFilterModel(projectIds: [123], name: "name_example", isDeleted: false, globalIds: [123]), extractionModel: ConfigurationExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]), projectIds: nil)) // ConfigurationSelectModel |  (optional)
 
@@ -464,7 +464,7 @@ Search for configurations
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -519,12 +519,12 @@ Name | Type | Description  | Notes
 
 Create Configuration
 
- Use case   User sets configuration model (listed in the request example)   User runs method execution   System creates configuration   System returns created configuration (listed in the response example)
+ Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let configurationPostModel = ConfigurationPostModel(description: "description_example", parameters: "TODO", projectId: 123, isDefault: true, name: "name_example") // ConfigurationPostModel |  (optional)
 
@@ -569,12 +569,12 @@ Name | Type | Description  | Notes
 
 Get configuration by internal or global ID
 
- Use case   User sets configuration internal (guid format) or global (integer format) identifier   User runs method execution   System search configuration using the identifier   System returns configuration
+ Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Configuration internal (guid format) or global (integer format) identifier
 
