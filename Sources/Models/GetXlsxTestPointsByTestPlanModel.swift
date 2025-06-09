@@ -15,6 +15,7 @@ public struct GetXlsxTestPointsByTestPlanModel: Codable, JSONEncodable, Hashable
     public var includeName: Bool
     public var includeSection: Bool
     public var includePriority: Bool
+    public var includeSourceType: Bool
     public var includeAutomated: Bool
     public var includeStatus: Bool
     public var includeDuration: Bool
@@ -27,10 +28,11 @@ public struct GetXlsxTestPointsByTestPlanModel: Codable, JSONEncodable, Hashable
     public var customAttributesIds: [UUID]?
     public var configurationIds: [UUID]?
 
-    public init(includeName: Bool, includeSection: Bool, includePriority: Bool, includeAutomated: Bool, includeStatus: Bool, includeDuration: Bool, includeCreationDate: Bool, includeAuthor: Bool, includeModificationDate: Bool, includeModifiedBy: Bool, includeTags: Bool, includeIterations: Bool, customAttributesIds: [UUID]? = nil, configurationIds: [UUID]? = nil) {
+    public init(includeName: Bool, includeSection: Bool, includePriority: Bool, includeSourceType: Bool, includeAutomated: Bool, includeStatus: Bool, includeDuration: Bool, includeCreationDate: Bool, includeAuthor: Bool, includeModificationDate: Bool, includeModifiedBy: Bool, includeTags: Bool, includeIterations: Bool, customAttributesIds: [UUID]? = nil, configurationIds: [UUID]? = nil) {
         self.includeName = includeName
         self.includeSection = includeSection
         self.includePriority = includePriority
+        self.includeSourceType = includeSourceType
         self.includeAutomated = includeAutomated
         self.includeStatus = includeStatus
         self.includeDuration = includeDuration
@@ -48,6 +50,7 @@ public struct GetXlsxTestPointsByTestPlanModel: Codable, JSONEncodable, Hashable
         case includeName
         case includeSection
         case includePriority
+        case includeSourceType
         case includeAutomated
         case includeStatus
         case includeDuration
@@ -68,6 +71,7 @@ public struct GetXlsxTestPointsByTestPlanModel: Codable, JSONEncodable, Hashable
         try container.encode(includeName, forKey: .includeName)
         try container.encode(includeSection, forKey: .includeSection)
         try container.encode(includePriority, forKey: .includePriority)
+        try container.encode(includeSourceType, forKey: .includeSourceType)
         try container.encode(includeAutomated, forKey: .includeAutomated)
         try container.encode(includeStatus, forKey: .includeStatus)
         try container.encode(includeDuration, forKey: .includeDuration)

@@ -18,7 +18,7 @@ Set autotest project settings.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | 
 let autoTestProjectSettingsPostModel = AutoTestProjectSettingsPostModel(isFlakyAuto: false, flakyStabilityPercentage: 123, flakyTestRunCount: 123, rerunEnabled: false, rerunAttemptsCount: 123) // AutoTestProjectSettingsPostModel |  (optional)
@@ -68,7 +68,7 @@ Get autotest project settings.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | 
 

@@ -12,45 +12,22 @@ import AnyCodable
 
 public struct TagModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public var id: UUID
+    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var name: String
-    public var createdDate: Date
-    public var modifiedDate: Date?
-    public var createdById: UUID
-    public var modifiedById: UUID?
 
-    public init(id: UUID, name: String, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil) {
-        self.id = id
+    public init(name: String) {
         self.name = name
-        self.createdDate = createdDate
-        self.modifiedDate = modifiedDate
-        self.createdById = createdById
-        self.modifiedById = modifiedById
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
         case name
-        case createdDate
-        case modifiedDate
-        case createdById
-        case modifiedById
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encode(createdDate, forKey: .createdDate)
-        try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)
-        try container.encode(createdById, forKey: .createdById)
-        try container.encodeIfPresent(modifiedById, forKey: .modifiedById)
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension TagModel: Identifiable {}

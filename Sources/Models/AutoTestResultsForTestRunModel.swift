@@ -23,7 +23,10 @@ public struct AutoTestResultsForTestRunModel: Codable, JSONEncodable, Hashable {
     /** Specifies the external ID of the autotest, which was specified when the test run was created. */
     public var autoTestExternalId: String
     /** Specifies the result of the autotest execution. */
-    public var outcome: AvailableTestResultOutcome
+    @available(*, deprecated, message: "This property is deprecated.")
+    public var outcome: AvailableTestResultOutcome?
+    /** Specifies the result of the autotest execution. */
+    public var statusCode: String?
     /** A comment for the result. */
     public var message: String?
     /** An extended comment or a stack trace. */
@@ -47,12 +50,13 @@ public struct AutoTestResultsForTestRunModel: Codable, JSONEncodable, Hashable {
     /** Specifies the results of the teardown steps. For information on supported values, see the `stepResults` parameter above. */
     public var teardownResults: [AttachmentPutModelAutoTestStepResultsModel]?
 
-    public init(configurationId: UUID, links: [LinkPostModel]? = nil, failureReasonNames: [FailureCategoryModel]? = nil, autoTestExternalId: String, outcome: AvailableTestResultOutcome, message: String? = nil, traces: String? = nil, startedOn: Date? = nil, completedOn: Date? = nil, duration: Int64? = nil, attachments: [AttachmentPutModel]? = nil, parameters: [String: String]? = nil, properties: [String: String]? = nil, stepResults: [AttachmentPutModelAutoTestStepResultsModel]? = nil, setupResults: [AttachmentPutModelAutoTestStepResultsModel]? = nil, teardownResults: [AttachmentPutModelAutoTestStepResultsModel]? = nil) {
+    public init(configurationId: UUID, links: [LinkPostModel]? = nil, failureReasonNames: [FailureCategoryModel]? = nil, autoTestExternalId: String, outcome: AvailableTestResultOutcome? = nil, statusCode: String? = nil, message: String? = nil, traces: String? = nil, startedOn: Date? = nil, completedOn: Date? = nil, duration: Int64? = nil, attachments: [AttachmentPutModel]? = nil, parameters: [String: String]? = nil, properties: [String: String]? = nil, stepResults: [AttachmentPutModelAutoTestStepResultsModel]? = nil, setupResults: [AttachmentPutModelAutoTestStepResultsModel]? = nil, teardownResults: [AttachmentPutModelAutoTestStepResultsModel]? = nil) {
         self.configurationId = configurationId
         self.links = links
         self.failureReasonNames = failureReasonNames
         self.autoTestExternalId = autoTestExternalId
         self.outcome = outcome
+        self.statusCode = statusCode
         self.message = message
         self.traces = traces
         self.startedOn = startedOn
@@ -72,6 +76,7 @@ public struct AutoTestResultsForTestRunModel: Codable, JSONEncodable, Hashable {
         case failureReasonNames
         case autoTestExternalId
         case outcome
+        case statusCode
         case message
         case traces
         case startedOn
@@ -93,7 +98,8 @@ public struct AutoTestResultsForTestRunModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(failureReasonNames, forKey: .failureReasonNames)
         try container.encode(autoTestExternalId, forKey: .autoTestExternalId)
-        try container.encode(outcome, forKey: .outcome)
+        try container.encodeIfPresent(outcome, forKey: .outcome)
+        try container.encodeIfPresent(statusCode, forKey: .statusCode)
         try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(traces, forKey: .traces)
         try container.encodeIfPresent(startedOn, forKey: .startedOn)

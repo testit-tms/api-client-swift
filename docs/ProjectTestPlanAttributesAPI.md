@@ -18,12 +18,12 @@ Method | HTTP request | Description
 
 Add attributes to project's test plans
 
- Use case   User sets project internal or global identifier and attributes identifiers   User runs method execution   System updates project and add attributes to project for test plans   System returns no content response
+ Use case  User sets project internal or global identifier and attributes identifiers  User runs method execution  System updates project and add attributes to project for test plans  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let requestBody = [123] // Set<UUID> |  (optional)
@@ -70,12 +70,12 @@ Void (empty response body)
 
 Delete attribute from project's test plans
 
- Use case   User sets project internal or global identifier and attribute identifier   User runs method execution   System updates project and delete attribute from project for test plans   System returns no content response
+ Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let attributeId = 987 // UUID | 
@@ -122,12 +122,12 @@ Void (empty response body)
 
 Get project's test plan attributes
 
- Use case   User runs method execution   System returns project for test plans attributes by project identifier
+ Use case  User runs method execution  System returns project for test plans attributes by project identifier
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 
@@ -175,7 +175,7 @@ Search for attributes used in the project test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Unique or global project ID
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -232,12 +232,12 @@ Name | Type | Description  | Notes
 
 Update attribute of project's test plans
 
- Use case   User sets project internal or global identifier and attribute model   User runs method execution   System updates project and project attribute for test plan   System returns no content response
+ Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let customAttributeTestPlanProjectRelationPutModel = CustomAttributeTestPlanProjectRelationPutModel(id: 123, isEnabled: false, isRequired: false) // CustomAttributeTestPlanProjectRelationPutModel |  (optional)

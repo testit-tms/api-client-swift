@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **tagNames** | **[String]** |  | [optional] 
 **duration** | **Int** |  | 
 **priority** | [**WorkItemPriorityModel**](WorkItemPriorityModel.md) |  | 
+**sourceType** | [**WorkItemSourceTypeModel**](WorkItemSourceTypeModel.md) |  | 
 **testSuiteNameBreadCrumbs** | **[String]** |  | [optional] 
 **groupCount** | **Int** |  | [optional] 
 **iteration** | [**IterationModel**](IterationModel.md) |  | [optional] 

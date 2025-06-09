@@ -35,11 +35,12 @@ public struct TestPointWithLastResultResponseModel: Codable, JSONEncodable, Hash
     public var tagNames: [String]?
     public var duration: Int
     public var priority: WorkItemPriorityModel
+    public var sourceType: WorkItemSourceTypeModel
     public var testSuiteNameBreadCrumbs: [String]?
     public var groupCount: Int?
     public var iteration: IterationModel?
 
-    public init(id: UUID, workItemName: String? = nil, isAutomated: Bool, testerId: UUID? = nil, workItemId: UUID, configurationId: UUID? = nil, testSuiteId: UUID, lastTestResult: LastTestResultModel? = nil, status: String? = nil, statusModel: TestStatusApiResult? = nil, workItemGlobalId: Int64? = nil, workItemEntityTypeName: String? = nil, sectionId: UUID, sectionName: String? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, attributes: [String: AnyCodable]? = nil, tagNames: [String]? = nil, duration: Int, priority: WorkItemPriorityModel, testSuiteNameBreadCrumbs: [String]? = nil, groupCount: Int? = nil, iteration: IterationModel? = nil) {
+    public init(id: UUID, workItemName: String? = nil, isAutomated: Bool, testerId: UUID? = nil, workItemId: UUID, configurationId: UUID? = nil, testSuiteId: UUID, lastTestResult: LastTestResultModel? = nil, status: String? = nil, statusModel: TestStatusApiResult? = nil, workItemGlobalId: Int64? = nil, workItemEntityTypeName: String? = nil, sectionId: UUID, sectionName: String? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, attributes: [String: AnyCodable]? = nil, tagNames: [String]? = nil, duration: Int, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, testSuiteNameBreadCrumbs: [String]? = nil, groupCount: Int? = nil, iteration: IterationModel? = nil) {
         self.id = id
         self.workItemName = workItemName
         self.isAutomated = isAutomated
@@ -62,6 +63,7 @@ public struct TestPointWithLastResultResponseModel: Codable, JSONEncodable, Hash
         self.tagNames = tagNames
         self.duration = duration
         self.priority = priority
+        self.sourceType = sourceType
         self.testSuiteNameBreadCrumbs = testSuiteNameBreadCrumbs
         self.groupCount = groupCount
         self.iteration = iteration
@@ -90,6 +92,7 @@ public struct TestPointWithLastResultResponseModel: Codable, JSONEncodable, Hash
         case tagNames
         case duration
         case priority
+        case sourceType
         case testSuiteNameBreadCrumbs
         case groupCount
         case iteration
@@ -121,6 +124,7 @@ public struct TestPointWithLastResultResponseModel: Codable, JSONEncodable, Hash
         try container.encodeIfPresent(tagNames, forKey: .tagNames)
         try container.encode(duration, forKey: .duration)
         try container.encode(priority, forKey: .priority)
+        try container.encode(sourceType, forKey: .sourceType)
         try container.encodeIfPresent(testSuiteNameBreadCrumbs, forKey: .testSuiteNameBreadCrumbs)
         try container.encodeIfPresent(groupCount, forKey: .groupCount)
         try container.encodeIfPresent(iteration, forKey: .iteration)

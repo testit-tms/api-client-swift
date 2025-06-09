@@ -17,7 +17,7 @@ public struct CreateTestPlanApiModel: Codable, JSONEncodable, Hashable {
     public static let buildRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
     public static let productNameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
     /** Test plan tag names collection */
-    public var tags: [TagPostModel]?
+    public var tags: [TagApiModel]?
     /** Test plan name */
     public var name: String
     /** Date and time of test plan start */
@@ -38,7 +38,7 @@ public struct CreateTestPlanApiModel: Codable, JSONEncodable, Hashable {
     public var attributes: [String: AnyCodable]
     public var testSuite: TestSuiteTestPlanApiModel?
 
-    public init(tags: [TagPostModel]? = nil, name: String, startDate: Date? = nil, endDate: Date? = nil, description: String? = nil, build: String? = nil, projectId: UUID, productName: String? = nil, hasAutomaticDurationTimer: Bool? = nil, attributes: [String: AnyCodable], testSuite: TestSuiteTestPlanApiModel? = nil) {
+    public init(tags: [TagApiModel]? = nil, name: String, startDate: Date? = nil, endDate: Date? = nil, description: String? = nil, build: String? = nil, projectId: UUID, productName: String? = nil, hasAutomaticDurationTimer: Bool? = nil, attributes: [String: AnyCodable], testSuite: TestSuiteTestPlanApiModel? = nil) {
         self.tags = tags
         self.name = name
         self.startDate = startDate

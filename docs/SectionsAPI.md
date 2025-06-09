@@ -26,7 +26,7 @@ See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 690
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Section internal (UUID) identifier
 let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
@@ -73,12 +73,12 @@ Void (empty response body)
 
 Create section
 
- Use case   User sets section properties (listed in request example)   User runs method execution   System creates section property values   System returns section (listed in response example)
+ Use case  User sets section properties (listed in request example)  User runs method execution  System creates section property values  System returns section (listed in response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let sectionPostModel = SectionPostModel(name: "name_example", projectId: 123, parentId: 123, preconditionSteps: [StepPostModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], postconditionSteps: [nil], attachments: [AttachmentPutModel(id: 123)]) // SectionPostModel |  (optional)
 
@@ -123,12 +123,12 @@ Name | Type | Description  | Notes
 
 Delete section
 
- Use case   User sets section identifier   User runs method execution   System search section by the identifier   System search and delete nested sections of the found section   System search and delete workitems related to the found nested sections   System deletes initial section and related workitem   System returns no content response
+ Use case  User sets section identifier  User runs method execution  System search section by the identifier  System search and delete nested sections of the found section  System search and delete workitems related to the found nested sections  System deletes initial section and related workitem  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Section internal (UUID) identifier
 
@@ -173,12 +173,12 @@ Void (empty response body)
 
 Get section
 
- Use case   User sets section internal (guid format) identifier   User runs method execution   System search section by the section identifier                 [Optional] If isDeleted flag equals false, deleted work items are not being searched.              If true, deleted work items are also being searched, null for all work items.                 System returns section
+ Use case  User sets section internal (guid format) identifier  User runs method execution  System search section by the section identifier  [Optional] If isDeleted flag equals false, deleted work items are not being searched.             If true, deleted work items are also being searched, null for all work items.  System returns section
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Section internal (UUID) identifier
 let isDeleted = DeletionState() // DeletionState |  (optional)
@@ -225,12 +225,12 @@ Name | Type | Description  | Notes
 
 Get section work items
 
- Use case   User sets section identifier   User runs method execution   System search section by the identifier   System search work items related to the section                 [Optional] If isDeleted flag equals false, deleted work items are not being searched.              If true, deleted work items are also being searched, null for all work items.                 System returns work item collection
+ Use case  User sets section identifier  User runs method execution  System search section by the identifier  System search work items related to the section  [Optional] If isDeleted flag equals false, deleted work items are not being searched.             If true, deleted work items are also being searched, null for all work items.  System returns work item collection
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Section internal (UUID) identifier
 let isDeleted = true // Bool | Requested section is deleted (optional) (default to false)
@@ -294,7 +294,7 @@ Move section with all work items into another section
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let sectionMoveModel = SectionMoveModel(id: 123, oldParentId: 123, parentId: 123, nextSectionId: 123) // SectionMoveModel |  (optional)
 
@@ -339,12 +339,12 @@ Void (empty response body)
 
 Rename section
 
- Use case   User sets section identifier and new name (listed in request example)   User runs method execution   System search section by the identifier   System updates section name using the new name   System returns no content response
+ Use case  User sets section identifier and new name (listed in request example)  User runs method execution  System search section by the identifier  System updates section name using the new name  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let sectionRenameModel = SectionRenameModel(id: 123, name: "name_example") // SectionRenameModel |  (optional)
 
@@ -389,12 +389,12 @@ Void (empty response body)
 
 Update section
 
- Use case   User sets section properties (listed in request example)   User runs method execution   System search section by the identifier   System updates section using the property values   System returns no content response
+ Use case  User sets section properties (listed in request example)  User runs method execution  System search section by the identifier  System updates section using the property values  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let sectionPutModel = SectionPutModel(id: 123, name: "name_example", projectId: 123, parentId: 123, preconditionSteps: [StepPutModel(id: 123, action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], postconditionSteps: [nil], attachments: [AttachmentPutModel(id: 123)]) // SectionPutModel |  (optional)
 

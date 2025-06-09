@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** | Unique ID of the attribute | 
-**options** | [CustomAttributeOptionModel] | Collection of the attribute options     Available for attributes of type &#x60;options&#x60; and &#x60;multiple options&#x60; only | 
+**options** | [CustomAttributeOptionModel] | Collection of the attribute options   Available for attributes of type &#x60;options&#x60; and &#x60;multiple options&#x60; only | 
 **type** | [**CustomAttributeTypesEnum**](CustomAttributeTypesEnum.md) | Type of the attribute | 
 **isDeleted** | **Bool** | Indicates if the attribute is deleted | 
 **name** | **String** | Name of the attribute | 

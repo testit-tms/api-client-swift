@@ -15,13 +15,13 @@ open class ParametersAPI {
     /**
      Create multiple parameters
      
-     - parameter parameterPostModel: (body)  (optional)
+     - parameter createParameterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ParametersBulkPost(parameterPostModel: [ParameterPostModel]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ParametersBulkPostWithRequestBuilder(parameterPostModel: parameterPostModel).execute(apiResponseQueue) { result in
+    open class func apiV2ParametersBulkPost(createParameterApiModel: [CreateParameterApiModel]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ParametersBulkPostWithRequestBuilder(createParameterApiModel: createParameterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -34,17 +34,17 @@ open class ParametersAPI {
     /**
      Create multiple parameters
      - POST /api/v2/parameters/bulk
-     -  Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System creates parameters   System returns list of parameter model (listed in the response example)
+     -  Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System creates parameters  System returns list of parameter model (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter parameterPostModel: (body)  (optional)
-     - returns: RequestBuilder<[ParameterModel]> 
+     - parameter createParameterApiModel: (body)  (optional)
+     - returns: RequestBuilder<[ParameterApiResult]> 
      */
-    open class func apiV2ParametersBulkPostWithRequestBuilder(parameterPostModel: [ParameterPostModel]? = nil) -> RequestBuilder<[ParameterModel]> {
+    open class func apiV2ParametersBulkPostWithRequestBuilder(createParameterApiModel: [CreateParameterApiModel]? = nil) -> RequestBuilder<[ParameterApiResult]> {
         let localVariablePath = "/api/v2/parameters/bulk"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parameterPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createParameterApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -54,7 +54,7 @@ open class ParametersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ParameterModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ParameterApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -62,13 +62,13 @@ open class ParametersAPI {
     /**
      Update multiple parameters
      
-     - parameter parameterPutModel: (body)  (optional)
+     - parameter updateParameterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ParametersBulkPut(parameterPutModel: [ParameterPutModel]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ParametersBulkPutWithRequestBuilder(parameterPutModel: parameterPutModel).execute(apiResponseQueue) { result in
+    open class func apiV2ParametersBulkPut(updateParameterApiModel: [UpdateParameterApiModel]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ParametersBulkPutWithRequestBuilder(updateParameterApiModel: updateParameterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -81,17 +81,17 @@ open class ParametersAPI {
     /**
      Update multiple parameters
      - PUT /api/v2/parameters/bulk
-     -  Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System updates parameters
+     -  Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System updates parameters
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter parameterPutModel: (body)  (optional)
+     - parameter updateParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2ParametersBulkPutWithRequestBuilder(parameterPutModel: [ParameterPutModel]? = nil) -> RequestBuilder<Void> {
+    open class func apiV2ParametersBulkPutWithRequestBuilder(updateParameterApiModel: [UpdateParameterApiModel]? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/parameters/bulk"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parameterPutModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateParameterApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -109,8 +109,9 @@ open class ParametersAPI {
     /**
      Get parameters as group
      
-     - parameter isDeleted: (query)  (optional)
      - parameter parameterKeyIds: (query)  (optional)
+     - parameter name: (query)  (optional)
+     - parameter isDeleted: (query)  (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -120,8 +121,8 @@ open class ParametersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ParametersGroupsGet(isDeleted: Bool? = nil, parameterKeyIds: Set<UUID>? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterGroupModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ParametersGroupsGetWithRequestBuilder(isDeleted: isDeleted, parameterKeyIds: parameterKeyIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
+    open class func apiV2ParametersGroupsGet(parameterKeyIds: Set<UUID>? = nil, name: String? = nil, isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterGroupApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ParametersGroupsGetWithRequestBuilder(parameterKeyIds: parameterKeyIds, name: name, isDeleted: isDeleted, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -134,29 +135,31 @@ open class ParametersAPI {
     /**
      Get parameters as group
      - GET /api/v2/parameters/groups
-     -  Use case   User runs method execution   System search parameters   System returns parameters models as groups (listed in the response example)
+     -  Use case  User runs method execution  System search parameters  System returns parameters models as groups (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
-     - parameter isDeleted: (query)  (optional)
      - parameter parameterKeyIds: (query)  (optional)
+     - parameter name: (query)  (optional)
+     - parameter isDeleted: (query)  (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[ParameterGroupModel]> 
+     - returns: RequestBuilder<[ParameterGroupApiResult]> 
      */
-    open class func apiV2ParametersGroupsGetWithRequestBuilder(isDeleted: Bool? = nil, parameterKeyIds: Set<UUID>? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ParameterGroupModel]> {
+    open class func apiV2ParametersGroupsGetWithRequestBuilder(parameterKeyIds: Set<UUID>? = nil, name: String? = nil, isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ParameterGroupApiResult]> {
         let localVariablePath = "/api/v2/parameters/groups"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "isDeleted": (wrappedValue: isDeleted?.encodeToJSON(), isExplode: true),
             "parameterKeyIds": (wrappedValue: parameterKeyIds?.encodeToJSON(), isExplode: true),
+            "name": (wrappedValue: name?.encodeToJSON(), isExplode: true),
+            "isDeleted": (wrappedValue: isDeleted?.encodeToJSON(), isExplode: true),
             "Skip": (wrappedValue: skip?.encodeToJSON(), isExplode: true),
             "Take": (wrappedValue: take?.encodeToJSON(), isExplode: true),
             "OrderBy": (wrappedValue: orderBy?.encodeToJSON(), isExplode: true),
@@ -170,7 +173,7 @@ open class ParametersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ParameterGroupModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ParameterGroupApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -197,7 +200,7 @@ open class ParametersAPI {
     /**
      Check existence parameter key in system
      - GET /api/v2/parameters/key/name/{name}/exists
-     -  Use case   User sets name of parameter key   User runs method execution   System search parameter key   System returns the flag for the existence of the parameter key in the system
+     -  Use case  User sets name of parameter key  User runs method execution  System search parameter key  System returns the flag for the existence of the parameter key in the system
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -247,7 +250,7 @@ open class ParametersAPI {
     /**
      Get all parameter key values
      - GET /api/v2/parameters/{key}/values
-     -  Use case   User sets parameter key (string format)   User runs method execution   System search parameter values using the key   System returns parameter
+     -  Use case  User sets parameter key (string format)  User runs method execution  System search parameter values using the key  System returns parameter
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -296,7 +299,7 @@ open class ParametersAPI {
     /**
      Get all parameter keys
      - GET /api/v2/parameters/keys
-     -  Use case   User runs method execution   System search all parameter keys   System returns parameter keys
+     -  Use case  User runs method execution  System search all parameter keys  System returns parameter keys
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -328,13 +331,13 @@ open class ParametersAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter parameterFilterModel: (body)  (optional)
+     - parameter parameterGroupsFilterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ParametersSearchGroupsPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterFilterModel: ParameterFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterGroupModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ParametersSearchGroupsPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterFilterModel: parameterFilterModel).execute(apiResponseQueue) { result in
+    open class func apiV2ParametersSearchGroupsPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterGroupsFilterApiModel: ParameterGroupsFilterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterGroupApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ParametersSearchGroupsPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterGroupsFilterApiModel: parameterGroupsFilterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -356,13 +359,13 @@ open class ParametersAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter parameterFilterModel: (body)  (optional)
-     - returns: RequestBuilder<[ParameterGroupModel]> 
+     - parameter parameterGroupsFilterApiModel: (body)  (optional)
+     - returns: RequestBuilder<[ParameterGroupApiResult]> 
      */
-    open class func apiV2ParametersSearchGroupsPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterFilterModel: ParameterFilterModel? = nil) -> RequestBuilder<[ParameterGroupModel]> {
+    open class func apiV2ParametersSearchGroupsPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterGroupsFilterApiModel: ParameterGroupsFilterApiModel? = nil) -> RequestBuilder<[ParameterGroupApiResult]> {
         let localVariablePath = "/api/v2/parameters/search/groups"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parameterFilterModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parameterGroupsFilterApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -379,7 +382,7 @@ open class ParametersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ParameterGroupModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ParameterGroupApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -392,13 +395,13 @@ open class ParametersAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter parameterFilterModel: (body)  (optional)
+     - parameter parametersFilterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ParametersSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterFilterModel: ParameterFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterModel]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ParametersSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterFilterModel: parameterFilterModel).execute(apiResponseQueue) { result in
+    open class func apiV2ParametersSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parametersFilterApiModel: ParametersFilterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ParametersSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parametersFilterApiModel: parametersFilterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -420,13 +423,13 @@ open class ParametersAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - parameter parameterFilterModel: (body)  (optional)
-     - returns: RequestBuilder<[ParameterModel]> 
+     - parameter parametersFilterApiModel: (body)  (optional)
+     - returns: RequestBuilder<[ParameterApiResult]> 
      */
-    open class func apiV2ParametersSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterFilterModel: ParameterFilterModel? = nil) -> RequestBuilder<[ParameterModel]> {
+    open class func apiV2ParametersSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parametersFilterApiModel: ParametersFilterApiModel? = nil) -> RequestBuilder<[ParameterApiResult]> {
         let localVariablePath = "/api/v2/parameters/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parameterFilterModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parametersFilterApiModel)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
@@ -443,7 +446,7 @@ open class ParametersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ParameterModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ParameterApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -451,13 +454,13 @@ open class ParametersAPI {
     /**
      Create parameter
      
-     - parameter parameterPostModel: (body)  (optional)
+     - parameter createParameterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createParameter(parameterPostModel: ParameterPostModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ParameterModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return createParameterWithRequestBuilder(parameterPostModel: parameterPostModel).execute(apiResponseQueue) { result in
+    open class func createParameter(createParameterApiModel: CreateParameterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ParameterApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return createParameterWithRequestBuilder(createParameterApiModel: createParameterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -470,17 +473,17 @@ open class ParametersAPI {
     /**
      Create parameter
      - POST /api/v2/parameters
-     -  Use case   User sets parameter model (listed in the request example)   User runs method execution   System creates parameter   System returns parameter model
+     -  Use case  User sets parameter model (listed in the request example)  User runs method execution  System creates parameter  System returns parameter model
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter parameterPostModel: (body)  (optional)
-     - returns: RequestBuilder<ParameterModel> 
+     - parameter createParameterApiModel: (body)  (optional)
+     - returns: RequestBuilder<ParameterApiResult> 
      */
-    open class func createParameterWithRequestBuilder(parameterPostModel: ParameterPostModel? = nil) -> RequestBuilder<ParameterModel> {
+    open class func createParameterWithRequestBuilder(createParameterApiModel: CreateParameterApiModel? = nil) -> RequestBuilder<ParameterApiResult> {
         let localVariablePath = "/api/v2/parameters"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parameterPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createParameterApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -490,7 +493,7 @@ open class ParametersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ParameterModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ParameterApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -617,7 +620,7 @@ open class ParametersAPI {
     /**
      Delete parameter
      - DELETE /api/v2/parameters/{id}
-     -  Use case   User sets parameter internal (guid format) identifier   System search and delete parameter   System returns deleted parameter
+     -  Use case  User sets parameter internal (guid format) identifier  System search and delete parameter  System returns deleted parameter
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -658,7 +661,7 @@ open class ParametersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAllParameters(isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAllParameters(isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return getAllParametersWithRequestBuilder(isDeleted: isDeleted, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -672,7 +675,7 @@ open class ParametersAPI {
     /**
      Get all parameters
      - GET /api/v2/parameters
-     -  Use case   [Optional] User sets isDeleted field value   [Optional] If User sets isDeleted field value as true, System search all deleted parameters   [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted   If User did not set isDeleted field value, System search all parameters   System returns array of all found parameters(listed in response model)
+     -  Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted parameters  [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted  If User did not set isDeleted field value, System search all parameters  System returns array of all found parameters(listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -683,9 +686,9 @@ open class ParametersAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[ParameterModel]> 
+     - returns: RequestBuilder<[ParameterApiResult]> 
      */
-    open class func getAllParametersWithRequestBuilder(isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ParameterModel]> {
+    open class func getAllParametersWithRequestBuilder(isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ParameterApiResult]> {
         let localVariablePath = "/api/v2/parameters"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -706,7 +709,7 @@ open class ParametersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ParameterModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ParameterApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -719,7 +722,7 @@ open class ParametersAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getParameterById(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ParameterModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getParameterById(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ParameterApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return getParameterByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -733,14 +736,14 @@ open class ParametersAPI {
     /**
      Get parameter by ID
      - GET /api/v2/parameters/{id}
-     -  Use case   User sets parameter internal (guid format) identifier   User runs method execution   System search parameter using the identifier   System returns parameter
+     -  Use case  User sets parameter internal (guid format) identifier  User runs method execution  System search parameter using the identifier  System returns parameter
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Parameter internal (UUID) identifier 
-     - returns: RequestBuilder<ParameterModel> 
+     - returns: RequestBuilder<ParameterApiResult> 
      */
-    open class func getParameterByIdWithRequestBuilder(id: UUID) -> RequestBuilder<ParameterModel> {
+    open class func getParameterByIdWithRequestBuilder(id: UUID) -> RequestBuilder<ParameterApiResult> {
         var localVariablePath = "/api/v2/parameters/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -756,7 +759,7 @@ open class ParametersAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ParameterModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ParameterApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -764,13 +767,13 @@ open class ParametersAPI {
     /**
      Update parameter
      
-     - parameter parameterPutModel: (body)  (optional)
+     - parameter updateParameterApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateParameter(parameterPutModel: ParameterPutModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateParameterWithRequestBuilder(parameterPutModel: parameterPutModel).execute(apiResponseQueue) { result in
+    open class func updateParameter(updateParameterApiModel: UpdateParameterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return updateParameterWithRequestBuilder(updateParameterApiModel: updateParameterApiModel).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -783,17 +786,17 @@ open class ParametersAPI {
     /**
      Update parameter
      - PUT /api/v2/parameters
-     -  Use case   User sets parameter updated properties(listed in the request example)   User runs method execution   System updated parameter using updated properties   System returns no content response
+     -  Use case  User sets parameter updated properties(listed in the request example)  User runs method execution  System updated parameter using updated properties  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter parameterPutModel: (body)  (optional)
+     - parameter updateParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func updateParameterWithRequestBuilder(parameterPutModel: ParameterPutModel? = nil) -> RequestBuilder<Void> {
+    open class func updateParameterWithRequestBuilder(updateParameterApiModel: UpdateParameterApiModel? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/parameters"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parameterPutModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateParameterApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 

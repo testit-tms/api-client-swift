@@ -39,12 +39,12 @@ Method | HTTP request | Description
 
 Upload and link attachment to WorkItem
 
- Use case   User sets workItemId   User attaches a file   System creates attachment and links it to the work item   System returns attachment identifier
+ Use case  User sets workItemId  User attaches a file  System creates attachment and links it to the work item  System returns attachment identifier
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Work item internal identifier (guid format)
 let file = URL(string: "https://example.com")! // URL | Select file (optional)
@@ -91,12 +91,12 @@ Void (empty response body)
 
 Transform CheckList to TestCase
 
- Use case   User sets checklist identifier   User runs method execution   System transform CheckList to TestCase
+ Use case  User sets checklist identifier  User runs method execution  System transform CheckList to TestCase
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 
@@ -141,12 +141,12 @@ Name | Type | Description  | Notes
 
 Get change history of WorkItem
 
- Use case   User sets work item identifier   User runs method execution   System return change history of WorkItem
+ Use case  User sets work item identifier  User runs method execution  System return change history of WorkItem
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -201,12 +201,12 @@ Name | Type | Description  | Notes
 
 Delete like from WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System delete like from WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System delete like from WorkItem
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 
@@ -251,12 +251,12 @@ Void (empty response body)
 
 Set like to WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System set like to WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System set like to WorkItem
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 
@@ -301,12 +301,12 @@ Void (empty response body)
 
 Get likes count of WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System return likes count of WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System return likes count of WorkItem
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 
@@ -351,12 +351,12 @@ Name | Type | Description  | Notes
 
 Get likes of WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System return likes of WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System return likes of WorkItem
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 
@@ -401,12 +401,12 @@ Name | Type | Description  | Notes
 
 Get test results history of WorkItem
 
- Use case   User sets WorkItem identifier   User runs method execution   System return test results history of WorkItem
+ Use case  User sets WorkItem identifier  User runs method execution  System return test results history of WorkItem
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 let from = Date() // Date | Take results from this date (optional)
@@ -481,12 +481,12 @@ Name | Type | Description  | Notes
 
 Set WorkItem as actual
 
- Use case   User sets work item identifier   User runs method execution   System set WorkItem as actual
+ Use case  User sets work item identifier  User runs method execution  System set WorkItem as actual
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 let versionId = 987 // UUID | 
@@ -536,7 +536,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -590,12 +590,12 @@ Name | Type | Description  | Notes
 
 Move WorkItem to another section
 
- Use case   User sets WorkItem identifier   User runs method execution   System move WorkItem to another section
+ Use case  User sets WorkItem identifier  User runs method execution  System move WorkItem to another section
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let workItemMovePostModel = WorkItemMovePostModel(id: 123, newSectionId: 123, oldSectionId: 123, nextWorkItemId: 123) // WorkItemMovePostModel |  (optional)
 
@@ -643,14 +643,14 @@ Search for work items
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false)), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
+let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false)), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
 
 // Search for work items
 WorkItemsAPI.apiV2WorkItemsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel) { (response, error) in
@@ -698,12 +698,12 @@ Name | Type | Description  | Notes
 
 Get SharedStep references in sections
 
- Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+ Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let sharedStepId = 987 // UUID | 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -760,12 +760,12 @@ Name | Type | Description  | Notes
 
 Get SharedStep references in work items
 
- Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+ Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let sharedStepId = 987 // UUID | 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -822,12 +822,12 @@ Name | Type | Description  | Notes
 
 Get SharedStep references
 
- Use case   User sets SharedStep identifier   User runs method execution   System return SharedStep references
+ Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let sharedStepId = 987 // UUID | 
 
@@ -867,22 +867,22 @@ Name | Type | Description  | Notes
 
 # **createWorkItem**
 ```swift
-    open class func createWorkItem(workItemPostModel: WorkItemPostModel? = nil, completion: @escaping (_ data: WorkItemModel?, _ error: Error?) -> Void)
+    open class func createWorkItem(createWorkItemApiModel: CreateWorkItemApiModel? = nil, completion: @escaping (_ data: WorkItemModel?, _ error: Error?) -> Void)
 ```
 
 Create Test Case, Checklist or Shared Step
 
- Use case   User sets work item properties (listed in request parameters)   User runs method execution   System creates work item by identifier   System returns work item model (listed in response parameters)
+ Use case  User sets work item properties (listed in request parameters)  User runs method execution  System creates work item by identifier  System returns work item model (listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let workItemPostModel = WorkItemPostModel(entityTypeName: WorkItemEntityTypes(), description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), steps: [StepPostModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagPostModel(name: "name_example")], attachments: [AttachmentPutModel(id: 123)], iterations: [IterationPutModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example", projectId: 123, sectionId: 123, autoTests: [AutoTestIdModel(id: 123)]) // WorkItemPostModel |  (optional)
+let createWorkItemApiModel = CreateWorkItemApiModel(entityTypeName: WorkItemEntityTypes(), description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), steps: [CreateStepApiModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagModel(name: "name_example")], attachments: [AssignAttachmentApiModel(id: 123)], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example", projectId: 123, sectionId: 123, autoTests: [AutoTestIdModel(id: 123)]) // CreateWorkItemApiModel |  (optional)
 
 // Create Test Case, Checklist or Shared Step
-WorkItemsAPI.createWorkItem(workItemPostModel: workItemPostModel) { (response, error) in
+WorkItemsAPI.createWorkItem(createWorkItemApiModel: createWorkItemApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -898,7 +898,7 @@ WorkItemsAPI.createWorkItem(workItemPostModel: workItemPostModel) { (response, e
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workItemPostModel** | [**WorkItemPostModel**](WorkItemPostModel.md) |  | [optional] 
+ **createWorkItemApiModel** | [**CreateWorkItemApiModel**](CreateWorkItemApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -922,14 +922,14 @@ Name | Type | Description  | Notes
 
 Delete all links AutoTests from WorkItem by Id or GlobalId
 
- Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search and delete all autotests, related to found work item   System returns no content response
+ Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search and delete all autotests, related to found work item  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
 
 // Delete all links AutoTests from WorkItem by Id or GlobalId
 WorkItemsAPI.deleteAllWorkItemsFromAutoTest(id: id) { (response, error) in
@@ -948,7 +948,7 @@ WorkItemsAPI.deleteAllWorkItemsFromAutoTest(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
 
 ### Return type
 
@@ -972,14 +972,14 @@ Void (empty response body)
 
 Delete Test Case, Checklist or Shared Step by Id or GlobalId
 
- Use case   User sets work item identifier   User runs method execution   System deletes work item   System returns no content response
+ Use case  User sets work item identifier  User runs method execution  System deletes work item  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
 
 // Delete Test Case, Checklist or Shared Step by Id or GlobalId
 WorkItemsAPI.deleteWorkItem(id: id) { (response, error) in
@@ -998,7 +998,7 @@ WorkItemsAPI.deleteWorkItem(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
 
 ### Return type
 
@@ -1022,14 +1022,14 @@ Void (empty response body)
 
 Get all AutoTests linked to WorkItem by Id or GlobalId
 
- Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search all autotests, related to found work item   System returns list of found autotests
+ Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search all autotests, related to found work item  System returns list of found autotests
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
 
 // Get all AutoTests linked to WorkItem by Id or GlobalId
 WorkItemsAPI.getAutoTestsForWorkItem(id: id) { (response, error) in
@@ -1048,7 +1048,7 @@ WorkItemsAPI.getAutoTestsForWorkItem(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
 
 ### Return type
 
@@ -1075,9 +1075,9 @@ Get iterations by work item Id or GlobalId
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
 let versionId = 987 // UUID | WorkItem version (guid format) identifier (optional)
 let versionNumber = 987 // Int | WorkItem version number (0 is the last version)\" (optional)
 
@@ -1098,7 +1098,7 @@ WorkItemsAPI.getIterations(id: id, versionId: versionId, versionNumber: versionN
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
  **versionId** | **UUID** | WorkItem version (guid format) identifier | [optional] 
  **versionNumber** | **Int** | WorkItem version number (0 is the last version)\&quot; | [optional] 
 
@@ -1124,14 +1124,14 @@ Name | Type | Description  | Notes
 
 Get Test Case, Checklist or Shared Step by Id or GlobalId
 
- Use case   User sets work item identifier   [Optional] User sets work item version identifier   [Optional] User sets work item version number   User runs method execution   System search work item by identifier   [Optional] if User sets work item version identifier, system search work item version by identifier.   [Optional] if user sets work item version number, system search work item version by number   Otherwise, system search last work item version   System returns work item 
+ Use case  User sets work item identifier  [Optional] User sets work item version identifier  [Optional] User sets work item version number  User runs method execution  System search work item by identifier  [Optional] if User sets work item version identifier, system search work item version by identifier.  [Optional] if user sets work item version number, system search work item version by number  Otherwise, system search last work item version  System returns work item
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
 let versionId = 987 // UUID | WorkItem version (guid format) identifier\" (optional)
 let versionNumber = 987 // Int | WorkItem version number (0 is the last version)\" (optional)
 
@@ -1152,7 +1152,7 @@ WorkItemsAPI.getWorkItemById(id: id, versionId: versionId, versionNumber: versio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
  **versionId** | **UUID** | WorkItem version (guid format) identifier\&quot; | [optional] 
  **versionNumber** | **Int** | WorkItem version number (0 is the last version)\&quot; | [optional] 
 
@@ -1178,12 +1178,12 @@ Name | Type | Description  | Notes
 
 Get WorkItem chronology by Id or GlobalId
 
- Use case   User sets work item identifier   User runs method execution   System search work item by identifier   System search test results of all autotests, related to found work item   System sort results by CompletedOn ascending, then by CreatedDate ascending   System returns sorted collection of test results
+ Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search test results of all autotests, related to found work item  System sort results by CompletedOn ascending, then by CreatedDate ascending  System returns sorted collection of test results
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | 
 
@@ -1228,16 +1228,16 @@ Name | Type | Description  | Notes
 
 Get WorkItem versions
 
- Use case   User sets work item identifier   [Optional] User sets work item version identifier   User runs method execution   System search work item by identifier                         [Optional] If User set work item version identifier, System search work item version by version identifier                      Otherwise, system search all version of work item                     System returns array of work item version models (listed in response example)
+ Use case  User sets work item identifier  [Optional] User sets work item version identifier  User runs method execution  System search work item by identifier  [Optional] If User set work item version identifier, System search work item version by version identifier                     Otherwise, system search all version of work item  System returns array of work item version models (listed in response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
-let workItemVersionId = 987 // UUID | WorkItem version (guid format)  identifier\" (optional)
-let versionNumber = 987 // Int | WorkItem version (integer format)  number\" (optional)
+let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let workItemVersionId = 987 // UUID | WorkItem version (guid format) identifier\" (optional)
+let versionNumber = 987 // Int | WorkItem version (integer format) number\" (optional)
 
 // Get WorkItem versions
 WorkItemsAPI.getWorkItemVersions(id: id, workItemVersionId: workItemVersionId, versionNumber: versionNumber) { (response, error) in
@@ -1256,9 +1256,9 @@ WorkItemsAPI.getWorkItemVersions(id: id, workItemVersionId: workItemVersionId, v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
- **workItemVersionId** | **UUID** | WorkItem version (guid format)  identifier\&quot; | [optional] 
- **versionNumber** | **Int** | WorkItem version (integer format)  number\&quot; | [optional] 
+ **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **workItemVersionId** | **UUID** | WorkItem version (guid format) identifier\&quot; | [optional] 
+ **versionNumber** | **Int** | WorkItem version (integer format) number\&quot; | [optional] 
 
 ### Return type
 
@@ -1285,7 +1285,7 @@ Permanently delete test case, checklist or shared steps from archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the work item
 
@@ -1333,7 +1333,7 @@ Restore test case, checklist or shared steps from archive
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = "id_example" // String | Unique or global ID of the work item
 
@@ -1373,22 +1373,22 @@ Void (empty response body)
 
 # **updateWorkItem**
 ```swift
-    open class func updateWorkItem(workItemPutModel: WorkItemPutModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateWorkItem(updateWorkItemApiModel: UpdateWorkItemApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update Test Case, Checklist or Shared Step
 
- Use case   User sets work item properties (listed in request parameters)   User runs method execution   System updates work item by identifier   System returns updated work item model (listed in response parameters)
+ Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let workItemPutModel = WorkItemPutModel(attachments: [AttachmentPutModel(id: 123)], iterations: [IterationPutModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], id: 123, sectionId: 123, description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), steps: [StepPutModel(id: 123, action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagPutModel(name: "name_example")], links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example") // WorkItemPutModel |  (optional)
+let updateWorkItemApiModel = UpdateWorkItemApiModel(id: 123, sectionId: 123, description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), sourceType: WorkItemSourceTypeModel(), steps: [UpdateStepApiModel(id: 123, action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagModel(name: "name_example")], links: [UpdateLinkApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example", attachments: [AssignAttachmentApiModel(id: 123)], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)]) // UpdateWorkItemApiModel |  (optional)
 
 // Update Test Case, Checklist or Shared Step
-WorkItemsAPI.updateWorkItem(workItemPutModel: workItemPutModel) { (response, error) in
+WorkItemsAPI.updateWorkItem(updateWorkItemApiModel: updateWorkItemApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1404,7 +1404,7 @@ WorkItemsAPI.updateWorkItem(workItemPutModel: workItemPutModel) { (response, err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workItemPutModel** | [**WorkItemPutModel**](WorkItemPutModel.md) |  | [optional] 
+ **updateWorkItemApiModel** | [**UpdateWorkItemApiModel**](UpdateWorkItemApiModel.md) |  | [optional] 
 
 ### Return type
 

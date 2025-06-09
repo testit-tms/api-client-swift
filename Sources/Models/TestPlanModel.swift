@@ -31,7 +31,7 @@ public struct TestPlanModel: Codable, JSONEncodable, Hashable {
     public var lockedDate: Date?
     public var id: UUID
     public var lockedById: UUID?
-    public var tags: [TagPostModel]?
+    public var tags: [TagModel]?
     public var name: String
     /** Used for analytics */
     public var startDate: Date?
@@ -44,7 +44,7 @@ public struct TestPlanModel: Codable, JSONEncodable, Hashable {
     public var hasAutomaticDurationTimer: Bool?
     public var attributes: [String: AnyCodable]
 
-    public init(status: TestPlanStatusModel, startedOn: Date? = nil, completedOn: Date? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, isDeleted: Bool, lockedDate: Date? = nil, id: UUID, lockedById: UUID? = nil, tags: [TagPostModel]? = nil, name: String, startDate: Date? = nil, endDate: Date? = nil, description: String? = nil, build: String? = nil, projectId: UUID, productName: String? = nil, hasAutomaticDurationTimer: Bool? = nil, attributes: [String: AnyCodable]) {
+    public init(status: TestPlanStatusModel, startedOn: Date? = nil, completedOn: Date? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, isDeleted: Bool, lockedDate: Date? = nil, id: UUID, lockedById: UUID? = nil, tags: [TagModel]? = nil, name: String, startDate: Date? = nil, endDate: Date? = nil, description: String? = nil, build: String? = nil, projectId: UUID, productName: String? = nil, hasAutomaticDurationTimer: Bool? = nil, attributes: [String: AnyCodable]) {
         self.status = status
         self.startedOn = startedOn
         self.completedOn = completedOn

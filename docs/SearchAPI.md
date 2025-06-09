@@ -17,7 +17,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let globalSearchRequest = GlobalSearchRequest(query: "query_example", resourceType: "resourceType_example", take: 123, skip: 123) // GlobalSearchRequest |  (optional)
 

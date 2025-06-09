@@ -19,7 +19,7 @@ Search for custom attributes templates
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -76,12 +76,12 @@ Name | Type | Description  | Notes
 
 Delete CustomAttributeTemplate from Project
 
- Use case   User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution   System delete attribute template from project
+ Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System delete attribute template from project
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let templateId = 987 // UUID | CustomAttributeTemplate internal (UUID) identifier
@@ -128,12 +128,12 @@ Void (empty response body)
 
 Add CustomAttributeTemplate to Project
 
- Use case   User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution   System add attribute template to project
+ Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System add attribute template to project
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let templateId = 987 // UUID | CustomAttributeTemplate internal (UUID) identifier

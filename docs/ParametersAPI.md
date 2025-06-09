@@ -23,22 +23,22 @@ Method | HTTP request | Description
 
 # **apiV2ParametersBulkPost**
 ```swift
-    open class func apiV2ParametersBulkPost(parameterPostModel: [ParameterPostModel]? = nil, completion: @escaping (_ data: [ParameterModel]?, _ error: Error?) -> Void)
+    open class func apiV2ParametersBulkPost(createParameterApiModel: [CreateParameterApiModel]? = nil, completion: @escaping (_ data: [ParameterApiResult]?, _ error: Error?) -> Void)
 ```
 
 Create multiple parameters
 
- Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System creates parameters   System returns list of parameter model (listed in the response example)
+ Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System creates parameters  System returns list of parameter model (listed in the response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let parameterPostModel = [ParameterPostModel(value: "value_example", name: "name_example")] // [ParameterPostModel] |  (optional)
+let createParameterApiModel = [CreateParameterApiModel(name: "name_example", value: "value_example")] // [CreateParameterApiModel] |  (optional)
 
 // Create multiple parameters
-ParametersAPI.apiV2ParametersBulkPost(parameterPostModel: parameterPostModel) { (response, error) in
+ParametersAPI.apiV2ParametersBulkPost(createParameterApiModel: createParameterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -54,11 +54,11 @@ ParametersAPI.apiV2ParametersBulkPost(parameterPostModel: parameterPostModel) { 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameterPostModel** | [**[ParameterPostModel]**](ParameterPostModel.md) |  | [optional] 
+ **createParameterApiModel** | [**[CreateParameterApiModel]**](CreateParameterApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[ParameterModel]**](ParameterModel.md)
+[**[ParameterApiResult]**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -73,22 +73,22 @@ Name | Type | Description  | Notes
 
 # **apiV2ParametersBulkPut**
 ```swift
-    open class func apiV2ParametersBulkPut(parameterPutModel: [ParameterPutModel]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func apiV2ParametersBulkPut(updateParameterApiModel: [UpdateParameterApiModel]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update multiple parameters
 
- Use case   User sets list of parameter model (listed in the request example)   User runs method execution   System updates parameters
+ Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System updates parameters
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let parameterPutModel = [ParameterPutModel(id: 123, value: "value_example", name: "name_example")] // [ParameterPutModel] |  (optional)
+let updateParameterApiModel = [UpdateParameterApiModel(id: 123, name: "name_example", value: "value_example")] // [UpdateParameterApiModel] |  (optional)
 
 // Update multiple parameters
-ParametersAPI.apiV2ParametersBulkPut(parameterPutModel: parameterPutModel) { (response, error) in
+ParametersAPI.apiV2ParametersBulkPut(updateParameterApiModel: updateParameterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -104,7 +104,7 @@ ParametersAPI.apiV2ParametersBulkPut(parameterPutModel: parameterPutModel) { (re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameterPutModel** | [**[ParameterPutModel]**](ParameterPutModel.md) |  | [optional] 
+ **updateParameterApiModel** | [**[UpdateParameterApiModel]**](UpdateParameterApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -123,20 +123,21 @@ Void (empty response body)
 
 # **apiV2ParametersGroupsGet**
 ```swift
-    open class func apiV2ParametersGroupsGet(isDeleted: Bool? = nil, parameterKeyIds: Set<UUID>? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ParameterGroupModel]?, _ error: Error?) -> Void)
+    open class func apiV2ParametersGroupsGet(parameterKeyIds: Set<UUID>? = nil, name: String? = nil, isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ParameterGroupApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get parameters as group
 
- Use case   User runs method execution   System search parameters   System returns parameters models as groups (listed in the response example)
+ Use case  User runs method execution  System search parameters  System returns parameters models as groups (listed in the response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let isDeleted = true // Bool |  (optional)
 let parameterKeyIds = [123] // Set<UUID> |  (optional)
+let name = "name_example" // String |  (optional)
+let isDeleted = true // Bool |  (optional)
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -144,7 +145,7 @@ let searchField = "searchField_example" // String | Property name for searching 
 let searchValue = "searchValue_example" // String | Value for searching (optional)
 
 // Get parameters as group
-ParametersAPI.apiV2ParametersGroupsGet(isDeleted: isDeleted, parameterKeyIds: parameterKeyIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue) { (response, error) in
+ParametersAPI.apiV2ParametersGroupsGet(parameterKeyIds: parameterKeyIds, name: name, isDeleted: isDeleted, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -160,8 +161,9 @@ ParametersAPI.apiV2ParametersGroupsGet(isDeleted: isDeleted, parameterKeyIds: pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **isDeleted** | **Bool** |  | [optional] 
  **parameterKeyIds** | [**Set&lt;UUID&gt;**](UUID.md) |  | [optional] 
+ **name** | **String** |  | [optional] 
+ **isDeleted** | **Bool** |  | [optional] 
  **skip** | **Int** | Amount of items to be skipped (offset) | [optional] 
  **take** | **Int** | Amount of items to be taken (limit) | [optional] 
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
@@ -170,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ParameterGroupModel]**](ParameterGroupModel.md)
+[**[ParameterGroupApiResult]**](ParameterGroupApiResult.md)
 
 ### Authorization
 
@@ -190,12 +192,12 @@ Name | Type | Description  | Notes
 
 Check existence parameter key in system
 
- Use case   User sets name of parameter key   User runs method execution   System search parameter key   System returns the flag for the existence of the parameter key in the system
+ Use case  User sets name of parameter key  User runs method execution  System search parameter key  System returns the flag for the existence of the parameter key in the system
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let name = "name_example" // String | 
 
@@ -240,12 +242,12 @@ Name | Type | Description  | Notes
 
 Get all parameter key values
 
- Use case   User sets parameter key (string format)   User runs method execution   System search parameter values using the key   System returns parameter
+ Use case  User sets parameter key (string format)  User runs method execution  System search parameter values using the key  System returns parameter
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let key = "key_example" // String | Parameter key (string format)
 
@@ -290,12 +292,12 @@ Name | Type | Description  | Notes
 
 Get all parameter keys
 
- Use case   User runs method execution   System search all parameter keys   System returns parameter keys
+ Use case  User runs method execution  System search all parameter keys  System returns parameter keys
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 
 // Get all parameter keys
@@ -331,7 +333,7 @@ This endpoint does not need any parameter.
 
 # **apiV2ParametersSearchGroupsPost**
 ```swift
-    open class func apiV2ParametersSearchGroupsPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterFilterModel: ParameterFilterModel? = nil, completion: @escaping (_ data: [ParameterGroupModel]?, _ error: Error?) -> Void)
+    open class func apiV2ParametersSearchGroupsPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterGroupsFilterApiModel: ParameterGroupsFilterApiModel? = nil, completion: @escaping (_ data: [ParameterGroupApiResult]?, _ error: Error?) -> Void)
 ```
 
 Search for parameters as group
@@ -339,17 +341,17 @@ Search for parameters as group
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let parameterFilterModel = ParameterFilterModel(isDeleted: false, name: "name_example") // ParameterFilterModel |  (optional)
+let parameterGroupsFilterApiModel = ParameterGroupsFilterApiModel(parameterKeyIds: [123], name: "name_example", isDeleted: false) // ParameterGroupsFilterApiModel |  (optional)
 
 // Search for parameters as group
-ParametersAPI.apiV2ParametersSearchGroupsPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterFilterModel: parameterFilterModel) { (response, error) in
+ParametersAPI.apiV2ParametersSearchGroupsPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterGroupsFilterApiModel: parameterGroupsFilterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -370,11 +372,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String** | Property name for searching | [optional] 
  **searchValue** | **String** | Value for searching | [optional] 
- **parameterFilterModel** | [**ParameterFilterModel**](ParameterFilterModel.md) |  | [optional] 
+ **parameterGroupsFilterApiModel** | [**ParameterGroupsFilterApiModel**](ParameterGroupsFilterApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[ParameterGroupModel]**](ParameterGroupModel.md)
+[**[ParameterGroupApiResult]**](ParameterGroupApiResult.md)
 
 ### Authorization
 
@@ -389,7 +391,7 @@ Name | Type | Description  | Notes
 
 # **apiV2ParametersSearchPost**
 ```swift
-    open class func apiV2ParametersSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterFilterModel: ParameterFilterModel? = nil, completion: @escaping (_ data: [ParameterModel]?, _ error: Error?) -> Void)
+    open class func apiV2ParametersSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parametersFilterApiModel: ParametersFilterApiModel? = nil, completion: @escaping (_ data: [ParameterApiResult]?, _ error: Error?) -> Void)
 ```
 
 Search for parameters
@@ -397,17 +399,17 @@ Search for parameters
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let parameterFilterModel = ParameterFilterModel(isDeleted: false, name: "name_example") // ParameterFilterModel |  (optional)
+let parametersFilterApiModel = ParametersFilterApiModel(name: "name_example", isDeleted: false) // ParametersFilterApiModel |  (optional)
 
 // Search for parameters
-ParametersAPI.apiV2ParametersSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterFilterModel: parameterFilterModel) { (response, error) in
+ParametersAPI.apiV2ParametersSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parametersFilterApiModel: parametersFilterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -428,11 +430,11 @@ Name | Type | Description  | Notes
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
  **searchField** | **String** | Property name for searching | [optional] 
  **searchValue** | **String** | Value for searching | [optional] 
- **parameterFilterModel** | [**ParameterFilterModel**](ParameterFilterModel.md) |  | [optional] 
+ **parametersFilterApiModel** | [**ParametersFilterApiModel**](ParametersFilterApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[ParameterModel]**](ParameterModel.md)
+[**[ParameterApiResult]**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -447,22 +449,22 @@ Name | Type | Description  | Notes
 
 # **createParameter**
 ```swift
-    open class func createParameter(parameterPostModel: ParameterPostModel? = nil, completion: @escaping (_ data: ParameterModel?, _ error: Error?) -> Void)
+    open class func createParameter(createParameterApiModel: CreateParameterApiModel? = nil, completion: @escaping (_ data: ParameterApiResult?, _ error: Error?) -> Void)
 ```
 
 Create parameter
 
- Use case   User sets parameter model (listed in the request example)   User runs method execution   System creates parameter   System returns parameter model
+ Use case  User sets parameter model (listed in the request example)  User runs method execution  System creates parameter  System returns parameter model
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let parameterPostModel = ParameterPostModel(value: "value_example", name: "name_example") // ParameterPostModel |  (optional)
+let createParameterApiModel = CreateParameterApiModel(name: "name_example", value: "value_example") // CreateParameterApiModel |  (optional)
 
 // Create parameter
-ParametersAPI.createParameter(parameterPostModel: parameterPostModel) { (response, error) in
+ParametersAPI.createParameter(createParameterApiModel: createParameterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -478,11 +480,11 @@ ParametersAPI.createParameter(parameterPostModel: parameterPostModel) { (respons
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameterPostModel** | [**ParameterPostModel**](ParameterPostModel.md) |  | [optional] 
+ **createParameterApiModel** | [**CreateParameterApiModel**](CreateParameterApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**ParameterModel**](ParameterModel.md)
+[**ParameterApiResult**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -507,7 +509,7 @@ Deletes parameter and all it's values
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let name = "name_example" // String | Name of the parameter
 
@@ -557,7 +559,7 @@ Deletes parameter and all it's values by parameter key identifier
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let keyId = 987 // UUID | Identifier of the parameter key
 
@@ -602,12 +604,12 @@ Void (empty response body)
 
 Delete parameter
 
- Use case   User sets parameter internal (guid format) identifier   System search and delete parameter   System returns deleted parameter
+ Use case  User sets parameter internal (guid format) identifier  System search and delete parameter  System returns deleted parameter
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Parameter internal (UUID) identifier
 
@@ -647,17 +649,17 @@ Void (empty response body)
 
 # **getAllParameters**
 ```swift
-    open class func getAllParameters(isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ParameterModel]?, _ error: Error?) -> Void)
+    open class func getAllParameters(isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ParameterApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get all parameters
 
- Use case   [Optional] User sets isDeleted field value   [Optional] If User sets isDeleted field value as true, System search all deleted parameters   [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted   If User did not set isDeleted field value, System search all parameters   System returns array of all found parameters(listed in response model)
+ Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted parameters  [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted  If User did not set isDeleted field value, System search all parameters  System returns array of all found parameters(listed in response model)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let isDeleted = true // Bool | If result must consist of only actual/deleted parameters (optional)
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
@@ -692,7 +694,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ParameterModel]**](ParameterModel.md)
+[**[ParameterApiResult]**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -707,17 +709,17 @@ Name | Type | Description  | Notes
 
 # **getParameterById**
 ```swift
-    open class func getParameterById(id: UUID, completion: @escaping (_ data: ParameterModel?, _ error: Error?) -> Void)
+    open class func getParameterById(id: UUID, completion: @escaping (_ data: ParameterApiResult?, _ error: Error?) -> Void)
 ```
 
 Get parameter by ID
 
- Use case   User sets parameter internal (guid format) identifier   User runs method execution   System search parameter using the identifier   System returns parameter
+ Use case  User sets parameter internal (guid format) identifier  User runs method execution  System search parameter using the identifier  System returns parameter
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Parameter internal (UUID) identifier
 
@@ -742,7 +744,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ParameterModel**](ParameterModel.md)
+[**ParameterApiResult**](ParameterApiResult.md)
 
 ### Authorization
 
@@ -757,22 +759,22 @@ Name | Type | Description  | Notes
 
 # **updateParameter**
 ```swift
-    open class func updateParameter(parameterPutModel: ParameterPutModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateParameter(updateParameterApiModel: UpdateParameterApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update parameter
 
- Use case   User sets parameter updated properties(listed in the request example)   User runs method execution   System updated parameter using updated properties   System returns no content response
+ Use case  User sets parameter updated properties(listed in the request example)  User runs method execution  System updated parameter using updated properties  System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
-let parameterPutModel = ParameterPutModel(id: 123, value: "value_example", name: "name_example") // ParameterPutModel |  (optional)
+let updateParameterApiModel = UpdateParameterApiModel(id: 123, name: "name_example", value: "value_example") // UpdateParameterApiModel |  (optional)
 
 // Update parameter
-ParametersAPI.updateParameter(parameterPutModel: parameterPutModel) { (response, error) in
+ParametersAPI.updateParameter(updateParameterApiModel: updateParameterApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -788,7 +790,7 @@ ParametersAPI.updateParameter(parameterPutModel: parameterPutModel) { (response,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameterPutModel** | [**ParameterPutModel**](ParameterPutModel.md) |  | [optional] 
+ **updateParameterApiModel** | [**UpdateParameterApiModel**](UpdateParameterApiModel.md) |  | [optional] 
 
 ### Return type
 

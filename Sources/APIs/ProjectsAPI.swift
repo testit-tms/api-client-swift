@@ -35,7 +35,7 @@ open class ProjectsAPI {
     /**
      Add global attributes to project
      - POST /api/v2/projects/{id}/globalAttributes
-     -  Use case   User sets project internal or global identifier and attributes identifiers   System search project   System relates global attributes with project   System returns no content response
+     -  Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -282,7 +282,7 @@ open class ProjectsAPI {
     /**
      Get Project filters
      - GET /api/v2/projects/{id}/filters
-     -  Use case   User sets project internal or global identifier    User runs method execution   System returns project filters
+     -  Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -484,7 +484,7 @@ open class ProjectsAPI {
     /**
      Delete attribute from project's test plans
      - DELETE /api/v2/projects/{id}/testPlans/attribute/{attributeId}
-     -  Use case   User sets project internal or global identifier and attribute identifier   User runs method execution   System updates project and delete attribute from project for test plans   System returns no content response
+     -  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -541,7 +541,7 @@ open class ProjectsAPI {
     /**
      Update attribute of project's test plans
      - PUT /api/v2/projects/{id}/testPlans/attribute
-     -  Use case   User sets project internal or global identifier and attribute model   User runs method execution   System updates project and project attribute for test plan   System returns no content response
+     -  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -593,7 +593,7 @@ open class ProjectsAPI {
     /**
      Get active Project TestRuns
      - GET /api/v2/projects/{id}/testRuns/active
-     -  Use case   User sets project internal or global identifier    User runs method execution   System returns active testruns
+     -  Use case  User sets project internal or global identifier  User runs method execution  System returns active testruns
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -657,7 +657,7 @@ open class ProjectsAPI {
     /**
      Get Project TestRuns full models
      - GET /api/v2/projects/{id}/testRuns/full
-     -  Use case   User sets project internal or global identifier    User sets query params    User runs method execution   System returns project test runs full models
+     -  Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -920,6 +920,53 @@ open class ProjectsAPI {
     }
 
     /**
+     Get projects short models
+     
+     - parameter getShortProjectsApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2ProjectsShortsPost(getShortProjectsApiModel: GetShortProjectsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectShortApiResultReply?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsShortsPostWithRequestBuilder(getShortProjectsApiModel: getShortProjectsApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get projects short models
+     - POST /api/v2/projects/shorts
+     -  Use case  User sets query params  User runs method execution  System return projects short models
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter getShortProjectsApiModel: (body)  (optional)
+     - returns: RequestBuilder<ProjectShortApiResultReply> 
+     */
+    open class func apiV2ProjectsShortsPostWithRequestBuilder(getShortProjectsApiModel: GetShortProjectsApiModel? = nil) -> RequestBuilder<ProjectShortApiResultReply> {
+        let localVariablePath = "/api/v2/projects/shorts"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getShortProjectsApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ProjectShortApiResultReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Create project
      
      - parameter createProjectApiModel: (body)  (optional)
@@ -941,7 +988,7 @@ open class ProjectsAPI {
     /**
      Create project
      - POST /api/v2/projects
-     -  Use case   User sets project parameters (listed in request example) and runs method execution   System creates project   System returns project model (example listed in response parameters)
+     -  Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -1044,7 +1091,7 @@ open class ProjectsAPI {
     /**
      Get all projects
      - GET /api/v2/projects
-     -  Use case   [Optional] User sets isDeleted field value   [Optional] If User sets isDeleted field value as true, System search all deleted projects   [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted   If User did not set isDeleted field value, System search all projects   System returns array of all found projects(listed in response model)
+     -  Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -1108,7 +1155,7 @@ open class ProjectsAPI {
     /**
      Get namespaces of autotests in project
      - GET /api/v2/projects/{id}/autoTestsNamespaces
-     -  Use case   User sets project internal or global identifier and runs method execution   System search project   System search all autotest related to the project   System returns array of autotest with namespaces and classnames (listed in response)
+     -  Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -1158,7 +1205,7 @@ open class ProjectsAPI {
     /**
      Get project by ID
      - GET /api/v2/projects/{id}
-     -  Use case   User sets project internal or global identifier and runs method execution   System search project   System returns project (example listed in response parameters)
+     -  Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -1209,7 +1256,7 @@ open class ProjectsAPI {
     /**
      Get project test plans
      - GET /api/v2/projects/{id}/testPlans
-     -  Use case   User sets project internal or global identifier   [Optional] User sets isDeleted field value   User runs method execution   System search project   [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project   [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted   [Optional] If User did not set isDeleted field value, System search all v related to project   System returns array of found test plans (listed in response model)
+     -  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -1275,7 +1322,7 @@ open class ProjectsAPI {
     /**
      Get project test runs
      - GET /api/v2/projects/{id}/testRuns
-     -  Use case   User sets project internal or global identifier   User runs method execution   System search project   System search all test runs related to project   System returns array of found test runs (listed in response model)
+     -  Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -1352,7 +1399,7 @@ open class ProjectsAPI {
     /**
      Update project
      - PUT /api/v2/projects
-     -  Use case   User sets project parameters (listed in request example) and runs method execution   System updates project   System returns updated project model (example listed in response parameters)
+     -  Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

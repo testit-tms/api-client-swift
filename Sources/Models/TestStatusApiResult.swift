@@ -15,12 +15,12 @@ public struct TestStatusApiResult: Codable, JSONEncodable, Hashable {
     public var id: UUID
     public var name: String
     /** Collection of possible status types */
-    public var type: TestStatusType
+    public var type: TestStatusApiType
     public var isSystem: Bool
     public var code: String
     public var description: String?
 
-    public init(id: UUID, name: String, type: TestStatusType, isSystem: Bool, code: String, description: String? = nil) {
+    public init(id: UUID, name: String, type: TestStatusApiType, isSystem: Bool, code: String, description: String? = nil) {
         self.id = id
         self.name = name
         self.type = type

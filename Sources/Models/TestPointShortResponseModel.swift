@@ -53,6 +53,8 @@ public struct TestPointShortResponseModel: Codable, JSONEncodable, Hashable {
     public var statusModel: TestStatusApiResult
     /** Priority of the test point */
     public var priority: WorkItemPriorityModel
+    /** Source type of the test point */
+    public var sourceType: WorkItemSourceTypeModel
     /** Indicates if the test point represents an autotest */
     public var isAutomated: Bool
     /** Name of the test point */
@@ -82,7 +84,7 @@ public struct TestPointShortResponseModel: Codable, JSONEncodable, Hashable {
     /** Modified date of work item */
     public var workItemModifiedDate: Date?
 
-    public init(id: UUID, createdDate: Date, createdById: UUID, modifiedDate: Date? = nil, modifiedById: UUID? = nil, testerId: UUID? = nil, parameters: [String: String]? = nil, attributes: [String: AnyCodable], tags: [String], links: [String], testSuiteId: UUID, testSuiteName: String, workItemId: UUID, workItemGlobalId: Int64, workItemVersionId: UUID, workItemVersionNumber: Int, workItemMedianDuration: Int64? = nil, status: TestPointStatus, statusModel: TestStatusApiResult, priority: WorkItemPriorityModel, isAutomated: Bool, name: String, configurationId: UUID, duration: Int, sectionId: UUID, sectionName: String? = nil, projectId: UUID, lastTestResult: LastTestResultModel? = nil, iterationId: UUID, workItemState: WorkItemState, workItemCreatedById: UUID, workItemCreatedDate: Date, workItemModifiedById: UUID? = nil, workItemModifiedDate: Date? = nil) {
+    public init(id: UUID, createdDate: Date, createdById: UUID, modifiedDate: Date? = nil, modifiedById: UUID? = nil, testerId: UUID? = nil, parameters: [String: String]? = nil, attributes: [String: AnyCodable], tags: [String], links: [String], testSuiteId: UUID, testSuiteName: String, workItemId: UUID, workItemGlobalId: Int64, workItemVersionId: UUID, workItemVersionNumber: Int, workItemMedianDuration: Int64? = nil, status: TestPointStatus, statusModel: TestStatusApiResult, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, isAutomated: Bool, name: String, configurationId: UUID, duration: Int, sectionId: UUID, sectionName: String? = nil, projectId: UUID, lastTestResult: LastTestResultModel? = nil, iterationId: UUID, workItemState: WorkItemState, workItemCreatedById: UUID, workItemCreatedDate: Date, workItemModifiedById: UUID? = nil, workItemModifiedDate: Date? = nil) {
         self.id = id
         self.createdDate = createdDate
         self.createdById = createdById
@@ -103,6 +105,7 @@ public struct TestPointShortResponseModel: Codable, JSONEncodable, Hashable {
         self.status = status
         self.statusModel = statusModel
         self.priority = priority
+        self.sourceType = sourceType
         self.isAutomated = isAutomated
         self.name = name
         self.configurationId = configurationId
@@ -140,6 +143,7 @@ public struct TestPointShortResponseModel: Codable, JSONEncodable, Hashable {
         case status
         case statusModel
         case priority
+        case sourceType
         case isAutomated
         case name
         case configurationId
@@ -180,6 +184,7 @@ public struct TestPointShortResponseModel: Codable, JSONEncodable, Hashable {
         try container.encode(status, forKey: .status)
         try container.encode(statusModel, forKey: .statusModel)
         try container.encode(priority, forKey: .priority)
+        try container.encode(sourceType, forKey: .sourceType)
         try container.encode(isAutomated, forKey: .isAutomated)
         try container.encode(name, forKey: .name)
         try container.encode(configurationId, forKey: .configurationId)

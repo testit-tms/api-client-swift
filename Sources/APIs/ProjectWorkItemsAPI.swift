@@ -228,7 +228,7 @@ open class ProjectWorkItemsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ProjectsProjectIdWorkItemsTagsGet(projectId: UUID, isDeleted: Bool? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TagShortModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2ProjectsProjectIdWorkItemsTagsGet(projectId: UUID, isDeleted: Bool? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TagShortApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ProjectsProjectIdWorkItemsTagsGetWithRequestBuilder(projectId: projectId, isDeleted: isDeleted).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -242,15 +242,15 @@ open class ProjectWorkItemsAPI {
     /**
      Get WorkItems Tags
      - GET /api/v2/projects/{projectId}/workItems/tags
-     -  Use case   User sets project internal identifier    User runs method execution   System returns work items tags
+     -  Use case  User sets project internal identifier  User runs method execution  System returns work items tags
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter projectId: (path) Project internal (UUID) identifier 
      - parameter isDeleted: (query)  (optional)
-     - returns: RequestBuilder<[TagShortModel]> 
+     - returns: RequestBuilder<[TagShortApiResult]> 
      */
-    open class func apiV2ProjectsProjectIdWorkItemsTagsGetWithRequestBuilder(projectId: UUID, isDeleted: Bool? = nil) -> RequestBuilder<[TagShortModel]> {
+    open class func apiV2ProjectsProjectIdWorkItemsTagsGetWithRequestBuilder(projectId: UUID, isDeleted: Bool? = nil) -> RequestBuilder<[TagShortApiResult]> {
         var localVariablePath = "/api/v2/projects/{projectId}/workItems/tags"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -269,7 +269,7 @@ open class ProjectWorkItemsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TagShortModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TagShortApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -305,7 +305,7 @@ open class ProjectWorkItemsAPI {
     /**
      Get project work items
      - GET /api/v2/projects/{projectId}/workItems
-     -  Use case   User sets project internal or global identifier   [Optional] User sets isDeleted field value   User runs method execution   System search project   [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project   [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted   If User did not set isDeleted field value, System search all  workitems related to project   System returns array of found workitems (listed in response model)
+     -  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project  [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted  If User did not set isDeleted field value, System search all  workitems related to project  System returns array of found workitems (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

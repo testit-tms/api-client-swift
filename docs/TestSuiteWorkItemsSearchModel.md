@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tagNames** | **Set<String>** | Collection of tags | [optional] 
-**entityTypes** | Set<WorkItemEntityTypes> | Collection of types of work item   Allowed values: &#x60;TestCases&#x60;, &#x60;CheckLists&#x60;, &#x60;SharedSteps&#x60; | [optional] 
+**entityTypes** | Set<WorkItemEntityTypes> | Collection of types of work item  Allowed values: &#x60;TestCases&#x60;, &#x60;CheckLists&#x60;, &#x60;SharedSteps&#x60; | [optional] 
 **nameOrId** | **String** | Name or identifier (UUID) of work item | [optional] 
 **includeIds** | **Set<UUID>** | Collection of identifiers of work items which need to be included in result regardless of filtering | [optional] 
 **excludeIds** | **Set<UUID>** | Collection of identifiers of work items which need to be excluded from result regardless of filtering | [optional] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **modifiedByIds** | **Set<UUID>** | Collection of identifiers of users who applied last modification to work item | [optional] 
 **states** | Set<WorkItemStates> | Collection of states of work item | [optional] 
 **priorities** | Set<WorkItemPriorityModel> | Collection of priorities of work item | [optional] 
+**sourceTypes** | Set<WorkItemSourceTypeModel> | Collection of priorities of work item | [optional] 
 **types** | Set<WorkItemEntityTypes> | Collection of types of work item | [optional] 
 **createdDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of creation date to search for | [optional] 
 **modifiedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of last modification date to search for | [optional] 

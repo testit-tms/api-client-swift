@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tags** | [TagPostModel] | Test plan tag names collection | [optional] 
+**tags** | [TagApiModel] | Test plan tag names collection | [optional] 
 **name** | **String** | Test plan name | 
 **startDate** | **Date** | Date and time of test plan start | [optional] 
 **endDate** | **Date** | Date and time of test plan end | [optional] 

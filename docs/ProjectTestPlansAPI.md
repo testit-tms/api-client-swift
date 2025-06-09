@@ -19,12 +19,12 @@ Method | HTTP request | Description
 
 Get TestPlans analytics
 
- Use case   User sets project internal identifier   User sets query params   User runs method execution   System return analytics
+ Use case  User sets project internal identifier  User sets query params  User runs method execution  System return analytics
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = 987 // UUID | Project internal (UUID) identifier
 let isDeleted = true // Bool |  (optional)
@@ -86,7 +86,7 @@ Delete multiple test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Unique or global ID of the project
 let testPlanSelectModel = TestPlanSelectModel(filter: ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], attributes: "TODO", isDeleted: false), extractionModel: TestPlanExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPlanSelectModel |  (optional)
@@ -133,12 +133,12 @@ Name | Type | Description  | Notes
 
 Checks if TestPlan exists with the specified name exists for the project
 
- Use case   User sets project internal or global identifier    User runs method execution   System purge delete project workitems
+ Use case  User sets project internal or global identifier  User runs method execution  System purge delete project workitems
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = 987 // UUID | Project internal (UUID) or global (integer) identifier
 let name = "name_example" // String | TestPlan name to check
@@ -188,7 +188,7 @@ Permanently delete multiple archived test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Unique or global ID of the project
 let testPlanSelectModel = TestPlanSelectModel(filter: ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], attributes: "TODO", isDeleted: false), extractionModel: TestPlanExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPlanSelectModel |  (optional)
@@ -238,7 +238,7 @@ Restore multiple test plans
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Unique or global ID of the project
 let testPlanSelectModel = TestPlanSelectModel(filter: ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], attributes: "TODO", isDeleted: false), extractionModel: TestPlanExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPlanSelectModel |  (optional)
@@ -285,12 +285,12 @@ Name | Type | Description  | Notes
 
 Get Project TestPlans with analytics
 
- Use case   User sets project internal or global identifier    User sets request body    User runs method execution   System returns project testplans with analytics
+ Use case  User sets project internal or global identifier  User sets request body  User runs method execution  System returns project testplans with analytics
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = "projectId_example" // String | Project internal (UUID) or global (integer) identifier
 let mustUpdateCache = true // Bool |  (optional) (default to false)

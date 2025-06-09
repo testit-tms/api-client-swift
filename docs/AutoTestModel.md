@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **lastTestResultId** | **UUID** | Unique ID of the autotest last test result | [optional] 
 **lastTestResultConfiguration** | [**ConfigurationShortModel**](ConfigurationShortModel.md) | Configuration of the autotest last test result | [optional] 
 **lastTestResultOutcome** | **String** | Outcome of the autotest last test result | [optional] 
+**lastTestResultStatus** | [**TestStatusModel**](TestStatusModel.md) | Status of the autotest last test result | 
 **stabilityPercentage** | **Int** | Stability percentage of the autotest | [optional] 
 **externalId** | **String** | External ID of the autotest | 
 **links** | [LinkPutModel] | Collection of the autotest links | [optional] 

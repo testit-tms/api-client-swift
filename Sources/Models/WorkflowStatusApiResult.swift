@@ -16,12 +16,12 @@ public struct WorkflowStatusApiResult: Codable, JSONEncodable, Hashable {
     public var name: String
     public var code: String
     /** Collection of possible status types */
-    public var type: TestStatusType
+    public var type: TestStatusApiType
     public var description: String?
     public var isSystem: Bool
     public var priority: Int
 
-    public init(id: UUID, name: String, code: String, type: TestStatusType, description: String? = nil, isSystem: Bool, priority: Int) {
+    public init(id: UUID, name: String, code: String, type: TestStatusApiType, description: String? = nil, isSystem: Bool, priority: Int) {
         self.id = id
         self.name = name
         self.code = code

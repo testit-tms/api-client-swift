@@ -21,7 +21,7 @@ Delete attachment file
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 
@@ -69,7 +69,7 @@ Download attachment file
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 let width = 987 // Int | Width of the result image (optional)
@@ -127,7 +127,7 @@ Get attachment metadata
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | 
 
@@ -175,7 +175,7 @@ Get size of attachments storage in bytes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 
 // Get size of attachments storage in bytes
@@ -221,7 +221,7 @@ File size is restricted to 50 MB (52 428 800 bytes)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let file = URL(string: "https://example.com")! // URL |  (optional)
 

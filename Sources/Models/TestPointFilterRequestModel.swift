@@ -30,6 +30,8 @@ public struct TestPointFilterRequestModel: Codable, JSONEncodable, Hashable {
     public var statusCodes: [String]?
     /** Specifies a test point priorities to search for */
     public var priorities: [WorkItemPriorityModel]?
+    /** Specifies a test point source types to search for */
+    public var sourceTypes: [WorkItemSourceTypeModel]?
     /** Specifies a test point automation status to search for */
     public var isAutomated: Bool?
     /** Specifies a test point name to search for */
@@ -63,7 +65,7 @@ public struct TestPointFilterRequestModel: Codable, JSONEncodable, Hashable {
     /** Specifies a work item last editor IDs to search for */
     public var workItemModifiedByIds: [UUID]?
 
-    public init(testPlanIds: [UUID]? = nil, testSuiteIds: [UUID]? = nil, workItemGlobalIds: [Int64]? = nil, workItemMedianDuration: Int64RangeSelectorModel? = nil, workItemIsDeleted: Bool? = nil, statuses: [TestPointStatus]? = nil, statusCodes: [String]? = nil, priorities: [WorkItemPriorityModel]? = nil, isAutomated: Bool? = nil, name: String? = nil, configurationIds: [UUID]? = nil, testerIds: [UUID]? = nil, duration: Int64RangeSelectorModel? = nil, sectionIds: [UUID]? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: [UUID]? = nil, tags: [String]? = nil, attributes: [String: Set<String>]? = nil, workItemCreatedDate: DateTimeRangeSelectorModel? = nil, workItemCreatedByIds: [UUID]? = nil, workItemModifiedDate: DateTimeRangeSelectorModel? = nil, workItemModifiedByIds: [UUID]? = nil) {
+    public init(testPlanIds: [UUID]? = nil, testSuiteIds: [UUID]? = nil, workItemGlobalIds: [Int64]? = nil, workItemMedianDuration: Int64RangeSelectorModel? = nil, workItemIsDeleted: Bool? = nil, statuses: [TestPointStatus]? = nil, statusCodes: [String]? = nil, priorities: [WorkItemPriorityModel]? = nil, sourceTypes: [WorkItemSourceTypeModel]? = nil, isAutomated: Bool? = nil, name: String? = nil, configurationIds: [UUID]? = nil, testerIds: [UUID]? = nil, duration: Int64RangeSelectorModel? = nil, sectionIds: [UUID]? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: [UUID]? = nil, tags: [String]? = nil, attributes: [String: Set<String>]? = nil, workItemCreatedDate: DateTimeRangeSelectorModel? = nil, workItemCreatedByIds: [UUID]? = nil, workItemModifiedDate: DateTimeRangeSelectorModel? = nil, workItemModifiedByIds: [UUID]? = nil) {
         self.testPlanIds = testPlanIds
         self.testSuiteIds = testSuiteIds
         self.workItemGlobalIds = workItemGlobalIds
@@ -72,6 +74,7 @@ public struct TestPointFilterRequestModel: Codable, JSONEncodable, Hashable {
         self.statuses = statuses
         self.statusCodes = statusCodes
         self.priorities = priorities
+        self.sourceTypes = sourceTypes
         self.isAutomated = isAutomated
         self.name = name
         self.configurationIds = configurationIds
@@ -99,6 +102,7 @@ public struct TestPointFilterRequestModel: Codable, JSONEncodable, Hashable {
         case statuses
         case statusCodes
         case priorities
+        case sourceTypes
         case isAutomated
         case name
         case configurationIds
@@ -129,6 +133,7 @@ public struct TestPointFilterRequestModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(statuses, forKey: .statuses)
         try container.encodeIfPresent(statusCodes, forKey: .statusCodes)
         try container.encodeIfPresent(priorities, forKey: .priorities)
+        try container.encodeIfPresent(sourceTypes, forKey: .sourceTypes)
         try container.encodeIfPresent(isAutomated, forKey: .isAutomated)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(configurationIds, forKey: .configurationIds)

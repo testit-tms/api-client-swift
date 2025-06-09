@@ -25,12 +25,13 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **state** | [**WorkItemStates**](WorkItemStates.md) |  | 
 **priority** | [**WorkItemPriorityModel**](WorkItemPriorityModel.md) |  | 
+**sourceType** | [**WorkItemSourceTypeModel**](WorkItemSourceTypeModel.md) |  | 
 **steps** | [StepModel] |  | 
 **preconditionSteps** | [StepModel] |  | 
 **postconditionSteps** | [StepModel] |  | 
 **duration** | **Int** |  | 
 **attributes** | **[String: AnyCodable]** |  | 
-**tags** | [TagPutModel] |  | 
+**tags** | [TagModel] |  | 
 **links** | [LinkModel] |  | 
 **name** | **String** |  | 
 

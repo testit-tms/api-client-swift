@@ -18,13 +18,13 @@ public struct CreateTestStatusApiModel: Codable, JSONEncodable, Hashable {
     /** Name of the status, must be unique */
     public var name: String
     /** Type of the status */
-    public var type: TestStatusType
+    public var type: TestStatusApiType
     /** Code of the status, must be unique */
     public var code: String
     /** Optional description of the status */
     public var description: String?
 
-    public init(name: String, type: TestStatusType, code: String, description: String? = nil) {
+    public init(name: String, type: TestStatusApiType, code: String, description: String? = nil) {
         self.name = name
         self.type = type
         self.code = code

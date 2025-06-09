@@ -25,13 +25,14 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
     public static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let statesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let prioritiesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let sourceTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let autoTestIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Collection of tags */
     @available(*, deprecated, message: "This property is deprecated.")
     public var tagNames: Set<String>?
-    /** Collection of types of work item   Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
+    /** Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
     @available(*, deprecated, message: "This property is deprecated.")
     public var entityTypes: Set<WorkItemEntityTypes>?
     /** Name or identifier (UUID) of work item */
@@ -64,6 +65,8 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
     public var states: Set<WorkItemStates>?
     /** Collection of priorities of work item */
     public var priorities: Set<WorkItemPriorityModel>?
+    /** Collection of priorities of work item */
+    public var sourceTypes: Set<WorkItemSourceTypeModel>?
     /** Collection of types of work item */
     public var types: Set<WorkItemEntityTypes>?
     /** Specifies a work item range of creation date to search for */
@@ -83,7 +86,7 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
     /** Collection of identifiers work items versions. */
     public var workItemVersionIds: [UUID]?
 
-    public init(tagNames: Set<String>? = nil, entityTypes: Set<WorkItemEntityTypes>? = nil, nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, projectIds: Set<UUID>? = nil, links: WorkItemLinkFilterModel? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil) {
+    public init(tagNames: Set<String>? = nil, entityTypes: Set<WorkItemEntityTypes>? = nil, nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, projectIds: Set<UUID>? = nil, links: WorkItemLinkFilterModel? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, sourceTypes: Set<WorkItemSourceTypeModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil) {
         self.tagNames = tagNames
         self.entityTypes = entityTypes
         self.nameOrId = nameOrId
@@ -101,6 +104,7 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
         self.modifiedByIds = modifiedByIds
         self.states = states
         self.priorities = priorities
+        self.sourceTypes = sourceTypes
         self.types = types
         self.createdDate = createdDate
         self.modifiedDate = modifiedDate
@@ -130,6 +134,7 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
         case modifiedByIds
         case states
         case priorities
+        case sourceTypes
         case types
         case createdDate
         case modifiedDate
@@ -162,6 +167,7 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedByIds, forKey: .modifiedByIds)
         try container.encodeIfPresent(states, forKey: .states)
         try container.encodeIfPresent(priorities, forKey: .priorities)
+        try container.encodeIfPresent(sourceTypes, forKey: .sourceTypes)
         try container.encodeIfPresent(types, forKey: .types)
         try container.encodeIfPresent(createdDate, forKey: .createdDate)
         try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)

@@ -39,16 +39,17 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
     public var description: String?
     public var state: WorkItemStates
     public var priority: WorkItemPriorityModel
+    public var sourceType: WorkItemSourceTypeModel
     public var steps: [StepModel]
     public var preconditionSteps: [StepModel]
     public var postconditionSteps: [StepModel]
     public var duration: Int
     public var attributes: [String: AnyCodable]
-    public var tags: [TagPutModel]
+    public var tags: [TagModel]
     public var links: [LinkModel]
     public var name: String
 
-    public init(versionId: UUID, medianDuration: Int64, isDeleted: Bool, projectId: UUID, entityTypeName: WorkItemEntityTypes, isAutomated: Bool, autoTests: [AutoTestModel]? = nil, attachments: [AttachmentModel]? = nil, sectionPreconditionSteps: [StepModel]? = nil, sectionPostconditionSteps: [StepModel]? = nil, versionNumber: Int, iterations: [IterationModel]? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, steps: [StepModel], preconditionSteps: [StepModel], postconditionSteps: [StepModel], duration: Int, attributes: [String: AnyCodable], tags: [TagPutModel], links: [LinkModel], name: String) {
+    public init(versionId: UUID, medianDuration: Int64, isDeleted: Bool, projectId: UUID, entityTypeName: WorkItemEntityTypes, isAutomated: Bool, autoTests: [AutoTestModel]? = nil, attachments: [AttachmentModel]? = nil, sectionPreconditionSteps: [StepModel]? = nil, sectionPostconditionSteps: [StepModel]? = nil, versionNumber: Int, iterations: [IterationModel]? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, steps: [StepModel], preconditionSteps: [StepModel], postconditionSteps: [StepModel], duration: Int, attributes: [String: AnyCodable], tags: [TagModel], links: [LinkModel], name: String) {
         self.versionId = versionId
         self.medianDuration = medianDuration
         self.isDeleted = isDeleted
@@ -71,6 +72,7 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
         self.description = description
         self.state = state
         self.priority = priority
+        self.sourceType = sourceType
         self.steps = steps
         self.preconditionSteps = preconditionSteps
         self.postconditionSteps = postconditionSteps
@@ -104,6 +106,7 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
         case description
         case state
         case priority
+        case sourceType
         case steps
         case preconditionSteps
         case postconditionSteps
@@ -140,6 +143,7 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encode(state, forKey: .state)
         try container.encode(priority, forKey: .priority)
+        try container.encode(sourceType, forKey: .sourceType)
         try container.encode(steps, forKey: .steps)
         try container.encode(preconditionSteps, forKey: .preconditionSteps)
         try container.encode(postconditionSteps, forKey: .postconditionSteps)

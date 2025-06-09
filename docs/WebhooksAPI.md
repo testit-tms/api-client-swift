@@ -26,7 +26,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let webhooksDeleteApiModel = WebhooksDeleteApiModel(filter: WebhooksDeleteFilterApiModel(name: "name_example", eventTypes: [WebHookEventTypeRequest()], methods: [RequestTypeApiModel()], projectIds: [123], isEnabled: false), extractor: WebhooksExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // WebhooksDeleteApiModel |  (optional)
 
@@ -73,7 +73,7 @@ Get all webhooks
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let projectId = 987 // UUID | Project unique ID (optional)
 
@@ -121,7 +121,7 @@ Delete webhook by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Webhook unique ID
 
@@ -169,7 +169,7 @@ Get webhook by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Webhook unique ID
 
@@ -217,7 +217,7 @@ Edit webhook by ID
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let id = 987 // UUID | Webhook unique ID
 let webHookPostModel = WebHookPostModel(projectId: 123, eventType: WebHookEventTypeModel(), description: "description_example", url: "url_example", requestType: RequestTypeModel(), shouldSendBody: false, headers: "TODO", queryParameters: "TODO", isEnabled: false, shouldSendCustomBody: false, customBody: "customBody_example", shouldReplaceParameters: false, shouldEscapeParameters: false, name: "name_example") // WebHookPostModel |  (optional)
@@ -267,7 +267,7 @@ Create webhook
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let webHookPostModel = WebHookPostModel(projectId: 123, eventType: WebHookEventTypeModel(), description: "description_example", url: "url_example", requestType: RequestTypeModel(), shouldSendBody: false, headers: "TODO", queryParameters: "TODO", isEnabled: false, shouldSendCustomBody: false, customBody: "customBody_example", shouldReplaceParameters: false, shouldEscapeParameters: false, name: "name_example") // WebHookPostModel |  (optional)
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let webhooksUpdateApiModel = WebhooksUpdateApiModel(filter: WebhooksFilterApiModel(name: "name_example", eventTypes: [WebHookEventTypeRequest()], methods: [RequestTypeApiModel()], projectIds: [123]), model: WebhookBulkUpdateApiModel(isEnabled: false), extractor: WebhooksExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // WebhooksUpdateApiModel |  (optional)
 
@@ -362,7 +362,7 @@ Search for webhooks
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
@@ -420,7 +420,7 @@ Get special variables for webhook event type
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let eventType = WebHookEventType() // WebHookEventType | Webhook event type (optional)
 let variablesType = WebhookVariablesType() // WebhookVariablesType |  (optional)
@@ -470,7 +470,7 @@ Test webhook's url
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import TestitApiClient
 
 let webHookTestModel = WebHookTestModel(requestType: RequestTypeModel(), url: "url_example") // WebHookTestModel |  (optional)
 

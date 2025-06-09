@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **lockedDate** | **Date** |  | [optional] 
 **id** | **UUID** |  | 
 **lockedById** | **UUID** |  | [optional] 
-**tags** | [TagPostModel] |  | [optional] 
+**tags** | [TagModel] |  | [optional] 
 **name** | **String** |  | 
 **startDate** | **Date** | Used for analytics | [optional] 
 **endDate** | **Date** | Used for analytics | [optional] 
