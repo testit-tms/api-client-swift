@@ -42,7 +42,7 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
     @available(*, deprecated, message: "This property is deprecated.")
     public var lastTestResultOutcome: String?
     /** Status of the autotest last test result */
-    public var lastTestResultStatus: TestStatusModel
+    public var lastTestResultStatus: TestStatusModel?
     /** Stability percentage of the autotest */
     public var stabilityPercentage: Int?
     /** External ID of the autotest */
@@ -74,7 +74,7 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
     /** External key of the autotest */
     public var externalKey: String?
 
-    public init(globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShortModel? = nil, lastTestResultOutcome: String? = nil, lastTestResultStatus: TestStatusModel, stabilityPercentage: Int? = nil, externalId: String, links: [LinkPutModel]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepModel]? = nil, setup: [AutoTestStepModel]? = nil, teardown: [AutoTestStepModel]? = nil, title: String? = nil, description: String? = nil, labels: [LabelShortModel]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil) {
+    public init(globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShortModel? = nil, lastTestResultOutcome: String? = nil, lastTestResultStatus: TestStatusModel? = nil, stabilityPercentage: Int? = nil, externalId: String, links: [LinkPutModel]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepModel]? = nil, setup: [AutoTestStepModel]? = nil, teardown: [AutoTestStepModel]? = nil, title: String? = nil, description: String? = nil, labels: [LabelShortModel]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil) {
         self.globalId = globalId
         self.isDeleted = isDeleted
         self.mustBeApproved = mustBeApproved
