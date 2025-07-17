@@ -1,7 +1,7 @@
 mkdir generated
 cd generated
 
-openapi-generator-cli generate -i  ../source/swagger540.json -g swift5 --skip-validate-spec -o  . --additional-properties=swiftPackagePath=Sources,projectName=TestitApiClient,nonPublicApi=false
+openapi-generator-cli generate -i  https://team-okp8.testit.software/swagger/v2/swagger.json -g swift5 --skip-validate-spec -o  . --additional-properties=swiftPackagePath=Sources,projectName=TestitApiClient,nonPublicApi=false
 
 if [ -d "../Sources" ]; then
     echo "  🗑️  Removing old Sources/ directory"

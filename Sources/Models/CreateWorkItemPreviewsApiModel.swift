@@ -15,17 +15,20 @@ public struct CreateWorkItemPreviewsApiModel: Codable, JSONEncodable, Hashable {
     public var sectionId: UUID
     public var previews: [WorkItemPreviewApiModel]
     public var attributes: [String: AnyCodable]?
+    public var link: PreviewsIssueLinkApiModel?
 
-    public init(sectionId: UUID, previews: [WorkItemPreviewApiModel], attributes: [String: AnyCodable]? = nil) {
+    public init(sectionId: UUID, previews: [WorkItemPreviewApiModel], attributes: [String: AnyCodable]? = nil, link: PreviewsIssueLinkApiModel? = nil) {
         self.sectionId = sectionId
         self.previews = previews
         self.attributes = attributes
+        self.link = link
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case sectionId
         case previews
         case attributes
+        case link
     }
 
     // Encodable protocol methods
@@ -35,6 +38,7 @@ public struct CreateWorkItemPreviewsApiModel: Codable, JSONEncodable, Hashable {
         try container.encode(sectionId, forKey: .sectionId)
         try container.encode(previews, forKey: .previews)
         try container.encodeIfPresent(attributes, forKey: .attributes)
+        try container.encodeIfPresent(link, forKey: .link)
     }
 }
 

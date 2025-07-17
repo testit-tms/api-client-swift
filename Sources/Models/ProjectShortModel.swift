@@ -45,8 +45,9 @@ public struct ProjectShortModel: Codable, JSONEncodable, Hashable {
     /** Indicates if the status \"Flaky/Stable\" sets automatically */
     @available(*, deprecated, message: "This property is deprecated.")
     public var isFlakyAuto: Bool
+    public var workflowId: UUID
 
-    public init(id: UUID, description: String? = nil, name: String, isFavorite: Bool, testCasesCount: Int? = nil, sharedStepsCount: Int? = nil, checkListsCount: Int? = nil, autoTestsCount: Int? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectTypeModel, isFlakyAuto: Bool) {
+    public init(id: UUID, description: String? = nil, name: String, isFavorite: Bool, testCasesCount: Int? = nil, sharedStepsCount: Int? = nil, checkListsCount: Int? = nil, autoTestsCount: Int? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectTypeModel, isFlakyAuto: Bool, workflowId: UUID) {
         self.id = id
         self.description = description
         self.name = name
@@ -63,6 +64,7 @@ public struct ProjectShortModel: Codable, JSONEncodable, Hashable {
         self.globalId = globalId
         self.type = type
         self.isFlakyAuto = isFlakyAuto
+        self.workflowId = workflowId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -82,6 +84,7 @@ public struct ProjectShortModel: Codable, JSONEncodable, Hashable {
         case globalId
         case type
         case isFlakyAuto
+        case workflowId
     }
 
     // Encodable protocol methods
@@ -104,6 +107,7 @@ public struct ProjectShortModel: Codable, JSONEncodable, Hashable {
         try container.encode(globalId, forKey: .globalId)
         try container.encode(type, forKey: .type)
         try container.encode(isFlakyAuto, forKey: .isFlakyAuto)
+        try container.encode(workflowId, forKey: .workflowId)
     }
 }
 
