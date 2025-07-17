@@ -13,13 +13,16 @@ import AnyCodable
 public struct GenerateWorkItemPreviewsApiResult: Codable, JSONEncodable, Hashable {
 
     public var previews: [WorkItemPreviewApiModel]
+    public var link: PreviewsIssueLinkApiResult?
 
-    public init(previews: [WorkItemPreviewApiModel]) {
+    public init(previews: [WorkItemPreviewApiModel], link: PreviewsIssueLinkApiResult? = nil) {
         self.previews = previews
+        self.link = link
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case previews
+        case link
     }
 
     // Encodable protocol methods
@@ -27,6 +30,7 @@ public struct GenerateWorkItemPreviewsApiResult: Codable, JSONEncodable, Hashabl
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(previews, forKey: .previews)
+        try container.encodeIfPresent(link, forKey: .link)
     }
 }
 
