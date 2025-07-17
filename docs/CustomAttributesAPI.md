@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 # **apiV2CustomAttributesSearchPost**
 ```swift
-    open class func apiV2CustomAttributesSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, customAttributeSearchQueryModel: CustomAttributeSearchQueryModel? = nil, completion: @escaping (_ data: [CustomAttributeModel]?, _ error: Error?) -> Void)
+    open class func apiV2CustomAttributesSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, customAttributeSearchQueryModel: CustomAttributeSearchQueryModel? = nil, completion: @escaping (_ data: [CustomAttributeSearchResponseModel]?, _ error: Error?) -> Void)
 ```
 
 Search for attributes
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[CustomAttributeModel]**](CustomAttributeModel.md)
+[**[CustomAttributeSearchResponseModel]**](CustomAttributeSearchResponseModel.md)
 
 ### Authorization
 

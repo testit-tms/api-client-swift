@@ -155,7 +155,7 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(lastTestResultId, forKey: .lastTestResultId)
         try container.encodeIfPresent(lastTestResultConfiguration, forKey: .lastTestResultConfiguration)
         try container.encodeIfPresent(lastTestResultOutcome, forKey: .lastTestResultOutcome)
-        try container.encode(lastTestResultStatus, forKey: .lastTestResultStatus)
+        try container.encodeIfPresent(lastTestResultStatus, forKey: .lastTestResultStatus)
         try container.encodeIfPresent(stabilityPercentage, forKey: .stabilityPercentage)
         try container.encode(externalId, forKey: .externalId)
         try container.encodeIfPresent(links, forKey: .links)
