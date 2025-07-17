@@ -20,17 +20,21 @@ public struct UpdateParameterApiModel: Codable, JSONEncodable, Hashable {
     public var name: String
     /** Value of the parameter */
     public var value: String
+    /** List of projects where parameter should be available */
+    public var projectIds: [UUID]?
 
-    public init(id: UUID, name: String, value: String) {
+    public init(id: UUID, name: String, value: String, projectIds: [UUID]? = nil) {
         self.id = id
         self.name = name
         self.value = value
+        self.projectIds = projectIds
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
         case value
+        case projectIds
     }
 
     // Encodable protocol methods
@@ -40,6 +44,7 @@ public struct UpdateParameterApiModel: Codable, JSONEncodable, Hashable {
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(value, forKey: .value)
+        try container.encodeIfPresent(projectIds, forKey: .projectIds)
     }
 }
 

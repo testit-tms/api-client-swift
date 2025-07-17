@@ -15,17 +15,20 @@ public struct ParameterGroupApiResult: Codable, JSONEncodable, Hashable {
     public var parameterKeyId: UUID
     public var name: String
     public var values: [String: String]
+    public var projectIds: [UUID]
 
-    public init(parameterKeyId: UUID, name: String, values: [String: String]) {
+    public init(parameterKeyId: UUID, name: String, values: [String: String], projectIds: [UUID]) {
         self.parameterKeyId = parameterKeyId
         self.name = name
         self.values = values
+        self.projectIds = projectIds
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case parameterKeyId
         case name
         case values
+        case projectIds
     }
 
     // Encodable protocol methods
@@ -35,6 +38,7 @@ public struct ParameterGroupApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(parameterKeyId, forKey: .parameterKeyId)
         try container.encode(name, forKey: .name)
         try container.encode(values, forKey: .values)
+        try container.encode(projectIds, forKey: .projectIds)
     }
 }
 

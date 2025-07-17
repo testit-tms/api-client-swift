@@ -270,7 +270,7 @@ open class CustomAttributesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2CustomAttributesSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, customAttributeSearchQueryModel: CustomAttributeSearchQueryModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CustomAttributeModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2CustomAttributesSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, customAttributeSearchQueryModel: CustomAttributeSearchQueryModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CustomAttributeSearchResponseModel]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2CustomAttributesSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, customAttributeSearchQueryModel: customAttributeSearchQueryModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -294,9 +294,9 @@ open class CustomAttributesAPI {
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
      - parameter customAttributeSearchQueryModel: (body)  (optional)
-     - returns: RequestBuilder<[CustomAttributeModel]> 
+     - returns: RequestBuilder<[CustomAttributeSearchResponseModel]> 
      */
-    open class func apiV2CustomAttributesSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, customAttributeSearchQueryModel: CustomAttributeSearchQueryModel? = nil) -> RequestBuilder<[CustomAttributeModel]> {
+    open class func apiV2CustomAttributesSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, customAttributeSearchQueryModel: CustomAttributeSearchQueryModel? = nil) -> RequestBuilder<[CustomAttributeSearchResponseModel]> {
         let localVariablePath = "/api/v2/customAttributes/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: customAttributeSearchQueryModel)
@@ -316,7 +316,7 @@ open class CustomAttributesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[CustomAttributeModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[CustomAttributeSearchResponseModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

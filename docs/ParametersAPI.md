@@ -35,7 +35,7 @@ Create multiple parameters
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createParameterApiModel = [CreateParameterApiModel(name: "name_example", value: "value_example")] // [CreateParameterApiModel] |  (optional)
+let createParameterApiModel = [CreateParameterApiModel(name: "name_example", value: "value_example", projectIds: [123])] // [CreateParameterApiModel] |  (optional)
 
 // Create multiple parameters
 ParametersAPI.apiV2ParametersBulkPost(createParameterApiModel: createParameterApiModel) { (response, error) in
@@ -85,7 +85,7 @@ Update multiple parameters
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let updateParameterApiModel = [UpdateParameterApiModel(id: 123, name: "name_example", value: "value_example")] // [UpdateParameterApiModel] |  (optional)
+let updateParameterApiModel = [UpdateParameterApiModel(id: 123, name: "name_example", value: "value_example", projectIds: [123])] // [UpdateParameterApiModel] |  (optional)
 
 // Update multiple parameters
 ParametersAPI.apiV2ParametersBulkPut(updateParameterApiModel: updateParameterApiModel) { (response, error) in
@@ -123,7 +123,7 @@ Void (empty response body)
 
 # **apiV2ParametersGroupsGet**
 ```swift
-    open class func apiV2ParametersGroupsGet(parameterKeyIds: Set<UUID>? = nil, name: String? = nil, isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ParameterGroupApiResult]?, _ error: Error?) -> Void)
+    open class func apiV2ParametersGroupsGet(parameterKeyIds: Set<UUID>? = nil, name: String? = nil, isDeleted: Bool? = nil, projectIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ParameterGroupApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get parameters as group
@@ -138,6 +138,7 @@ import TestitApiClient
 let parameterKeyIds = [123] // Set<UUID> |  (optional)
 let name = "name_example" // String |  (optional)
 let isDeleted = true // Bool |  (optional)
+let projectIds = [123] // [UUID] |  (optional)
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -145,7 +146,7 @@ let searchField = "searchField_example" // String | Property name for searching 
 let searchValue = "searchValue_example" // String | Value for searching (optional)
 
 // Get parameters as group
-ParametersAPI.apiV2ParametersGroupsGet(parameterKeyIds: parameterKeyIds, name: name, isDeleted: isDeleted, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue) { (response, error) in
+ParametersAPI.apiV2ParametersGroupsGet(parameterKeyIds: parameterKeyIds, name: name, isDeleted: isDeleted, projectIds: projectIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -164,6 +165,7 @@ Name | Type | Description  | Notes
  **parameterKeyIds** | [**Set&lt;UUID&gt;**](UUID.md) |  | [optional] 
  **name** | **String** |  | [optional] 
  **isDeleted** | **Bool** |  | [optional] 
+ **projectIds** | [**[UUID]**](UUID.md) |  | [optional] 
  **skip** | **Int** | Amount of items to be skipped (offset) | [optional] 
  **take** | **Int** | Amount of items to be taken (limit) | [optional] 
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
@@ -287,7 +289,7 @@ Name | Type | Description  | Notes
 
 # **apiV2ParametersKeysGet**
 ```swift
-    open class func apiV2ParametersKeysGet(completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func apiV2ParametersKeysGet(projectIds: [UUID]? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
 ```
 
 Get all parameter keys
@@ -299,9 +301,10 @@ Get all parameter keys
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
+let projectIds = [123] // [UUID] |  (optional)
 
 // Get all parameter keys
-ParametersAPI.apiV2ParametersKeysGet() { (response, error) in
+ParametersAPI.apiV2ParametersKeysGet(projectIds: projectIds) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -314,7 +317,10 @@ ParametersAPI.apiV2ParametersKeysGet() { (response, error) in
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectIds** | [**[UUID]**](UUID.md) |  | [optional] 
 
 ### Return type
 
@@ -348,7 +354,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let parameterGroupsFilterApiModel = ParameterGroupsFilterApiModel(parameterKeyIds: [123], name: "name_example", isDeleted: false) // ParameterGroupsFilterApiModel |  (optional)
+let parameterGroupsFilterApiModel = ParameterGroupsFilterApiModel(parameterKeyIds: [123], name: "name_example", isDeleted: false, projectIds: [123]) // ParameterGroupsFilterApiModel |  (optional)
 
 // Search for parameters as group
 ParametersAPI.apiV2ParametersSearchGroupsPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterGroupsFilterApiModel: parameterGroupsFilterApiModel) { (response, error) in
@@ -406,7 +412,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let parametersFilterApiModel = ParametersFilterApiModel(name: "name_example", isDeleted: false) // ParametersFilterApiModel |  (optional)
+let parametersFilterApiModel = ParametersFilterApiModel(name: "name_example", isDeleted: false, projectIds: [123]) // ParametersFilterApiModel |  (optional)
 
 // Search for parameters
 ParametersAPI.apiV2ParametersSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parametersFilterApiModel: parametersFilterApiModel) { (response, error) in
@@ -461,7 +467,7 @@ Create parameter
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createParameterApiModel = CreateParameterApiModel(name: "name_example", value: "value_example") // CreateParameterApiModel |  (optional)
+let createParameterApiModel = CreateParameterApiModel(name: "name_example", value: "value_example", projectIds: [123]) // CreateParameterApiModel |  (optional)
 
 // Create parameter
 ParametersAPI.createParameter(createParameterApiModel: createParameterApiModel) { (response, error) in
@@ -771,7 +777,7 @@ Update parameter
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let updateParameterApiModel = UpdateParameterApiModel(id: 123, name: "name_example", value: "value_example") // UpdateParameterApiModel |  (optional)
+let updateParameterApiModel = UpdateParameterApiModel(id: 123, name: "name_example", value: "value_example", projectIds: [123]) // UpdateParameterApiModel |  (optional)
 
 // Update parameter
 ParametersAPI.updateParameter(updateParameterApiModel: updateParameterApiModel) { (response, error) in

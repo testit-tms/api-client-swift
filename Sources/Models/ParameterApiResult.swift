@@ -21,8 +21,9 @@ public struct ParameterApiResult: Codable, JSONEncodable, Hashable {
     public var modifiedDate: Date?
     public var modifiedById: UUID?
     public var isDeleted: Bool
+    public var projectIds: [UUID]
 
-    public init(id: UUID, parameterKeyId: UUID, name: String, value: String, createdDate: Date, createdById: UUID, modifiedDate: Date? = nil, modifiedById: UUID? = nil, isDeleted: Bool) {
+    public init(id: UUID, parameterKeyId: UUID, name: String, value: String, createdDate: Date, createdById: UUID, modifiedDate: Date? = nil, modifiedById: UUID? = nil, isDeleted: Bool, projectIds: [UUID]) {
         self.id = id
         self.parameterKeyId = parameterKeyId
         self.name = name
@@ -32,6 +33,7 @@ public struct ParameterApiResult: Codable, JSONEncodable, Hashable {
         self.modifiedDate = modifiedDate
         self.modifiedById = modifiedById
         self.isDeleted = isDeleted
+        self.projectIds = projectIds
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,6 +46,7 @@ public struct ParameterApiResult: Codable, JSONEncodable, Hashable {
         case modifiedDate
         case modifiedById
         case isDeleted
+        case projectIds
     }
 
     // Encodable protocol methods
@@ -59,6 +62,7 @@ public struct ParameterApiResult: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)
         try container.encodeIfPresent(modifiedById, forKey: .modifiedById)
         try container.encode(isDeleted, forKey: .isDeleted)
+        try container.encode(projectIds, forKey: .projectIds)
     }
 }
 

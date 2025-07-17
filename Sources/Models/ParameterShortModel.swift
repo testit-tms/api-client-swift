@@ -20,12 +20,14 @@ public struct ParameterShortModel: Codable, JSONEncodable, Hashable {
     public var value: String
     /** Key of the parameter */
     public var name: String
+    public var projectIds: [UUID]
 
-    public init(id: UUID, parameterKeyId: UUID, value: String, name: String) {
+    public init(id: UUID, parameterKeyId: UUID, value: String, name: String, projectIds: [UUID]) {
         self.id = id
         self.parameterKeyId = parameterKeyId
         self.value = value
         self.name = name
+        self.projectIds = projectIds
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -33,6 +35,7 @@ public struct ParameterShortModel: Codable, JSONEncodable, Hashable {
         case parameterKeyId
         case value
         case name
+        case projectIds
     }
 
     // Encodable protocol methods
@@ -43,6 +46,7 @@ public struct ParameterShortModel: Codable, JSONEncodable, Hashable {
         try container.encode(parameterKeyId, forKey: .parameterKeyId)
         try container.encode(value, forKey: .value)
         try container.encode(name, forKey: .name)
+        try container.encode(projectIds, forKey: .projectIds)
     }
 }
 

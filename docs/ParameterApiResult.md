@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **modifiedDate** | **Date** |  | [optional] 
 **modifiedById** | **UUID** |  | [optional] 
 **isDeleted** | **Bool** |  | 
+**projectIds** | **[UUID]** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

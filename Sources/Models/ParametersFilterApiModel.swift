@@ -14,15 +14,18 @@ public struct ParametersFilterApiModel: Codable, JSONEncodable, Hashable {
 
     public var name: String?
     public var isDeleted: Bool?
+    public var projectIds: [UUID]?
 
-    public init(name: String? = nil, isDeleted: Bool? = nil) {
+    public init(name: String? = nil, isDeleted: Bool? = nil, projectIds: [UUID]? = nil) {
         self.name = name
         self.isDeleted = isDeleted
+        self.projectIds = projectIds
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case isDeleted
+        case projectIds
     }
 
     // Encodable protocol methods
@@ -31,6 +34,7 @@ public struct ParametersFilterApiModel: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(isDeleted, forKey: .isDeleted)
+        try container.encodeIfPresent(projectIds, forKey: .projectIds)
     }
 }
 
