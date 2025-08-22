@@ -930,7 +930,7 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return createProjectWithRequestBuilder(createProjectApiModel: createProjectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -949,9 +949,9 @@ open class ProjectsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter createProjectApiModel: (body)  (optional)
-     - returns: RequestBuilder<ProjectModel> 
+     - returns: RequestBuilder<ProjectApiResult> 
      */
-    open class func createProjectWithRequestBuilder(createProjectApiModel: CreateProjectApiModel? = nil) -> RequestBuilder<ProjectModel> {
+    open class func createProjectWithRequestBuilder(createProjectApiModel: CreateProjectApiModel? = nil) -> RequestBuilder<ProjectApiResult> {
         let localVariablePath = "/api/v2/projects"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createProjectApiModel)
@@ -964,7 +964,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProjectModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ProjectApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

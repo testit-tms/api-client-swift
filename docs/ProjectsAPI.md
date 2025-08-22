@@ -912,7 +912,7 @@ Name | Type | Description  | Notes
 
 # **createProject**
 ```swift
-    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, completion: @escaping (_ data: ProjectModel?, _ error: Error?) -> Void)
+    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, completion: @escaping (_ data: ProjectApiResult?, _ error: Error?) -> Void)
 ```
 
 Create project
@@ -947,7 +947,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectModel**](ProjectModel.md)
+[**ProjectApiResult**](ProjectApiResult.md)
 
 ### Authorization
 
