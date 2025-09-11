@@ -16,7 +16,10 @@ public struct AutoTestPostModel: Codable, JSONEncodable, Hashable {
     public static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Specifies the IDs of work items to link your autotest to. You can specify several IDs. */
+    @available(*, deprecated, message: "This property is deprecated.")
     public var workItemIdsForLinkWithAutoTest: Set<UUID>?
+    /** Specifies the IDs of work items to link your autotest to. You can specify several IDs. */
+    public var workItemIds: [UUID]?
     /** Creates a test case linked to the autotest. */
     public var shouldCreateWorkItem: Bool?
     /** Key value pair of custom work item attributes */
@@ -50,8 +53,9 @@ public struct AutoTestPostModel: Codable, JSONEncodable, Hashable {
     /** External key of the autotest */
     public var externalKey: String?
 
-    public init(workItemIdsForLinkWithAutoTest: Set<UUID>? = nil, shouldCreateWorkItem: Bool? = nil, attributes: [String: AnyCodable]? = nil, externalId: String, links: [LinkPostModel]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepModel]? = nil, setup: [AutoTestStepModel]? = nil, teardown: [AutoTestStepModel]? = nil, title: String? = nil, description: String? = nil, labels: [LabelPostModel]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil) {
+    public init(workItemIdsForLinkWithAutoTest: Set<UUID>? = nil, workItemIds: [UUID]? = nil, shouldCreateWorkItem: Bool? = nil, attributes: [String: AnyCodable]? = nil, externalId: String, links: [LinkPostModel]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepModel]? = nil, setup: [AutoTestStepModel]? = nil, teardown: [AutoTestStepModel]? = nil, title: String? = nil, description: String? = nil, labels: [LabelPostModel]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil) {
         self.workItemIdsForLinkWithAutoTest = workItemIdsForLinkWithAutoTest
+        self.workItemIds = workItemIds
         self.shouldCreateWorkItem = shouldCreateWorkItem
         self.attributes = attributes
         self.externalId = externalId
@@ -72,6 +76,7 @@ public struct AutoTestPostModel: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case workItemIdsForLinkWithAutoTest
+        case workItemIds
         case shouldCreateWorkItem
         case attributes
         case externalId
@@ -95,6 +100,7 @@ public struct AutoTestPostModel: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(workItemIdsForLinkWithAutoTest, forKey: .workItemIdsForLinkWithAutoTest)
+        try container.encodeIfPresent(workItemIds, forKey: .workItemIds)
         try container.encodeIfPresent(shouldCreateWorkItem, forKey: .shouldCreateWorkItem)
         try container.encodeIfPresent(attributes, forKey: .attributes)
         try container.encode(externalId, forKey: .externalId)

@@ -12,22 +12,14 @@ import AnyCodable
 
 public struct DemoProjectApiResult: Codable, JSONEncodable, Hashable {
 
-    /** Demo project ID */
-    public var projectId: UUID
-    /** Demo project global ID */
-    public var projectGlobalId: Int64
     /** Job ID */
     public var jobId: UUID
 
-    public init(projectId: UUID, projectGlobalId: Int64, jobId: UUID) {
-        self.projectId = projectId
-        self.projectGlobalId = projectGlobalId
+    public init(jobId: UUID) {
         self.jobId = jobId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case projectId
-        case projectGlobalId
         case jobId
     }
 
@@ -35,8 +27,6 @@ public struct DemoProjectApiResult: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(projectId, forKey: .projectId)
-        try container.encode(projectGlobalId, forKey: .projectGlobalId)
         try container.encode(jobId, forKey: .jobId)
     }
 }

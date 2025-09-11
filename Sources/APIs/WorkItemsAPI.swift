@@ -650,6 +650,52 @@ open class WorkItemsAPI {
     }
 
     /**
+     Creates work item
+     
+     - parameter createWorkItemApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2WorkItemsPost(createWorkItemApiModel: CreateWorkItemApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkItemApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WorkItemsPostWithRequestBuilder(createWorkItemApiModel: createWorkItemApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Creates work item
+     - POST /api/v2/workItems
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter createWorkItemApiModel: (body)  (optional)
+     - returns: RequestBuilder<WorkItemApiResult> 
+     */
+    open class func apiV2WorkItemsPostWithRequestBuilder(createWorkItemApiModel: CreateWorkItemApiModel? = nil) -> RequestBuilder<WorkItemApiResult> {
+        let localVariablePath = "/api/v2/workItems"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createWorkItemApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<WorkItemApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Search for work items
      
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -903,53 +949,6 @@ open class WorkItemsAPI {
         let localVariableRequestBuilder: RequestBuilder<[SharedStepReferenceModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-     Create Test Case, Checklist or Shared Step
-     
-     - parameter createWorkItemApiModel: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func createWorkItem(createWorkItemApiModel: CreateWorkItemApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkItemModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return createWorkItemWithRequestBuilder(createWorkItemApiModel: createWorkItemApiModel).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Create Test Case, Checklist or Shared Step
-     - POST /api/v2/workItems
-     -  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System creates work item by identifier  System returns work item model (listed in response parameters)
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
-     - parameter createWorkItemApiModel: (body)  (optional)
-     - returns: RequestBuilder<WorkItemModel> 
-     */
-    open class func createWorkItemWithRequestBuilder(createWorkItemApiModel: CreateWorkItemApiModel? = nil) -> RequestBuilder<WorkItemModel> {
-        let localVariablePath = "/api/v2/workItems"
-        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createWorkItemApiModel)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<WorkItemModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**

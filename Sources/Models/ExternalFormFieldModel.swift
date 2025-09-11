@@ -21,13 +21,13 @@ public struct ExternalFormFieldModel: Codable, JSONEncodable, Hashable {
     public var isCustomValueAllowed: Bool
     public var autoCompleteUrl: String?
     public var controlType: String?
-    public var minLength: Int?
-    public var maxLength: Int?
+    public var minLength: Double?
+    public var maxLength: Double?
     public var isRequired: Bool?
     public var min: AnyCodable?
     public var max: AnyCodable?
 
-    public init(fieldId: String? = nil, fieldName: String? = nil, helpText: String? = nil, type: String? = nil, arrayValuesType: String? = nil, defaultValue: AnyCodable? = nil, isCustomValueAllowed: Bool, autoCompleteUrl: String? = nil, controlType: String? = nil, minLength: Int? = nil, maxLength: Int? = nil, isRequired: Bool? = nil, min: AnyCodable? = nil, max: AnyCodable? = nil) {
+    public init(fieldId: String? = nil, fieldName: String? = nil, helpText: String? = nil, type: String? = nil, arrayValuesType: String? = nil, defaultValue: AnyCodable? = nil, isCustomValueAllowed: Bool, autoCompleteUrl: String? = nil, controlType: String? = nil, minLength: Double? = nil, maxLength: Double? = nil, isRequired: Bool? = nil, min: AnyCodable? = nil, max: AnyCodable? = nil) {
         self.fieldId = fieldId
         self.fieldName = fieldName
         self.helpText = helpText

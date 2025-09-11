@@ -15,11 +15,11 @@ Method | HTTP request | Description
 [**apiV2WorkItemsIdVersionVersionIdActualPost**](WorkItemsAPI.md#apiv2workitemsidversionversionidactualpost) | **POST** /api/v2/workItems/{id}/version/{versionId}/actual | Set WorkItem as actual
 [**apiV2WorkItemsLinksUrlsSearchPost**](WorkItemsAPI.md#apiv2workitemslinksurlssearchpost) | **POST** /api/v2/workItems/links/urls/search | 
 [**apiV2WorkItemsMovePost**](WorkItemsAPI.md#apiv2workitemsmovepost) | **POST** /api/v2/workItems/move | Move WorkItem to another section
+[**apiV2WorkItemsPost**](WorkItemsAPI.md#apiv2workitemspost) | **POST** /api/v2/workItems | Creates work item
 [**apiV2WorkItemsSearchPost**](WorkItemsAPI.md#apiv2workitemssearchpost) | **POST** /api/v2/workItems/search | Search for work items
 [**apiV2WorkItemsSharedStepIdReferencesSectionsPost**](WorkItemsAPI.md#apiv2workitemssharedstepidreferencessectionspost) | **POST** /api/v2/workItems/{sharedStepId}/references/sections | Get SharedStep references in sections
 [**apiV2WorkItemsSharedStepIdReferencesWorkItemsPost**](WorkItemsAPI.md#apiv2workitemssharedstepidreferencesworkitemspost) | **POST** /api/v2/workItems/{sharedStepId}/references/workItems | Get SharedStep references in work items
 [**apiV2WorkItemsSharedStepsSharedStepIdReferencesGet**](WorkItemsAPI.md#apiv2workitemssharedstepssharedstepidreferencesget) | **GET** /api/v2/workItems/sharedSteps/{sharedStepId}/references | Get SharedStep references
-[**createWorkItem**](WorkItemsAPI.md#createworkitem) | **POST** /api/v2/workItems | Create Test Case, Checklist or Shared Step
 [**deleteAllWorkItemsFromAutoTest**](WorkItemsAPI.md#deleteallworkitemsfromautotest) | **DELETE** /api/v2/workItems/{id}/autoTests | Delete all links AutoTests from WorkItem by Id or GlobalId
 [**deleteWorkItem**](WorkItemsAPI.md#deleteworkitem) | **DELETE** /api/v2/workItems/{id} | Delete Test Case, Checklist or Shared Step by Id or GlobalId
 [**getAutoTestsForWorkItem**](WorkItemsAPI.md#getautotestsforworkitem) | **GET** /api/v2/workItems/{id}/autoTests | Get all AutoTests linked to WorkItem by Id or GlobalId
@@ -633,6 +633,54 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2WorkItemsPost**
+```swift
+    open class func apiV2WorkItemsPost(createWorkItemApiModel: CreateWorkItemApiModel? = nil, completion: @escaping (_ data: WorkItemApiResult?, _ error: Error?) -> Void)
+```
+
+Creates work item
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let createWorkItemApiModel = CreateWorkItemApiModel(projectId: 123, sectionId: 123, name: "name_example", description: "description_example", entityTypeName: WorkItemEntityTypeApiModel(), duration: 123, state: WorkItemStateApiModel(), priority: WorkItemPriorityApiModel(), attributes: "TODO", tags: [TagModel(name: "name_example")], preconditionSteps: [CreateStepApiModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], steps: [nil], postconditionSteps: [nil], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // CreateWorkItemApiModel |  (optional)
+
+// Creates work item
+WorkItemsAPI.apiV2WorkItemsPost(createWorkItemApiModel: createWorkItemApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorkItemApiModel** | [**CreateWorkItemApiModel**](CreateWorkItemApiModel.md) |  | [optional] 
+
+### Return type
+
+[**WorkItemApiResult**](WorkItemApiResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2WorkItemsSearchPost**
 ```swift
     open class func apiV2WorkItemsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectApiModel: WorkItemSelectApiModel? = nil, completion: @escaping (_ data: [WorkItemShortApiResult]?, _ error: Error?) -> Void)
@@ -861,56 +909,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createWorkItem**
-```swift
-    open class func createWorkItem(createWorkItemApiModel: CreateWorkItemApiModel? = nil, completion: @escaping (_ data: WorkItemModel?, _ error: Error?) -> Void)
-```
-
-Create Test Case, Checklist or Shared Step
-
- Use case  User sets work item properties (listed in request parameters)  User runs method execution  System creates work item by identifier  System returns work item model (listed in response parameters)
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
-
-let createWorkItemApiModel = CreateWorkItemApiModel(entityTypeName: WorkItemEntityTypes(), description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), steps: [CreateStepApiModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagModel(name: "name_example")], attachments: [AssignAttachmentApiModel(id: 123)], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example", projectId: 123, sectionId: 123, autoTests: [AutoTestIdModel(id: 123)]) // CreateWorkItemApiModel |  (optional)
-
-// Create Test Case, Checklist or Shared Step
-WorkItemsAPI.createWorkItem(createWorkItemApiModel: createWorkItemApiModel) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createWorkItemApiModel** | [**CreateWorkItemApiModel**](CreateWorkItemApiModel.md) |  | [optional] 
-
-### Return type
-
-[**WorkItemModel**](WorkItemModel.md)
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

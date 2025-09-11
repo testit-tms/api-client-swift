@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **isCustomValueAllowed** | **Bool** |  | 
 **autoCompleteUrl** | **String** |  | [optional] 
 **controlType** | **String** |  | [optional] 
-**minLength** | **Int** |  | [optional] 
-**maxLength** | **Int** |  | [optional] 
+**minLength** | **Double** |  | [optional] 
+**maxLength** | **Double** |  | [optional] 
 **isRequired** | **Bool** |  | [optional] 
 **min** | **AnyCodable** |  | [optional] 
 **max** | **AnyCodable** |  | [optional] 

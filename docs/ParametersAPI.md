@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 # **apiV2ParametersKeysGet**
 ```swift
-    open class func apiV2ParametersKeysGet(projectIds: [UUID]? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func apiV2ParametersKeysGet(projectIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
 ```
 
 Get all parameter keys
@@ -302,9 +302,14 @@ Get all parameter keys
 import TestitApiClient
 
 let projectIds = [123] // [UUID] |  (optional)
+let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
+let take = 987 // Int | Amount of items to be taken (limit) (optional)
+let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
+let searchField = "searchField_example" // String | Property name for searching (optional)
+let searchValue = "searchValue_example" // String | Value for searching (optional)
 
 // Get all parameter keys
-ParametersAPI.apiV2ParametersKeysGet(projectIds: projectIds) { (response, error) in
+ParametersAPI.apiV2ParametersKeysGet(projectIds: projectIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -321,6 +326,11 @@ ParametersAPI.apiV2ParametersKeysGet(projectIds: projectIds) { (response, error)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectIds** | [**[UUID]**](UUID.md) |  | [optional] 
+ **skip** | **Int** | Amount of items to be skipped (offset) | [optional] 
+ **take** | **Int** | Amount of items to be taken (limit) | [optional] 
+ **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
+ **searchField** | **String** | Property name for searching | [optional] 
+ **searchValue** | **String** | Value for searching | [optional] 
 
 ### Return type
 
