@@ -21,8 +21,9 @@ public struct TestPointAnalyticResult: Codable, JSONEncodable, Hashable {
     public var countGroupByTesterAndStatus: [TestPlanGroupByTesterAndStatus]
     public var countGroupByStatusCode: [TestPlanGroupByStatusCode]
     public var countGroupByTesterAndStatusCode: [TestPlanGroupByTesterAndStatusCode]
+    public var countGroupByStatusType: [TestPlanGroupByStatusType]
 
-    public init(countGroupByStatus: [TestPlanGroupByStatus], sumGroupByTester: [TestPlanGroupByTester], countGroupByTester: [TestPlanGroupByTester], countGroupByTestSuite: [TestPlanGroupByTestSuite], countGroupByTesterAndStatus: [TestPlanGroupByTesterAndStatus], countGroupByStatusCode: [TestPlanGroupByStatusCode], countGroupByTesterAndStatusCode: [TestPlanGroupByTesterAndStatusCode]) {
+    public init(countGroupByStatus: [TestPlanGroupByStatus], sumGroupByTester: [TestPlanGroupByTester], countGroupByTester: [TestPlanGroupByTester], countGroupByTestSuite: [TestPlanGroupByTestSuite], countGroupByTesterAndStatus: [TestPlanGroupByTesterAndStatus], countGroupByStatusCode: [TestPlanGroupByStatusCode], countGroupByTesterAndStatusCode: [TestPlanGroupByTesterAndStatusCode], countGroupByStatusType: [TestPlanGroupByStatusType]) {
         self.countGroupByStatus = countGroupByStatus
         self.sumGroupByTester = sumGroupByTester
         self.countGroupByTester = countGroupByTester
@@ -30,6 +31,7 @@ public struct TestPointAnalyticResult: Codable, JSONEncodable, Hashable {
         self.countGroupByTesterAndStatus = countGroupByTesterAndStatus
         self.countGroupByStatusCode = countGroupByStatusCode
         self.countGroupByTesterAndStatusCode = countGroupByTesterAndStatusCode
+        self.countGroupByStatusType = countGroupByStatusType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,6 +42,7 @@ public struct TestPointAnalyticResult: Codable, JSONEncodable, Hashable {
         case countGroupByTesterAndStatus
         case countGroupByStatusCode
         case countGroupByTesterAndStatusCode
+        case countGroupByStatusType
     }
 
     // Encodable protocol methods
@@ -53,6 +56,7 @@ public struct TestPointAnalyticResult: Codable, JSONEncodable, Hashable {
         try container.encode(countGroupByTesterAndStatus, forKey: .countGroupByTesterAndStatus)
         try container.encode(countGroupByStatusCode, forKey: .countGroupByStatusCode)
         try container.encode(countGroupByTesterAndStatusCode, forKey: .countGroupByTesterAndStatusCode)
+        try container.encode(countGroupByStatusType, forKey: .countGroupByStatusType)
     }
 }
 

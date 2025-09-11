@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 
 # **getTestSuiteById**
 ```swift
-    open class func getTestSuiteById(id: UUID, completion: @escaping (_ data: TestSuiteV2GetModel?, _ error: Error?) -> Void)
+    open class func getTestSuiteById(id: UUID, completion: @escaping (_ data: TestSuiteApiResult?, _ error: Error?) -> Void)
 ```
 
 Get TestSuite by Id
@@ -552,7 +552,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TestSuiteV2GetModel**](TestSuiteV2GetModel.md)
+[**TestSuiteApiResult**](TestSuiteApiResult.md)
 
 ### Authorization
 

@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addGlobaAttributesToProject**](ProjectsAPI.md#addglobaattributestoproject) | **POST** /api/v2/projects/{id}/globalAttributes | Add global attributes to project
+[**apiV2ProjectsDemoPost**](ProjectsAPI.md#apiv2projectsdemopost) | **POST** /api/v2/projects/demo | 
 [**apiV2ProjectsIdDelete**](ProjectsAPI.md#apiv2projectsiddelete) | **DELETE** /api/v2/projects/{id} | Archive project
 [**apiV2ProjectsIdFailureClassesGet**](ProjectsAPI.md#apiv2projectsidfailureclassesget) | **GET** /api/v2/projects/{id}/failureClasses | Get failure classes
 [**apiV2ProjectsIdFavoritePut**](ProjectsAPI.md#apiv2projectsidfavoriteput) | **PUT** /api/v2/projects/{id}/favorite | Mark Project as favorite
@@ -83,6 +84,49 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2ProjectsDemoPost**
+```swift
+    open class func apiV2ProjectsDemoPost(completion: @escaping (_ data: DemoProjectApiResult?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+
+ProjectsAPI.apiV2ProjectsDemoPost() { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DemoProjectApiResult**](DemoProjectApiResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2ProjectsIdDelete**
 ```swift
     open class func apiV2ProjectsIdDelete(id: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
@@ -133,7 +177,7 @@ Void (empty response body)
 
 # **apiV2ProjectsIdFailureClassesGet**
 ```swift
-    open class func apiV2ProjectsIdFailureClassesGet(id: String, isDeleted: Bool? = nil, completion: @escaping (_ data: [FailureClassModel]?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsIdFailureClassesGet(id: String, isDeleted: Bool? = nil, completion: @escaping (_ data: [AutoTestResultReasonProjectApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get failure classes
@@ -168,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[FailureClassModel]**](FailureClassModel.md)
+[**[AutoTestResultReasonProjectApiResult]**](AutoTestResultReasonProjectApiResult.md)
 
 ### Authorization
 
@@ -912,7 +956,7 @@ Name | Type | Description  | Notes
 
 # **createProject**
 ```swift
-    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, completion: @escaping (_ data: ProjectModel?, _ error: Error?) -> Void)
+    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, completion: @escaping (_ data: ProjectApiResult?, _ error: Error?) -> Void)
 ```
 
 Create project
@@ -947,7 +991,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectModel**](ProjectModel.md)
+[**ProjectApiResult**](ProjectApiResult.md)
 
 ### Authorization
 

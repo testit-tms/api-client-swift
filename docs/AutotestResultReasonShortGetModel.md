@@ -1,17 +1,18 @@
-# FailureClassModel
+# AutotestResultReasonShortGetModel
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**isDeleted** | **Bool** |  | 
+**failureCategory** | [**AvailableFailureCategory**](AvailableFailureCategory.md) |  | 
+**failureCategoryId** | **Int** |  | 
 **name** | **String** |  | [optional] 
-**failureCategory** | [**FailureCategoryModel**](FailureCategoryModel.md) |  | 
+**regexCount** | **Int** |  | 
+**id** | **UUID** |  | 
 **createdDate** | **Date** |  | 
-**modifiedDate** | **Date** |  | [optional] 
 **createdById** | **UUID** |  | 
+**modifiedDate** | **Date** |  | [optional] 
 **modifiedById** | **UUID** |  | [optional] 
-**failureClassRegexes** | [FailureClassRegexModel] |  | [optional] 
-**id** | **UUID** | Unique ID of the entity | 
-**isDeleted** | **Bool** | Indicates if the entity is deleted | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

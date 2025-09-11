@@ -1003,7 +1003,7 @@ open class TestPlansAPI {
     /**
      Get last modification date of test plan's test results
      
-     - parameter id: (path) Test plan unique or global ID 
+     - parameter id: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1025,7 +1025,7 @@ open class TestPlansAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter id: (path) Test plan unique or global ID 
+     - parameter id: (path)  
      - returns: RequestBuilder<Void> 
      */
     open class func apiV2TestPlansIdTestRunsTestResultsLastModifiedModifiedDateGetWithRequestBuilder(id: String) -> RequestBuilder<Void> {
@@ -1406,7 +1406,7 @@ open class TestPlansAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTestSuitesById(id: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestSuiteV2TreeModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getTestSuitesById(id: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [TestSuiteHierarchyApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return getTestSuitesByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1425,9 +1425,9 @@ open class TestPlansAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
-     - returns: RequestBuilder<[TestSuiteV2TreeModel]> 
+     - returns: RequestBuilder<[TestSuiteHierarchyApiResult]> 
      */
-    open class func getTestSuitesByIdWithRequestBuilder(id: String) -> RequestBuilder<[TestSuiteV2TreeModel]> {
+    open class func getTestSuitesByIdWithRequestBuilder(id: String) -> RequestBuilder<[TestSuiteHierarchyApiResult]> {
         var localVariablePath = "/api/v2/testPlans/{id}/testSuites"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1443,7 +1443,7 @@ open class TestPlansAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TestSuiteV2TreeModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TestSuiteHierarchyApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

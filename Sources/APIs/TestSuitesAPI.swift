@@ -515,7 +515,7 @@ open class TestSuitesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTestSuiteById(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestSuiteV2GetModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getTestSuiteById(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestSuiteApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return getTestSuiteByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -534,9 +534,9 @@ open class TestSuitesAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test suite internal (guid format) identifier\&quot; 
-     - returns: RequestBuilder<TestSuiteV2GetModel> 
+     - returns: RequestBuilder<TestSuiteApiResult> 
      */
-    open class func getTestSuiteByIdWithRequestBuilder(id: UUID) -> RequestBuilder<TestSuiteV2GetModel> {
+    open class func getTestSuiteByIdWithRequestBuilder(id: UUID) -> RequestBuilder<TestSuiteApiResult> {
         var localVariablePath = "/api/v2/testSuites/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -552,7 +552,7 @@ open class TestSuitesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestSuiteV2GetModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestSuiteApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

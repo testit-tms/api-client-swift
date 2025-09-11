@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workItemIdsForLinkWithAutoTest** | **Set<UUID>** | Specifies the IDs of work items to link your autotest to. You can specify several IDs. | [optional] 
+**workItemIds** | **[UUID]** | Specifies the IDs of work items to link your autotest to. You can specify several IDs. | [optional] 
 **shouldCreateWorkItem** | **Bool** | Creates a test case linked to the autotest. | [optional] 
 **attributes** | **[String: AnyCodable]** | Key value pair of custom work item attributes | [optional] 
 **externalId** | **String** | External ID of the autotest | 

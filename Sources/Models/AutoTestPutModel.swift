@@ -17,7 +17,9 @@ public struct AutoTestPutModel: Codable, JSONEncodable, Hashable {
     public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Used for search autotest. If value is null or equals Guid mask filled with zeros, search will be executed using ExternalId */
     public var id: UUID?
+    @available(*, deprecated, message: "This property is deprecated.")
     public var workItemIdsForLinkWithAutoTest: Set<UUID>?
+    public var workItemIds: [UUID]?
     /** External ID of the autotest */
     public var externalId: String
     /** Collection of the autotest links */
@@ -47,9 +49,10 @@ public struct AutoTestPutModel: Codable, JSONEncodable, Hashable {
     /** External key of the autotest */
     public var externalKey: String?
 
-    public init(id: UUID? = nil, workItemIdsForLinkWithAutoTest: Set<UUID>? = nil, externalId: String, links: [LinkPutModel]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepModel]? = nil, setup: [AutoTestStepModel]? = nil, teardown: [AutoTestStepModel]? = nil, title: String? = nil, description: String? = nil, labels: [LabelPostModel]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil) {
+    public init(id: UUID? = nil, workItemIdsForLinkWithAutoTest: Set<UUID>? = nil, workItemIds: [UUID]? = nil, externalId: String, links: [LinkPutModel]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepModel]? = nil, setup: [AutoTestStepModel]? = nil, teardown: [AutoTestStepModel]? = nil, title: String? = nil, description: String? = nil, labels: [LabelPostModel]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil) {
         self.id = id
         self.workItemIdsForLinkWithAutoTest = workItemIdsForLinkWithAutoTest
+        self.workItemIds = workItemIds
         self.externalId = externalId
         self.links = links
         self.projectId = projectId
@@ -69,6 +72,7 @@ public struct AutoTestPutModel: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case workItemIdsForLinkWithAutoTest
+        case workItemIds
         case externalId
         case links
         case projectId
@@ -91,6 +95,7 @@ public struct AutoTestPutModel: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(workItemIdsForLinkWithAutoTest, forKey: .workItemIdsForLinkWithAutoTest)
+        try container.encodeIfPresent(workItemIds, forKey: .workItemIds)
         try container.encode(externalId, forKey: .externalId)
         try container.encodeIfPresent(links, forKey: .links)
         try container.encode(projectId, forKey: .projectId)

@@ -422,7 +422,7 @@ Create autotest
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestPostModel = AutoTestPostModel(workItemIdsForLinkWithAutoTest: [123], shouldCreateWorkItem: false, attributes: "TODO", externalId: "externalId_example", links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example") // AutoTestPostModel |  (optional)
+let autoTestPostModel = AutoTestPostModel(workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], shouldCreateWorkItem: false, attributes: "TODO", externalId: "externalId_example", links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example") // AutoTestPostModel |  (optional)
 
 // Create autotest
 AutoTestsAPI.createAutoTest(autoTestPostModel: autoTestPostModel) { (response, error) in
@@ -472,7 +472,7 @@ Create multiple autotests
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestPostModel = [AutoTestPostModel(workItemIdsForLinkWithAutoTest: [123], shouldCreateWorkItem: false, attributes: "TODO", externalId: "externalId_example", links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example")] // [AutoTestPostModel] |  (optional)
+let autoTestPostModel = [AutoTestPostModel(workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], shouldCreateWorkItem: false, attributes: "TODO", externalId: "externalId_example", links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example")] // [AutoTestPostModel] |  (optional)
 
 // Create multiple autotests
 AutoTestsAPI.createMultiple(autoTestPostModel: autoTestPostModel) { (response, error) in
@@ -1027,7 +1027,7 @@ Update autotest
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestPutModel = AutoTestPutModel(id: 123, workItemIdsForLinkWithAutoTest: [123], externalId: "externalId_example", links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example") // AutoTestPutModel |  (optional)
+let autoTestPutModel = AutoTestPutModel(id: 123, workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], externalId: "externalId_example", links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example") // AutoTestPutModel |  (optional)
 
 // Update autotest
 AutoTestsAPI.updateAutoTest(autoTestPutModel: autoTestPutModel) { (response, error) in
@@ -1077,7 +1077,7 @@ Update multiple autotests
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestPutModel = [AutoTestPutModel(id: 123, workItemIdsForLinkWithAutoTest: [123], externalId: "externalId_example", links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example")] // [AutoTestPutModel] |  (optional)
+let autoTestPutModel = [AutoTestPutModel(id: 123, workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], externalId: "externalId_example", links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example")] // [AutoTestPutModel] |  (optional)
 
 // Update multiple autotests
 AutoTestsAPI.updateMultiple(autoTestPutModel: autoTestPutModel) { (response, error) in

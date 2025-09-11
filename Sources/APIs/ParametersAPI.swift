@@ -19,6 +19,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func apiV2ParametersBulkPost(createParameterApiModel: [CreateParameterApiModel]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ParametersBulkPostWithRequestBuilder(createParameterApiModel: createParameterApiModel).execute(apiResponseQueue) { result in
@@ -41,6 +42,7 @@ open class ParametersAPI {
      - parameter createParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<[ParameterApiResult]> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func apiV2ParametersBulkPostWithRequestBuilder(createParameterApiModel: [CreateParameterApiModel]? = nil) -> RequestBuilder<[ParameterApiResult]> {
         let localVariablePath = "/api/v2/parameters/bulk"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
@@ -66,6 +68,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func apiV2ParametersBulkPut(updateParameterApiModel: [UpdateParameterApiModel]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ParametersBulkPutWithRequestBuilder(updateParameterApiModel: updateParameterApiModel).execute(apiResponseQueue) { result in
@@ -88,6 +91,7 @@ open class ParametersAPI {
      - parameter updateParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func apiV2ParametersBulkPutWithRequestBuilder(updateParameterApiModel: [UpdateParameterApiModel]? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/parameters/bulk"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
@@ -121,6 +125,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func apiV2ParametersGroupsGet(parameterKeyIds: Set<UUID>? = nil, name: String? = nil, isDeleted: Bool? = nil, projectIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterGroupApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ParametersGroupsGetWithRequestBuilder(parameterKeyIds: parameterKeyIds, name: name, isDeleted: isDeleted, projectIds: projectIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
@@ -152,6 +157,7 @@ open class ParametersAPI {
      - parameter searchValue: (query) Value for searching (optional)
      - returns: RequestBuilder<[ParameterGroupApiResult]> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func apiV2ParametersGroupsGetWithRequestBuilder(parameterKeyIds: Set<UUID>? = nil, name: String? = nil, isDeleted: Bool? = nil, projectIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ParameterGroupApiResult]> {
         let localVariablePath = "/api/v2/parameters/groups"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
@@ -188,6 +194,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func apiV2ParametersKeyNameNameExistsGet(name: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Bool?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ParametersKeyNameNameExistsGetWithRequestBuilder(name: name).execute(apiResponseQueue) { result in
@@ -210,6 +217,7 @@ open class ParametersAPI {
      - parameter name: (path)  
      - returns: RequestBuilder<Bool> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func apiV2ParametersKeyNameNameExistsGetWithRequestBuilder(name: String) -> RequestBuilder<Bool> {
         var localVariablePath = "/api/v2/parameters/key/name/{name}/exists"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
@@ -238,6 +246,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func apiV2ParametersKeyValuesGet(key: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [String]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ParametersKeyValuesGetWithRequestBuilder(key: key).execute(apiResponseQueue) { result in
@@ -260,6 +269,7 @@ open class ParametersAPI {
      - parameter key: (path) Parameter key (string format) 
      - returns: RequestBuilder<[String]> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func apiV2ParametersKeyValuesGetWithRequestBuilder(key: String) -> RequestBuilder<[String]> {
         var localVariablePath = "/api/v2/parameters/{key}/values"
         let keyPreEscape = "\(APIHelper.mapValueToPathItem(key))"
@@ -285,12 +295,18 @@ open class ParametersAPI {
      Get all parameter keys
      
      - parameter projectIds: (query)  (optional)
+     - parameter skip: (query) Amount of items to be skipped (offset) (optional)
+     - parameter take: (query) Amount of items to be taken (limit) (optional)
+     - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
+     - parameter searchField: (query) Property name for searching (optional)
+     - parameter searchValue: (query) Value for searching (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
-    open class func apiV2ParametersKeysGet(projectIds: [UUID]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [String]?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ParametersKeysGetWithRequestBuilder(projectIds: projectIds).execute(apiResponseQueue) { result in
+    open class func apiV2ParametersKeysGet(projectIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [String]?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ParametersKeysGetWithRequestBuilder(projectIds: projectIds, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -307,10 +323,17 @@ open class ParametersAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
+     - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectIds: (query)  (optional)
+     - parameter skip: (query) Amount of items to be skipped (offset) (optional)
+     - parameter take: (query) Amount of items to be taken (limit) (optional)
+     - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
+     - parameter searchField: (query) Property name for searching (optional)
+     - parameter searchValue: (query) Value for searching (optional)
      - returns: RequestBuilder<[String]> 
      */
-    open class func apiV2ParametersKeysGetWithRequestBuilder(projectIds: [UUID]? = nil) -> RequestBuilder<[String]> {
+    @available(*, deprecated, message: "This operation is deprecated.")
+    open class func apiV2ParametersKeysGetWithRequestBuilder(projectIds: [UUID]? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[String]> {
         let localVariablePath = "/api/v2/parameters/keys"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -318,6 +341,11 @@ open class ParametersAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "projectIds": (wrappedValue: projectIds?.encodeToJSON(), isExplode: true),
+            "Skip": (wrappedValue: skip?.encodeToJSON(), isExplode: true),
+            "Take": (wrappedValue: take?.encodeToJSON(), isExplode: true),
+            "OrderBy": (wrappedValue: orderBy?.encodeToJSON(), isExplode: true),
+            "SearchField": (wrappedValue: searchField?.encodeToJSON(), isExplode: true),
+            "SearchValue": (wrappedValue: searchValue?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -343,6 +371,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func apiV2ParametersSearchGroupsPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterGroupsFilterApiModel: ParameterGroupsFilterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterGroupApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ParametersSearchGroupsPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parameterGroupsFilterApiModel: parameterGroupsFilterApiModel).execute(apiResponseQueue) { result in
@@ -370,6 +399,7 @@ open class ParametersAPI {
      - parameter parameterGroupsFilterApiModel: (body)  (optional)
      - returns: RequestBuilder<[ParameterGroupApiResult]> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func apiV2ParametersSearchGroupsPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parameterGroupsFilterApiModel: ParameterGroupsFilterApiModel? = nil) -> RequestBuilder<[ParameterGroupApiResult]> {
         let localVariablePath = "/api/v2/parameters/search/groups"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
@@ -407,6 +437,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func apiV2ParametersSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parametersFilterApiModel: ParametersFilterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ParametersSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, parametersFilterApiModel: parametersFilterApiModel).execute(apiResponseQueue) { result in
@@ -434,6 +465,7 @@ open class ParametersAPI {
      - parameter parametersFilterApiModel: (body)  (optional)
      - returns: RequestBuilder<[ParameterApiResult]> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func apiV2ParametersSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, parametersFilterApiModel: ParametersFilterApiModel? = nil) -> RequestBuilder<[ParameterApiResult]> {
         let localVariablePath = "/api/v2/parameters/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
@@ -466,6 +498,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func createParameter(createParameterApiModel: CreateParameterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ParameterApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return createParameterWithRequestBuilder(createParameterApiModel: createParameterApiModel).execute(apiResponseQueue) { result in
@@ -488,6 +521,7 @@ open class ParametersAPI {
      - parameter createParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<ParameterApiResult> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func createParameterWithRequestBuilder(createParameterApiModel: CreateParameterApiModel? = nil) -> RequestBuilder<ParameterApiResult> {
         let localVariablePath = "/api/v2/parameters"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
@@ -513,6 +547,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func deleteByName(name: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteByNameWithRequestBuilder(name: name).execute(apiResponseQueue) { result in
@@ -535,6 +570,7 @@ open class ParametersAPI {
      - parameter name: (path) Name of the parameter 
      - returns: RequestBuilder<Void> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func deleteByNameWithRequestBuilder(name: String) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/parameters/name/{name}"
         let namePreEscape = "\(APIHelper.mapValueToPathItem(name))"
@@ -563,6 +599,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func deleteByParameterKeyId(keyId: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteByParameterKeyIdWithRequestBuilder(keyId: keyId).execute(apiResponseQueue) { result in
@@ -585,6 +622,7 @@ open class ParametersAPI {
      - parameter keyId: (path) Identifier of the parameter key 
      - returns: RequestBuilder<Void> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func deleteByParameterKeyIdWithRequestBuilder(keyId: UUID) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/parameters/keyId/{keyId}"
         let keyIdPreEscape = "\(APIHelper.mapValueToPathItem(keyId))"
@@ -613,6 +651,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func deleteParameter(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteParameterWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
@@ -635,6 +674,7 @@ open class ParametersAPI {
      - parameter id: (path) Parameter internal (UUID) identifier 
      - returns: RequestBuilder<Void> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func deleteParameterWithRequestBuilder(id: UUID) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/parameters/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
@@ -668,6 +708,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func getAllParameters(isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ParameterApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return getAllParametersWithRequestBuilder(isDeleted: isDeleted, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
@@ -696,6 +737,7 @@ open class ParametersAPI {
      - parameter searchValue: (query) Value for searching (optional)
      - returns: RequestBuilder<[ParameterApiResult]> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func getAllParametersWithRequestBuilder(isDeleted: Bool? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ParameterApiResult]> {
         let localVariablePath = "/api/v2/parameters"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
@@ -729,6 +771,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func getParameterById(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ParameterApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return getParameterByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
@@ -751,6 +794,7 @@ open class ParametersAPI {
      - parameter id: (path) Parameter internal (UUID) identifier 
      - returns: RequestBuilder<ParameterApiResult> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func getParameterByIdWithRequestBuilder(id: UUID) -> RequestBuilder<ParameterApiResult> {
         var localVariablePath = "/api/v2/parameters/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
@@ -779,6 +823,7 @@ open class ParametersAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func updateParameter(updateParameterApiModel: UpdateParameterApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return updateParameterWithRequestBuilder(updateParameterApiModel: updateParameterApiModel).execute(apiResponseQueue) { result in
@@ -801,6 +846,7 @@ open class ParametersAPI {
      - parameter updateParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func updateParameterWithRequestBuilder(updateParameterApiModel: UpdateParameterApiModel? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/parameters"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath

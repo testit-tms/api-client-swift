@@ -977,7 +977,7 @@ Get last modification date of test plan's test results
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | Test plan unique or global ID
+let id = "id_example" // String | 
 
 // Get last modification date of test plan's test results
 TestPlansAPI.apiV2TestPlansIdTestRunsTestResultsLastModifiedModifiedDateGet(id: id) { (response, error) in
@@ -996,7 +996,7 @@ TestPlansAPI.apiV2TestPlansIdTestRunsTestResultsLastModifiedModifiedDateGet(id: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | Test plan unique or global ID | 
+ **id** | **String** |  | 
 
 ### Return type
 
@@ -1367,7 +1367,7 @@ Name | Type | Description  | Notes
 
 # **getTestSuitesById**
 ```swift
-    open class func getTestSuitesById(id: String, completion: @escaping (_ data: [TestSuiteV2TreeModel]?, _ error: Error?) -> Void)
+    open class func getTestSuitesById(id: String, completion: @escaping (_ data: [TestSuiteHierarchyApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get TestSuites Tree By Id
@@ -1402,7 +1402,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[TestSuiteV2TreeModel]**](TestSuiteV2TreeModel.md)
+[**[TestSuiteHierarchyApiResult]**](TestSuiteHierarchyApiResult.md)
 
 ### Authorization
 
