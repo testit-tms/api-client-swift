@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **code** | **String** |  | 
 **type** | [**TestStatusApiType**](TestStatusApiType.md) | Collection of possible status types | 
-**description** | **String** |  | [optional] 
+**description** | **String** |  | 
 **isSystem** | **Bool** |  | 
 **priority** | **Int** |  | 
 

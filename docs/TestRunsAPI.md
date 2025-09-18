@@ -37,7 +37,7 @@ Method | HTTP request | Description
 
 Delete multiple test runs
 
- Use case  User sets selection parameters of test runs  System search and delete collection of test runs  System returns the number of deleted test runs
+  Use case    User sets selection parameters of test runs    System search and delete collection of test runs    System returns the number of deleted test runs
 
 ### Example
 ```swift
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 Delete test run
 
- Use case  User sets test run internal (guid format) identifier  System search and delete test run
+  Use case    User sets test run internal (guid format) identifier    System search and delete test run
 
 ### Example
 ```swift
@@ -185,7 +185,7 @@ Void (empty response body)
 
 Permanently delete test run from archive
 
- Use case  User sets archived test run internal (guid format) identifier  System search and purge archived test run
+  Use case    User sets archived test run internal (guid format) identifier    System search and purge archived test run
 
 ### Example
 ```swift
@@ -241,7 +241,7 @@ Manual autotests rerun in test run
 import TestitApiClient
 
 let id = 987 // UUID | 
-let manualRerunSelectTestResultsApiModel = ManualRerunSelectTestResultsApiModel(filter: TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]), extractionModel: ManualRerunTestResultApiModel(testResultIds: GuidExtractionModel(include: [123], exclude: [123]))) // ManualRerunSelectTestResultsApiModel |  (optional)
+let manualRerunSelectTestResultsApiModel = ManualRerunSelectTestResultsApiModel(filter: TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]), extractionModel: ManualRerunTestResultApiModel(testResultIds: GuidExtractionModel(include: [123], exclude: [123])), webhookIds: [123]) // ManualRerunSelectTestResultsApiModel |  (optional)
 
 // Manual autotests rerun in test run
 TestRunsAPI.apiV2TestRunsIdRerunsPost(id: id, manualRerunSelectTestResultsApiModel: manualRerunSelectTestResultsApiModel) { (response, error) in
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 Restore test run from the archive
 
- Use case  User sets archived test run internal (guid format) identifier  System search and restore test run
+  Use case    User sets archived test run internal (guid format) identifier    System search and restore test run
 
 ### Example
 ```swift
@@ -531,7 +531,7 @@ Name | Type | Description  | Notes
 
 Permanently delete multiple test runs from archive
 
- Use case  User sets selection parameters of archived test runs  System search and delete collection of archived test runs  System returns the number of deleted archived test runs
+  Use case    User sets selection parameters of archived test runs    System search and delete collection of archived test runs    System returns the number of deleted archived test runs
 
 ### Example
 ```swift
@@ -581,7 +581,7 @@ Name | Type | Description  | Notes
 
 Restore multiple test runs from the archive
 
- Use case  User sets selection parameters of archived test runs  System search and restore collection of archived test runs  System returns the number of restored test runs
+  Use case    User sets selection parameters of archived test runs    System search and restore collection of archived test runs    System returns the number of restored test runs
 
 ### Example
 ```swift
@@ -737,7 +737,7 @@ Void (empty response body)
 
 Complete TestRun
 
- Use case  User sets test run identifier  User runs method execution  System completes test run  System returns no content response
+  Use case    User sets test run identifier    User runs method execution    System completes test run    System returns no content response
 
 ### Example
 ```swift
@@ -787,7 +787,7 @@ Void (empty response body)
 
 Create test runs based on autotests and configurations
 
-This method creates a test run based on an autotest and a configuration. The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is that in this method there is no need to create a test plan and work items (test cases and checklists).
+This method creates a test run based on an autotest and a configuration.  The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is  that in this method there is no need to create a test plan and work items (test cases and checklists).
 
 ### Example
 ```swift
@@ -837,7 +837,7 @@ Name | Type | Description  | Notes
 
 Create test runs picking the needed test points
 
-This method creates a test run based on a combination of a configuration and a work item(test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated. This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a jagged array within the \"<b>testPointSelectors</b>\" parameter.
+This method creates a test run based on a combination of a configuration and a work item(test case or checklist).  Before you create a test run using this method, make sure to create a test plan. Work items must be automated.  This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a  jagged array within the \"<b>testPointSelectors</b>\" parameter.
 
 ### Example
 ```swift
@@ -887,7 +887,7 @@ Name | Type | Description  | Notes
 
 Create test run based on configurations and work items
 
-This method creates a test run based on a combination of configuration and work item (test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated.
+This method creates a test run based on a combination of configuration and work item (test case or checklist).  Before you create a test run using this method, make sure to create a test plan.  Work items must be automated.
 
 ### Example
 ```swift
@@ -937,7 +937,7 @@ Name | Type | Description  | Notes
 
 Create empty TestRun
 
- Use case  User sets test run model (listed in the request example)  User runs method execution  System creates test run  System returns test run model
+  Use case    User sets test run model (listed in the request example)    User runs method execution    System creates test run    System returns test run model
 
 ### Example
 ```swift
@@ -987,7 +987,7 @@ Name | Type | Description  | Notes
 
 Get TestRun by Id
 
- Use case  User sets test run identifier  User runs method execution  System finds test run  System returns test run
+  Use case    User sets test run identifier    User runs method execution    System finds test run    System returns test run
 
 ### Example
 ```swift
@@ -1089,7 +1089,7 @@ Name | Type | Description  | Notes
 
 Start TestRun
 
- Use case  User sets test run identifier  User runs method execution  System starts test run  System returns no content response
+  Use case    User sets test run identifier    User runs method execution    System starts test run    System returns no content response
 
 ### Example
 ```swift
@@ -1139,7 +1139,7 @@ Void (empty response body)
 
 Stop TestRun
 
- Use case  User sets test run identifier  User runs method execution  System stops test run  System returns no content response
+  Use case    User sets test run identifier    User runs method execution    System stops test run    System returns no content response
 
 ### Example
 ```swift
@@ -1189,7 +1189,7 @@ Void (empty response body)
 
 Update empty TestRun
 
- Use case  User sets test run properties (listed in the request example)  User runs method execution  System updates test run  System returns returns no content response
+  Use case    User sets test run properties (listed in the request example)    User runs method execution    System updates test run    System returns returns no content response
 
 ### Example
 ```swift

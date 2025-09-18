@@ -12,17 +12,23 @@ import AnyCodable
 
 public struct ManualRerunSelectTestResultsApiModel: Codable, JSONEncodable, Hashable {
 
+    /** Test results filter. */
     public var filter: TestResultsFilterApiModel?
+    /** Test results extraction model. */
     public var extractionModel: ManualRerunTestResultApiModel?
+    /** Webhook ids to rerun. */
+    public var webhookIds: [UUID]?
 
-    public init(filter: TestResultsFilterApiModel? = nil, extractionModel: ManualRerunTestResultApiModel? = nil) {
+    public init(filter: TestResultsFilterApiModel? = nil, extractionModel: ManualRerunTestResultApiModel? = nil, webhookIds: [UUID]? = nil) {
         self.filter = filter
         self.extractionModel = extractionModel
+        self.webhookIds = webhookIds
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case filter
         case extractionModel
+        case webhookIds
     }
 
     // Encodable protocol methods
@@ -31,6 +37,7 @@ public struct ManualRerunSelectTestResultsApiModel: Codable, JSONEncodable, Hash
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(filter, forKey: .filter)
         try container.encodeIfPresent(extractionModel, forKey: .extractionModel)
+        try container.encodeIfPresent(webhookIds, forKey: .webhookIds)
     }
 }
 

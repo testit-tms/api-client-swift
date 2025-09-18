@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**apiV2ProjectsProjectIdWorkItemsSearchGroupedPost**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemssearchgroupedpost) | **POST** /api/v2/projects/{projectId}/workItems/search/grouped | Search for work items and group results by attribute
 [**apiV2ProjectsProjectIdWorkItemsSearchIdPost**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemssearchidpost) | **POST** /api/v2/projects/{projectId}/workItems/search/id | Search for work items and extract IDs only
 [**apiV2ProjectsProjectIdWorkItemsSearchPost**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemssearchpost) | **POST** /api/v2/projects/{projectId}/workItems/search | Search for work items
+[**apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemssearchworkitemidindexpost) | **POST** /api/v2/projects/{projectId}/workItems/search/{workItemId}/index | Get work item index (position) in a collection by its id.
 [**apiV2ProjectsProjectIdWorkItemsTagsGet**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemstagsget) | **GET** /api/v2/projects/{projectId}/workItems/tags | Get WorkItems Tags
 [**getWorkItemsByProjectId**](ProjectWorkItemsAPI.md#getworkitemsbyprojectid) | **GET** /api/v2/projects/{projectId}/workItems | Get project work items
 
@@ -191,6 +192,68 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost**
+```swift
+    open class func apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost(projectId: String, workItemId: UUID, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectApiModel: WorkItemSelectApiModel? = nil, completion: @escaping (_ data: WorkItemIndexApiResult?, _ error: Error?) -> Void)
+```
+
+Get work item index (position) in a collection by its id.
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let projectId = "projectId_example" // String | 
+let workItemId = 987 // UUID | 
+let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
+let take = 987 // Int | Amount of items to be taken (limit) (optional)
+let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
+let searchField = "searchField_example" // String | Property name for searching (optional)
+let searchValue = "searchValue_example" // String | Value for searching (optional)
+let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false)), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
+
+// Get work item index (position) in a collection by its id.
+ProjectWorkItemsAPI.apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost(projectId: projectId, workItemId: workItemId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **String** |  | 
+ **workItemId** | **UUID** |  | 
+ **skip** | **Int** | Amount of items to be skipped (offset) | [optional] 
+ **take** | **Int** | Amount of items to be taken (limit) | [optional] 
+ **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
+ **searchField** | **String** | Property name for searching | [optional] 
+ **searchValue** | **String** | Value for searching | [optional] 
+ **workItemSelectApiModel** | [**WorkItemSelectApiModel**](WorkItemSelectApiModel.md) |  | [optional] 
+
+### Return type
+
+[**WorkItemIndexApiResult**](WorkItemIndexApiResult.md)
+
+### Authorization
+
+[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2ProjectsProjectIdWorkItemsTagsGet**
 ```swift
     open class func apiV2ProjectsProjectIdWorkItemsTagsGet(projectId: UUID, isDeleted: Bool? = nil, completion: @escaping (_ data: [TagShortApiResult]?, _ error: Error?) -> Void)
@@ -198,7 +261,7 @@ Name | Type | Description  | Notes
 
 Get WorkItems Tags
 
- Use case  User sets project internal identifier  User runs method execution  System returns work items tags
+  Use case    User sets project internal identifier    User runs method execution    System returns work items tags
 
 ### Example
 ```swift
@@ -250,7 +313,7 @@ Name | Type | Description  | Notes
 
 Get project work items
 
- Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project  [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted  If User did not set isDeleted field value, System search all  workitems related to project  System returns array of found workitems (listed in response model)
+  Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project    [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted    If User did not set isDeleted field value, System search all  workitems related to project    System returns array of found workitems (listed in response model)
 
 ### Example
 ```swift

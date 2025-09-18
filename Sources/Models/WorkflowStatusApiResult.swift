@@ -21,7 +21,7 @@ public struct WorkflowStatusApiResult: Codable, JSONEncodable, Hashable {
     public var isSystem: Bool
     public var priority: Int
 
-    public init(id: UUID, name: String, code: String, type: TestStatusApiType, description: String? = nil, isSystem: Bool, priority: Int) {
+    public init(id: UUID, name: String, code: String, type: TestStatusApiType, description: String?, isSystem: Bool, priority: Int) {
         self.id = id
         self.name = name
         self.code = code
@@ -49,7 +49,7 @@ public struct WorkflowStatusApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(code, forKey: .code)
         try container.encode(type, forKey: .type)
-        try container.encodeIfPresent(description, forKey: .description)
+        try container.encode(description, forKey: .description)
         try container.encode(isSystem, forKey: .isSystem)
         try container.encode(priority, forKey: .priority)
     }

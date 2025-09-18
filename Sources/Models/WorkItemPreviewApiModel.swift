@@ -12,20 +12,22 @@ import AnyCodable
 
 public struct WorkItemPreviewApiModel: Codable, JSONEncodable, Hashable {
 
+    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let descriptionRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var name: String
-    public var action: String
-    public var expected: String
+    public var description: String
+    public var steps: [WorkItemPreviewStepApiModel]
 
-    public init(name: String, action: String, expected: String) {
+    public init(name: String, description: String, steps: [WorkItemPreviewStepApiModel]) {
         self.name = name
-        self.action = action
-        self.expected = expected
+        self.description = description
+        self.steps = steps
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
-        case action
-        case expected
+        case description
+        case steps
     }
 
     // Encodable protocol methods
@@ -33,8 +35,8 @@ public struct WorkItemPreviewApiModel: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
-        try container.encode(action, forKey: .action)
-        try container.encode(expected, forKey: .expected)
+        try container.encode(description, forKey: .description)
+        try container.encode(steps, forKey: .steps)
     }
 }
 

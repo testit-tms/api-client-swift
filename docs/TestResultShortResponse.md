@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **UUID** | Unique ID of the test result | 
 **name** | **String** | Name of autotest represented by the test result | 
 **autotestGlobalId** | **Int64** | Global ID of autotest represented by the test result | 
+**autotestExternalId** | **String** | External ID of autotest represented by the test result | [optional] 
 **testRunId** | **UUID** | Unique ID of test run where the test result is located | 
 **configurationId** | **UUID** | Unique ID of configuration which the test result uses | 
 **configurationName** | **String** | Name of configuration which the test result uses | 
