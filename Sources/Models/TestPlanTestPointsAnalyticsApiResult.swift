@@ -12,23 +12,31 @@ import AnyCodable
 
 public struct TestPlanTestPointsAnalyticsApiResult: Codable, JSONEncodable, Hashable {
 
+    @available(*, deprecated, message: "This property is deprecated.")
     public var countGroupByStatus: [TestPlanTestPointsStatusGroupApiResult]
+    @available(*, deprecated, message: "This property is deprecated.")
+    public var countGroupByTesterAndStatus: [TestPlanTestPointsTesterAndStatusGroupApiResult]
     public var sumGroupByTester: [TestPlanTestPointsTesterGroupApiResult]
     public var countGroupByTester: [TestPlanTestPointsTesterGroupApiResult]
-    public var countGroupByTesterAndStatus: [TestPlanTestPointsTesterAndStatusGroupApiResult]
+    public var countGroupByStatusType: [TestPlanTestPointsStatusTypeGroupApiResult]
+    public var countGroupByTesterAndStatusType: [TestPlanTestPointsTesterAndStatusTypeGroupApiResult]
 
-    public init(countGroupByStatus: [TestPlanTestPointsStatusGroupApiResult], sumGroupByTester: [TestPlanTestPointsTesterGroupApiResult], countGroupByTester: [TestPlanTestPointsTesterGroupApiResult], countGroupByTesterAndStatus: [TestPlanTestPointsTesterAndStatusGroupApiResult]) {
+    public init(countGroupByStatus: [TestPlanTestPointsStatusGroupApiResult], countGroupByTesterAndStatus: [TestPlanTestPointsTesterAndStatusGroupApiResult], sumGroupByTester: [TestPlanTestPointsTesterGroupApiResult], countGroupByTester: [TestPlanTestPointsTesterGroupApiResult], countGroupByStatusType: [TestPlanTestPointsStatusTypeGroupApiResult], countGroupByTesterAndStatusType: [TestPlanTestPointsTesterAndStatusTypeGroupApiResult]) {
         self.countGroupByStatus = countGroupByStatus
+        self.countGroupByTesterAndStatus = countGroupByTesterAndStatus
         self.sumGroupByTester = sumGroupByTester
         self.countGroupByTester = countGroupByTester
-        self.countGroupByTesterAndStatus = countGroupByTesterAndStatus
+        self.countGroupByStatusType = countGroupByStatusType
+        self.countGroupByTesterAndStatusType = countGroupByTesterAndStatusType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case countGroupByStatus
+        case countGroupByTesterAndStatus
         case sumGroupByTester
         case countGroupByTester
-        case countGroupByTesterAndStatus
+        case countGroupByStatusType
+        case countGroupByTesterAndStatusType
     }
 
     // Encodable protocol methods
@@ -36,9 +44,11 @@ public struct TestPlanTestPointsAnalyticsApiResult: Codable, JSONEncodable, Hash
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(countGroupByStatus, forKey: .countGroupByStatus)
+        try container.encode(countGroupByTesterAndStatus, forKey: .countGroupByTesterAndStatus)
         try container.encode(sumGroupByTester, forKey: .sumGroupByTester)
         try container.encode(countGroupByTester, forKey: .countGroupByTester)
-        try container.encode(countGroupByTesterAndStatus, forKey: .countGroupByTesterAndStatus)
+        try container.encode(countGroupByStatusType, forKey: .countGroupByStatusType)
+        try container.encode(countGroupByTesterAndStatusType, forKey: .countGroupByTesterAndStatusType)
     }
 }
 

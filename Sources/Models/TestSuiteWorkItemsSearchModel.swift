@@ -32,7 +32,7 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
     /** Collection of tags */
     @available(*, deprecated, message: "This property is deprecated.")
     public var tagNames: Set<String>?
-    /** Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
+    /** Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
     @available(*, deprecated, message: "This property is deprecated.")
     public var entityTypes: Set<WorkItemEntityTypes>?
     /** Name or identifier (UUID) of work item */

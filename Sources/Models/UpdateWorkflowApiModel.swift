@@ -16,17 +16,20 @@ public struct UpdateWorkflowApiModel: Codable, JSONEncodable, Hashable {
     public var name: String
     public var isDefault: Bool
     public var statuses: [WorkflowStatusApiModel]
+    public var projectIds: [UUID]
 
-    public init(name: String, isDefault: Bool, statuses: [WorkflowStatusApiModel]) {
+    public init(name: String, isDefault: Bool, statuses: [WorkflowStatusApiModel], projectIds: [UUID]) {
         self.name = name
         self.isDefault = isDefault
         self.statuses = statuses
+        self.projectIds = projectIds
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case isDefault
         case statuses
+        case projectIds
     }
 
     // Encodable protocol methods
@@ -36,6 +39,7 @@ public struct UpdateWorkflowApiModel: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(isDefault, forKey: .isDefault)
         try container.encode(statuses, forKey: .statuses)
+        try container.encode(projectIds, forKey: .projectIds)
     }
 }
 

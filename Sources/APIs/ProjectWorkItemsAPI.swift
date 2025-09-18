@@ -220,6 +220,80 @@ open class ProjectWorkItemsAPI {
     }
 
     /**
+     Get work item index (position) in a collection by its id.
+     
+     - parameter projectId: (path)  
+     - parameter workItemId: (path)  
+     - parameter skip: (query) Amount of items to be skipped (offset) (optional)
+     - parameter take: (query) Amount of items to be taken (limit) (optional)
+     - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
+     - parameter searchField: (query) Property name for searching (optional)
+     - parameter searchValue: (query) Value for searching (optional)
+     - parameter workItemSelectApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost(projectId: String, workItemId: UUID, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectApiModel: WorkItemSelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkItemIndexApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPostWithRequestBuilder(projectId: projectId, workItemId: workItemId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get work item index (position) in a collection by its id.
+     - POST /api/v2/projects/{projectId}/workItems/search/{workItemId}/index
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
+     - parameter projectId: (path)  
+     - parameter workItemId: (path)  
+     - parameter skip: (query) Amount of items to be skipped (offset) (optional)
+     - parameter take: (query) Amount of items to be taken (limit) (optional)
+     - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
+     - parameter searchField: (query) Property name for searching (optional)
+     - parameter searchValue: (query) Value for searching (optional)
+     - parameter workItemSelectApiModel: (body)  (optional)
+     - returns: RequestBuilder<WorkItemIndexApiResult> 
+     */
+    open class func apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPostWithRequestBuilder(projectId: String, workItemId: UUID, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, workItemSelectApiModel: WorkItemSelectApiModel? = nil) -> RequestBuilder<WorkItemIndexApiResult> {
+        var localVariablePath = "/api/v2/projects/{projectId}/workItems/search/{workItemId}/index"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let workItemIdPreEscape = "\(APIHelper.mapValueToPathItem(workItemId))"
+        let workItemIdPostEscape = workItemIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{workItemId}", with: workItemIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: workItemSelectApiModel)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "Skip": (wrappedValue: skip?.encodeToJSON(), isExplode: true),
+            "Take": (wrappedValue: take?.encodeToJSON(), isExplode: true),
+            "OrderBy": (wrappedValue: orderBy?.encodeToJSON(), isExplode: true),
+            "SearchField": (wrappedValue: searchField?.encodeToJSON(), isExplode: true),
+            "SearchValue": (wrappedValue: searchValue?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<WorkItemIndexApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Get WorkItems Tags
      
      - parameter projectId: (path) Project internal (UUID) identifier 
@@ -242,7 +316,7 @@ open class ProjectWorkItemsAPI {
     /**
      Get WorkItems Tags
      - GET /api/v2/projects/{projectId}/workItems/tags
-     -  Use case  User sets project internal identifier  User runs method execution  System returns work items tags
+     -   Use case    User sets project internal identifier    User runs method execution    System returns work items tags
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -305,7 +379,7 @@ open class ProjectWorkItemsAPI {
     /**
      Get project work items
      - GET /api/v2/projects/{projectId}/workItems
-     -  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project  [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted  If User did not set isDeleted field value, System search all  workitems related to project  System returns array of found workitems (listed in response model)
+     -   Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project    [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted    If User did not set isDeleted field value, System search all  workitems related to project    System returns array of found workitems (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

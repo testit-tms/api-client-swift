@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV2WebhooksLogsGet**](WebhooksLogsAPI.md#apiv2webhookslogsget) | **GET** /api/v2/webhooks/logs | Get all webhook logs
+[**apiV2WebhooksLogsGet**](WebhooksLogsAPI.md#apiv2webhookslogsget) | **GET** /api/v2/webhooks/logs | Get last webhook logs
 [**apiV2WebhooksLogsIdDelete**](WebhooksLogsAPI.md#apiv2webhookslogsiddelete) | **DELETE** /api/v2/webhooks/logs/{id} | Delete webhook log by ID
 [**apiV2WebhooksLogsIdGet**](WebhooksLogsAPI.md#apiv2webhookslogsidget) | **GET** /api/v2/webhooks/logs/{id} | Get webhook log by ID
 
 
 # **apiV2WebhooksLogsGet**
 ```swift
-    open class func apiV2WebhooksLogsGet(projectId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [WebHookLogModel]?, _ error: Error?) -> Void)
+    open class func apiV2WebhooksLogsGet(projectId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [WebhookLogApiResult]?, _ error: Error?) -> Void)
 ```
 
-Get all webhook logs
+Get last webhook logs
 
 ### Example
 ```swift
@@ -28,7 +28,7 @@ let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
 
-// Get all webhook logs
+// Get last webhook logs
 WebhooksLogsAPI.apiV2WebhooksLogsGet(projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue) { (response, error) in
     guard error == nil else {
         print(error)
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[WebHookLogModel]**](WebHookLogModel.md)
+[**[WebhookLogApiResult]**](WebhookLogApiResult.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ Void (empty response body)
 
 # **apiV2WebhooksLogsIdGet**
 ```swift
-    open class func apiV2WebhooksLogsIdGet(id: UUID, completion: @escaping (_ data: WebHookLogModel?, _ error: Error?) -> Void)
+    open class func apiV2WebhooksLogsIdGet(id: UUID, completion: @escaping (_ data: WebhookLogApiResult?, _ error: Error?) -> Void)
 ```
 
 Get webhook log by ID
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WebHookLogModel**](WebHookLogModel.md)
+[**WebhookLogApiResult**](WebhookLogApiResult.md)
 
 ### Authorization
 

@@ -16,12 +16,14 @@ public struct WorkflowShortApiResult: Codable, JSONEncodable, Hashable {
     public var name: String
     public var isSystem: Bool
     public var isDefault: Bool
+    public var projects: WorkflowProjectApiResultApiCollectionPreview
 
-    public init(id: UUID, name: String, isSystem: Bool, isDefault: Bool) {
+    public init(id: UUID, name: String, isSystem: Bool, isDefault: Bool, projects: WorkflowProjectApiResultApiCollectionPreview) {
         self.id = id
         self.name = name
         self.isSystem = isSystem
         self.isDefault = isDefault
+        self.projects = projects
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -29,6 +31,7 @@ public struct WorkflowShortApiResult: Codable, JSONEncodable, Hashable {
         case name
         case isSystem
         case isDefault
+        case projects
     }
 
     // Encodable protocol methods
@@ -39,6 +42,7 @@ public struct WorkflowShortApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(isSystem, forKey: .isSystem)
         try container.encode(isDefault, forKey: .isDefault)
+        try container.encode(projects, forKey: .projects)
     }
 }
 

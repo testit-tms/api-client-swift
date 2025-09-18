@@ -39,7 +39,7 @@ Method | HTTP request | Description
 
 Upload and link attachment to WorkItem
 
- Use case  User sets workItemId  User attaches a file  System creates attachment and links it to the work item  System returns attachment identifier
+  Use case    User sets workItemId    User attaches a file    System creates attachment and links it to the work item    System returns attachment identifier
 
 ### Example
 ```swift
@@ -91,7 +91,7 @@ Void (empty response body)
 
 Transform CheckList to TestCase
 
- Use case  User sets checklist identifier  User runs method execution  System transform CheckList to TestCase
+  Use case    User sets checklist identifier    User runs method execution    System transform CheckList to TestCase
 
 ### Example
 ```swift
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 Get change history of WorkItem
 
- Use case  User sets work item identifier  User runs method execution  System return change history of WorkItem
+  Use case    User sets work item identifier    User runs method execution    System return change history of WorkItem
 
 ### Example
 ```swift
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 Delete like from WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System delete like from WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System delete like from WorkItem
 
 ### Example
 ```swift
@@ -251,7 +251,7 @@ Void (empty response body)
 
 Set like to WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System set like to WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System set like to WorkItem
 
 ### Example
 ```swift
@@ -301,7 +301,7 @@ Void (empty response body)
 
 Get likes count of WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System return likes count of WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System return likes count of WorkItem
 
 ### Example
 ```swift
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 Get likes of WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System return likes of WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System return likes of WorkItem
 
 ### Example
 ```swift
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 
 Get test results history of WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System return test results history of WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System return test results history of WorkItem
 
 ### Example
 ```swift
@@ -481,7 +481,7 @@ Name | Type | Description  | Notes
 
 Set WorkItem as actual
 
- Use case  User sets work item identifier  User runs method execution  System set WorkItem as actual
+  Use case    User sets work item identifier    User runs method execution    System set WorkItem as actual
 
 ### Example
 ```swift
@@ -590,7 +590,7 @@ Name | Type | Description  | Notes
 
 Move WorkItem to another section
 
- Use case  User sets WorkItem identifier  User runs method execution  System move WorkItem to another section
+  Use case    User sets WorkItem identifier    User runs method execution    System move WorkItem to another section
 
 ### Example
 ```swift
@@ -746,7 +746,7 @@ Name | Type | Description  | Notes
 
 Get SharedStep references in sections
 
- Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
+  Use case    User sets SharedStep identifier    User runs method execution    System return SharedStep references
 
 ### Example
 ```swift
@@ -808,7 +808,7 @@ Name | Type | Description  | Notes
 
 Get SharedStep references in work items
 
- Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
+  Use case    User sets SharedStep identifier    User runs method execution    System return SharedStep references
 
 ### Example
 ```swift
@@ -870,7 +870,7 @@ Name | Type | Description  | Notes
 
 Get SharedStep references
 
- Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
+  Use case    User sets SharedStep identifier    User runs method execution    System return SharedStep references
 
 ### Example
 ```swift
@@ -920,14 +920,14 @@ Name | Type | Description  | Notes
 
 Delete all links AutoTests from WorkItem by Id or GlobalId
 
- Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search and delete all autotests, related to found work item  System returns no content response
+  Use case    User sets work item identifier    User runs method execution    System search work item by identifier    System search and delete all autotests, related to found work item    System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 
 // Delete all links AutoTests from WorkItem by Id or GlobalId
 WorkItemsAPI.deleteAllWorkItemsFromAutoTest(id: id) { (response, error) in
@@ -946,7 +946,7 @@ WorkItemsAPI.deleteAllWorkItemsFromAutoTest(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
 
 ### Return type
 
@@ -970,14 +970,14 @@ Void (empty response body)
 
 Delete Test Case, Checklist or Shared Step by Id or GlobalId
 
- Use case  User sets work item identifier  User runs method execution  System deletes work item  System returns no content response
+  Use case    User sets work item identifier    User runs method execution    System deletes work item    System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 
 // Delete Test Case, Checklist or Shared Step by Id or GlobalId
 WorkItemsAPI.deleteWorkItem(id: id) { (response, error) in
@@ -996,7 +996,7 @@ WorkItemsAPI.deleteWorkItem(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
 
 ### Return type
 
@@ -1020,14 +1020,14 @@ Void (empty response body)
 
 Get all AutoTests linked to WorkItem by Id or GlobalId
 
- Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search all autotests, related to found work item  System returns list of found autotests
+  Use case    User sets work item identifier    User runs method execution    System search work item by identifier    System search all autotests, related to found work item    System returns list of found autotests
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 
 // Get all AutoTests linked to WorkItem by Id or GlobalId
 WorkItemsAPI.getAutoTestsForWorkItem(id: id) { (response, error) in
@@ -1046,7 +1046,7 @@ WorkItemsAPI.getAutoTestsForWorkItem(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
 
 ### Return type
 
@@ -1075,7 +1075,7 @@ Get iterations by work item Id or GlobalId
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 let versionId = 987 // UUID | WorkItem version (guid format) identifier (optional)
 let versionNumber = 987 // Int | WorkItem version number (0 is the last version)\" (optional)
 
@@ -1096,7 +1096,7 @@ WorkItemsAPI.getIterations(id: id, versionId: versionId, versionNumber: versionN
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
  **versionId** | **UUID** | WorkItem version (guid format) identifier | [optional] 
  **versionNumber** | **Int** | WorkItem version number (0 is the last version)\&quot; | [optional] 
 
@@ -1122,14 +1122,14 @@ Name | Type | Description  | Notes
 
 Get Test Case, Checklist or Shared Step by Id or GlobalId
 
- Use case  User sets work item identifier  [Optional] User sets work item version identifier  [Optional] User sets work item version number  User runs method execution  System search work item by identifier  [Optional] if User sets work item version identifier, system search work item version by identifier.  [Optional] if user sets work item version number, system search work item version by number  Otherwise, system search last work item version  System returns work item
+  Use case    User sets work item identifier    [Optional] User sets work item version identifier    [Optional] User sets work item version number    User runs method execution    System search work item by identifier    [Optional] if User sets work item version identifier, system search work item version by identifier.    [Optional] if user sets work item version number, system search work item version by number    Otherwise, system search last work item version    System returns work item
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 let versionId = 987 // UUID | WorkItem version (guid format) identifier\" (optional)
 let versionNumber = 987 // Int | WorkItem version number (0 is the last version)\" (optional)
 
@@ -1150,7 +1150,7 @@ WorkItemsAPI.getWorkItemById(id: id, versionId: versionId, versionNumber: versio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
  **versionId** | **UUID** | WorkItem version (guid format) identifier\&quot; | [optional] 
  **versionNumber** | **Int** | WorkItem version number (0 is the last version)\&quot; | [optional] 
 
@@ -1176,7 +1176,7 @@ Name | Type | Description  | Notes
 
 Get WorkItem chronology by Id or GlobalId
 
- Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search test results of all autotests, related to found work item  System sort results by CompletedOn ascending, then by CreatedDate ascending  System returns sorted collection of test results
+  Use case    User sets work item identifier    User runs method execution    System search work item by identifier    System search test results of all autotests, related to found work item    System sort results by CompletedOn ascending, then by CreatedDate ascending    System returns sorted collection of test results
 
 ### Example
 ```swift
@@ -1226,16 +1226,16 @@ Name | Type | Description  | Notes
 
 Get WorkItem versions
 
- Use case  User sets work item identifier  [Optional] User sets work item version identifier  User runs method execution  System search work item by identifier  [Optional] If User set work item version identifier, System search work item version by version identifier                     Otherwise, system search all version of work item  System returns array of work item version models (listed in response example)
+  Use case    User sets work item identifier    [Optional] User sets work item version identifier    User runs method execution    System search work item by identifier    [Optional] If User set work item version identifier, System search work item version by version identifier                      Otherwise, system search all version of work item    System returns array of work item version models (listed in response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
-let workItemVersionId = 987 // UUID | WorkItem version (guid format) identifier\" (optional)
-let versionNumber = 987 // Int | WorkItem version (integer format) number\" (optional)
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+let workItemVersionId = 987 // UUID | WorkItem version (guid format)  identifier\" (optional)
+let versionNumber = 987 // Int | WorkItem version (integer format)  number\" (optional)
 
 // Get WorkItem versions
 WorkItemsAPI.getWorkItemVersions(id: id, workItemVersionId: workItemVersionId, versionNumber: versionNumber) { (response, error) in
@@ -1254,9 +1254,9 @@ WorkItemsAPI.getWorkItemVersions(id: id, workItemVersionId: workItemVersionId, v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
- **workItemVersionId** | **UUID** | WorkItem version (guid format) identifier\&quot; | [optional] 
- **versionNumber** | **Int** | WorkItem version (integer format) number\&quot; | [optional] 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
+ **workItemVersionId** | **UUID** | WorkItem version (guid format)  identifier\&quot; | [optional] 
+ **versionNumber** | **Int** | WorkItem version (integer format)  number\&quot; | [optional] 
 
 ### Return type
 
@@ -1376,7 +1376,7 @@ Void (empty response body)
 
 Update Test Case, Checklist or Shared Step
 
- Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
+  Use case    User sets work item properties (listed in request parameters)    User runs method execution    System updates work item by identifier    System returns updated work item model (listed in response parameters)
 
 ### Example
 ```swift

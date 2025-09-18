@@ -13,7 +13,7 @@ import AnyCodable
 open class WebhooksLogsAPI {
 
     /**
-     Get all webhook logs
+     Get last webhook logs
      
      - parameter projectId: (query) Project unique ID (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -25,7 +25,7 @@ open class WebhooksLogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2WebhooksLogsGet(projectId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [WebHookLogModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2WebhooksLogsGet(projectId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [WebhookLogApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2WebhooksLogsGetWithRequestBuilder(projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -37,7 +37,7 @@ open class WebhooksLogsAPI {
     }
 
     /**
-     Get all webhook logs
+     Get last webhook logs
      - GET /api/v2/webhooks/logs
      - API Key:
        - type: apiKey Authorization (HEADER)
@@ -49,9 +49,9 @@ open class WebhooksLogsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[WebHookLogModel]> 
+     - returns: RequestBuilder<[WebhookLogApiResult]> 
      */
-    open class func apiV2WebhooksLogsGetWithRequestBuilder(projectId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[WebHookLogModel]> {
+    open class func apiV2WebhooksLogsGetWithRequestBuilder(projectId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[WebhookLogApiResult]> {
         let localVariablePath = "/api/v2/webhooks/logs"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -72,7 +72,7 @@ open class WebhooksLogsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[WebHookLogModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[WebhookLogApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -134,7 +134,7 @@ open class WebhooksLogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2WebhooksLogsIdGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WebHookLogModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2WebhooksLogsIdGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WebhookLogApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2WebhooksLogsIdGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -152,9 +152,9 @@ open class WebhooksLogsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Webhook log unique ID 
-     - returns: RequestBuilder<WebHookLogModel> 
+     - returns: RequestBuilder<WebhookLogApiResult> 
      */
-    open class func apiV2WebhooksLogsIdGetWithRequestBuilder(id: UUID) -> RequestBuilder<WebHookLogModel> {
+    open class func apiV2WebhooksLogsIdGetWithRequestBuilder(id: UUID) -> RequestBuilder<WebhookLogApiResult> {
         var localVariablePath = "/api/v2/webhooks/logs/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -170,7 +170,7 @@ open class WebhooksLogsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<WebHookLogModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WebhookLogApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

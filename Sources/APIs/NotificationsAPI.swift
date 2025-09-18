@@ -34,7 +34,7 @@ open class NotificationsAPI {
     /**
      Get unread Notifications total in last 7 days
      - GET /api/v2/notifications/count
-     -  Use case  User runs method execution  System returns unread notifications total (listed in the response example)
+     -   Use case    User runs method execution    System returns unread notifications total (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -89,7 +89,7 @@ open class NotificationsAPI {
     /**
      Get all Notifications for current User
      - GET /api/v2/notifications
-     -  Use case  User runs method execution  System returns notifications (listed in the response example)
+     -   Use case    User runs method execution    System returns notifications (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -150,7 +150,7 @@ open class NotificationsAPI {
     /**
      Set Notification as read
      - POST /api/v2/notifications/{id}/read
-     -  Use case  User sets notification internal (guid format) identifier  User runs method execution  System set notification as read
+     -   Use case    User sets notification internal (guid format) identifier    User runs method execution    System set notification as read
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -199,7 +199,7 @@ open class NotificationsAPI {
     /**
      Set all Notifications as read
      - POST /api/v2/notifications/read
-     -  Use case  User runs method execution  System set all notifications as read
+     -   Use case    User runs method execution    System set all notifications as read
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -250,7 +250,7 @@ open class NotificationsAPI {
     /**
      Search Notifications for current User
      - POST /api/v2/notifications/search
-     -  Use case  User set filter and runs method execution  System returns notifications (listed in the response example)
+     -   Use case    User set filter and runs method execution    System returns notifications (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
