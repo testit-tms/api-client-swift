@@ -12,16 +12,22 @@ import AnyCodable
 
 public struct GetExternalIssueSuggestionsApiModel: Codable, JSONEncodable, Hashable {
 
+    /** Field of external issue metadata to get */
     public var field: ExternalIssueApiField
+    /** List of project identifiers where external issue is available */
+    public var projectIds: [UUID]?
+    /** Inquiry */
     public var inquiry: Inquiry?
 
-    public init(field: ExternalIssueApiField, inquiry: Inquiry?) {
+    public init(field: ExternalIssueApiField, projectIds: [UUID]? = nil, inquiry: Inquiry? = nil) {
         self.field = field
+        self.projectIds = projectIds
         self.inquiry = inquiry
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case field
+        case projectIds
         case inquiry
     }
 
@@ -30,7 +36,8 @@ public struct GetExternalIssueSuggestionsApiModel: Codable, JSONEncodable, Hasha
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(field, forKey: .field)
-        try container.encode(inquiry, forKey: .inquiry)
+        try container.encodeIfPresent(projectIds, forKey: .projectIds)
+        try container.encodeIfPresent(inquiry, forKey: .inquiry)
     }
 }
 

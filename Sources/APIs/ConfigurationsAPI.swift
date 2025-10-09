@@ -527,7 +527,7 @@ open class ConfigurationsAPI {
     /**
      Create Configuration
      - POST /api/v2/configurations
-     -   Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
+     -  Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -574,7 +574,7 @@ open class ConfigurationsAPI {
     /**
      Get configuration by internal or global ID
      - GET /api/v2/configurations/{id}
-     -   Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
+     -  Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

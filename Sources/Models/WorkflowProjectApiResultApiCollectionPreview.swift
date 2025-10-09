@@ -12,7 +12,9 @@ import AnyCodable
 
 public struct WorkflowProjectApiResultApiCollectionPreview: Codable, JSONEncodable, Hashable {
 
+    /** Preview items */
     public var data: [WorkflowProjectApiResult]
+    /** Total count */
     public var totalCount: Int
 
     public init(data: [WorkflowProjectApiResult], totalCount: Int) {
