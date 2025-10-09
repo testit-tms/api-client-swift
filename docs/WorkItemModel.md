@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **createdById** | **UUID** |  | 
 **modifiedById** | **UUID** |  | [optional] 
 **globalId** | **Int64** |  | 
+**externalIssues** | [ExternalIssueModel] |  | 
 **id** | **UUID** |  | 
 **sectionId** | **UUID** |  | 
 **description** | **String** |  | [optional] 

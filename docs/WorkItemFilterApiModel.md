@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **autoTestIds** | **Set<UUID>** | Collection of identifiers of linked autotests | [optional] 
 **workItemVersionIds** | **[UUID]** | Collection of identifiers work items versions. | [optional] 
 **links** | [**WorkItemLinkFilterApiModel**](WorkItemLinkFilterApiModel.md) | Specifies a work item filter by its links | [optional] 
+**externalMetadata** | [**WorkItemExternalMetadataFilterApiModel**](WorkItemExternalMetadataFilterApiModel.md) | Specifies work item filter by its external metadata | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

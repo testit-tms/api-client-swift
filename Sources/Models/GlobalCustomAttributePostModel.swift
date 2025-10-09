@@ -19,7 +19,7 @@ public struct GlobalCustomAttributePostModel: Codable, JSONEncodable, Hashable {
     public var isEnabled: Bool?
     /** Indicates whether the attribute value is mandatory to specify */
     public var isRequired: Bool?
-    /** Collection of attribute options      Available for attributes of type `options` and `multiple options` only */
+    /** Collection of attribute options   Available for attributes of type `options` and `multiple options` only */
     public var options: [CustomAttributeOptionPostModel]?
     /** Type of attribute */
     public var type: CustomAttributeTypesEnum

@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **autoTests** | [AutoTestModel] | Automated tests associated with the work item | 
 **attachments** | [AttachmentModel] | Files attached to the work item | 
 **links** | [LinkModel] | Set of links related to the work item | 
+**externalIssues** | [ExternalIssueApiResult] | Set of external issues related to the work item | 
 **createdDate** | **Date** | Creation date of the work item | 
 **createdById** | **UUID** | Unique identifier of the work item creator | 
 **modifiedDate** | **Date** | Modification date of the work item | [optional] 

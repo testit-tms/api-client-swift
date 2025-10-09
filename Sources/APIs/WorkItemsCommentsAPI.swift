@@ -34,7 +34,7 @@ open class WorkItemsCommentsAPI {
     /**
      Delete WorkItem comment
      - DELETE /api/v2/workItems/comments/{commentId}
-     -   Use case    User sets comment identifier    User runs method execution    System delete comment    System returns success status code
+     -  Use case  User sets comment identifier  User runs method execution  System delete comment  System returns success status code
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -84,7 +84,7 @@ open class WorkItemsCommentsAPI {
     /**
      Create WorkItem comment
      - POST /api/v2/workItems/comments
-     -   Use case    User sets comment properties (listed in request parameters)    User runs method execution    System creates comment    System returns comment model (listed in response parameters)
+     -  Use case  User sets comment properties (listed in request parameters)  User runs method execution  System creates comment  System returns comment model (listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

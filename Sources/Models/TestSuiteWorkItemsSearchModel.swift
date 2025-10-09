@@ -32,7 +32,7 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
     /** Collection of tags */
     @available(*, deprecated, message: "This property is deprecated.")
     public var tagNames: Set<String>?
-    /** Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
+    /** Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
     @available(*, deprecated, message: "This property is deprecated.")
     public var entityTypes: Set<WorkItemEntityTypes>?
     /** Name or identifier (UUID) of work item */
@@ -41,6 +41,8 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
     public var includeIds: Set<UUID>?
     /** Collection of identifiers of work items which need to be excluded from result regardless of filtering */
     public var excludeIds: Set<UUID>?
+    /** Specifies work item filter by its external metadata */
+    public var externalMetadata: WorkItemExternalMetadataFilterModel?
     /** Collection of project identifiers */
     public var projectIds: Set<UUID>?
     /** Specifies a work item filter by its links */
@@ -86,12 +88,13 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
     /** Collection of identifiers work items versions. */
     public var workItemVersionIds: [UUID]?
 
-    public init(tagNames: Set<String>? = nil, entityTypes: Set<WorkItemEntityTypes>? = nil, nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, projectIds: Set<UUID>? = nil, links: WorkItemLinkFilterModel? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, sourceTypes: Set<WorkItemSourceTypeModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil) {
+    public init(tagNames: Set<String>? = nil, entityTypes: Set<WorkItemEntityTypes>? = nil, nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, externalMetadata: WorkItemExternalMetadataFilterModel? = nil, projectIds: Set<UUID>? = nil, links: WorkItemLinkFilterModel? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, sourceTypes: Set<WorkItemSourceTypeModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil) {
         self.tagNames = tagNames
         self.entityTypes = entityTypes
         self.nameOrId = nameOrId
         self.includeIds = includeIds
         self.excludeIds = excludeIds
+        self.externalMetadata = externalMetadata
         self.projectIds = projectIds
         self.links = links
         self.name = name
@@ -122,6 +125,7 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
         case nameOrId
         case includeIds
         case excludeIds
+        case externalMetadata
         case projectIds
         case links
         case name
@@ -155,6 +159,7 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(nameOrId, forKey: .nameOrId)
         try container.encodeIfPresent(includeIds, forKey: .includeIds)
         try container.encodeIfPresent(excludeIds, forKey: .excludeIds)
+        try container.encodeIfPresent(externalMetadata, forKey: .externalMetadata)
         try container.encodeIfPresent(projectIds, forKey: .projectIds)
         try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(name, forKey: .name)

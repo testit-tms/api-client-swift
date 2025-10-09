@@ -12,14 +12,19 @@ import AnyCodable
 
 public struct ExternalIssueApiFieldSuggestion: Codable, JSONEncodable, Hashable {
 
+    /** Value of the external issue field */
     public var value: String
+    /** Associated external service with this value */
+    public var externalService: ExternalIssueExternalServiceApiResult
 
-    public init(value: String) {
+    public init(value: String, externalService: ExternalIssueExternalServiceApiResult) {
         self.value = value
+        self.externalService = externalService
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case value
+        case externalService
     }
 
     // Encodable protocol methods
@@ -27,6 +32,7 @@ public struct ExternalIssueApiFieldSuggestion: Codable, JSONEncodable, Hashable 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(value, forKey: .value)
+        try container.encode(externalService, forKey: .externalService)
     }
 }
 
