@@ -21,7 +21,7 @@ Search for custom attributes templates
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let projectId = "projectId_example" // String | 
+let projectId = "projectId_example" // String | Internal (UUID) or global (integer) identifier
 let skip = 987 // Int | Amount of items to be skipped (offset) (optional)
 let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -46,7 +46,7 @@ ProjectAttributeTemplatesAPI.apiV2ProjectsProjectIdAttributesTemplatesSearchPost
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String** |  | 
+ **projectId** | **String** | Internal (UUID) or global (integer) identifier | 
  **skip** | **Int** | Amount of items to be skipped (offset) | [optional] 
  **take** | **Int** | Amount of items to be taken (limit) | [optional] 
  **orderBy** | **String** | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) | [optional] 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 Delete CustomAttributeTemplate from Project
 
- Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System delete attribute template from project
+  Use case    User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution    System delete attribute template from project
 
 ### Example
 ```swift
@@ -128,7 +128,7 @@ Void (empty response body)
 
 Add CustomAttributeTemplate to Project
 
- Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System add attribute template to project
+  Use case    User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution    System add attribute template to project
 
 ### Example
 ```swift

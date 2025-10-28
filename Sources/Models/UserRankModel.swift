@@ -14,13 +14,18 @@ public struct UserRankModel: Codable, JSONEncodable, Hashable {
 
     public var score: Int
     public var workItemsCreated: Int
+    @available(*, deprecated, message: "This property is deprecated.")
     public var passedTestPoints: Int
     public var failedTestPoints: Int
+    @available(*, deprecated, message: "This property is deprecated.")
     public var skippedTestPoints: Int
+    @available(*, deprecated, message: "This property is deprecated.")
     public var blockedTestPoints: Int
     public var levelAvatarEnabled: Bool
+    public var succeededTestPoints: Int
+    public var incompleteTestPoints: Int
 
-    public init(score: Int, workItemsCreated: Int, passedTestPoints: Int, failedTestPoints: Int, skippedTestPoints: Int, blockedTestPoints: Int, levelAvatarEnabled: Bool) {
+    public init(score: Int, workItemsCreated: Int, passedTestPoints: Int, failedTestPoints: Int, skippedTestPoints: Int, blockedTestPoints: Int, levelAvatarEnabled: Bool, succeededTestPoints: Int, incompleteTestPoints: Int) {
         self.score = score
         self.workItemsCreated = workItemsCreated
         self.passedTestPoints = passedTestPoints
@@ -28,6 +33,8 @@ public struct UserRankModel: Codable, JSONEncodable, Hashable {
         self.skippedTestPoints = skippedTestPoints
         self.blockedTestPoints = blockedTestPoints
         self.levelAvatarEnabled = levelAvatarEnabled
+        self.succeededTestPoints = succeededTestPoints
+        self.incompleteTestPoints = incompleteTestPoints
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -38,6 +45,8 @@ public struct UserRankModel: Codable, JSONEncodable, Hashable {
         case skippedTestPoints
         case blockedTestPoints
         case levelAvatarEnabled
+        case succeededTestPoints
+        case incompleteTestPoints
     }
 
     // Encodable protocol methods
@@ -51,6 +60,8 @@ public struct UserRankModel: Codable, JSONEncodable, Hashable {
         try container.encode(skippedTestPoints, forKey: .skippedTestPoints)
         try container.encode(blockedTestPoints, forKey: .blockedTestPoints)
         try container.encode(levelAvatarEnabled, forKey: .levelAvatarEnabled)
+        try container.encode(succeededTestPoints, forKey: .succeededTestPoints)
+        try container.encode(incompleteTestPoints, forKey: .incompleteTestPoints)
     }
 }
 

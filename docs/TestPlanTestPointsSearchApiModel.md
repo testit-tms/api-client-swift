@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **modifiedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a test point range of last modification date to search for | [optional] 
 **modifiedByIds** | **[UUID]** | Specifies a test point last editor IDs to search for | [optional] 
 **tags** | **[String]** | Specifies a test point tags to search for | [optional] 
+**excludeTags** | **[String]** | Specifies a test point tags to exclude to search for | [optional] 
 **attributes** | [String: Set<String>] | Specifies a test point attributes to search for | [optional] 
 **workItemCreatedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) | Specifies a work item range of creation date to search for | [optional] 
 **workItemCreatedByIds** | **[UUID]** | Specifies a work item creator IDs to search for | [optional] 

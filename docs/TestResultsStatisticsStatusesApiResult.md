@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **inProgress** | **Int** | Number of test results which is running currently | 
 **passed** | **Int** | Number of test results which successfully passed | 
+**succeeded** | **Int** | Number of successful test results | 
 **failed** | **Int** | Number of test results which failed with an error | 
 **skipped** | **Int** | Number of test results which did not run and were skipped | 
 **blocked** | **Int** | Number of test results which cannot be launched | 

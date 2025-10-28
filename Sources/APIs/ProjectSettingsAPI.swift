@@ -15,14 +15,14 @@ open class ProjectSettingsAPI {
     /**
      Set autotest project settings.
      
-     - parameter projectId: (path)  
-     - parameter autoTestProjectSettingsPostModel: (body)  (optional)
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter autoTestProjectSettingsApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ProjectsProjectIdSettingsAutotestsPost(projectId: String, autoTestProjectSettingsPostModel: AutoTestProjectSettingsPostModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ProjectsProjectIdSettingsAutotestsPostWithRequestBuilder(projectId: projectId, autoTestProjectSettingsPostModel: autoTestProjectSettingsPostModel).execute(apiResponseQueue) { result in
+    open class func apiV2ProjectsProjectIdSettingsAutotestsPost(projectId: String, autoTestProjectSettingsApiModel: AutoTestProjectSettingsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsProjectIdSettingsAutotestsPostWithRequestBuilder(projectId: projectId, autoTestProjectSettingsApiModel: autoTestProjectSettingsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -38,17 +38,17 @@ open class ProjectSettingsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter projectId: (path)  
-     - parameter autoTestProjectSettingsPostModel: (body)  (optional)
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter autoTestProjectSettingsApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2ProjectsProjectIdSettingsAutotestsPostWithRequestBuilder(projectId: String, autoTestProjectSettingsPostModel: AutoTestProjectSettingsPostModel? = nil) -> RequestBuilder<Void> {
+    open class func apiV2ProjectsProjectIdSettingsAutotestsPostWithRequestBuilder(projectId: String, autoTestProjectSettingsApiModel: AutoTestProjectSettingsApiModel? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/projects/{projectId}/settings/autotests"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: autoTestProjectSettingsPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: autoTestProjectSettingsApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -66,12 +66,12 @@ open class ProjectSettingsAPI {
     /**
      Get autotest project settings.
      
-     - parameter projectId: (path)  
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAutotestProjectSettings(projectId: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: AutoTestProjectSettingsGetModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAutotestProjectSettings(projectId: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: AutoTestProjectSettingsApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return getAutotestProjectSettingsWithRequestBuilder(projectId: projectId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -88,10 +88,10 @@ open class ProjectSettingsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter projectId: (path)  
-     - returns: RequestBuilder<AutoTestProjectSettingsGetModel> 
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - returns: RequestBuilder<AutoTestProjectSettingsApiResult> 
      */
-    open class func getAutotestProjectSettingsWithRequestBuilder(projectId: String) -> RequestBuilder<AutoTestProjectSettingsGetModel> {
+    open class func getAutotestProjectSettingsWithRequestBuilder(projectId: String) -> RequestBuilder<AutoTestProjectSettingsApiResult> {
         var localVariablePath = "/api/v2/projects/{projectId}/settings/autotests"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -107,7 +107,7 @@ open class ProjectSettingsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AutoTestProjectSettingsGetModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AutoTestProjectSettingsApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

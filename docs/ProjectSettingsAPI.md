@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **apiV2ProjectsProjectIdSettingsAutotestsPost**
 ```swift
-    open class func apiV2ProjectsProjectIdSettingsAutotestsPost(projectId: String, autoTestProjectSettingsPostModel: AutoTestProjectSettingsPostModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsProjectIdSettingsAutotestsPost(projectId: String, autoTestProjectSettingsApiModel: AutoTestProjectSettingsApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Set autotest project settings.
@@ -20,11 +20,11 @@ Set autotest project settings.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let projectId = "projectId_example" // String | 
-let autoTestProjectSettingsPostModel = AutoTestProjectSettingsPostModel(isFlakyAuto: false, flakyStabilityPercentage: 123, flakyTestRunCount: 123, rerunEnabled: false, rerunAttemptsCount: 123) // AutoTestProjectSettingsPostModel |  (optional)
+let projectId = "projectId_example" // String | Internal (UUID) or global (integer) identifier
+let autoTestProjectSettingsApiModel = AutoTestProjectSettingsApiModel(isFlakyAuto: false, flakyStabilityPercentage: 123, flakyTestRunCount: 123, rerunEnabled: false, rerunAttemptsCount: 123) // AutoTestProjectSettingsApiModel |  (optional)
 
 // Set autotest project settings.
-ProjectSettingsAPI.apiV2ProjectsProjectIdSettingsAutotestsPost(projectId: projectId, autoTestProjectSettingsPostModel: autoTestProjectSettingsPostModel) { (response, error) in
+ProjectSettingsAPI.apiV2ProjectsProjectIdSettingsAutotestsPost(projectId: projectId, autoTestProjectSettingsApiModel: autoTestProjectSettingsApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -40,8 +40,8 @@ ProjectSettingsAPI.apiV2ProjectsProjectIdSettingsAutotestsPost(projectId: projec
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String** |  | 
- **autoTestProjectSettingsPostModel** | [**AutoTestProjectSettingsPostModel**](AutoTestProjectSettingsPostModel.md) |  | [optional] 
+ **projectId** | **String** | Internal (UUID) or global (integer) identifier | 
+ **autoTestProjectSettingsApiModel** | [**AutoTestProjectSettingsApiModel**](AutoTestProjectSettingsApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -60,7 +60,7 @@ Void (empty response body)
 
 # **getAutotestProjectSettings**
 ```swift
-    open class func getAutotestProjectSettings(projectId: String, completion: @escaping (_ data: AutoTestProjectSettingsGetModel?, _ error: Error?) -> Void)
+    open class func getAutotestProjectSettings(projectId: String, completion: @escaping (_ data: AutoTestProjectSettingsApiResult?, _ error: Error?) -> Void)
 ```
 
 Get autotest project settings.
@@ -70,7 +70,7 @@ Get autotest project settings.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let projectId = "projectId_example" // String | 
+let projectId = "projectId_example" // String | Internal (UUID) or global (integer) identifier
 
 // Get autotest project settings.
 ProjectSettingsAPI.getAutotestProjectSettings(projectId: projectId) { (response, error) in
@@ -89,11 +89,11 @@ ProjectSettingsAPI.getAutotestProjectSettings(projectId: projectId) { (response,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String** |  | 
+ **projectId** | **String** | Internal (UUID) or global (integer) identifier | 
 
 ### Return type
 
-[**AutoTestProjectSettingsGetModel**](AutoTestProjectSettingsGetModel.md)
+[**AutoTestProjectSettingsApiResult**](AutoTestProjectSettingsApiResult.md)
 
 ### Authorization
 

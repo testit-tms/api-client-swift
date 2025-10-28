@@ -15,7 +15,10 @@ public struct TestResultsStatisticsStatusesApiResult: Codable, JSONEncodable, Ha
     /** Number of test results which is running currently */
     public var inProgress: Int
     /** Number of test results which successfully passed */
+    @available(*, deprecated, message: "This property is deprecated.")
     public var passed: Int
+    /** Number of successful test results */
+    public var succeeded: Int
     /** Number of test results which failed with an error */
     public var failed: Int
     /** Number of test results which did not run and were skipped */
@@ -27,9 +30,10 @@ public struct TestResultsStatisticsStatusesApiResult: Codable, JSONEncodable, Ha
     /** Number of test results which are incomplete */
     public var incomplete: Int
 
-    public init(inProgress: Int, passed: Int, failed: Int, skipped: Int, blocked: Int, incomplete: Int) {
+    public init(inProgress: Int, passed: Int, succeeded: Int, failed: Int, skipped: Int, blocked: Int, incomplete: Int) {
         self.inProgress = inProgress
         self.passed = passed
+        self.succeeded = succeeded
         self.failed = failed
         self.skipped = skipped
         self.blocked = blocked
@@ -39,6 +43,7 @@ public struct TestResultsStatisticsStatusesApiResult: Codable, JSONEncodable, Ha
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case inProgress
         case passed
+        case succeeded
         case failed
         case skipped
         case blocked
@@ -51,6 +56,7 @@ public struct TestResultsStatisticsStatusesApiResult: Codable, JSONEncodable, Ha
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(inProgress, forKey: .inProgress)
         try container.encode(passed, forKey: .passed)
+        try container.encode(succeeded, forKey: .succeeded)
         try container.encode(failed, forKey: .failed)
         try container.encode(skipped, forKey: .skipped)
         try container.encode(blocked, forKey: .blocked)

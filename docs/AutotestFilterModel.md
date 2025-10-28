@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **className** | **String** |  | [optional] 
 **isEmptyClassName** | **Bool** |  | [optional] 
 **lastTestResultOutcome** | [**AutotestResultOutcome**](AutotestResultOutcome.md) |  | [optional] 
-**lastTestResultStatusCode** | **String** |  | [optional] 
+**lastTestResultStatusCodes** | **[String]** |  | [optional] 
 **externalKey** | **String** |  | [optional] 
 **lastTestResultConfigurationIds** | **[UUID]** |  | [optional] 
 

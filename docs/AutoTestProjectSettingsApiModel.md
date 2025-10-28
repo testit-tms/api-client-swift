@@ -1,4 +1,4 @@
-# AutoTestProjectSettingsPostModel
+# AutoTestProjectSettingsApiModel
 
 ## Properties
 Name | Type | Description | Notes

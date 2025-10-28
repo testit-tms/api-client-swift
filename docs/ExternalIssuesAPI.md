@@ -19,7 +19,7 @@ Returns list of suggestions from available external issues
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let getExternalIssueSuggestionsApiModel = GetExternalIssueSuggestionsApiModel(field: ExternalIssueApiField(), projectIds: [123], inquiry: Inquiry(filter: CompositeFilter(filters: [123], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123))) // GetExternalIssueSuggestionsApiModel |  (optional)
+let getExternalIssueSuggestionsApiModel = GetExternalIssueSuggestionsApiModel(field: ExternalIssueApiField(), projectIds: [123], inquiry: Inquiry(filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123))) // GetExternalIssueSuggestionsApiModel |  (optional)
 
 // Returns list of suggestions from available external issues
 ExternalIssuesAPI.apiV2ExternalIssuesSuggestionsPost(getExternalIssueSuggestionsApiModel: getExternalIssueSuggestionsApiModel) { (response, error) in

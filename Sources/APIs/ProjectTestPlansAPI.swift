@@ -41,7 +41,7 @@ open class ProjectTestPlansAPI {
     /**
      Get TestPlans analytics
      - GET /api/v2/projects/{projectId}/testPlans/analytics
-     -  Use case  User sets project internal identifier  User sets query params  User runs method execution  System return analytics
+     -   Use case    User sets project internal identifier    User sets query params    User runs method execution    System return analytics
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -160,7 +160,7 @@ open class ProjectTestPlansAPI {
     /**
      Checks if TestPlan exists with the specified name exists for the project
      - GET /api/v2/projects/{projectId}/testPlans/{name}/exists
-     -  Use case  User sets project internal or global identifier  User runs method execution  System purge delete project workitems
+     -   Use case    User sets project internal or global identifier    User runs method execution    System purge delete project workitems
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -323,7 +323,7 @@ open class ProjectTestPlansAPI {
     /**
      Get Project TestPlans with analytics
      - POST /api/v2/projects/{projectId}/testPlans/search
-     -  Use case  User sets project internal or global identifier  User sets request body  User runs method execution  System returns project testplans with analytics
+     -   Use case    User sets project internal or global identifier    User sets request body    User runs method execution    System returns project testplans with analytics
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

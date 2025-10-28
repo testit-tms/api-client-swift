@@ -15,7 +15,7 @@ open class ProjectAttributeTemplatesAPI {
     /**
      Search for custom attributes templates
      
-     - parameter projectId: (path)  
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -44,7 +44,7 @@ open class ProjectAttributeTemplatesAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
-     - parameter projectId: (path)  
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -104,7 +104,7 @@ open class ProjectAttributeTemplatesAPI {
     /**
      Delete CustomAttributeTemplate from Project
      - DELETE /api/v2/projects/{projectId}/attributes/templates/{templateId}
-     -  Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System delete attribute template from project
+     -   Use case    User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution    System delete attribute template from project
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -159,7 +159,7 @@ open class ProjectAttributeTemplatesAPI {
     /**
      Add CustomAttributeTemplate to Project
      - POST /api/v2/projects/{projectId}/attributes/templates/{templateId}
-     -  Use case  User sets project internal or global identifier  User sets attribute template internal identifier  User runs method execution  System add attribute template to project
+     -   Use case    User sets project internal or global identifier    User sets attribute template internal identifier    User runs method execution    System add attribute template to project
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
