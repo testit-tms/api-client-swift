@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **skippedTestPoints** | **Int** |  | 
 **blockedTestPoints** | **Int** |  | 
 **levelAvatarEnabled** | **Bool** |  | 
+**succeededTestPoints** | **Int** |  | 
+**incompleteTestPoints** | **Int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

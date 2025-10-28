@@ -1,4 +1,4 @@
-# AutoTestResultReasonsProjectApiResult
+# FailureCategoryItemApiResult
 
 ## Properties
 Name | Type | Description | Notes

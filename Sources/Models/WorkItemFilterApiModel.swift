@@ -26,6 +26,7 @@ public struct WorkItemFilterApiModel: Codable, JSONEncodable, Hashable {
     public static let sourceTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let excludeTagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let autoTestIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Name or identifier (UUID) of work item */
     public var nameOrId: String?
@@ -71,6 +72,8 @@ public struct WorkItemFilterApiModel: Codable, JSONEncodable, Hashable {
     public var isAutomated: Bool?
     /** Collection of tags */
     public var tags: Set<String>?
+    /** Collection of tags to exclude */
+    public var excludeTags: Set<String>?
     /** Collection of identifiers of linked autotests */
     public var autoTestIds: Set<UUID>?
     /** Collection of identifiers work items versions. */
@@ -80,7 +83,7 @@ public struct WorkItemFilterApiModel: Codable, JSONEncodable, Hashable {
     /** Specifies work item filter by its external metadata */
     public var externalMetadata: WorkItemExternalMetadataFilterApiModel?
 
-    public init(nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, projectIds: Set<UUID>? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, sourceTypes: Set<WorkItemSourceTypeModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil, links: WorkItemLinkFilterApiModel? = nil, externalMetadata: WorkItemExternalMetadataFilterApiModel? = nil) {
+    public init(nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, projectIds: Set<UUID>? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, sourceTypes: Set<WorkItemSourceTypeModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, excludeTags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil, links: WorkItemLinkFilterApiModel? = nil, externalMetadata: WorkItemExternalMetadataFilterApiModel? = nil) {
         self.nameOrId = nameOrId
         self.includeIds = includeIds
         self.excludeIds = excludeIds
@@ -103,6 +106,7 @@ public struct WorkItemFilterApiModel: Codable, JSONEncodable, Hashable {
         self.medianDuration = medianDuration
         self.isAutomated = isAutomated
         self.tags = tags
+        self.excludeTags = excludeTags
         self.autoTestIds = autoTestIds
         self.workItemVersionIds = workItemVersionIds
         self.links = links
@@ -132,6 +136,7 @@ public struct WorkItemFilterApiModel: Codable, JSONEncodable, Hashable {
         case medianDuration
         case isAutomated
         case tags
+        case excludeTags
         case autoTestIds
         case workItemVersionIds
         case links
@@ -164,6 +169,7 @@ public struct WorkItemFilterApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(medianDuration, forKey: .medianDuration)
         try container.encodeIfPresent(isAutomated, forKey: .isAutomated)
         try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(excludeTags, forKey: .excludeTags)
         try container.encodeIfPresent(autoTestIds, forKey: .autoTestIds)
         try container.encodeIfPresent(workItemVersionIds, forKey: .workItemVersionIds)
         try container.encodeIfPresent(links, forKey: .links)

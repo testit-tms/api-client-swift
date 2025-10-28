@@ -311,11 +311,11 @@ open class ConfigurationsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ConfigurationsPurgeBulkPost(configurationSelectModel: ConfigurationSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2ConfigurationsPurgeBulkPost(configurationSelectModel: ConfigurationSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ConfigurationsPurgeBulkPostWithRequestBuilder(configurationSelectModel: configurationSelectModel).execute(apiResponseQueue) { result in
             switch result {
-            case .success:
-                completion((), nil)
+            case let .success(response):
+                completion(response.body, nil)
             case let .failure(error):
                 completion(nil, error)
             }
@@ -329,9 +329,9 @@ open class ConfigurationsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter configurationSelectModel: (body)  (optional)
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<Int> 
      */
-    open class func apiV2ConfigurationsPurgeBulkPostWithRequestBuilder(configurationSelectModel: ConfigurationSelectModel? = nil) -> RequestBuilder<Void> {
+    open class func apiV2ConfigurationsPurgeBulkPostWithRequestBuilder(configurationSelectModel: ConfigurationSelectModel? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/configurations/purge/bulk"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: configurationSelectModel)
@@ -344,7 +344,7 @@ open class ConfigurationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Int>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -527,7 +527,7 @@ open class ConfigurationsAPI {
     /**
      Create Configuration
      - POST /api/v2/configurations
-     -  Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
+     -   Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -574,7 +574,7 @@ open class ConfigurationsAPI {
     /**
      Get configuration by internal or global ID
      - GET /api/v2/configurations/{id}
-     -  Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
+     -   Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

@@ -16,14 +16,24 @@ public struct WorkflowApiResult: Codable, JSONEncodable, Hashable {
     public var name: String
     public var isSystem: Bool
     public var isDefault: Bool
+    public var createdDate: Date
+    public var createdById: UUID
+    public var modifiedDate: Date
+    public var modifiedById: UUID
     public var statuses: [WorkflowStatusApiResult]
+    public var projects: [WorkflowProjectApiResult]
 
-    public init(id: UUID, name: String, isSystem: Bool, isDefault: Bool, statuses: [WorkflowStatusApiResult]) {
+    public init(id: UUID, name: String, isSystem: Bool, isDefault: Bool, createdDate: Date, createdById: UUID, modifiedDate: Date, modifiedById: UUID, statuses: [WorkflowStatusApiResult], projects: [WorkflowProjectApiResult]) {
         self.id = id
         self.name = name
         self.isSystem = isSystem
         self.isDefault = isDefault
+        self.createdDate = createdDate
+        self.createdById = createdById
+        self.modifiedDate = modifiedDate
+        self.modifiedById = modifiedById
         self.statuses = statuses
+        self.projects = projects
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -31,7 +41,12 @@ public struct WorkflowApiResult: Codable, JSONEncodable, Hashable {
         case name
         case isSystem
         case isDefault
+        case createdDate
+        case createdById
+        case modifiedDate
+        case modifiedById
         case statuses
+        case projects
     }
 
     // Encodable protocol methods
@@ -42,7 +57,12 @@ public struct WorkflowApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(isSystem, forKey: .isSystem)
         try container.encode(isDefault, forKey: .isDefault)
+        try container.encode(createdDate, forKey: .createdDate)
+        try container.encode(createdById, forKey: .createdById)
+        try container.encode(modifiedDate, forKey: .modifiedDate)
+        try container.encode(modifiedById, forKey: .modifiedById)
         try container.encode(statuses, forKey: .statuses)
+        try container.encode(projects, forKey: .projects)
     }
 }
 

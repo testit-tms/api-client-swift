@@ -29,11 +29,11 @@ public struct AutoTestFilterModel: Codable, JSONEncodable, Hashable {
     public var className: String?
     public var isEmptyClassName: Bool?
     public var lastTestResultOutcome: AutotestResultOutcome?
-    public var lastTestResultStatusCode: String?
+    public var lastTestResultStatusCodes: [String]?
     public var externalKey: String?
     public var lastTestResultConfigurationIds: [UUID]?
 
-    public init(projectIds: [UUID]? = nil, externalIds: [String]? = nil, globalIds: [Int64]? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: [UUID]? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCode: String? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: [UUID]? = nil) {
+    public init(projectIds: [UUID]? = nil, externalIds: [String]? = nil, globalIds: [Int64]? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: [UUID]? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCodes: [String]? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: [UUID]? = nil) {
         self.projectIds = projectIds
         self.externalIds = externalIds
         self.globalIds = globalIds
@@ -51,7 +51,7 @@ public struct AutoTestFilterModel: Codable, JSONEncodable, Hashable {
         self.className = className
         self.isEmptyClassName = isEmptyClassName
         self.lastTestResultOutcome = lastTestResultOutcome
-        self.lastTestResultStatusCode = lastTestResultStatusCode
+        self.lastTestResultStatusCodes = lastTestResultStatusCodes
         self.externalKey = externalKey
         self.lastTestResultConfigurationIds = lastTestResultConfigurationIds
     }
@@ -74,7 +74,7 @@ public struct AutoTestFilterModel: Codable, JSONEncodable, Hashable {
         case className
         case isEmptyClassName
         case lastTestResultOutcome
-        case lastTestResultStatusCode
+        case lastTestResultStatusCodes
         case externalKey
         case lastTestResultConfigurationIds
     }
@@ -100,7 +100,7 @@ public struct AutoTestFilterModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(className, forKey: .className)
         try container.encodeIfPresent(isEmptyClassName, forKey: .isEmptyClassName)
         try container.encodeIfPresent(lastTestResultOutcome, forKey: .lastTestResultOutcome)
-        try container.encodeIfPresent(lastTestResultStatusCode, forKey: .lastTestResultStatusCode)
+        try container.encodeIfPresent(lastTestResultStatusCodes, forKey: .lastTestResultStatusCodes)
         try container.encodeIfPresent(externalKey, forKey: .externalKey)
         try container.encodeIfPresent(lastTestResultConfigurationIds, forKey: .lastTestResultConfigurationIds)
     }

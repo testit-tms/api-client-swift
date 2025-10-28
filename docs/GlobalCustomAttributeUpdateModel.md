@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Name of attribute | 
-**options** | [CustomAttributeOptionModel] | Collection of attribute options   Available for attributes of type &#x60;options&#x60; and &#x60;multiple options&#x60; only | [optional] 
+**options** | [CustomAttributeOptionModel] | Collection of attribute options      Available for attributes of type &#x60;options&#x60; and &#x60;multiple options&#x60; only | [optional] 
 **isEnabled** | **Bool** | Indicates whether the attribute is available | [optional] 
 **isRequired** | **Bool** | Indicates whether the attribute value is mandatory to specify | [optional] 
 

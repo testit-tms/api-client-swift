@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tagNames** | **Set<String>** | Collection of tags | [optional] 
-**entityTypes** | Set<WorkItemEntityTypes> | Collection of types of work item  Allowed values: &#x60;TestCases&#x60;, &#x60;CheckLists&#x60;, &#x60;SharedSteps&#x60; | [optional] 
+**entityTypes** | Set<WorkItemEntityTypes> | Collection of types of work item    Allowed values: &#x60;TestCases&#x60;, &#x60;CheckLists&#x60;, &#x60;SharedSteps&#x60; | [optional] 
 **nameOrId** | **String** | Name or identifier (UUID) of work item | [optional] 
 **includeIds** | **Set<UUID>** | Collection of identifiers of work items which need to be included in result regardless of filtering | [optional] 
 **excludeIds** | **Set<UUID>** | Collection of identifiers of work items which need to be excluded from result regardless of filtering | [optional] 
@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **medianDuration** | [**Int64RangeSelectorModel**](Int64RangeSelectorModel.md) | Specifies a work item median duration range to search for | [optional] 
 **isAutomated** | **Bool** | Is result must consist of only manual/automated work items | [optional] 
 **tags** | **Set<String>** | Collection of tags | [optional] 
+**excludeTags** | **Set<String>** | Collection of tags to exclude | [optional] 
 **autoTestIds** | **Set<UUID>** | Collection of identifiers of linked autotests | [optional] 
 **workItemVersionIds** | **[UUID]** | Collection of identifiers work items versions. | [optional] 
 

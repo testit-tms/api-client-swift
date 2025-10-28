@@ -20,7 +20,7 @@ public struct TestPointByTestSuiteModel: Codable, JSONEncodable, Hashable {
     public var workItemId: UUID?
     /** Configuration to which test point relates unique identifier */
     public var configurationId: UUID?
-    /** Test point status  Applies one of these values: Blocked, NoResults, Failed, Passed */
+    /** Test point status    Applies one of these values: Blocked, NoResults, Failed, Passed */
     public var status: String?
     /** Last test result unique identifier */
     public var lastTestResultId: UUID?

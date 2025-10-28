@@ -13,11 +13,11 @@ import AnyCodable
 public struct ProjectFailureCategoryGroupItemApiResult: Codable, JSONEncodable, Hashable {
 
     /** Group details */
-    public var group: AutoTestResultReasonGroupApiResult?
+    public var group: FailureCategoryGroupApiResult?
     /** Group data */
     public var items: [ProjectFailureCategoryApiResult]
 
-    public init(group: AutoTestResultReasonGroupApiResult? = nil, items: [ProjectFailureCategoryApiResult]) {
+    public init(group: FailureCategoryGroupApiResult? = nil, items: [ProjectFailureCategoryApiResult]) {
         self.group = group
         self.items = items
     }

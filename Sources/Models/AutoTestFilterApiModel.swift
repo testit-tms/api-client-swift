@@ -18,6 +18,7 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
     public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let lastTestResultStatusCodesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let lastTestResultConfigurationIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Specifies an autotest projects IDs to search for */
     public var projectIds: Set<UUID>?
@@ -53,14 +54,14 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
     public var isEmptyClassName: Bool?
     /** Specifies an autotest outcome of the last test result to search for */
     public var lastTestResultOutcome: AutotestResultOutcome?
-    /** Specifies an autotest status code of the last test result to search for */
-    public var lastTestResultStatusCode: String?
+    /** Specifies an autotest status codes of the last test result to search for */
+    public var lastTestResultStatusCodes: Set<String>?
     /** Specifies an autotest external key to search for */
     public var externalKey: String?
     /** Specifies an autotest configuration IDs of the last test result to search for */
     public var lastTestResultConfigurationIds: Set<UUID>?
 
-    public init(projectIds: Set<UUID>? = nil, externalIds: Set<String>? = nil, globalIds: Set<Int64>? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: Set<UUID>? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: Set<UUID>? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCode: String? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: Set<UUID>? = nil) {
+    public init(projectIds: Set<UUID>? = nil, externalIds: Set<String>? = nil, globalIds: Set<Int64>? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: Set<UUID>? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: Set<UUID>? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCodes: Set<String>? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: Set<UUID>? = nil) {
         self.projectIds = projectIds
         self.externalIds = externalIds
         self.globalIds = globalIds
@@ -78,7 +79,7 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
         self.className = className
         self.isEmptyClassName = isEmptyClassName
         self.lastTestResultOutcome = lastTestResultOutcome
-        self.lastTestResultStatusCode = lastTestResultStatusCode
+        self.lastTestResultStatusCodes = lastTestResultStatusCodes
         self.externalKey = externalKey
         self.lastTestResultConfigurationIds = lastTestResultConfigurationIds
     }
@@ -101,7 +102,7 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
         case className
         case isEmptyClassName
         case lastTestResultOutcome
-        case lastTestResultStatusCode
+        case lastTestResultStatusCodes
         case externalKey
         case lastTestResultConfigurationIds
     }
@@ -127,7 +128,7 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(className, forKey: .className)
         try container.encodeIfPresent(isEmptyClassName, forKey: .isEmptyClassName)
         try container.encodeIfPresent(lastTestResultOutcome, forKey: .lastTestResultOutcome)
-        try container.encodeIfPresent(lastTestResultStatusCode, forKey: .lastTestResultStatusCode)
+        try container.encodeIfPresent(lastTestResultStatusCodes, forKey: .lastTestResultStatusCodes)
         try container.encodeIfPresent(externalKey, forKey: .externalKey)
         try container.encodeIfPresent(lastTestResultConfigurationIds, forKey: .lastTestResultConfigurationIds)
     }

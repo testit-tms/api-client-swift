@@ -312,7 +312,7 @@ Void (empty response body)
 
 # **apiV2ConfigurationsPurgeBulkPost**
 ```swift
-    open class func apiV2ConfigurationsPurgeBulkPost(configurationSelectModel: ConfigurationSelectModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func apiV2ConfigurationsPurgeBulkPost(configurationSelectModel: ConfigurationSelectModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Permanently delete multiple archived configurations
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+**Int**
 
 ### Authorization
 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 Create Configuration
 
- Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
+  Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
 
 ### Example
 ```swift
@@ -569,7 +569,7 @@ Name | Type | Description  | Notes
 
 Get configuration by internal or global ID
 
- Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
+  Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
 
 ### Example
 ```swift

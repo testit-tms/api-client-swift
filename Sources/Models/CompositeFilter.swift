@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct CompositeFilter: Codable, JSONEncodable, Hashable {
 
-    public var filters: [AnyCodable]
+    public var filters: [IFilter]
     public var _operator: LogicalOperator
 
-    public init(filters: [AnyCodable], _operator: LogicalOperator) {
+    public init(filters: [IFilter], _operator: LogicalOperator) {
         self.filters = filters
         self._operator = _operator
     }

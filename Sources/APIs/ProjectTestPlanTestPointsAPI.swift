@@ -15,7 +15,7 @@ open class ProjectTestPlanTestPointsAPI {
     /**
      Rerun autotests.
      
-     - parameter projectId: (path)  
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter testPlanId: (path)  
      - parameter testPlanTestPointsAutoTestsRerunApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -39,7 +39,7 @@ open class ProjectTestPlanTestPointsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter projectId: (path)  
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter testPlanId: (path)  
      - parameter testPlanTestPointsAutoTestsRerunApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -71,7 +71,7 @@ open class ProjectTestPlanTestPointsAPI {
     /**
      Run autotests.
      
-     - parameter projectId: (path)  
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter testPlanId: (path)  
      - parameter testPlanTestPointsAutoTestsRunApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -95,7 +95,7 @@ open class ProjectTestPlanTestPointsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter projectId: (path)  
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter testPlanId: (path)  
      - parameter testPlanTestPointsAutoTestsRunApiModel: (body)  (optional)
      - returns: RequestBuilder<TestRunNameApiResult> 

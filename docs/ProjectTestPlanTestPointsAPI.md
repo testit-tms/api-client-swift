@@ -20,9 +20,9 @@ Rerun autotests.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let projectId = "projectId_example" // String | 
+let projectId = "projectId_example" // String | Internal (UUID) or global (integer) identifier
 let testPlanId = 987 // UUID | 
-let testPlanTestPointsAutoTestsRerunApiModel = TestPlanTestPointsAutoTestsRerunApiModel(filter: TestPlanTestPointsSearchApiModel(testSuiteIds: [123], workItemGlobalIds: [123], workItemMedianDuration: Int64RangeSelectorModel(from: 123, to: 123), statuses: [TestPointStatus()], statusCodes: ["statusCodes_example"], priorities: [WorkItemPriorityModel()], isAutomated: false, name: "name_example", configurationIds: [123], testerIds: [123], duration: nil, sectionIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], tags: ["tags_example"], attributes: "TODO", workItemCreatedDate: nil, workItemCreatedByIds: [123], workItemModifiedDate: nil, workItemModifiedByIds: [123]), extractionModel: TestPlanTestPointsExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123])), webhookIds: [123]) // TestPlanTestPointsAutoTestsRerunApiModel |  (optional)
+let testPlanTestPointsAutoTestsRerunApiModel = TestPlanTestPointsAutoTestsRerunApiModel(filter: TestPlanTestPointsSearchApiModel(testSuiteIds: [123], workItemGlobalIds: [123], workItemMedianDuration: Int64RangeSelectorModel(from: 123, to: 123), statuses: [TestPointStatus()], statusCodes: ["statusCodes_example"], priorities: [WorkItemPriorityModel()], isAutomated: false, name: "name_example", configurationIds: [123], testerIds: [123], duration: nil, sectionIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], tags: ["tags_example"], excludeTags: ["excludeTags_example"], attributes: "TODO", workItemCreatedDate: nil, workItemCreatedByIds: [123], workItemModifiedDate: nil, workItemModifiedByIds: [123]), extractionModel: TestPlanTestPointsExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123])), webhookIds: [123]) // TestPlanTestPointsAutoTestsRerunApiModel |  (optional)
 
 // Rerun autotests.
 ProjectTestPlanTestPointsAPI.apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsAutotestsRerunPost(projectId: projectId, testPlanId: testPlanId, testPlanTestPointsAutoTestsRerunApiModel: testPlanTestPointsAutoTestsRerunApiModel) { (response, error) in
@@ -41,7 +41,7 @@ ProjectTestPlanTestPointsAPI.apiV2ProjectsProjectIdTestPlansTestPlanIdTestPoints
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String** |  | 
+ **projectId** | **String** | Internal (UUID) or global (integer) identifier | 
  **testPlanId** | **UUID** |  | 
  **testPlanTestPointsAutoTestsRerunApiModel** | [**TestPlanTestPointsAutoTestsRerunApiModel**](TestPlanTestPointsAutoTestsRerunApiModel.md) |  | [optional] 
 
@@ -72,9 +72,9 @@ Run autotests.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let projectId = "projectId_example" // String | 
+let projectId = "projectId_example" // String | Internal (UUID) or global (integer) identifier
 let testPlanId = 987 // UUID | 
-let testPlanTestPointsAutoTestsRunApiModel = TestPlanTestPointsAutoTestsRunApiModel(filter: TestPlanTestPointsSearchApiModel(testSuiteIds: [123], workItemGlobalIds: [123], workItemMedianDuration: Int64RangeSelectorModel(from: 123, to: 123), statuses: [TestPointStatus()], statusCodes: ["statusCodes_example"], priorities: [WorkItemPriorityModel()], isAutomated: false, name: "name_example", configurationIds: [123], testerIds: [123], duration: nil, sectionIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], tags: ["tags_example"], attributes: "TODO", workItemCreatedDate: nil, workItemCreatedByIds: [123], workItemModifiedDate: nil, workItemModifiedByIds: [123]), extractionModel: TestPlanTestPointsExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123])), webhookIds: [123], build: "build_example", resetNotActualAutomatedTestPoints: false) // TestPlanTestPointsAutoTestsRunApiModel |  (optional)
+let testPlanTestPointsAutoTestsRunApiModel = TestPlanTestPointsAutoTestsRunApiModel(filter: TestPlanTestPointsSearchApiModel(testSuiteIds: [123], workItemGlobalIds: [123], workItemMedianDuration: Int64RangeSelectorModel(from: 123, to: 123), statuses: [TestPointStatus()], statusCodes: ["statusCodes_example"], priorities: [WorkItemPriorityModel()], isAutomated: false, name: "name_example", configurationIds: [123], testerIds: [123], duration: nil, sectionIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], tags: ["tags_example"], excludeTags: ["excludeTags_example"], attributes: "TODO", workItemCreatedDate: nil, workItemCreatedByIds: [123], workItemModifiedDate: nil, workItemModifiedByIds: [123]), extractionModel: TestPlanTestPointsExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123])), webhookIds: [123], build: "build_example", resetNotActualAutomatedTestPoints: false) // TestPlanTestPointsAutoTestsRunApiModel |  (optional)
 
 // Run autotests.
 ProjectTestPlanTestPointsAPI.apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsAutotestsRunPost(projectId: projectId, testPlanId: testPlanId, testPlanTestPointsAutoTestsRunApiModel: testPlanTestPointsAutoTestsRunApiModel) { (response, error) in
@@ -93,7 +93,7 @@ ProjectTestPlanTestPointsAPI.apiV2ProjectsProjectIdTestPlansTestPlanIdTestPoints
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **String** |  | 
+ **projectId** | **String** | Internal (UUID) or global (integer) identifier | 
  **testPlanId** | **UUID** |  | 
  **testPlanTestPointsAutoTestsRunApiModel** | [**TestPlanTestPointsAutoTestsRunApiModel**](TestPlanTestPointsAutoTestsRunApiModel.md) |  | [optional] 
 

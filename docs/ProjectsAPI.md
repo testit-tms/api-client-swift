@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addGlobaAttributesToProject**](ProjectsAPI.md#addglobaattributestoproject) | **POST** /api/v2/projects/{id}/globalAttributes | Add global attributes to project
+[**addGlobalAttributesToProject**](ProjectsAPI.md#addglobalattributestoproject) | **POST** /api/v2/projects/{id}/globalAttributes | Add global attributes to project
 [**apiV2ProjectsIdDelete**](ProjectsAPI.md#apiv2projectsiddelete) | **DELETE** /api/v2/projects/{id} | Archive project
 [**apiV2ProjectsIdFailureClassesGet**](ProjectsAPI.md#apiv2projectsidfailureclassesget) | **GET** /api/v2/projects/{id}/failureClasses | Get failure classes
 [**apiV2ProjectsIdFavoritePut**](ProjectsAPI.md#apiv2projectsidfavoriteput) | **PUT** /api/v2/projects/{id}/favorite | Mark Project as favorite
@@ -31,14 +31,14 @@ Method | HTTP request | Description
 [**updateProject**](ProjectsAPI.md#updateproject) | **PUT** /api/v2/projects | Update project
 
 
-# **addGlobaAttributesToProject**
+# **addGlobalAttributesToProject**
 ```swift
-    open class func addGlobaAttributesToProject(id: String, requestBody: Set<UUID>? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func addGlobalAttributesToProject(id: String, requestBody: Set<UUID>? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Add global attributes to project
 
- Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
+  Use case    User sets project internal or global identifier and attributes identifiers    System search project    System relates global attributes with project    System returns no content response
 
 ### Example
 ```swift
@@ -49,7 +49,7 @@ let id = "id_example" // String | Project internal (UUID) or global (integer) id
 let requestBody = [123] // Set<UUID> |  (optional)
 
 // Add global attributes to project
-ProjectsAPI.addGlobaAttributesToProject(id: id, requestBody: requestBody) { (response, error) in
+ProjectsAPI.addGlobalAttributesToProject(id: id, requestBody: requestBody) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -133,7 +133,7 @@ Void (empty response body)
 
 # **apiV2ProjectsIdFailureClassesGet**
 ```swift
-    open class func apiV2ProjectsIdFailureClassesGet(id: String, isDeleted: Bool? = nil, completion: @escaping (_ data: [AutoTestResultReasonProjectApiResult]?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsIdFailureClassesGet(id: String, isDeleted: Bool? = nil, completion: @escaping (_ data: [FailureCategoryApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get failure classes
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[AutoTestResultReasonProjectApiResult]**](AutoTestResultReasonProjectApiResult.md)
+[**[FailureCategoryApiResult]**](FailureCategoryApiResult.md)
 
 ### Authorization
 
@@ -236,7 +236,7 @@ Void (empty response body)
 
 Get Project filters
 
- Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
+  Use case    User sets project internal or global identifier    User runs method execution    System returns project filters
 
 ### Example
 ```swift
@@ -434,7 +434,7 @@ Void (empty response body)
 
 Delete attribute from project's test plans
 
- Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
+  Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
 
 ### Example
 ```swift
@@ -486,7 +486,7 @@ Void (empty response body)
 
 Update attribute of project's test plans
 
- Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
+  Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
 
 ### Example
 ```swift
@@ -538,7 +538,7 @@ Void (empty response body)
 
 Get active Project TestRuns
 
- Use case  User sets project internal or global identifier  User runs method execution  System returns active testruns
+  Use case    User sets project internal or global identifier    User runs method execution    System returns active testruns
 
 ### Example
 ```swift
@@ -588,7 +588,7 @@ Name | Type | Description  | Notes
 
 Get Project TestRuns full models
 
- Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
+  Use case    User sets project internal or global identifier    User sets query params    User runs method execution    System returns project test runs full models
 
 ### Example
 ```swift
@@ -867,14 +867,14 @@ Name | Type | Description  | Notes
 
 Get projects short models
 
- Use case  User sets query params  User runs method execution  System return projects short models
+  Use case    User sets query params    User runs method execution    System return projects short models
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let getShortProjectsApiModel = GetShortProjectsApiModel(inquiry: Inquiry(filter: CompositeFilter(filters: [123], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), permissionName: "permissionName_example", permissionType: "permissionType_example") // GetShortProjectsApiModel |  (optional)
+let getShortProjectsApiModel = GetShortProjectsApiModel(inquiry: Inquiry(filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), permissionName: "permissionName_example", permissionType: "permissionType_example") // GetShortProjectsApiModel |  (optional)
 
 // Get projects short models
 ProjectsAPI.apiV2ProjectsShortsPost(getShortProjectsApiModel: getShortProjectsApiModel) { (response, error) in
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 
 Create project
 
- Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
+  Use case    User sets project parameters (listed in request example) and runs method execution    System creates project    System returns project model (example listed in response parameters)
 
 ### Example
 ```swift
@@ -1015,7 +1015,7 @@ Void (empty response body)
 
 Get all projects
 
- Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
+  Use case    [Optional] User sets isDeleted field value    [Optional] If User sets isDeleted field value as true, System search all deleted projects    [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted    If User did not set isDeleted field value, System search all projects    System returns array of all found projects(listed in response model)
 
 ### Example
 ```swift
@@ -1077,7 +1077,7 @@ Name | Type | Description  | Notes
 
 Get namespaces of autotests in project
 
- Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
+  Use case    User sets project internal or global identifier and runs method execution    System search project    System search all autotest related to the project    System returns array of autotest with namespaces and classnames (listed in response)
 
 ### Example
 ```swift
@@ -1127,7 +1127,7 @@ Name | Type | Description  | Notes
 
 Get project by ID
 
- Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
+  Use case    User sets project internal or global identifier and runs method execution    System search project    System returns project (example listed in response parameters)
 
 ### Example
 ```swift
@@ -1177,7 +1177,7 @@ Name | Type | Description  | Notes
 
 Get project test plans
 
- Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
+  Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project    [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted    [Optional] If User did not set isDeleted field value, System search all v related to project    System returns array of found test plans (listed in response model)
 
 ### Example
 ```swift
@@ -1229,7 +1229,7 @@ Name | Type | Description  | Notes
 
 Get project test runs
 
- Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
+  Use case    User sets project internal or global identifier    User runs method execution    System search project    System search all test runs related to project    System returns array of found test runs (listed in response model)
 
 ### Example
 ```swift
@@ -1303,7 +1303,7 @@ Name | Type | Description  | Notes
 
 Update project
 
- Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
+  Use case    User sets project parameters (listed in request example) and runs method execution    System updates project    System returns updated project model (example listed in response parameters)
 
 ### Example
 ```swift
