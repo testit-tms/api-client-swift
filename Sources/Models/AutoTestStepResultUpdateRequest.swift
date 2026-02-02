@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AutoTestStepResultUpdateRequest: Codable, JSONEncodable, Hashable {
 
-    public static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 43200000000, exclusiveMaximum: false, multipleOf: nil)
+    static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 43200000000, exclusiveMaximum: false, multipleOf: nil)
     /** The name of the step. */
     public var title: String?
     /** Description of the step result. */
@@ -29,7 +29,7 @@ public struct AutoTestStepResultUpdateRequest: Codable, JSONEncodable, Hashable 
     public var outcome: AvailableTestResultOutcome?
     /** Nested step results. The maximum nesting level is 15. */
     public var stepResults: [AutoTestStepResultUpdateRequest]?
-    /** /// <summary>  Specifies an attachment GUID. Multiple values can be sent.  </summary> */
+    /** /// <summary> Specifies an attachment GUID. Multiple values can be sent. </summary> */
     public var attachments: [AttachmentUpdateRequest]?
     /** \"<b>parameter</b>\": \"<b>value</b>\" pair with arbitrary custom parameters. Multiple parameters can be sent. */
     public var parameters: [String: String]?

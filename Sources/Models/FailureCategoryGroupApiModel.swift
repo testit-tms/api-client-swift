@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct FailureCategoryGroupApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let fieldRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public static let displayFieldRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let fieldRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let displayFieldRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Group field */
     public var field: String
     /** Group display field */

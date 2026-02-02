@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct UpdateFailureCategoryProjectApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Failure category identifier */
     public var id: UUID
     /** Failure category name */
@@ -47,6 +47,3 @@ public struct UpdateFailureCategoryProjectApiModel: Codable, JSONEncodable, Hash
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension UpdateFailureCategoryProjectApiModel: Identifiable {}

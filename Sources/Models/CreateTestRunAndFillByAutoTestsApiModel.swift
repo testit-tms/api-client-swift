@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct CreateTestRunAndFillByAutoTestsApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let configurationIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
-    public static let autoTestExternalIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
+    static let configurationIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
+    static let autoTestExternalIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     /** Specifies the GUID of the project, in which a test run will be created. */
     public var projectId: UUID
     /** Specifies the name of the test run. */

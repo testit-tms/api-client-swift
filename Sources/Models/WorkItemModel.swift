@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct WorkItemModel: Codable, JSONEncodable, Hashable {
 
-    public static let durationRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let durationRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** used for versioning changes in workitem */
     public var versionId: UUID
     /** used for getting a median duration of all autotests related to this workitem */
@@ -159,6 +159,3 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension WorkItemModel: Identifiable {}

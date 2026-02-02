@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Get TestPlans analytics
 
-  Use case    User sets project internal identifier    User sets query params    User runs method execution    System return analytics
+ Use case  User sets project internal identifier  User sets query params  User runs method execution  System return analytics
 
 ### Example
 ```swift
@@ -89,7 +89,7 @@ Delete multiple test plans
 import TestitApiClient
 
 let projectId = "projectId_example" // String | Unique or global ID of the project
-let testPlanSelectModel = TestPlanSelectModel(filter: ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], attributes: "TODO", isDeleted: false), extractionModel: TestPlanExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPlanSelectModel |  (optional)
+let testPlanSelectModel = TestPlanSelectModel(filter: ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], excludeTagNames: ["excludeTagNames_example"], attributes: "TODO", isDeleted: false), extractionModel: TestPlanExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPlanSelectModel |  (optional)
 
 // Delete multiple test plans
 ProjectTestPlansAPI.apiV2ProjectsProjectIdTestPlansDeleteBulkPost(projectId: projectId, testPlanSelectModel: testPlanSelectModel) { (response, error) in
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 Checks if TestPlan exists with the specified name exists for the project
 
-  Use case    User sets project internal or global identifier    User runs method execution    System purge delete project workitems
+ Use case  User sets project internal or global identifier  User runs method execution  System purge delete project workitems
 
 ### Example
 ```swift
@@ -191,7 +191,7 @@ Permanently delete multiple archived test plans
 import TestitApiClient
 
 let projectId = "projectId_example" // String | Unique or global ID of the project
-let testPlanSelectModel = TestPlanSelectModel(filter: ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], attributes: "TODO", isDeleted: false), extractionModel: TestPlanExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPlanSelectModel |  (optional)
+let testPlanSelectModel = TestPlanSelectModel(filter: ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], excludeTagNames: ["excludeTagNames_example"], attributes: "TODO", isDeleted: false), extractionModel: TestPlanExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPlanSelectModel |  (optional)
 
 // Permanently delete multiple archived test plans
 ProjectTestPlansAPI.apiV2ProjectsProjectIdTestPlansPurgeBulkPost(projectId: projectId, testPlanSelectModel: testPlanSelectModel) { (response, error) in
@@ -241,7 +241,7 @@ Restore multiple test plans
 import TestitApiClient
 
 let projectId = "projectId_example" // String | Unique or global ID of the project
-let testPlanSelectModel = TestPlanSelectModel(filter: ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], attributes: "TODO", isDeleted: false), extractionModel: TestPlanExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPlanSelectModel |  (optional)
+let testPlanSelectModel = TestPlanSelectModel(filter: ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], excludeTagNames: ["excludeTagNames_example"], attributes: "TODO", isDeleted: false), extractionModel: TestPlanExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestPlanSelectModel |  (optional)
 
 // Restore multiple test plans
 ProjectTestPlansAPI.apiV2ProjectsProjectIdTestPlansRestoreBulkPost(projectId: projectId, testPlanSelectModel: testPlanSelectModel) { (response, error) in
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 Get Project TestPlans with analytics
 
-  Use case    User sets project internal or global identifier    User sets request body    User runs method execution    System returns project testplans with analytics
+ Use case  User sets project internal or global identifier  User sets request body  User runs method execution  System returns project testplans with analytics
 
 ### Example
 ```swift
@@ -299,7 +299,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let projectTestPlansFilterModel = ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], attributes: "TODO", isDeleted: false) // ProjectTestPlansFilterModel |  (optional)
+let projectTestPlansFilterModel = ProjectTestPlansFilterModel(name: "name_example", description: "description_example", build: "build_example", productName: "productName_example", status: [TestPlanStatusModel()], globalIds: [123], isLocked: false, lockedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), automaticDurationTimer: [false], createdByIds: [123], createdDate: nil, startDate: nil, endDate: nil, tagNames: ["tagNames_example"], excludeTagNames: ["excludeTagNames_example"], attributes: "TODO", isDeleted: false) // ProjectTestPlansFilterModel |  (optional)
 
 // Get Project TestPlans with analytics
 ProjectTestPlansAPI.apiV2ProjectsProjectIdTestPlansSearchPost(projectId: projectId, mustUpdateCache: mustUpdateCache, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectTestPlansFilterModel: projectTestPlansFilterModel) { (response, error) in

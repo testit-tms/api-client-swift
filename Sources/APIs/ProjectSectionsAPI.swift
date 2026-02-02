@@ -39,7 +39,7 @@ open class ProjectSectionsAPI {
     /**
      Get project sections
      - GET /api/v2/projects/{projectId}/sections
-     -   Use case    User sets project internal or global identifier and runs method execution    System search project    System search all sections related to the project    System returns array of sections (listed in response)
+     -  Use case  User sets project internal or global identifier and runs method execution  System search project  System search all sections related to the project  System returns array of sections (listed in response)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

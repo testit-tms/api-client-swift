@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct TestRunTestResultsPartialBulkSetModel: Codable, JSONEncodable, Hashable {
 
-    public static let resultReasonIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let linksRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let attachmentIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let resultReasonIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let linksRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let attachmentIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Object with filters and extraction parameters */
     public var selector: TestRunTestResultsSelectModel?
     /** Unique IDs of result reasons to be assigned to test results */

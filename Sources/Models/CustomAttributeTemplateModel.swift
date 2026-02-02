@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CustomAttributeTemplateModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var id: UUID
     public var isDeleted: Bool
     /** Custom attributes template name */
@@ -40,6 +40,3 @@ public struct CustomAttributeTemplateModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension CustomAttributeTemplateModel: Identifiable {}

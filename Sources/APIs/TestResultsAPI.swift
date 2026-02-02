@@ -223,7 +223,7 @@ open class TestResultsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestResultsIdAttachmentsInfoGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AttachmentModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2TestResultsIdAttachmentsInfoGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AttachmentApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TestResultsIdAttachmentsInfoGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -241,9 +241,9 @@ open class TestResultsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test result unique ID 
-     - returns: RequestBuilder<[AttachmentModel]> 
+     - returns: RequestBuilder<[AttachmentApiResult]> 
      */
-    open class func apiV2TestResultsIdAttachmentsInfoGetWithRequestBuilder(id: UUID) -> RequestBuilder<[AttachmentModel]> {
+    open class func apiV2TestResultsIdAttachmentsInfoGetWithRequestBuilder(id: UUID) -> RequestBuilder<[AttachmentApiResult]> {
         var localVariablePath = "/api/v2/testResults/{id}/attachments/info"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -259,7 +259,7 @@ open class TestResultsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AttachmentModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[AttachmentApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -546,7 +546,7 @@ open class TestResultsAPI {
     /**
      Upload and link attachment to TestResult
      - POST /api/v2/testResults/{id}/attachments
-     -   Use case    User sets testResultId    User attaches a file    System creates attachment and links it to the test result    System returns attachment identifier
+     -  Use case  User sets testResultId  User attaches a file  System creates attachment and links it to the test result  System returns attachment identifier
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -603,7 +603,7 @@ open class TestResultsAPI {
     /**
      Remove attachment and unlink from TestResult
      - DELETE /api/v2/testResults/{id}/attachments/{attachmentId}
-     -   Use case    User sets testResultId and attachmentId    User attaches a file    User runs method execution    System deletes attachment and unlinks it from the test result    System returns attachment identifier
+     -  Use case  User sets testResultId and attachmentId  User attaches a file  User runs method execution  System deletes attachment and unlinks it from the test result  System returns attachment identifier
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -663,7 +663,7 @@ open class TestResultsAPI {
     /**
      Get attachment of TestResult
      - GET /api/v2/testResults/{id}/attachments/{attachmentId}
-     -   Use case    User sets attachmentId and testResultId    [Optional] User sets resize configuration    User runs method execution    System search attachments by the attachmentId and the testResultId    [Optional] If resize configuration is set, System resizes the attachment according to the resize                      configuration    [Optional] Otherwise, System does not resize the attachment    System returns attachment as a file
+     -  Use case  User sets attachmentId and testResultId  [Optional] User sets resize configuration  User runs method execution  System search attachments by the attachmentId and the testResultId  [Optional] If resize configuration is set, System resizes the attachment according to the resize                     configuration  [Optional] Otherwise, System does not resize the attachment  System returns attachment as a file
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -716,7 +716,7 @@ open class TestResultsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAttachment(id: UUID, attachmentId: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: AttachmentModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAttachment(id: UUID, attachmentId: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: AttachmentApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return getAttachmentWithRequestBuilder(id: id, attachmentId: attachmentId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -730,15 +730,15 @@ open class TestResultsAPI {
     /**
      Get Metadata of TestResult's attachment
      - GET /api/v2/testResults/{id}/attachments/{attachmentId}/info
-     -   Use case    User sets attachmentId and testResultId    User runs method execution    System search attachment by the attachmentId and the testResultId    System returns attachment data
+     -  Use case  User sets attachmentId and testResultId  User runs method execution  System search attachment by the attachmentId and the testResultId  System returns attachment data
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test result internal identifier (guid format) 
      - parameter attachmentId: (path) Attachment internal identifier (guid format) 
-     - returns: RequestBuilder<AttachmentModel> 
+     - returns: RequestBuilder<AttachmentApiResult> 
      */
-    open class func getAttachmentWithRequestBuilder(id: UUID, attachmentId: UUID) -> RequestBuilder<AttachmentModel> {
+    open class func getAttachmentWithRequestBuilder(id: UUID, attachmentId: UUID) -> RequestBuilder<AttachmentApiResult> {
         var localVariablePath = "/api/v2/testResults/{id}/attachments/{attachmentId}/info"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -757,7 +757,7 @@ open class TestResultsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AttachmentModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AttachmentApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -770,7 +770,7 @@ open class TestResultsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getAttachments(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AttachmentModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAttachments(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [AttachmentApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return getAttachmentsWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -784,14 +784,14 @@ open class TestResultsAPI {
     /**
      Get all attachments of TestResult
      - GET /api/v2/testResults/{id}/attachments
-     -   Use case    User sets testResultId    User runs method execution    System search all attachments of the test result    System returns attachments enumeration
+     -  Use case  User sets testResultId  User runs method execution  System search all attachments of the test result  System returns attachments enumeration
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test result internal identifier (guid format) 
-     - returns: RequestBuilder<[AttachmentModel]> 
+     - returns: RequestBuilder<[AttachmentApiResult]> 
      */
-    open class func getAttachmentsWithRequestBuilder(id: UUID) -> RequestBuilder<[AttachmentModel]> {
+    open class func getAttachmentsWithRequestBuilder(id: UUID) -> RequestBuilder<[AttachmentApiResult]> {
         var localVariablePath = "/api/v2/testResults/{id}/attachments"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -807,7 +807,7 @@ open class TestResultsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AttachmentModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[AttachmentApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct SearchExternalIssuesApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Url of external issue */
     public var url: String
 

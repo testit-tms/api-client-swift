@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct ProjectsFilterModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    public static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Specifies a project name to search for */
     public var name: String?
     /** Specifies a project favorite status to search for */

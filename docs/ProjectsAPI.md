@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**apiV2ProjectsIdRestorePost**](ProjectsAPI.md#apiv2projectsidrestorepost) | **POST** /api/v2/projects/{id}/restore | Restore archived project
 [**apiV2ProjectsIdTestPlansAttributeAttributeIdDelete**](ProjectsAPI.md#apiv2projectsidtestplansattributeattributeiddelete) | **DELETE** /api/v2/projects/{id}/testPlans/attribute/{attributeId} | Delete attribute from project&#39;s test plans
 [**apiV2ProjectsIdTestPlansAttributePut**](ProjectsAPI.md#apiv2projectsidtestplansattributeput) | **PUT** /api/v2/projects/{id}/testPlans/attribute | Update attribute of project&#39;s test plans
-[**apiV2ProjectsIdTestRunsActiveGet**](ProjectsAPI.md#apiv2projectsidtestrunsactiveget) | **GET** /api/v2/projects/{id}/testRuns/active | Get active Project TestRuns
 [**apiV2ProjectsIdTestRunsFullGet**](ProjectsAPI.md#apiv2projectsidtestrunsfullget) | **GET** /api/v2/projects/{id}/testRuns/full | Get Project TestRuns full models
 [**apiV2ProjectsNameNameExistsGet**](ProjectsAPI.md#apiv2projectsnamenameexistsget) | **GET** /api/v2/projects/name/{name}/exists | 
 [**apiV2ProjectsPurgeBulkPost**](ProjectsAPI.md#apiv2projectspurgebulkpost) | **POST** /api/v2/projects/purge/bulk | Purge multiple projects
@@ -38,7 +37,7 @@ Method | HTTP request | Description
 
 Add global attributes to project
 
-  Use case    User sets project internal or global identifier and attributes identifiers    System search project    System relates global attributes with project    System returns no content response
+ Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
 
 ### Example
 ```swift
@@ -236,7 +235,7 @@ Void (empty response body)
 
 Get Project filters
 
-  Use case    User sets project internal or global identifier    User runs method execution    System returns project filters
+ Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
 
 ### Example
 ```swift
@@ -434,7 +433,7 @@ Void (empty response body)
 
 Delete attribute from project's test plans
 
-  Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
+ Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
 
 ### Example
 ```swift
@@ -486,7 +485,7 @@ Void (empty response body)
 
 Update attribute of project's test plans
 
-  Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
+ Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
 
 ### Example
 ```swift
@@ -531,56 +530,6 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **apiV2ProjectsIdTestRunsActiveGet**
-```swift
-    open class func apiV2ProjectsIdTestRunsActiveGet(id: String, completion: @escaping (_ data: [PublicTestRunModel]?, _ error: Error?) -> Void)
-```
-
-Get active Project TestRuns
-
-  Use case    User sets project internal or global identifier    User runs method execution    System returns active testruns
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
-
-let id = "id_example" // String | Project internal (UUID) or global (integer) identifier
-
-// Get active Project TestRuns
-ProjectsAPI.apiV2ProjectsIdTestRunsActiveGet(id: id) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String** | Project internal (UUID) or global (integer) identifier | 
-
-### Return type
-
-[**[PublicTestRunModel]**](PublicTestRunModel.md)
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **apiV2ProjectsIdTestRunsFullGet**
 ```swift
     open class func apiV2ProjectsIdTestRunsFullGet(id: String, includeTestResults: Bool? = nil, mustAggregateTestResults: Bool? = nil, notStarted: Bool? = nil, inProgress: Bool? = nil, stopped: Bool? = nil, completed: Bool? = nil, createdDateFrom: Date? = nil, createdDateTo: Date? = nil, testPlanId: UUID? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [TestRunApiResult]?, _ error: Error?) -> Void)
@@ -588,7 +537,7 @@ Name | Type | Description  | Notes
 
 Get Project TestRuns full models
 
-  Use case    User sets project internal or global identifier    User sets query params    User runs method execution    System returns project test runs full models
+ Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
 
 ### Example
 ```swift
@@ -867,7 +816,7 @@ Name | Type | Description  | Notes
 
 Get projects short models
 
-  Use case    User sets query params    User runs method execution    System return projects short models
+ Use case  User sets query params  User runs method execution  System return projects short models
 
 ### Example
 ```swift
@@ -912,12 +861,12 @@ Name | Type | Description  | Notes
 
 # **createProject**
 ```swift
-    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, completion: @escaping (_ data: ProjectModel?, _ error: Error?) -> Void)
+    open class func createProject(createProjectApiModel: CreateProjectApiModel? = nil, completion: @escaping (_ data: ProjectApiResult?, _ error: Error?) -> Void)
 ```
 
 Create project
 
-  Use case    User sets project parameters (listed in request example) and runs method execution    System creates project    System returns project model (example listed in response parameters)
+ Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
 
 ### Example
 ```swift
@@ -947,7 +896,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectModel**](ProjectModel.md)
+[**ProjectApiResult**](ProjectApiResult.md)
 
 ### Authorization
 
@@ -1015,7 +964,7 @@ Void (empty response body)
 
 Get all projects
 
-  Use case    [Optional] User sets isDeleted field value    [Optional] If User sets isDeleted field value as true, System search all deleted projects    [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted    If User did not set isDeleted field value, System search all projects    System returns array of all found projects(listed in response model)
+ Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
 
 ### Example
 ```swift
@@ -1072,12 +1021,12 @@ Name | Type | Description  | Notes
 
 # **getAutoTestsNamespaces**
 ```swift
-    open class func getAutoTestsNamespaces(id: String, completion: @escaping (_ data: [AutoTestNamespaceModel]?, _ error: Error?) -> Void)
+    open class func getAutoTestsNamespaces(id: String, completion: @escaping (_ data: [AutoTestNamespaceApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get namespaces of autotests in project
 
-  Use case    User sets project internal or global identifier and runs method execution    System search project    System search all autotest related to the project    System returns array of autotest with namespaces and classnames (listed in response)
+ Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
 
 ### Example
 ```swift
@@ -1107,7 +1056,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[AutoTestNamespaceModel]**](AutoTestNamespaceModel.md)
+[**[AutoTestNamespaceApiResult]**](AutoTestNamespaceApiResult.md)
 
 ### Authorization
 
@@ -1127,7 +1076,7 @@ Name | Type | Description  | Notes
 
 Get project by ID
 
-  Use case    User sets project internal or global identifier and runs method execution    System search project    System returns project (example listed in response parameters)
+ Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
 
 ### Example
 ```swift
@@ -1177,7 +1126,7 @@ Name | Type | Description  | Notes
 
 Get project test plans
 
-  Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project    [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted    [Optional] If User did not set isDeleted field value, System search all v related to project    System returns array of found test plans (listed in response model)
+ Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
 
 ### Example
 ```swift
@@ -1229,7 +1178,7 @@ Name | Type | Description  | Notes
 
 Get project test runs
 
-  Use case    User sets project internal or global identifier    User runs method execution    System search project    System search all test runs related to project    System returns array of found test runs (listed in response model)
+ Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
 
 ### Example
 ```swift
@@ -1303,7 +1252,7 @@ Name | Type | Description  | Notes
 
 Update project
 
-  Use case    User sets project parameters (listed in request example) and runs method execution    System updates project    System returns updated project model (example listed in response parameters)
+ Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
 
 ### Example
 ```swift

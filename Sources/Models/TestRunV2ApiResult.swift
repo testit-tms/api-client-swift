@@ -18,7 +18,7 @@ public struct TestRunV2ApiResult: Codable, JSONEncodable, Hashable {
     public var name: String
     /** Test run description */
     public var description: String?
-    /** Test run launch source                Once launch source is specified it cannot be updated. */
+    /** Test run launch source              Once launch source is specified it cannot be updated. */
     public var launchSource: String?
     /** Date and time of test run start */
     public var startedOn: Date?
@@ -29,9 +29,9 @@ public struct TestRunV2ApiResult: Codable, JSONEncodable, Hashable {
     public var stateName: TestRunState
     /** Test run status */
     public var status: TestStatusApiResult
-    /** Project unique identifier                This property is used to link test run with project. */
+    /** Project unique identifier              This property is used to link test run with project. */
     public var projectId: UUID
-    /** Test plan unique identifier                This property is used to link test run with test plan. */
+    /** Test plan unique identifier              This property is used to link test run with test plan. */
     public var testPlanId: UUID?
     /** Enumeration of test results related to test run */
     public var testResults: [TestResultV2GetModel]?
@@ -132,6 +132,3 @@ public struct TestRunV2ApiResult: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension TestRunV2ApiResult: Identifiable {}

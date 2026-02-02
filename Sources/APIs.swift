@@ -36,7 +36,6 @@ open class RequestBuilder<T> {
         self.requiresAuthentication = requiresAuthentication
 
         addHeaders(TestitApiClientAPI.customHeaders)
-        addCredential()
     }
 
     open func addHeaders(_ aHeaders: [String: String]) {
@@ -57,8 +56,9 @@ open class RequestBuilder<T> {
         return self
     }
 
-    open func addCredential() {
+    open func addCredential() -> Self {
         credential = TestitApiClientAPI.credential
+        return self
     }
 }
 

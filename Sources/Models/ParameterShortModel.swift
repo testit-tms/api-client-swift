@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct ParameterShortModel: Codable, JSONEncodable, Hashable {
 
-    public static let valueRule = StringRule(minLength: 0, maxLength: 1500, pattern: nil)
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let valueRule = StringRule(minLength: 0, maxLength: 1500, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var id: UUID
     public var parameterKeyId: UUID
     /** Value of the parameter */
@@ -50,6 +50,3 @@ public struct ParameterShortModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension ParameterShortModel: Identifiable {}

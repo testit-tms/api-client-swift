@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TestPointFilterModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Specifies a test point test plan IDS to search for */
     public var testPlanIds: [UUID]?
     /** Specifies a test point test suite IDs to search for */

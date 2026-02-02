@@ -22,7 +22,7 @@ public struct TestPointShortApiResult: Codable, JSONEncodable, Hashable {
     public var workItemId: UUID?
     /** Configuration to which test point relates unique identifier */
     public var configurationId: UUID?
-    /** Test point status    Applies one of these values: Blocked, NoResults, Failed, Passed */
+    /** Test point status  Applies one of these values: Blocked, NoResults, Failed, Passed */
     @available(*, deprecated, message: "This property is deprecated.")
     public var status: String?
     /** Test point status */
@@ -82,6 +82,3 @@ public struct TestPointShortApiResult: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension TestPointShortApiResult: Identifiable {}

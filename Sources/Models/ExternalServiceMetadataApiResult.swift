@@ -19,9 +19,9 @@ public struct ExternalServiceMetadataApiResult: Codable, JSONEncodable, Hashable
     /** The icon URL of the external service */
     public var iconUrl: String
     /** The category of the external service */
-    public var category: ExternalServiceCategoryApiResult
+    public var category: ApiExternalServiceCategory
 
-    public init(name: String, code: String, iconUrl: String, category: ExternalServiceCategoryApiResult) {
+    public init(name: String, code: String, iconUrl: String, category: ApiExternalServiceCategory) {
         self.name = name
         self.code = code
         self.iconUrl = iconUrl

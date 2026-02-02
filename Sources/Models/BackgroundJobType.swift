@@ -14,6 +14,7 @@ public enum BackgroundJobType: String, Codable, CaseIterable {
     case exportXlsxTestResultsByTestPlan = "ExportXlsxTestResultsByTestPlan"
     case exportXlsxWorkItemsByProject = "ExportXlsxWorkItemsByProject"
     case exportXlsxTestPointsByTestPlan = "ExportXlsxTestPointsByTestPlan"
+    case exportXlsxWorkItemLinks = "ExportXlsxWorkItemLinks"
     case exportJsonProject = "ExportJsonProject"
     case exportZipProject = "ExportZipProject"
     case exportJsonProjectWithTestPlans = "ExportJsonProjectWithTestPlans"
@@ -27,4 +28,6 @@ public enum BackgroundJobType: String, Codable, CaseIterable {
     case importProjects = "ImportProjects"
     case purgeEntities = "PurgeEntities"
     case deleteCompletedJobs = "DeleteCompletedJobs"
+    case copySections = "CopySections"
+    case deleteSection = "DeleteSection"
 }

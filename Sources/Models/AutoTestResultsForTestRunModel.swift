@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct AutoTestResultsForTestRunModel: Codable, JSONEncodable, Hashable {
 
-    public static let autoTestExternalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 43200000000, exclusiveMaximum: false, multipleOf: nil)
+    static let autoTestExternalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 43200000000, exclusiveMaximum: false, multipleOf: nil)
     /** Specifies the GUID of the autotest configuration, which was specified when the test run was created. */
     public var configurationId: UUID
     /** Specifies the links in the autotest. */

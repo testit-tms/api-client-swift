@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct TestPlanTestPointsGroupApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let fieldRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public static let displayFieldRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let fieldRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let displayFieldRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var field: String
     public var displayField: String?
 

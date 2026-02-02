@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TestPlanTestPointsSetTestersApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let testerIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
+    static let testerIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     public var filter: TestPlanTestPointsSearchApiModel?
     public var extractionModel: TestPlanTestPointsExtractionApiModel?
     public var testerIds: [UUID]

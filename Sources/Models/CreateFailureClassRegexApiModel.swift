@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CreateFailureClassRegexApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let regexTextRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let regexTextRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Failure category regex */
     public var regexText: String
 

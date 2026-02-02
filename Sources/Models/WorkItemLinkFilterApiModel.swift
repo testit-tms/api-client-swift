@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct WorkItemLinkFilterApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let urlsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let urlsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var types: Set<LinkType>?
     public var title: String?
     public var urls: Set<String>?

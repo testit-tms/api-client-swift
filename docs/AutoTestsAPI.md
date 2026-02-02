@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 Set \"Flaky\" status for multiple autotests
 
-User permissions for project:  - Read only  - Execute  - Write  - Full control
+User permissions for project: - Read only - Execute - Write - Full control
 
 ### Example
 ```swift
@@ -193,7 +193,7 @@ Void (empty response body)
 
 Get test results history for autotest
 
-  Use case    User sets autotest internal (guid format) or global (integer format) identifier    User sets getTestResultHistoryReportQuery (listed in the example)    User runs method execution    System search for test results using filters set by user in getTestResultHistoryReportQuery and id    System returns the enumeration of test results
+ Use case  User sets autotest internal (guid format) or global (integer format) identifier  User sets getTestResultHistoryReportQuery (listed in the example)  User runs method execution  System search for test results using filters set by user in getTestResultHistoryReportQuery and id  System returns the enumeration of test results
 
 ### Example
 ```swift
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 
 Get identifiers of changed linked work items
 
-User permissions for project:  - Read only  - Execute  - Write  - Full control
+User permissions for project: - Read only - Execute - Write - Full control
 
 ### Example
 ```swift
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 Approve changes to work items linked to autotest
 
-User permissions for project:  - Read only  - Execute  - Write  - Full control
+User permissions for project: - Read only - Execute - Write - Full control
 
 ### Example
 ```swift
@@ -410,22 +410,22 @@ Name | Type | Description  | Notes
 
 # **createAutoTest**
 ```swift
-    open class func createAutoTest(autoTestPostModel: AutoTestPostModel? = nil, completion: @escaping (_ data: AutoTestModel?, _ error: Error?) -> Void)
+    open class func createAutoTest(autoTestCreateApiModel: AutoTestCreateApiModel? = nil, completion: @escaping (_ data: AutoTestApiResult?, _ error: Error?) -> Void)
 ```
 
 Create autotest
 
-  This method creates a new autotest.    To add an autotest to the test plan, link it to a work item using the `POST /api/v2/autoTests/{autoTestId}/workItems` method.    Use the `POST /api/v2/testRuns/byAutoTests` method to run autotest outside the test plan.
+ This method creates a new autotest.  To add an autotest to the test plan, link it to a work item using the `POST /api/v2/autoTests/{autoTestId}/workItems` method.  Use the `POST /api/v2/testRuns/byAutoTests` method to run autotest outside the test plan.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestPostModel = AutoTestPostModel(workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], shouldCreateWorkItem: false, attributes: "TODO", externalId: "externalId_example", links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example") // AutoTestPostModel |  (optional)
+let autoTestCreateApiModel = AutoTestCreateApiModel(externalId: "externalId_example", externalKey: "externalKey_example", projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepApiModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelApiModel(name: "name_example")], links: [LinkCreateApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], isFlaky: false, workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], shouldCreateWorkItem: false, attributes: "TODO") // AutoTestCreateApiModel |  (optional)
 
 // Create autotest
-AutoTestsAPI.createAutoTest(autoTestPostModel: autoTestPostModel) { (response, error) in
+AutoTestsAPI.createAutoTest(autoTestCreateApiModel: autoTestCreateApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -441,11 +441,11 @@ AutoTestsAPI.createAutoTest(autoTestPostModel: autoTestPostModel) { (response, e
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **autoTestPostModel** | [**AutoTestPostModel**](AutoTestPostModel.md) |  | [optional] 
+ **autoTestCreateApiModel** | [**AutoTestCreateApiModel**](AutoTestCreateApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**AutoTestModel**](AutoTestModel.md)
+[**AutoTestApiResult**](AutoTestApiResult.md)
 
 ### Authorization
 
@@ -460,22 +460,22 @@ Name | Type | Description  | Notes
 
 # **createMultiple**
 ```swift
-    open class func createMultiple(autoTestPostModel: [AutoTestPostModel]? = nil, completion: @escaping (_ data: [AutoTestModel]?, _ error: Error?) -> Void)
+    open class func createMultiple(autoTestCreateApiModel: [AutoTestCreateApiModel]? = nil, completion: @escaping (_ data: [AutoTestApiResult]?, _ error: Error?) -> Void)
 ```
 
 Create multiple autotests
 
-  Use case    User sets autotest parameters (listed in the example) and runs method execution    System creates autotest    [Optional] If steps enumeration is set, system creates step items and relates them to autotest    [Optional] If setup enumeration is set, system creates setup items and relates them to autotest    [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest    [Optional] If label enumeration is set, system creates labels and relates them to autotest    [Optional] If link enumeration is set, system creates links and relates them to autotest    System returns autotest model (example listed in response parameters)
+ Use case  User sets autotest parameters (listed in the example) and runs method execution  System creates autotest  [Optional] If steps enumeration is set, system creates step items and relates them to autotest  [Optional] If setup enumeration is set, system creates setup items and relates them to autotest  [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest  [Optional] If label enumeration is set, system creates labels and relates them to autotest  [Optional] If link enumeration is set, system creates links and relates them to autotest  System returns autotest model (example listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestPostModel = [AutoTestPostModel(workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], shouldCreateWorkItem: false, attributes: "TODO", externalId: "externalId_example", links: [LinkPostModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example")] // [AutoTestPostModel] |  (optional)
+let autoTestCreateApiModel = [AutoTestCreateApiModel(externalId: "externalId_example", externalKey: "externalKey_example", projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepApiModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelApiModel(name: "name_example")], links: [LinkCreateApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], isFlaky: false, workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], shouldCreateWorkItem: false, attributes: "TODO")] // [AutoTestCreateApiModel] |  (optional)
 
 // Create multiple autotests
-AutoTestsAPI.createMultiple(autoTestPostModel: autoTestPostModel) { (response, error) in
+AutoTestsAPI.createMultiple(autoTestCreateApiModel: autoTestCreateApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -491,11 +491,11 @@ AutoTestsAPI.createMultiple(autoTestPostModel: autoTestPostModel) { (response, e
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **autoTestPostModel** | [**[AutoTestPostModel]**](AutoTestPostModel.md) |  | [optional] 
+ **autoTestCreateApiModel** | [**[AutoTestCreateApiModel]**](AutoTestCreateApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**[AutoTestModel]**](AutoTestModel.md)
+[**[AutoTestApiResult]**](AutoTestApiResult.md)
 
 ### Authorization
 
@@ -515,7 +515,7 @@ Name | Type | Description  | Notes
 
 Delete autotest
 
-  Use case    User sets autotest internal (guid format) or global (integer format) identifier and runs method execution    System finds the autotest by the identifier    System deletes autotest and returns no content response
+ Use case  User sets autotest internal (guid format) or global (integer format) identifier and runs method execution  System finds the autotest by the identifier  System deletes autotest and returns no content response
 
 ### Example
 ```swift
@@ -565,7 +565,7 @@ Void (empty response body)
 
 Unlink autotest from work item
 
-  Use case    User sets autotest internal (guid format) or global (integer format) identifier    [Optional] User sets workitem internal (guid format) or global (integer format) identifier    User runs method execution    System finds the autotest by the autotest identifier    [Optional] if workitem id is set by User, System finds the workitem by the workitem identifier and unlinks it              from autotest.    [Optional] Otherwise, if workitem id is not specified, System unlinks all workitems linked to autotest.    System returns no content response
+ Use case  User sets autotest internal (guid format) or global (integer format) identifier  [Optional] User sets workitem internal (guid format) or global (integer format) identifier  User runs method execution  System finds the autotest by the autotest identifier  [Optional] if workitem id is set by User, System finds the workitem by the workitem identifier and unlinks it             from autotest.  [Optional] Otherwise, if workitem id is not specified, System unlinks all workitems linked to autotest.  System returns no content response
 
 ### Example
 ```swift
@@ -709,12 +709,12 @@ Name | Type | Description  | Notes
 
 # **getAutoTestAverageDuration**
 ```swift
-    open class func getAutoTestAverageDuration(id: String, completion: @escaping (_ data: AutoTestAverageDurationModel?, _ error: Error?) -> Void)
+    open class func getAutoTestAverageDuration(id: String, completion: @escaping (_ data: AutoTestAverageDurationApiResult?, _ error: Error?) -> Void)
 ```
 
 Get average autotest duration
 
-  Use case    User sets autotest internal (guid format) or global (integer format) identifier    User runs method execution    System calculates pass average duration and fail average duration of autotest from all related test results    System returns pass average duration and fail average duration for autotest
+ Use case  User sets autotest internal (guid format) or global (integer format) identifier  User runs method execution  System calculates pass average duration and fail average duration of autotest from all related test results  System returns pass average duration and fail average duration for autotest
 
 ### Example
 ```swift
@@ -744,7 +744,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AutoTestAverageDurationModel**](AutoTestAverageDurationModel.md)
+[**AutoTestAverageDurationApiResult**](AutoTestAverageDurationApiResult.md)
 
 ### Authorization
 
@@ -759,12 +759,12 @@ Name | Type | Description  | Notes
 
 # **getAutoTestById**
 ```swift
-    open class func getAutoTestById(id: String, completion: @escaping (_ data: AutoTestModel?, _ error: Error?) -> Void)
+    open class func getAutoTestById(id: String, completion: @escaping (_ data: AutoTestApiResult?, _ error: Error?) -> Void)
 ```
 
 Get autotest by internal or global ID
 
-  Use case    User sets autotest internal or global identifier and runs method execution    System returns autotest, which internal or global identifier equals the identifier value set in the previous action
+ Use case  User sets autotest internal or global identifier and runs method execution  System returns autotest, which internal or global identifier equals the identifier value set in the previous action
 
 ### Example
 ```swift
@@ -794,7 +794,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AutoTestModel**](AutoTestModel.md)
+[**AutoTestApiResult**](AutoTestApiResult.md)
 
 ### Authorization
 
@@ -814,7 +814,7 @@ Name | Type | Description  | Notes
 
 Get autotest chronology
 
-  Use case    User sets autotest internal (guid format) or global (integer format) identifier    User runs method execution    System search all test results related to autotest (with default limit equal 100)    System orders the test results by CompletedOn property descending and then orders by CreatedDate property descending    System returns test result chronology for autotest
+ Use case  User sets autotest internal (guid format) or global (integer format) identifier  User runs method execution  System search all test results related to autotest (with default limit equal 100)  System orders the test results by CompletedOn property descending and then orders by CreatedDate property descending  System returns test result chronology for autotest
 
 ### Example
 ```swift
@@ -864,7 +864,7 @@ Name | Type | Description  | Notes
 
 Get completed tests runs for autotests
 
-  Use case    User sets autotest internal (guid format) or global (integer format) identifier    User runs method execution    System search for all test runs related to the autotest    System returns the enumeration of test runs
+ Use case  User sets autotest internal (guid format) or global (integer format) identifier  User runs method execution  System search for all test runs related to the autotest  System returns the enumeration of test runs
 
 ### Example
 ```swift
@@ -909,19 +909,19 @@ Name | Type | Description  | Notes
 
 # **getWorkItemsLinkedToAutoTest**
 ```swift
-    open class func getWorkItemsLinkedToAutoTest(id: String, isDeleted: Bool? = nil, isWorkItemDeleted: Bool? = nil, completion: @escaping (_ data: [WorkItemIdentifierModel]?, _ error: Error?) -> Void)
+    open class func getWorkItemsLinkedToAutoTest(id: String, isDeleted: Bool? = nil, isWorkItemDeleted: Bool? = nil, completion: @escaping (_ data: [AutoTestWorkItemIdentifierApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get work items linked to autotest
 
-  This method links an autotest to a test case or a checklist.              A manual test case with a linked automated work item is marked in the test management system as an autotest.              You can run it from graphical user interface (GUI). To do that:    1. Open the project in GUI.                2. Go to <b>Test plans</b> section and switch to the <b>Execution</b> tab.                3. Select the autotest(s) you want to run using checkboxes.                4. In the toolbar above the test list, click <b>Run autotests</b>.
+ This method links an autotest to a test case or a checklist.             A manual test case with a linked automated work item is marked in the test management system as an autotest.             You can run it from graphical user interface (GUI). To do that:  1. Open the project in GUI.              2. Go to <b>Test plans</b> section and switch to the <b>Execution</b> tab.              3. Select the autotest(s) you want to run using checkboxes.              4. In the toolbar above the test list, click <b>Run autotests</b>.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | Specifies the autotest entity ID.    You can copy it from the address bar in your web browser or use autotest GUID.
+let id = "id_example" // String | Specifies the autotest entity ID.  You can copy it from the address bar in your web browser or use autotest GUID.
 let isDeleted = true // Bool | Specifies that a test is deleted or still relevant. (optional)
 let isWorkItemDeleted = true // Bool | OBSOLETE: Use `isDeleted` instead (optional) (default to false)
 
@@ -942,13 +942,13 @@ AutoTestsAPI.getWorkItemsLinkedToAutoTest(id: id, isDeleted: isDeleted, isWorkIt
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | Specifies the autotest entity ID.    You can copy it from the address bar in your web browser or use autotest GUID. | 
+ **id** | **String** | Specifies the autotest entity ID.  You can copy it from the address bar in your web browser or use autotest GUID. | 
  **isDeleted** | **Bool** | Specifies that a test is deleted or still relevant. | [optional] 
  **isWorkItemDeleted** | **Bool** | OBSOLETE: Use &#x60;isDeleted&#x60; instead | [optional] [default to false]
 
 ### Return type
 
-[**[WorkItemIdentifierModel]**](WorkItemIdentifierModel.md)
+[**[AutoTestWorkItemIdentifierApiResult]**](AutoTestWorkItemIdentifierApiResult.md)
 
 ### Authorization
 
@@ -968,7 +968,7 @@ Name | Type | Description  | Notes
 
 Link autotest with work items
 
-  Use case    User sets autotest internal (guid format) or global (integer format) identifier    User sets work item internal (guid format) or global (integer format) identifier    User runs method execution    System finds the autotest by the autotest identifier    System finds the work item by the work item identifier    System relates the work item with the autotest and returns no content response
+ Use case  User sets autotest internal (guid format) or global (integer format) identifier  User sets work item internal (guid format) or global (integer format) identifier  User runs method execution  System finds the autotest by the autotest identifier  System finds the work item by the work item identifier  System relates the work item with the autotest and returns no content response
 
 ### Example
 ```swift
@@ -1015,22 +1015,22 @@ Void (empty response body)
 
 # **updateAutoTest**
 ```swift
-    open class func updateAutoTest(autoTestPutModel: AutoTestPutModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateAutoTest(autoTestUpdateApiModel: AutoTestUpdateApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update autotest
 
-  Use case    User sets autotest updated parameters values (listed in the example) and runs method execution    System finds the autotest by the identifier    System updates autotest parameters    [Optional] If steps enumeration is set, system creates step items, relates them to autotest              and deletes relations with current steps( if exist)    [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest              and deletes relations with current Setup items (if exist)    [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest              and deletes relations with current teardown items (if exist)    [Optional] If label enumeration is set, system creates labels and relates them to autotest              and deletes relations with current Labels (if exist)    [Optional] If link enumeration is set, system creates links and relates them to autotest              and deletes relations with current Links (if exist)    System updates autotest and returns no content response
+ Use case  User sets autotest updated parameters values (listed in the example) and runs method execution  System finds the autotest by the identifier  System updates autotest parameters  [Optional] If steps enumeration is set, system creates step items, relates them to autotest             and deletes relations with current steps( if exist)  [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest             and deletes relations with current Setup items (if exist)  [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest             and deletes relations with current teardown items (if exist)  [Optional] If label enumeration is set, system creates labels and relates them to autotest             and deletes relations with current Labels (if exist)  [Optional] If link enumeration is set, system creates links and relates them to autotest             and deletes relations with current Links (if exist)  System updates autotest and returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestPutModel = AutoTestPutModel(id: 123, workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], externalId: "externalId_example", links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example") // AutoTestPutModel |  (optional)
+let autoTestUpdateApiModel = AutoTestUpdateApiModel(id: 123, externalId: "externalId_example", externalKey: "externalKey_example", projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepApiModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelApiModel(name: "name_example")], links: [LinkUpdateApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], isFlaky: false, workItemIdsForLinkWithAutoTest: [123], workItemIds: [123]) // AutoTestUpdateApiModel |  (optional)
 
 // Update autotest
-AutoTestsAPI.updateAutoTest(autoTestPutModel: autoTestPutModel) { (response, error) in
+AutoTestsAPI.updateAutoTest(autoTestUpdateApiModel: autoTestUpdateApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1046,7 +1046,7 @@ AutoTestsAPI.updateAutoTest(autoTestPutModel: autoTestPutModel) { (response, err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **autoTestPutModel** | [**AutoTestPutModel**](AutoTestPutModel.md) |  | [optional] 
+ **autoTestUpdateApiModel** | [**AutoTestUpdateApiModel**](AutoTestUpdateApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -1065,22 +1065,22 @@ Void (empty response body)
 
 # **updateMultiple**
 ```swift
-    open class func updateMultiple(autoTestPutModel: [AutoTestPutModel]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateMultiple(autoTestUpdateApiModel: [AutoTestUpdateApiModel]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update multiple autotests
 
-  Use case    User sets autotest updated parameters values (listed in the example) and runs method execution    System finds the autotest by the identifier    System updates autotest parameters    [Optional] If steps enumeration is set, system creates step items, relates them to autotest              and deletes relations with current steps( if exist)    [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest              and deletes relations with current Setup items (if exist)    [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest              and deletes relations with current teardown items (if exist)    [Optional] If label enumeration is set, system creates labels and relates them to autotest              and deletes relations with current Labels (if exist)    [Optional] If link enumeration is set, system creates links and relates them to autotest              and deletes relations with current Links (if exist)    System updates autotest and returns no content response
+ Use case  User sets autotest updated parameters values (listed in the example) and runs method execution  System finds the autotest by the identifier  System updates autotest parameters  [Optional] If steps enumeration is set, system creates step items, relates them to autotest             and deletes relations with current steps( if exist)  [Optional] If Setup enumeration is set, system creates setup items and relates them to autotest             and deletes relations with current Setup items (if exist)  [Optional] If teardown enumeration is set, system creates teardown items and relates them to autotest             and deletes relations with current teardown items (if exist)  [Optional] If label enumeration is set, system creates labels and relates them to autotest             and deletes relations with current Labels (if exist)  [Optional] If link enumeration is set, system creates links and relates them to autotest             and deletes relations with current Links (if exist)  System updates autotest and returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestPutModel = [AutoTestPutModel(id: 123, workItemIdsForLinkWithAutoTest: [123], workItemIds: [123], externalId: "externalId_example", links: [LinkPutModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelPostModel(name: "name_example")], isFlaky: false, externalKey: "externalKey_example")] // [AutoTestPutModel] |  (optional)
+let autoTestUpdateApiModel = [AutoTestUpdateApiModel(id: 123, externalId: "externalId_example", externalKey: "externalKey_example", projectId: 123, name: "name_example", namespace: "namespace_example", classname: "classname_example", steps: [AutoTestStepApiModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], title: "title_example", description: "description_example", labels: [LabelApiModel(name: "name_example")], links: [LinkUpdateApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], isFlaky: false, workItemIdsForLinkWithAutoTest: [123], workItemIds: [123])] // [AutoTestUpdateApiModel] |  (optional)
 
 // Update multiple autotests
-AutoTestsAPI.updateMultiple(autoTestPutModel: autoTestPutModel) { (response, error) in
+AutoTestsAPI.updateMultiple(autoTestUpdateApiModel: autoTestUpdateApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -1096,7 +1096,7 @@ AutoTestsAPI.updateMultiple(autoTestPutModel: autoTestPutModel) { (response, err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **autoTestPutModel** | [**[AutoTestPutModel]**](AutoTestPutModel.md) |  | [optional] 
+ **autoTestUpdateApiModel** | [**[AutoTestUpdateApiModel]**](AutoTestUpdateApiModel.md) |  | [optional] 
 
 ### Return type
 

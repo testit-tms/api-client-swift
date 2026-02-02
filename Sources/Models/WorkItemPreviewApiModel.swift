@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct WorkItemPreviewApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public static let descriptionRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let descriptionRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var name: String
     public var description: String
     public var steps: [WorkItemPreviewStepApiModel]

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **configurationId** | **UUID** | Unique ID of configuration which the test result uses | 
 **configurationName** | **String** | Name of configuration which the test result uses | 
 **outcome** | **String** | Outcome of the test result | [optional] 
-**status** | [**TestStatusApiResult**](TestStatusApiResult.md) |  | [optional] 
+**status** | [**TestStatusApiResult**](TestStatusApiResult.md) |  | 
 **resultReasons** | [AutoTestResultReasonShort] | Collection of result reasons which the test result have | 
 **comment** | **String** | Comment to the test result | [optional] 
 **date** | **Date** | Date when the test result was completed or started or created | 

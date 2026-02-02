@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ConfigurationByParametersModel: Codable, JSONEncodable, Hashable {
 
-    public static let parameterIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let parameterIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** This property is used to link configuration with project */
     public var projectId: UUID
     public var parameterIds: Set<UUID>

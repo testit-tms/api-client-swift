@@ -12,12 +12,12 @@ import AnyCodable
 
 public struct CustomAttributeSearchResponseModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var workItemUsage: [ProjectShortestModel]
     public var testPlanUsage: [ProjectShortestModel]
     /** Unique ID of the attribute */
     public var id: UUID
-    /** Collection of the attribute options      Available for attributes of type `options` and `multiple options` only */
+    /** Collection of the attribute options   Available for attributes of type `options` and `multiple options` only */
     public var options: [CustomAttributeOptionModel]
     /** Type of the attribute */
     public var type: CustomAttributeTypesEnum
@@ -75,6 +75,3 @@ public struct CustomAttributeSearchResponseModel: Codable, JSONEncodable, Hashab
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension CustomAttributeSearchResponseModel: Identifiable {}

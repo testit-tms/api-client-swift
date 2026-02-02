@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct PreviewsIssueLinkApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let titleRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var title: String
     public var url: String
 

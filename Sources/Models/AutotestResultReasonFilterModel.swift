@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct AutotestResultReasonFilterModel: Codable, JSONEncodable, Hashable {
 
-    public static let failureCategoriesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let failureCategoriesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var failureCategories: Set<AvailableFailureCategory>?
     public var name: String?
     public var regexCount: Int32RangeSelectorModel?

@@ -15,18 +15,18 @@ public struct TestPlanTestPointsTesterAndStatusTypeGroupApiResult: Codable, JSON
     public var userId: UUID?
     /** Collection of possible status types */
     public var statusType: TestStatusApiType
-    public var value: Int64
+    public var statuses: [TestPlanTestPointsStatusCodeGroupApiResult]
 
-    public init(userId: UUID?, statusType: TestStatusApiType, value: Int64) {
+    public init(userId: UUID?, statusType: TestStatusApiType, statuses: [TestPlanTestPointsStatusCodeGroupApiResult]) {
         self.userId = userId
         self.statusType = statusType
-        self.value = value
+        self.statuses = statuses
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case userId
         case statusType
-        case value
+        case statuses
     }
 
     // Encodable protocol methods
@@ -35,7 +35,7 @@ public struct TestPlanTestPointsTesterAndStatusTypeGroupApiResult: Codable, JSON
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(userId, forKey: .userId)
         try container.encode(statusType, forKey: .statusType)
-        try container.encode(value, forKey: .value)
+        try container.encode(statuses, forKey: .statuses)
     }
 }
 

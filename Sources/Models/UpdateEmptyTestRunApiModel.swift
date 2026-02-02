@@ -12,14 +12,14 @@ import AnyCodable
 
 public struct UpdateEmptyTestRunApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Test run unique identifier */
     public var id: UUID
     /** Test run name */
     public var name: String
     /** Test run description */
     public var description: String?
-    /** Test run launch source                Once launch source is specified it cannot be updated */
+    /** Test run launch source              Once launch source is specified it cannot be updated */
     public var launchSource: String?
     /** Collection of attachments related to the test run */
     public var attachments: [AssignAttachmentApiModel]?
@@ -57,6 +57,3 @@ public struct UpdateEmptyTestRunApiModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension UpdateEmptyTestRunApiModel: Identifiable {}

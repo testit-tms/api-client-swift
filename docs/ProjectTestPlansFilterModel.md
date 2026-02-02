@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **startDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) |  | [optional] 
 **endDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) |  | [optional] 
 **tagNames** | **Set<String>** |  | [optional] 
+**excludeTagNames** | **Set<String>** |  | [optional] 
 **attributes** | [String: Set<String>] |  | [optional] 
 **isDeleted** | **Bool** |  | [optional] 
 

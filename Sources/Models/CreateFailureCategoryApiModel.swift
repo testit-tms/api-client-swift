@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CreateFailureCategoryApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Failure category name */
     public var name: String
     /** Category type */

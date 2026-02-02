@@ -12,13 +12,13 @@ import AnyCodable
 
 public struct AutoTestResultHistorySelectApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let outcomesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let statusCodesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let testPlanIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let testRunIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let configurationIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let launchSourceRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    public static let userIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let outcomesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let statusCodesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let testPlanIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let testRunIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let configurationIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let launchSourceRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let userIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     @available(*, deprecated, message: "This property is deprecated.")
     public var outcomes: Set<AutotestResultOutcome>?
     public var statusCodes: Set<String>?

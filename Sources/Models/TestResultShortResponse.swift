@@ -29,7 +29,7 @@ public struct TestResultShortResponse: Codable, JSONEncodable, Hashable {
     /** Outcome of the test result */
     @available(*, deprecated, message: "This property is deprecated.")
     public var outcome: String?
-    public var status: TestStatusApiResult?
+    public var status: TestStatusApiResult
     /** Collection of result reasons which the test result have */
     public var resultReasons: [AutoTestResultReasonShort]
     /** Comment to the test result */
@@ -54,7 +54,7 @@ public struct TestResultShortResponse: Codable, JSONEncodable, Hashable {
     /** Run count */
     public var rerunCompletedCount: Int
 
-    public init(id: UUID, name: String, autotestGlobalId: Int64, autotestExternalId: String? = nil, testRunId: UUID, configurationId: UUID, configurationName: String, outcome: String? = nil, status: TestStatusApiResult? = nil, resultReasons: [AutoTestResultReasonShort], comment: String? = nil, date: Date, createdDate: Date, modifiedDate: Date? = nil, startedOn: Date? = nil, completedOn: Date? = nil, duration: Int64? = nil, links: [LinkShort], attachments: [AttachmentApiResult], rerunCompletedCount: Int) {
+    public init(id: UUID, name: String, autotestGlobalId: Int64, autotestExternalId: String? = nil, testRunId: UUID, configurationId: UUID, configurationName: String, outcome: String? = nil, status: TestStatusApiResult, resultReasons: [AutoTestResultReasonShort], comment: String? = nil, date: Date, createdDate: Date, modifiedDate: Date? = nil, startedOn: Date? = nil, completedOn: Date? = nil, duration: Int64? = nil, links: [LinkShort], attachments: [AttachmentApiResult], rerunCompletedCount: Int) {
         self.id = id
         self.name = name
         self.autotestGlobalId = autotestGlobalId
@@ -112,7 +112,7 @@ public struct TestResultShortResponse: Codable, JSONEncodable, Hashable {
         try container.encode(configurationId, forKey: .configurationId)
         try container.encode(configurationName, forKey: .configurationName)
         try container.encodeIfPresent(outcome, forKey: .outcome)
-        try container.encodeIfPresent(status, forKey: .status)
+        try container.encode(status, forKey: .status)
         try container.encode(resultReasons, forKey: .resultReasons)
         try container.encodeIfPresent(comment, forKey: .comment)
         try container.encode(date, forKey: .date)
@@ -127,6 +127,3 @@ public struct TestResultShortResponse: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension TestResultShortResponse: Identifiable {}

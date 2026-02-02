@@ -13,7 +13,7 @@ import AnyCodable
 /** Collection of filters to apply to search */
 public struct ProjectCustomAttributesTemplatesFilterModel: Codable, JSONEncodable, Hashable {
 
-    public static let customAttributeTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let customAttributeTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Name of custom attribute template */
     public var name: String?
     /** Collection of custom attributes types */

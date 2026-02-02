@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ParameterGroupsFilterApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let parameterKeyIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let parameterKeyIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var parameterKeyIds: Set<UUID>?
     public var name: String?
     public var isDeleted: Bool?

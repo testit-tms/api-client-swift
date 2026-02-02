@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CreateDefectApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let testResultIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
+    static let testResultIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     /** Linked test result IDs */
     public var testResultIds: [UUID]
     /** External form definition */

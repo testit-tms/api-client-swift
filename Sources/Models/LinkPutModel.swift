@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct LinkPutModel: Codable, JSONEncodable, Hashable {
 
-    public static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var id: UUID?
     /** Link name. */
     public var title: String?
@@ -55,6 +55,3 @@ public struct LinkPutModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension LinkPutModel: Identifiable {}

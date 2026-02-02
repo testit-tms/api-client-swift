@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CustomAttributeOptionModel: Codable, JSONEncodable, Hashable {
 
-    public static let valueRule = StringRule(minLength: 0, maxLength: 1024, pattern: nil)
+    static let valueRule = StringRule(minLength: 0, maxLength: 1024, pattern: nil)
     /** Unique ID of the attribute option */
     public var id: UUID
     /** Indicates if the attributes option is deleted */
@@ -47,6 +47,3 @@ public struct CustomAttributeOptionModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension CustomAttributeOptionModel: Identifiable {}

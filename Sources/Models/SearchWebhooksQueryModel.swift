@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct SearchWebhooksQueryModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    public static let eventTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let methodsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let eventTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let methodsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Specifies a webhook name to search for */
     public var name: String?
     /** Specifies a webhook event types to search for */

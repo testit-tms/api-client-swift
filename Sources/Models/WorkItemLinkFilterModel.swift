@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct WorkItemLinkFilterModel: Codable, JSONEncodable, Hashable {
 
-    public static let urlsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let urlsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var types: [LinkType]?
     public var title: String?
     public var urls: Set<String>?

@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct Label: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Name of the label */
     public var name: String
     /** Global ID of the label */

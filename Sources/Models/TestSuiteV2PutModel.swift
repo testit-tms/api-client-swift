@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TestSuiteV2PutModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var id: UUID
     public var parentId: UUID?
     public var name: String
@@ -47,6 +47,3 @@ public struct TestSuiteV2PutModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension TestSuiteV2PutModel: Identifiable {}

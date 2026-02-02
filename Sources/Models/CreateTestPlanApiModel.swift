@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct CreateTestPlanApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
-    public static let descriptionRule = StringRule(minLength: 0, maxLength: 100000, pattern: nil)
-    public static let buildRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
-    public static let productNameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
+    static let descriptionRule = StringRule(minLength: 0, maxLength: 100000, pattern: nil)
+    static let buildRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
+    static let productNameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
     /** Test plan tag names collection */
     public var tags: [TagApiModel]?
     /** Test plan name */

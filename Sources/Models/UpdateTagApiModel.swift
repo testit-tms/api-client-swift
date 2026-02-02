@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct UpdateTagApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Name of the tag */
     public var name: String
 

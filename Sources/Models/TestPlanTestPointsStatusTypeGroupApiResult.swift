@@ -14,16 +14,16 @@ public struct TestPlanTestPointsStatusTypeGroupApiResult: Codable, JSONEncodable
 
     /** Collection of possible status types */
     public var statusType: TestStatusApiType
-    public var value: Int64
+    public var statuses: [TestPlanTestPointsStatusCodeGroupApiResult]
 
-    public init(statusType: TestStatusApiType, value: Int64) {
+    public init(statusType: TestStatusApiType, statuses: [TestPlanTestPointsStatusCodeGroupApiResult]) {
         self.statusType = statusType
-        self.value = value
+        self.statuses = statuses
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case statusType
-        case value
+        case statuses
     }
 
     // Encodable protocol methods
@@ -31,7 +31,7 @@ public struct TestPlanTestPointsStatusTypeGroupApiResult: Codable, JSONEncodable
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(statusType, forKey: .statusType)
-        try container.encode(value, forKey: .value)
+        try container.encode(statuses, forKey: .statuses)
     }
 }
 

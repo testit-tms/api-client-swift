@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct AutoTestModel: Codable, JSONEncodable, Hashable {
 
-    public static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Global ID of the autotest */
     public var globalId: Int64
     /** Indicates if the autotest is deleted */
@@ -174,6 +174,3 @@ public struct AutoTestModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension AutoTestModel: Identifiable {}
