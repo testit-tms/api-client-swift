@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct AutoTestCreateApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** External ID of the autotest */
     public var externalId: String
     /** External key of the autotest */

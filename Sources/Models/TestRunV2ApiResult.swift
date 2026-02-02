@@ -132,6 +132,3 @@ public struct TestRunV2ApiResult: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension TestRunV2ApiResult: Identifiable {}

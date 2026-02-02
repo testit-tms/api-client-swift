@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TestSuiteTestPlanApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Test suite nane */
     public var name: String
     /** Configuration identifiers. Empty configurations means using default configurations */

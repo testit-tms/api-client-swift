@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct UpdateWorkflowApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var name: String
     public var isDefault: Bool
     public var statuses: [WorkflowStatusApiModel]

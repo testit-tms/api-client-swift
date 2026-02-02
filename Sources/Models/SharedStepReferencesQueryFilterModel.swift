@@ -12,14 +12,14 @@ import AnyCodable
 
 public struct SharedStepReferencesQueryFilterModel: Codable, JSONEncodable, Hashable {
 
-    public static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let sectionIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let statesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let prioritiesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let entityTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let sectionIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let statesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let prioritiesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let entityTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Name of work item */
     public var name: String?
     /** Collection of global (integer) identifiers */

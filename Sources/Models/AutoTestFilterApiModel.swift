@@ -12,14 +12,14 @@ import AnyCodable
 
 public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let externalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let lastTestResultStatusCodesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let lastTestResultConfigurationIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let projectIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let externalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let lastTestResultStatusCodesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let lastTestResultConfigurationIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Specifies an autotest projects IDs to search for */
     public var projectIds: Set<UUID>?
     /** Specifies an autotest external IDs to search for */

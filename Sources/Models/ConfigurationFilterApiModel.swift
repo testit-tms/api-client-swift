@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct ConfigurationFilterApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Collection of identifiers of projects from which configurations will be taken */
     public var projectIds: [UUID]?
     /** Filter to search by name (case-insensitive, partial match) */

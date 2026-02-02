@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct UpdateFailureClassRegexApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let regexTextRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let regexTextRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Regex unique identifier */
     public var id: UUID
     /** Regex value */
@@ -37,6 +37,3 @@ public struct UpdateFailureClassRegexApiModel: Codable, JSONEncodable, Hashable 
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension UpdateFailureClassRegexApiModel: Identifiable {}

@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct TestPlanTestPointsSearchApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Specifies a test point test suite IDs to search for */
     public var testSuiteIds: [UUID]?
     /** Specifies a test point work item global IDs to search for */

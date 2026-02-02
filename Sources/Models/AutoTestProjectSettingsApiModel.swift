@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct AutoTestProjectSettingsApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let flakyStabilityPercentageRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 100, exclusiveMaximum: false, multipleOf: nil)
-    public static let flakyTestRunCountRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 1000, exclusiveMaximum: false, multipleOf: nil)
-    public static let rerunAttemptsCountRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 10, exclusiveMaximum: false, multipleOf: nil)
+    static let flakyStabilityPercentageRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 100, exclusiveMaximum: false, multipleOf: nil)
+    static let flakyTestRunCountRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 1000, exclusiveMaximum: false, multipleOf: nil)
+    static let rerunAttemptsCountRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 10, exclusiveMaximum: false, multipleOf: nil)
     /** Indicates if the status \"Flaky/Stable\" sets automatically */
     public var isFlakyAuto: Bool? = false
     /** Stability percentage for autotest flaky computing */

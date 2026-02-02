@@ -3,7 +3,7 @@
 
 FILE_NAME="swagger5.6.json"
 NEW_VERSION="0.4.0-tms.5.6"
-GENERATOR="openapi-generator-cli-7.18.0.jar"
+GENERATOR="openapi-generator-cli-7.9.0.jar"
 
 if [ ! -f ".swagger/$FILE_NAME" ]; then
     echo "Ошибка: .swagger/$FILE_NAME не найден!"
@@ -51,5 +51,15 @@ echo "  📋 Copying docs/ ..."
 cp -r "new/docs" "."
 
 cp -r new/README.md README-NEW.MD
-./update-docs.sh
 
+# Modify IFilter enum to be indirect
+sed -i 's/public enum IFilter: Codable, JSONEncodable, Hashable {/public indirect enum IFilter: Codable, JSONEncodable, Hashable {/' Sources/Models/IFilter.swift
+
+# Modify CollectionFilterFilterOneOf enum to be indirect
+sed -i 's/public enum CollectionFilterFilterOneOf: Codable, JSONEncodable {/public indirect enum CollectionFilterFilterOneOf: Codable, JSONEncodable {/' Sources/Models/IFilter.swift
+
+
+
+cp .migration/CollectionFilter.swift Sources/Models/CollectionFilter.swift
+
+./update-docs.sh

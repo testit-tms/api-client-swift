@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct CreateProjectApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Name of the project */
     public var name: String
     /** Description of the project */

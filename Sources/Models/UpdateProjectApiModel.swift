@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct UpdateProjectApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Unique ID of the project */
     public var id: UUID
     /** Name of the project */
@@ -52,6 +52,3 @@ public struct UpdateProjectApiModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension UpdateProjectApiModel: Identifiable {}

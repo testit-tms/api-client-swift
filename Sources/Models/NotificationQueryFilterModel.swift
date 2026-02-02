@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct NotificationQueryFilterModel: Codable, JSONEncodable, Hashable {
 
-    public static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var types: Set<NotificationTypeModel>?
     public var isRead: Bool?
     public var createdDate: DateTimeRangeSelectorModel?

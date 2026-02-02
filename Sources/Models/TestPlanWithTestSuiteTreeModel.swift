@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct TestPlanWithTestSuiteTreeModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
-    public static let descriptionRule = StringRule(minLength: 0, maxLength: 100000, pattern: nil)
-    public static let buildRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
-    public static let productNameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
+    static let descriptionRule = StringRule(minLength: 0, maxLength: 100000, pattern: nil)
+    static let buildRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
+    static let productNameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
     public var testSuites: [TestSuiteWithChildrenModel]
     public var status: TestPlanStatusModel
     /** Set when test plan is starter (status changed to: In Progress) */
@@ -127,6 +127,3 @@ public struct TestPlanWithTestSuiteTreeModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension TestPlanWithTestSuiteTreeModel: Identifiable {}

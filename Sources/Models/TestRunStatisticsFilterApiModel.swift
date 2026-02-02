@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct TestRunStatisticsFilterApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let namespaceRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    public static let classNameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let namespaceRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let classNameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Specifies a test result configuration IDs to search for */
     public var configurationIds: [UUID]?
     /** Specifies a test result outcomes to search for */

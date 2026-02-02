@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct CustomAttributeTemplatePostModel: Codable, JSONEncodable, Hashable {
 
-    public static let customAttributeIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let customAttributeIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Collection of attribute IDs */
     public var customAttributeIds: Set<UUID>?
     /** Custom attributes template name */

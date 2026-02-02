@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct AutoTestStepResult: Codable, JSONEncodable, Hashable {
 
-    public static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 43200000000, exclusiveMaximum: false, multipleOf: nil)
+    static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 43200000000, exclusiveMaximum: false, multipleOf: nil)
     /** The name of the step. */
     public var title: String?
     /** Description of the step result. */

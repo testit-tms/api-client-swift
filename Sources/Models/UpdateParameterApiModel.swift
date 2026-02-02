@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct UpdateParameterApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    public static let valueRule = StringRule(minLength: 0, maxLength: 1500, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let valueRule = StringRule(minLength: 0, maxLength: 1500, pattern: nil)
     /** ID's of the parameter */
     public var id: UUID
     /** Key of the parameter */
@@ -48,6 +48,3 @@ public struct UpdateParameterApiModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension UpdateParameterApiModel: Identifiable {}

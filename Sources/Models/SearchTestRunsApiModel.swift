@@ -12,11 +12,11 @@ import AnyCodable
 
 public struct SearchTestRunsApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    public static let statesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let statusCodesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let statesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let statusCodesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var name: String?
     @available(*, deprecated, message: "This property is deprecated.")
     public var states: Set<TestRunState>?

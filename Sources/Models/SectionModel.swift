@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct SectionModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     public var projectId: UUID?
     public var parentId: UUID?
     public var isDeleted: Bool
@@ -63,6 +63,3 @@ public struct SectionModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension SectionModel: Identifiable {}

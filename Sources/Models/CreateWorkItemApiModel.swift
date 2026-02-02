@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct CreateWorkItemApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    public static let durationRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let durationRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
     /** Unique identifier of the project */
     public var projectId: UUID
     /** Unique identifier of the section within a project */

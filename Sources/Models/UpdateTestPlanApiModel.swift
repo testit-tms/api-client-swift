@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct UpdateTestPlanApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
-    public static let descriptionRule = StringRule(minLength: 0, maxLength: 100000, pattern: nil)
-    public static let buildRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
-    public static let productNameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
+    static let descriptionRule = StringRule(minLength: 0, maxLength: 100000, pattern: nil)
+    static let buildRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
+    static let productNameRule = StringRule(minLength: 0, maxLength: 450, pattern: nil)
     /** Test plan unique internal identifier */
     public var id: UUID
     /** User who locked test plan modification internal identifier */
@@ -90,6 +90,3 @@ public struct UpdateTestPlanApiModel: Codable, JSONEncodable, Hashable {
     }
 }
 
-
-@available(iOS 13, tvOS 13, watchOS 6, macOS 10.15, *)
-extension UpdateTestPlanApiModel: Identifiable {}

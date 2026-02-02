@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct CreateTestRunAndFillByWorkItemsApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let configurationIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
-    public static let workItemIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
+    static let configurationIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
+    static let workItemIdsRule = ArrayRule(minItems: 1, maxItems: nil, uniqueItems: false)
     /** Specifies the GUID of the project, in which a test run will be created. */
     public var projectId: UUID
     /** Specifies the GUID of the test plan, within which the test run will be created. */

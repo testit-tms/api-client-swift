@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct LinkCreateApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let urlRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Link name. */
     public var title: String?
     /** Address can be specified without protocol, but necessarily with the domain. */

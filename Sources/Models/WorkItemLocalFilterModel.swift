@@ -13,19 +13,19 @@ import AnyCodable
 /** Collection of filters to apply to search */
 public struct WorkItemLocalFilterModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
-    public static let idsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let sectionIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let statesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let prioritiesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let sourceTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let excludeTagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public static let autoTestIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let idsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let globalIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let sectionIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let statesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let prioritiesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let sourceTypesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let excludeTagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let autoTestIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Name of work item */
     public var name: String?
     /** Specifies a work item unique IDs to search for */

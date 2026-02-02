@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct GenerateWorkItemPreviewsApiModel: Codable, JSONEncodable, Hashable {
 
-    public static let taskKeyRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    public static let temperatureRule = NumericRule<Float>(minimum: 0, exclusiveMinimum: false, maximum: 1, exclusiveMaximum: false, multipleOf: nil)
-    public static let previewLimitRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 30, exclusiveMaximum: false, multipleOf: nil)
+    static let taskKeyRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    static let temperatureRule = NumericRule<Float>(minimum: 0, exclusiveMinimum: false, maximum: 1, exclusiveMaximum: false, multipleOf: nil)
+    static let previewLimitRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 30, exclusiveMaximum: false, multipleOf: nil)
     public var externalServiceId: UUID
     public var taskKey: String
     public var sectionId: UUID

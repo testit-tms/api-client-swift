@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct GlobalCustomAttributeUpdateModel: Codable, JSONEncodable, Hashable {
 
-    public static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Name of attribute */
     public var name: String
     /** Collection of attribute options   Available for attributes of type `options` and `multiple options` only */
