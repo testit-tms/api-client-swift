@@ -17,7 +17,7 @@ public struct ReplaceProjectExternalServiceApiModel: Codable, JSONEncodable, Has
     /** External service settings */
     public var settings: AnyCodable?
 
-    public init(newExternalServiceId: UUID, settings: AnyCodable? = nil) {
+    public init(newExternalServiceId: UUID, settings: AnyCodable?) {
         self.newExternalServiceId = newExternalServiceId
         self.settings = settings
     }
@@ -32,7 +32,7 @@ public struct ReplaceProjectExternalServiceApiModel: Codable, JSONEncodable, Has
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(newExternalServiceId, forKey: .newExternalServiceId)
-        try container.encodeIfPresent(settings, forKey: .settings)
+        try container.encode(settings, forKey: .settings)
     }
 }
 

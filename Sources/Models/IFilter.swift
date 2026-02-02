@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public indirect enum IFilter: Codable, JSONEncodable, Hashable {
+public enum IFilter: Codable, JSONEncodable, Hashable {
     case typeCollectionFilter(CollectionFilter)
     case typeCompositeFilter(CompositeFilter)
     case typeFilter(Filter)

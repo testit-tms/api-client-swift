@@ -10,18 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public final class CollectionFilter: Codable, JSONEncodable, Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(_operator)
-        hasher.combine(filter)
-        hasher.combine(field)
-    }
-    
-    public static func == (lhs: CollectionFilter, rhs: CollectionFilter) -> Bool {
-        return lhs._operator == rhs._operator &&
-               lhs.filter == rhs.filter &&
-               lhs.field == rhs.field
-    }
+public struct CollectionFilter: Codable, JSONEncodable, Hashable {
 
     public var _operator: CollectionOperator
     public var filter: IFilter

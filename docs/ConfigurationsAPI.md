@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 # **apiV2ConfigurationsDeleteBulkPost**
 ```swift
-    open class func apiV2ConfigurationsDeleteBulkPost(configurationSelectModel: ConfigurationSelectModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
+    open class func apiV2ConfigurationsDeleteBulkPost(configurationSelectApiModel: ConfigurationSelectApiModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
 ```
 
 Delete multiple configurations
@@ -78,10 +78,10 @@ Delete multiple configurations
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let configurationSelectModel = ConfigurationSelectModel(filter: ConfigurationFilterModel(projectIds: [123], name: "name_example", isDeleted: false, globalIds: [123]), extractionModel: ConfigurationExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]), projectIds: nil)) // ConfigurationSelectModel |  (optional)
+let configurationSelectApiModel = ConfigurationSelectApiModel(filter: ConfigurationFilterApiModel(projectIds: [123], name: "name_example", isDeleted: false, globalIds: [123]), extractionModel: ConfigurationExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]), projectIds: nil)) // ConfigurationSelectApiModel |  (optional)
 
 // Delete multiple configurations
-ConfigurationsAPI.apiV2ConfigurationsDeleteBulkPost(configurationSelectModel: configurationSelectModel) { (response, error) in
+ConfigurationsAPI.apiV2ConfigurationsDeleteBulkPost(configurationSelectApiModel: configurationSelectApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -97,7 +97,7 @@ ConfigurationsAPI.apiV2ConfigurationsDeleteBulkPost(configurationSelectModel: co
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **configurationSelectModel** | [**ConfigurationSelectModel**](ConfigurationSelectModel.md) |  | [optional] 
+ **configurationSelectApiModel** | [**ConfigurationSelectApiModel**](ConfigurationSelectApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 Create Configuration
 
-  Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
+ Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
 
 ### Example
 ```swift
@@ -569,7 +569,7 @@ Name | Type | Description  | Notes
 
 Get configuration by internal or global ID
 
-  Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
+ Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
 
 ### Example
 ```swift

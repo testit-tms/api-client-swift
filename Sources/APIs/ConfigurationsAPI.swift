@@ -61,13 +61,13 @@ open class ConfigurationsAPI {
     /**
      Delete multiple configurations
      
-     - parameter configurationSelectModel: (body)  (optional)
+     - parameter configurationSelectApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ConfigurationsDeleteBulkPost(configurationSelectModel: ConfigurationSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2ConfigurationsDeleteBulkPostWithRequestBuilder(configurationSelectModel: configurationSelectModel).execute(apiResponseQueue) { result in
+    open class func apiV2ConfigurationsDeleteBulkPost(configurationSelectApiModel: ConfigurationSelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Int?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ConfigurationsDeleteBulkPostWithRequestBuilder(configurationSelectApiModel: configurationSelectApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -83,13 +83,13 @@ open class ConfigurationsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter configurationSelectModel: (body)  (optional)
+     - parameter configurationSelectApiModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
-    open class func apiV2ConfigurationsDeleteBulkPostWithRequestBuilder(configurationSelectModel: ConfigurationSelectModel? = nil) -> RequestBuilder<Int> {
+    open class func apiV2ConfigurationsDeleteBulkPostWithRequestBuilder(configurationSelectApiModel: ConfigurationSelectApiModel? = nil) -> RequestBuilder<Int> {
         let localVariablePath = "/api/v2/configurations/delete/bulk"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: configurationSelectModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: configurationSelectApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -527,7 +527,7 @@ open class ConfigurationsAPI {
     /**
      Create Configuration
      - POST /api/v2/configurations
-     -   Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
+     -  Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
@@ -574,7 +574,7 @@ open class ConfigurationsAPI {
     /**
      Get configuration by internal or global ID
      - GET /api/v2/configurations/{id}
-     -   Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
+     -  Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken

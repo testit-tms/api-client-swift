@@ -100,4 +100,6 @@ iOSInjectionProject/
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift
 source/
-generated/
+.swagger_
+new/
+README-NEW.MD

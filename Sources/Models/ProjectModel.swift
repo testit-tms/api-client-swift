@@ -46,12 +46,9 @@ public struct ProjectModel: Codable, JSONEncodable, Hashable {
     public var globalId: Int64
     /** Type of the project */
     public var type: ProjectTypeModel
-    /** Indicates if the status \"Flaky/Stable\" sets automatically */
-    @available(*, deprecated, message: "This property is deprecated.")
-    public var isFlakyAuto: Bool?
     public var workflowId: UUID
 
-    public init(id: UUID, description: String? = nil, name: String, isFavorite: Bool, attributesScheme: [CustomAttributeModel]? = nil, testPlansAttributesScheme: [CustomAttributeModel]? = nil, testCasesCount: Int? = nil, sharedStepsCount: Int? = nil, checkListsCount: Int? = nil, autoTestsCount: Int? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectTypeModel, isFlakyAuto: Bool? = nil, workflowId: UUID) {
+    public init(id: UUID, description: String? = nil, name: String, isFavorite: Bool, attributesScheme: [CustomAttributeModel]? = nil, testPlansAttributesScheme: [CustomAttributeModel]? = nil, testCasesCount: Int? = nil, sharedStepsCount: Int? = nil, checkListsCount: Int? = nil, autoTestsCount: Int? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectTypeModel, workflowId: UUID) {
         self.id = id
         self.description = description
         self.name = name
@@ -69,7 +66,6 @@ public struct ProjectModel: Codable, JSONEncodable, Hashable {
         self.modifiedById = modifiedById
         self.globalId = globalId
         self.type = type
-        self.isFlakyAuto = isFlakyAuto
         self.workflowId = workflowId
     }
 
@@ -91,7 +87,6 @@ public struct ProjectModel: Codable, JSONEncodable, Hashable {
         case modifiedById
         case globalId
         case type
-        case isFlakyAuto
         case workflowId
     }
 
@@ -116,7 +111,6 @@ public struct ProjectModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedById, forKey: .modifiedById)
         try container.encode(globalId, forKey: .globalId)
         try container.encode(type, forKey: .type)
-        try container.encodeIfPresent(isFlakyAuto, forKey: .isFlakyAuto)
         try container.encode(workflowId, forKey: .workflowId)
     }
 }

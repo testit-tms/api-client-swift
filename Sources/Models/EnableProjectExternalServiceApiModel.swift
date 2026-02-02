@@ -15,7 +15,7 @@ public struct EnableProjectExternalServiceApiModel: Codable, JSONEncodable, Hash
     /** External service settings */
     public var settings: AnyCodable?
 
-    public init(settings: AnyCodable? = nil) {
+    public init(settings: AnyCodable?) {
         self.settings = settings
     }
 
@@ -27,7 +27,7 @@ public struct EnableProjectExternalServiceApiModel: Codable, JSONEncodable, Hash
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(settings, forKey: .settings)
+        try container.encode(settings, forKey: .settings)
     }
 }
 

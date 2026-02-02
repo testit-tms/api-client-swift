@@ -32,7 +32,7 @@ public struct TestSuiteWorkItemsSearchModel: Codable, JSONEncodable, Hashable {
     public static let autoTestIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Collection of tags */
     public var tagNames: Set<String>?
-    /** Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
+    /** Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
     public var entityTypes: Set<WorkItemEntityTypes>?
     /** Name or identifier (UUID) of work item */
     public var nameOrId: String?

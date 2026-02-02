@@ -21,6 +21,7 @@ public struct ProjectTestPlansFilterModel: Codable, JSONEncodable, Hashable {
     public static let automaticDurationTimerRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public static let tagNamesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    public static let excludeTagNamesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var name: String?
     public var description: String?
     public var build: String?
@@ -35,10 +36,11 @@ public struct ProjectTestPlansFilterModel: Codable, JSONEncodable, Hashable {
     public var startDate: DateTimeRangeSelectorModel?
     public var endDate: DateTimeRangeSelectorModel?
     public var tagNames: Set<String>?
+    public var excludeTagNames: Set<String>?
     public var attributes: [String: Set<String>]?
     public var isDeleted: Bool?
 
-    public init(name: String? = nil, description: String? = nil, build: String? = nil, productName: String? = nil, status: Set<TestPlanStatusModel>? = nil, globalIds: Set<Int64>? = nil, isLocked: Bool? = nil, lockedDate: DateTimeRangeSelectorModel? = nil, automaticDurationTimer: Set<Bool>? = nil, createdByIds: Set<UUID>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, startDate: DateTimeRangeSelectorModel? = nil, endDate: DateTimeRangeSelectorModel? = nil, tagNames: Set<String>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil) {
+    public init(name: String? = nil, description: String? = nil, build: String? = nil, productName: String? = nil, status: Set<TestPlanStatusModel>? = nil, globalIds: Set<Int64>? = nil, isLocked: Bool? = nil, lockedDate: DateTimeRangeSelectorModel? = nil, automaticDurationTimer: Set<Bool>? = nil, createdByIds: Set<UUID>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, startDate: DateTimeRangeSelectorModel? = nil, endDate: DateTimeRangeSelectorModel? = nil, tagNames: Set<String>? = nil, excludeTagNames: Set<String>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil) {
         self.name = name
         self.description = description
         self.build = build
@@ -53,6 +55,7 @@ public struct ProjectTestPlansFilterModel: Codable, JSONEncodable, Hashable {
         self.startDate = startDate
         self.endDate = endDate
         self.tagNames = tagNames
+        self.excludeTagNames = excludeTagNames
         self.attributes = attributes
         self.isDeleted = isDeleted
     }
@@ -72,6 +75,7 @@ public struct ProjectTestPlansFilterModel: Codable, JSONEncodable, Hashable {
         case startDate
         case endDate
         case tagNames
+        case excludeTagNames
         case attributes
         case isDeleted
     }
@@ -94,6 +98,7 @@ public struct ProjectTestPlansFilterModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(startDate, forKey: .startDate)
         try container.encodeIfPresent(endDate, forKey: .endDate)
         try container.encodeIfPresent(tagNames, forKey: .tagNames)
+        try container.encodeIfPresent(excludeTagNames, forKey: .excludeTagNames)
         try container.encodeIfPresent(attributes, forKey: .attributes)
         try container.encodeIfPresent(isDeleted, forKey: .isDeleted)
     }

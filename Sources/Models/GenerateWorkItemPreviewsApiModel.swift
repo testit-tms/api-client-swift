@@ -13,20 +13,28 @@ import AnyCodable
 public struct GenerateWorkItemPreviewsApiModel: Codable, JSONEncodable, Hashable {
 
     public static let taskKeyRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    public static let temperatureRule = NumericRule<Float>(minimum: 0, exclusiveMinimum: false, maximum: 1, exclusiveMaximum: false, multipleOf: nil)
+    public static let previewLimitRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 30, exclusiveMaximum: false, multipleOf: nil)
     public var externalServiceId: UUID
     public var taskKey: String
     public var sectionId: UUID
+    public var temperature: Float
+    public var previewLimit: Int
 
-    public init(externalServiceId: UUID, taskKey: String, sectionId: UUID) {
+    public init(externalServiceId: UUID, taskKey: String, sectionId: UUID, temperature: Float, previewLimit: Int) {
         self.externalServiceId = externalServiceId
         self.taskKey = taskKey
         self.sectionId = sectionId
+        self.temperature = temperature
+        self.previewLimit = previewLimit
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case externalServiceId
         case taskKey
         case sectionId
+        case temperature
+        case previewLimit
     }
 
     // Encodable protocol methods
@@ -36,6 +44,8 @@ public struct GenerateWorkItemPreviewsApiModel: Codable, JSONEncodable, Hashable
         try container.encode(externalServiceId, forKey: .externalServiceId)
         try container.encode(taskKey, forKey: .taskKey)
         try container.encode(sectionId, forKey: .sectionId)
+        try container.encode(temperature, forKey: .temperature)
+        try container.encode(previewLimit, forKey: .previewLimit)
     }
 }
 

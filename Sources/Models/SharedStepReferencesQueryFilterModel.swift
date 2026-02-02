@@ -34,7 +34,7 @@ public struct SharedStepReferencesQueryFilterModel: Codable, JSONEncodable, Hash
     public var states: Set<WorkItemStates>?
     /** Collection of priorities of work item */
     public var priorities: Set<WorkItemPriorityModel>?
-    /** Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
+    /** Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
     public var entityTypes: Set<String>?
     /** Date and time of work item creation */
     public var createdDate: DateTimeRangeSelectorModel?
