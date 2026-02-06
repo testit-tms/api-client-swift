@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct WorkItemModel: Codable, JSONEncodable, Hashable {
 
-    static let durationRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
+    static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** used for versioning changes in workitem */
     public var versionId: UUID
@@ -44,13 +44,13 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
     public var steps: [StepModel]
     public var preconditionSteps: [StepModel]
     public var postconditionSteps: [StepModel]
-    public var duration: Int
+    public var duration: Int64
     public var attributes: [String: AnyCodable]
     public var tags: [TagModel]
     public var links: [LinkModel]
     public var name: String
 
-    public init(versionId: UUID, medianDuration: Int64, isDeleted: Bool, projectId: UUID, entityTypeName: WorkItemEntityTypes, isAutomated: Bool, autoTests: [AutoTestModel]? = nil, attachments: [AttachmentModel]? = nil, sectionPreconditionSteps: [StepModel]? = nil, sectionPostconditionSteps: [StepModel]? = nil, versionNumber: Int, iterations: [IterationModel]? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, externalIssues: [ExternalIssueModel], id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, steps: [StepModel], preconditionSteps: [StepModel], postconditionSteps: [StepModel], duration: Int, attributes: [String: AnyCodable], tags: [TagModel], links: [LinkModel], name: String) {
+    public init(versionId: UUID, medianDuration: Int64, isDeleted: Bool, projectId: UUID, entityTypeName: WorkItemEntityTypes, isAutomated: Bool, autoTests: [AutoTestModel]? = nil, attachments: [AttachmentModel]? = nil, sectionPreconditionSteps: [StepModel]? = nil, sectionPostconditionSteps: [StepModel]? = nil, versionNumber: Int, iterations: [IterationModel]? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, externalIssues: [ExternalIssueModel], id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, steps: [StepModel], preconditionSteps: [StepModel], postconditionSteps: [StepModel], duration: Int64, attributes: [String: AnyCodable], tags: [TagModel], links: [LinkModel], name: String) {
         self.versionId = versionId
         self.medianDuration = medianDuration
         self.isDeleted = isDeleted

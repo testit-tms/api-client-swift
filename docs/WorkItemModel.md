@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **steps** | [StepModel] |  | 
 **preconditionSteps** | [StepModel] |  | 
 **postconditionSteps** | [StepModel] |  | 
-**duration** | **Int** |  | 
+**duration** | **Int64** |  | 
 **attributes** | **[String: AnyCodable]** |  | 
 **tags** | [TagModel] |  | 
 **links** | [LinkModel] |  | 

@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
 *ProjectWorkItemsAPI* | [**apiV2ProjectsProjectIdWorkItemsTagsGet**](docs/ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemstagsget) | **GET** /api/v2/projects/{projectId}/workItems/tags | Get WorkItems Tags
 *ProjectWorkItemsAPI* | [**getWorkItemsByProjectId**](docs/ProjectWorkItemsAPI.md#getworkitemsbyprojectid) | **GET** /api/v2/projects/{projectId}/workItems | Get project work items
 *ProjectsAPI* | [**addGlobalAttributesToProject**](docs/ProjectsAPI.md#addglobalattributestoproject) | **POST** /api/v2/projects/{id}/globalAttributes | Add global attributes to project
+*ProjectsAPI* | [**apiV2ProjectsDemoPost**](docs/ProjectsAPI.md#apiv2projectsdemopost) | **POST** /api/v2/projects/demo | 
 *ProjectsAPI* | [**apiV2ProjectsIdDelete**](docs/ProjectsAPI.md#apiv2projectsiddelete) | **DELETE** /api/v2/projects/{id} | Archive project
 *ProjectsAPI* | [**apiV2ProjectsIdFailureClassesGet**](docs/ProjectsAPI.md#apiv2projectsidfailureclassesget) | **GET** /api/v2/projects/{id}/failureClasses | Get failure classes
 *ProjectsAPI* | [**apiV2ProjectsIdFavoritePut**](docs/ProjectsAPI.md#apiv2projectsidfavoriteput) | **PUT** /api/v2/projects/{id}/favorite | Mark Project as favorite
@@ -269,6 +270,13 @@ Class | Method | HTTP request | Description
 *TestRunsAPI* | [**startTestRun**](docs/TestRunsAPI.md#starttestrun) | **POST** /api/v2/testRuns/{id}/start | Start TestRun
 *TestRunsAPI* | [**stopTestRun**](docs/TestRunsAPI.md#stoptestrun) | **POST** /api/v2/testRuns/{id}/stop | Stop TestRun
 *TestRunsAPI* | [**updateEmpty**](docs/TestRunsAPI.md#updateempty) | **PUT** /api/v2/testRuns | Update empty TestRun
+*TestStatusesAPI* | [**apiV2TestStatusesCodeCodeExistsGet**](docs/TestStatusesAPI.md#apiv2teststatusescodecodeexistsget) | **GET** /api/v2/testStatuses/code/{code}/exists | 
+*TestStatusesAPI* | [**apiV2TestStatusesIdDelete**](docs/TestStatusesAPI.md#apiv2teststatusesiddelete) | **DELETE** /api/v2/testStatuses/{id} | 
+*TestStatusesAPI* | [**apiV2TestStatusesIdGet**](docs/TestStatusesAPI.md#apiv2teststatusesidget) | **GET** /api/v2/testStatuses/{id} | 
+*TestStatusesAPI* | [**apiV2TestStatusesIdPut**](docs/TestStatusesAPI.md#apiv2teststatusesidput) | **PUT** /api/v2/testStatuses/{id} | 
+*TestStatusesAPI* | [**apiV2TestStatusesNameNameExistsGet**](docs/TestStatusesAPI.md#apiv2teststatusesnamenameexistsget) | **GET** /api/v2/testStatuses/name/{name}/exists | 
+*TestStatusesAPI* | [**apiV2TestStatusesPost**](docs/TestStatusesAPI.md#apiv2teststatusespost) | **POST** /api/v2/testStatuses | 
+*TestStatusesAPI* | [**apiV2TestStatusesSearchPost**](docs/TestStatusesAPI.md#apiv2teststatusessearchpost) | **POST** /api/v2/testStatuses/search | 
 *TestSuitesAPI* | [**addTestPointsToTestSuite**](docs/TestSuitesAPI.md#addtestpointstotestsuite) | **POST** /api/v2/testSuites/{id}/test-points | Add test-points to test suite
 *TestSuitesAPI* | [**apiV2TestSuitesIdPatch**](docs/TestSuitesAPI.md#apiv2testsuitesidpatch) | **PATCH** /api/v2/testSuites/{id} | Patch test suite
 *TestSuitesAPI* | [**apiV2TestSuitesIdRefreshPost**](docs/TestSuitesAPI.md#apiv2testsuitesidrefreshpost) | **POST** /api/v2/testSuites/{id}/refresh | Refresh test suite. Only dynamic test suites are supported by this method
@@ -327,6 +335,14 @@ Class | Method | HTTP request | Description
 *WorkItemsCommentsAPI* | [**apiV2WorkItemsCommentsPut**](docs/WorkItemsCommentsAPI.md#apiv2workitemscommentsput) | **PUT** /api/v2/workItems/comments | Update work item comment
 *WorkItemsCommentsAPI* | [**apiV2WorkItemsIdCommentsCountGet**](docs/WorkItemsCommentsAPI.md#apiv2workitemsidcommentscountget) | **GET** /api/v2/workItems/{id}/comments/count | Get work item comments count
 *WorkItemsCommentsAPI* | [**apiV2WorkItemsIdCommentsGet**](docs/WorkItemsCommentsAPI.md#apiv2workitemsidcommentsget) | **GET** /api/v2/workItems/{id}/comments | Get work item comments
+*WorkflowsAPI* | [**apiV2WorkflowsIdDelete**](docs/WorkflowsAPI.md#apiv2workflowsiddelete) | **DELETE** /api/v2/workflows/{id} | 
+*WorkflowsAPI* | [**apiV2WorkflowsIdGet**](docs/WorkflowsAPI.md#apiv2workflowsidget) | **GET** /api/v2/workflows/{id} | 
+*WorkflowsAPI* | [**apiV2WorkflowsIdPatch**](docs/WorkflowsAPI.md#apiv2workflowsidpatch) | **PATCH** /api/v2/workflows/{id} | 
+*WorkflowsAPI* | [**apiV2WorkflowsIdProjectsSearchPost**](docs/WorkflowsAPI.md#apiv2workflowsidprojectssearchpost) | **POST** /api/v2/workflows/{id}/projects/search | 
+*WorkflowsAPI* | [**apiV2WorkflowsIdPut**](docs/WorkflowsAPI.md#apiv2workflowsidput) | **PUT** /api/v2/workflows/{id} | 
+*WorkflowsAPI* | [**apiV2WorkflowsNameNameExistsGet**](docs/WorkflowsAPI.md#apiv2workflowsnamenameexistsget) | **GET** /api/v2/workflows/name/{name}/exists | 
+*WorkflowsAPI* | [**apiV2WorkflowsPost**](docs/WorkflowsAPI.md#apiv2workflowspost) | **POST** /api/v2/workflows | 
+*WorkflowsAPI* | [**apiV2WorkflowsSearchPost**](docs/WorkflowsAPI.md#apiv2workflowssearchpost) | **POST** /api/v2/workflows/search | 
 
 
 ## Documentation For Models
@@ -632,7 +648,6 @@ Class | Method | HTTP request | Description
  - [TestPlanGroupByStatus](docs/TestPlanGroupByStatus.md)
  - [TestPlanGroupByStatusCode](docs/TestPlanGroupByStatusCode.md)
  - [TestPlanGroupByStatusType](docs/TestPlanGroupByStatusType.md)
- - [TestPlanGroupByTestSuite](docs/TestPlanGroupByTestSuite.md)
  - [TestPlanGroupByTester](docs/TestPlanGroupByTester.md)
  - [TestPlanGroupByTesterAndStatus](docs/TestPlanGroupByTesterAndStatus.md)
  - [TestPlanGroupByTesterAndStatusCode](docs/TestPlanGroupByTesterAndStatusCode.md)
@@ -830,6 +845,8 @@ Class | Method | HTTP request | Description
  - [WorkItemStates](docs/WorkItemStates.md)
  - [WorkItemStepChangeViewModel](docs/WorkItemStepChangeViewModel.md)
  - [WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel](docs/WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel.md)
+ - [WorkItemUpdatingFieldsApiModel](docs/WorkItemUpdatingFieldsApiModel.md)
+ - [WorkItemUpdatingFieldsApiResult](docs/WorkItemUpdatingFieldsApiResult.md)
  - [WorkItemVersionModel](docs/WorkItemVersionModel.md)
  - [WorkflowApiResult](docs/WorkflowApiResult.md)
  - [WorkflowExistsByNameApiResult](docs/WorkflowExistsByNameApiResult.md)

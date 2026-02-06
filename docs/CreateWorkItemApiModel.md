@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** | Name of the work item | 
 **description** | **String** | Description of the work item | [optional] 
 **entityTypeName** | [**WorkItemEntityTypeApiModel**](WorkItemEntityTypeApiModel.md) | Type of entity associated with this work item | 
-**duration** | **Int** | Duration of the work item in milliseconds | 
+**duration** | **Int64** | Duration of the work item in milliseconds | 
 **state** | [**WorkItemStateApiModel**](WorkItemStateApiModel.md) | State of the work item | 
 **priority** | [**WorkItemPriorityApiModel**](WorkItemPriorityApiModel.md) | Priority level of the work item | 
 **attributes** | **[String: AnyCodable]** | Set of custom attributes associated with the work item | 

@@ -20,6 +20,7 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
     static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     static let lastTestResultStatusCodesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     static let lastTestResultConfigurationIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Specifies an autotest projects IDs to search for */
     public var projectIds: Set<UUID>?
     /** Specifies an autotest external IDs to search for */
@@ -60,8 +61,10 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
     public var externalKey: String?
     /** Specifies an autotest configuration IDs of the last test result to search for */
     public var lastTestResultConfigurationIds: Set<UUID>?
+    /** Specifies an autotest tags to search for */
+    public var tags: Set<String>?
 
-    public init(projectIds: Set<UUID>? = nil, externalIds: Set<String>? = nil, globalIds: Set<Int64>? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: Set<UUID>? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: Set<UUID>? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCodes: Set<String>? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: Set<UUID>? = nil) {
+    public init(projectIds: Set<UUID>? = nil, externalIds: Set<String>? = nil, globalIds: Set<Int64>? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: Set<UUID>? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: Set<UUID>? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCodes: Set<String>? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: Set<UUID>? = nil, tags: Set<String>? = nil) {
         self.projectIds = projectIds
         self.externalIds = externalIds
         self.globalIds = globalIds
@@ -82,6 +85,7 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
         self.lastTestResultStatusCodes = lastTestResultStatusCodes
         self.externalKey = externalKey
         self.lastTestResultConfigurationIds = lastTestResultConfigurationIds
+        self.tags = tags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -105,6 +109,7 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
         case lastTestResultStatusCodes
         case externalKey
         case lastTestResultConfigurationIds
+        case tags
     }
 
     // Encodable protocol methods
@@ -131,6 +136,7 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(lastTestResultStatusCodes, forKey: .lastTestResultStatusCodes)
         try container.encodeIfPresent(externalKey, forKey: .externalKey)
         try container.encodeIfPresent(lastTestResultConfigurationIds, forKey: .lastTestResultConfigurationIds)
+        try container.encodeIfPresent(tags, forKey: .tags)
     }
 }
 
