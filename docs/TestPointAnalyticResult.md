@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **countGroupByStatus** | [TestPlanGroupByStatus] |  | 
 **sumGroupByTester** | [TestPlanGroupByTester] |  | 
 **countGroupByTester** | [TestPlanGroupByTester] |  | 
-**countGroupByTestSuite** | [TestPlanGroupByTestSuite] |  | 
 **countGroupByTesterAndStatus** | [TestPlanGroupByTesterAndStatus] |  | 
 **countGroupByStatusCode** | [TestPlanGroupByStatusCode] |  | 
 **countGroupByTesterAndStatusCode** | [TestPlanGroupByTesterAndStatusCode] |  | 

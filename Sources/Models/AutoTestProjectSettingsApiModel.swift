@@ -25,13 +25,19 @@ public struct AutoTestProjectSettingsApiModel: Codable, JSONEncodable, Hashable 
     public var rerunEnabled: Bool
     /** Auto rerun attempt count */
     public var rerunAttemptsCount: Int
+    /** Autotest to work item updating enabled */
+    public var workItemUpdatingEnabled: Bool? = false
+    /** Autotest to work item updating fields */
+    public var workItemUpdatingFields: WorkItemUpdatingFieldsApiModel
 
-    public init(isFlakyAuto: Bool? = false, flakyStabilityPercentage: Int? = 100, flakyTestRunCount: Int? = 100, rerunEnabled: Bool, rerunAttemptsCount: Int) {
+    public init(isFlakyAuto: Bool? = false, flakyStabilityPercentage: Int? = 100, flakyTestRunCount: Int? = 100, rerunEnabled: Bool, rerunAttemptsCount: Int, workItemUpdatingEnabled: Bool? = false, workItemUpdatingFields: WorkItemUpdatingFieldsApiModel) {
         self.isFlakyAuto = isFlakyAuto
         self.flakyStabilityPercentage = flakyStabilityPercentage
         self.flakyTestRunCount = flakyTestRunCount
         self.rerunEnabled = rerunEnabled
         self.rerunAttemptsCount = rerunAttemptsCount
+        self.workItemUpdatingEnabled = workItemUpdatingEnabled
+        self.workItemUpdatingFields = workItemUpdatingFields
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -40,6 +46,8 @@ public struct AutoTestProjectSettingsApiModel: Codable, JSONEncodable, Hashable 
         case flakyTestRunCount
         case rerunEnabled
         case rerunAttemptsCount
+        case workItemUpdatingEnabled
+        case workItemUpdatingFields
     }
 
     // Encodable protocol methods
@@ -51,6 +59,8 @@ public struct AutoTestProjectSettingsApiModel: Codable, JSONEncodable, Hashable 
         try container.encodeIfPresent(flakyTestRunCount, forKey: .flakyTestRunCount)
         try container.encode(rerunEnabled, forKey: .rerunEnabled)
         try container.encode(rerunAttemptsCount, forKey: .rerunAttemptsCount)
+        try container.encodeIfPresent(workItemUpdatingEnabled, forKey: .workItemUpdatingEnabled)
+        try container.encode(workItemUpdatingFields, forKey: .workItemUpdatingFields)
     }
 }
 

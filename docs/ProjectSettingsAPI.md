@@ -21,7 +21,7 @@ Set autotest project settings.
 import TestitApiClient
 
 let projectId = "projectId_example" // String | Internal (UUID) or global (integer) identifier
-let autoTestProjectSettingsApiModel = AutoTestProjectSettingsApiModel(isFlakyAuto: false, flakyStabilityPercentage: 123, flakyTestRunCount: 123, rerunEnabled: false, rerunAttemptsCount: 123) // AutoTestProjectSettingsApiModel |  (optional)
+let autoTestProjectSettingsApiModel = AutoTestProjectSettingsApiModel(isFlakyAuto: false, flakyStabilityPercentage: 123, flakyTestRunCount: 123, rerunEnabled: false, rerunAttemptsCount: 123, workItemUpdatingEnabled: false, workItemUpdatingFields: WorkItemUpdatingFieldsApiModel(name: false, description: false, preconditionSteps: false, steps: false, postconditionSteps: false, links: false, tags: false)) // AutoTestProjectSettingsApiModel |  (optional)
 
 // Set autotest project settings.
 ProjectSettingsAPI.apiV2ProjectsProjectIdSettingsAutotestsPost(projectId: projectId, autoTestProjectSettingsApiModel: autoTestProjectSettingsApiModel) { (response, error) in

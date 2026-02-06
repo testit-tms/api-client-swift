@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **steps** | [UpdateStepApiModel] | Collection of workitem steps | 
 **preconditionSteps** | [UpdateStepApiModel] | Collection of workitem precondtion steps | 
 **postconditionSteps** | [UpdateStepApiModel] | Collection of workitem postcondition steps | 
-**duration** | **Int** | Workitem duration in milliseconds | 
+**duration** | **Int64** | Workitem duration in milliseconds | 
 **attributes** | **[String: AnyCodable]** | Key value pair of custom workitem attributes | 
 **tags** | [TagModel] | Collection of workitem tags | 
 **links** | [UpdateLinkApiModel] | Collection of workitem links | 

@@ -41,8 +41,9 @@ public struct AutoTestApiResult: Codable, JSONEncodable, Hashable {
     public var stabilityPercentage: Int64?
     public var links: [LinkApiResult]?
     public var labels: [LabelApiResult]?
+    public var tags: [String]?
 
-    public init(id: UUID, projectId: UUID, externalId: String? = nil, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepApiResult]? = nil, setup: [AutoTestStepApiResult]? = nil, teardown: [AutoTestStepApiResult]? = nil, title: String? = nil, description: String? = nil, isFlaky: Bool, externalKey: String? = nil, globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShortApiResult? = nil, lastTestResultOutcome: String? = nil, lastTestResultStatus: TestStatusApiResult? = nil, stabilityPercentage: Int64? = nil, links: [LinkApiResult]? = nil, labels: [LabelApiResult]? = nil) {
+    public init(id: UUID, projectId: UUID, externalId: String? = nil, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepApiResult]? = nil, setup: [AutoTestStepApiResult]? = nil, teardown: [AutoTestStepApiResult]? = nil, title: String? = nil, description: String? = nil, isFlaky: Bool, externalKey: String? = nil, globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShortApiResult? = nil, lastTestResultOutcome: String? = nil, lastTestResultStatus: TestStatusApiResult? = nil, stabilityPercentage: Int64? = nil, links: [LinkApiResult]? = nil, labels: [LabelApiResult]? = nil, tags: [String]? = nil) {
         self.id = id
         self.projectId = projectId
         self.externalId = externalId
@@ -72,6 +73,7 @@ public struct AutoTestApiResult: Codable, JSONEncodable, Hashable {
         self.stabilityPercentage = stabilityPercentage
         self.links = links
         self.labels = labels
+        self.tags = tags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -104,6 +106,7 @@ public struct AutoTestApiResult: Codable, JSONEncodable, Hashable {
         case stabilityPercentage
         case links
         case labels
+        case tags
     }
 
     // Encodable protocol methods
@@ -139,6 +142,7 @@ public struct AutoTestApiResult: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(stabilityPercentage, forKey: .stabilityPercentage)
         try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(labels, forKey: .labels)
+        try container.encodeIfPresent(tags, forKey: .tags)
     }
 }
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **sectionName** | **String** | Section name of Work Item | 
 **isAutomated** | **Bool** | Boolean flag determining whether Work Item is automated | 
 **globalId** | **Int64** | Work Item global identifier | 
-**duration** | **Int** | Work Item duration | 
+**duration** | **Int64** | Work Item duration | 
 **medianDuration** | **Int64** | Work Item median duration | [optional] 
 **attributes** | **[String: AnyCodable]** | Work Item attributes | [optional] 
 **createdById** | **UUID** | Unique identifier of user who created Work Item | 

@@ -15,4 +15,5 @@ public enum AvailableTestResultOutcome: String, Codable, CaseIterable {
     case failed = "Failed"
     case blocked = "Blocked"
     case skipped = "Skipped"
+    case inProgress = "InProgress"
 }

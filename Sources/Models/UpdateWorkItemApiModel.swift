@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
 
-    static let durationRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
+    static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Workitem internal identifier */
     public var id: UUID
@@ -30,7 +30,7 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
     /** Collection of workitem postcondition steps */
     public var postconditionSteps: [UpdateStepApiModel]
     /** Workitem duration in milliseconds */
-    public var duration: Int
+    public var duration: Int64
     /** Key value pair of custom workitem attributes */
     public var attributes: [String: AnyCodable]
     /** Collection of workitem tags */
@@ -45,7 +45,7 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
     /** Collection of autotest internal ids */
     public var autoTests: [AutoTestIdModel]?
 
-    public init(id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel? = nil, steps: [UpdateStepApiModel], preconditionSteps: [UpdateStepApiModel], postconditionSteps: [UpdateStepApiModel], duration: Int, attributes: [String: AnyCodable], tags: [TagModel], links: [UpdateLinkApiModel], name: String, attachments: [AssignAttachmentApiModel], iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil) {
+    public init(id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel? = nil, steps: [UpdateStepApiModel], preconditionSteps: [UpdateStepApiModel], postconditionSteps: [UpdateStepApiModel], duration: Int64, attributes: [String: AnyCodable], tags: [TagModel], links: [UpdateLinkApiModel], name: String, attachments: [AssignAttachmentApiModel], iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil) {
         self.id = id
         self.sectionId = sectionId
         self.description = description

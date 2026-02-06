@@ -65,6 +65,48 @@ open class ProjectsAPI {
     }
 
     /**
+
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2ProjectsDemoPost(apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: DemoProjectApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsDemoPostWithRequestBuilder().execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /api/v2/projects/demo
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - returns: RequestBuilder<DemoProjectApiResult> 
+     */
+    open class func apiV2ProjectsDemoPostWithRequestBuilder() -> RequestBuilder<DemoProjectApiResult> {
+        let localVariablePath = "/api/v2/projects/demo"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<DemoProjectApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Archive project
      
      - parameter id: (path) Unique or global ID of the project 

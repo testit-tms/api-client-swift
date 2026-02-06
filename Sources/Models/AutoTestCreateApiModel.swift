@@ -14,108 +14,113 @@ public struct AutoTestCreateApiModel: Codable, JSONEncodable, Hashable {
 
     static let externalIdRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
+    /** Unique ID of the autotest project */
+    public var projectId: UUID
     /** External ID of the autotest */
     public var externalId: String
     /** External key of the autotest */
     public var externalKey: String?
-    /** Unique ID of the autotest project */
-    public var projectId: UUID
     /** Name of the autotest */
     public var name: String
     /** Name of the autotest namespace */
     public var namespace: String?
     /** Name of the autotest class */
     public var classname: String?
+    /** Name of the autotest in autotest's card */
+    public var title: String?
+    /** Description of the autotest in autotest's card */
+    public var description: String?
+    /** Indicates if the autotest is marked as flaky */
+    public var isFlaky: Bool?
     /** Collection of the autotest steps */
     public var steps: [AutoTestStepApiModel]?
     /** Collection of the autotest setup steps */
     public var setup: [AutoTestStepApiModel]?
     /** Collection of the autotest teardown steps */
     public var teardown: [AutoTestStepApiModel]?
-    /** Name of the autotest in autotest's card */
-    public var title: String?
-    /** Description of the autotest in autotest's card */
-    public var description: String?
+    /** Creates a test case linked to the autotest. */
+    public var shouldCreateWorkItem: Bool?
+    /** Specifies the IDs of work items to link your autotest to. You can specify several IDs. */
+    public var workItemIds: [UUID]?
+    /** Key value pair of custom work item attributes */
+    public var attributes: [String: AnyCodable]?
+    /** Specifies the IDs of work items to link your autotest to. You can specify several IDs. */
+    @available(*, deprecated, message: "This property is deprecated.")
+    public var workItemIdsForLinkWithAutoTest: [UUID]?
     /** Collection of the autotest labels */
     public var labels: [LabelApiModel]?
     /** Collection of the autotest links */
     public var links: [LinkCreateApiModel]?
-    /** Indicates if the autotest is marked as flaky */
-    public var isFlaky: Bool?
-    /** Specifies the IDs of work items to link your autotest to. You can specify several IDs. */
-    @available(*, deprecated, message: "This property is deprecated.")
-    public var workItemIdsForLinkWithAutoTest: [UUID]?
-    /** Specifies the IDs of work items to link your autotest to. You can specify several IDs. */
-    public var workItemIds: [UUID]?
-    /** Creates a test case linked to the autotest. */
-    public var shouldCreateWorkItem: Bool?
-    /** Key value pair of custom work item attributes */
-    public var attributes: [String: AnyCodable]?
+    /** Collection of the autotest tags */
+    public var tags: [String]?
 
-    public init(externalId: String, externalKey: String? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepApiModel]? = nil, setup: [AutoTestStepApiModel]? = nil, teardown: [AutoTestStepApiModel]? = nil, title: String? = nil, description: String? = nil, labels: [LabelApiModel]? = nil, links: [LinkCreateApiModel]? = nil, isFlaky: Bool? = nil, workItemIdsForLinkWithAutoTest: [UUID]? = nil, workItemIds: [UUID]? = nil, shouldCreateWorkItem: Bool? = nil, attributes: [String: AnyCodable]? = nil) {
+    public init(projectId: UUID, externalId: String, externalKey: String? = nil, name: String, namespace: String? = nil, classname: String? = nil, title: String? = nil, description: String? = nil, isFlaky: Bool? = nil, steps: [AutoTestStepApiModel]? = nil, setup: [AutoTestStepApiModel]? = nil, teardown: [AutoTestStepApiModel]? = nil, shouldCreateWorkItem: Bool? = nil, workItemIds: [UUID]? = nil, attributes: [String: AnyCodable]? = nil, workItemIdsForLinkWithAutoTest: [UUID]? = nil, labels: [LabelApiModel]? = nil, links: [LinkCreateApiModel]? = nil, tags: [String]? = nil) {
+        self.projectId = projectId
         self.externalId = externalId
         self.externalKey = externalKey
-        self.projectId = projectId
         self.name = name
         self.namespace = namespace
         self.classname = classname
+        self.title = title
+        self.description = description
+        self.isFlaky = isFlaky
         self.steps = steps
         self.setup = setup
         self.teardown = teardown
-        self.title = title
-        self.description = description
+        self.shouldCreateWorkItem = shouldCreateWorkItem
+        self.workItemIds = workItemIds
+        self.attributes = attributes
+        self.workItemIdsForLinkWithAutoTest = workItemIdsForLinkWithAutoTest
         self.labels = labels
         self.links = links
-        self.isFlaky = isFlaky
-        self.workItemIdsForLinkWithAutoTest = workItemIdsForLinkWithAutoTest
-        self.workItemIds = workItemIds
-        self.shouldCreateWorkItem = shouldCreateWorkItem
-        self.attributes = attributes
+        self.tags = tags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case projectId
         case externalId
         case externalKey
-        case projectId
         case name
         case namespace
         case classname
+        case title
+        case description
+        case isFlaky
         case steps
         case setup
         case teardown
-        case title
-        case description
+        case shouldCreateWorkItem
+        case workItemIds
+        case attributes
+        case workItemIdsForLinkWithAutoTest
         case labels
         case links
-        case isFlaky
-        case workItemIdsForLinkWithAutoTest
-        case workItemIds
-        case shouldCreateWorkItem
-        case attributes
+        case tags
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(projectId, forKey: .projectId)
         try container.encode(externalId, forKey: .externalId)
         try container.encodeIfPresent(externalKey, forKey: .externalKey)
-        try container.encode(projectId, forKey: .projectId)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(namespace, forKey: .namespace)
         try container.encodeIfPresent(classname, forKey: .classname)
+        try container.encodeIfPresent(title, forKey: .title)
+        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(isFlaky, forKey: .isFlaky)
         try container.encodeIfPresent(steps, forKey: .steps)
         try container.encodeIfPresent(setup, forKey: .setup)
         try container.encodeIfPresent(teardown, forKey: .teardown)
-        try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(description, forKey: .description)
+        try container.encodeIfPresent(shouldCreateWorkItem, forKey: .shouldCreateWorkItem)
+        try container.encodeIfPresent(workItemIds, forKey: .workItemIds)
+        try container.encodeIfPresent(attributes, forKey: .attributes)
+        try container.encodeIfPresent(workItemIdsForLinkWithAutoTest, forKey: .workItemIdsForLinkWithAutoTest)
         try container.encodeIfPresent(labels, forKey: .labels)
         try container.encodeIfPresent(links, forKey: .links)
-        try container.encodeIfPresent(isFlaky, forKey: .isFlaky)
-        try container.encodeIfPresent(workItemIdsForLinkWithAutoTest, forKey: .workItemIdsForLinkWithAutoTest)
-        try container.encodeIfPresent(workItemIds, forKey: .workItemIds)
-        try container.encodeIfPresent(shouldCreateWorkItem, forKey: .shouldCreateWorkItem)
-        try container.encodeIfPresent(attributes, forKey: .attributes)
+        try container.encodeIfPresent(tags, forKey: .tags)
     }
 }
 
