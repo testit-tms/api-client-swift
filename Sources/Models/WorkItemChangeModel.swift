@@ -18,9 +18,11 @@ public struct WorkItemChangeModel: Codable, JSONEncodable, Hashable {
     public var newVersionId: UUID
     public var workItemChangedFields: WorkItemChangedFieldsViewModel
     public var createdById: UUID
-    public var createdDate: Date?
+    public var createdDate: Date
+    public var modifiedById: UUID?
+    public var modifiedDate: Date?
 
-    public init(id: UUID, workItemId: UUID, oldVersionId: UUID, newVersionId: UUID, workItemChangedFields: WorkItemChangedFieldsViewModel, createdById: UUID, createdDate: Date? = nil) {
+    public init(id: UUID, workItemId: UUID, oldVersionId: UUID, newVersionId: UUID, workItemChangedFields: WorkItemChangedFieldsViewModel, createdById: UUID, createdDate: Date, modifiedById: UUID? = nil, modifiedDate: Date? = nil) {
         self.id = id
         self.workItemId = workItemId
         self.oldVersionId = oldVersionId
@@ -28,6 +30,8 @@ public struct WorkItemChangeModel: Codable, JSONEncodable, Hashable {
         self.workItemChangedFields = workItemChangedFields
         self.createdById = createdById
         self.createdDate = createdDate
+        self.modifiedById = modifiedById
+        self.modifiedDate = modifiedDate
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -38,6 +42,8 @@ public struct WorkItemChangeModel: Codable, JSONEncodable, Hashable {
         case workItemChangedFields
         case createdById
         case createdDate
+        case modifiedById
+        case modifiedDate
     }
 
     // Encodable protocol methods
@@ -50,7 +56,9 @@ public struct WorkItemChangeModel: Codable, JSONEncodable, Hashable {
         try container.encode(newVersionId, forKey: .newVersionId)
         try container.encode(workItemChangedFields, forKey: .workItemChangedFields)
         try container.encode(createdById, forKey: .createdById)
-        try container.encodeIfPresent(createdDate, forKey: .createdDate)
+        try container.encode(createdDate, forKey: .createdDate)
+        try container.encodeIfPresent(modifiedById, forKey: .modifiedById)
+        try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)
     }
 }
 

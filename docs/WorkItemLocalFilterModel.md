@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **excludeTags** | **Set<String>** | Collection of tags to exclude | [optional] 
 **autoTestIds** | **Set<UUID>** | Collection of identifiers of linked autotests | [optional] 
 **workItemVersionIds** | **[UUID]** | Collection of identifiers work items versions. | [optional] 
+**links** | [**WorkItemLinkFilterModel**](WorkItemLinkFilterModel.md) | Specifies a work item filter by its links | [optional] 
+**externalMetadata** | [**WorkItemExternalMetadataFilterModel**](WorkItemExternalMetadataFilterModel.md) | Specifies work item filter by its external metadata | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

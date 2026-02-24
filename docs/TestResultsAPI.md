@@ -34,7 +34,7 @@ Method | HTTP request | Description
 import TestitApiClient
 
 let externalProjectId = 987 // UUID | 
-let testResultsSelectApiModel = TestResultsSelectApiModel(filter: TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]), extractionModel: TestResultsExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestResultsSelectApiModel |  (optional)
+let testResultsSelectApiModel = TestResultsSelectApiModel(filter: TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], autoTestTags: ["autoTestTags_example"], excludeAutoTestTags: ["excludeAutoTestTags_example"], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]), extractionModel: TestResultsExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestResultsSelectApiModel |  (optional)
 
 TestResultsAPI.apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPost(externalProjectId: externalProjectId, testResultsSelectApiModel: testResultsSelectApiModel) { (response, error) in
     guard error == nil else {
@@ -365,7 +365,7 @@ Void (empty response body)
 
 # **apiV2TestResultsIdRerunsGet**
 ```swift
-    open class func apiV2TestResultsIdRerunsGet(id: UUID, completion: @escaping (_ data: RerunsModel?, _ error: Error?) -> Void)
+    open class func apiV2TestResultsIdRerunsGet(id: UUID, completion: @escaping (_ data: RerunsApiResult?, _ error: Error?) -> Void)
 ```
 
 Get reruns
@@ -398,7 +398,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RerunsModel**](RerunsModel.md)
+[**RerunsApiResult**](RerunsApiResult.md)
 
 ### Authorization
 
@@ -428,7 +428,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let testResultsFilterApiModel = TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]) // TestResultsFilterApiModel |  (optional)
+let testResultsFilterApiModel = TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], autoTestTags: ["autoTestTags_example"], excludeAutoTestTags: ["excludeAutoTestTags_example"], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]) // TestResultsFilterApiModel |  (optional)
 
 // Search for test results
 TestResultsAPI.apiV2TestResultsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testResultsFilterApiModel: testResultsFilterApiModel) { (response, error) in
@@ -481,7 +481,7 @@ Search for test results and extract statistics
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let testResultsFilterApiModel = TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]) // TestResultsFilterApiModel |  (optional)
+let testResultsFilterApiModel = TestResultsFilterApiModel(configurationIds: [123], outcomes: [TestResultOutcome()], statusCodes: ["statusCodes_example"], failureCategories: [FailureCategoryModel()], namespace: "namespace_example", className: "className_example", autoTestGlobalIds: [123], autoTestTags: ["autoTestTags_example"], excludeAutoTestTags: ["excludeAutoTestTags_example"], name: "name_example", createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, startedOn: nil, completedOn: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), resultReasons: ["resultReasons_example"], testRunIds: [123]) // TestResultsFilterApiModel |  (optional)
 
 // Search for test results and extract statistics
 TestResultsAPI.apiV2TestResultsStatisticsFilterPost(testResultsFilterApiModel: testResultsFilterApiModel) { (response, error) in
