@@ -33,8 +33,9 @@ public struct AutoTestFilterModel: Codable, JSONEncodable, Hashable {
     public var externalKey: String?
     public var lastTestResultConfigurationIds: [UUID]?
     public var tags: [String]?
+    public var excludeTags: [String]?
 
-    public init(projectIds: [UUID]? = nil, externalIds: [String]? = nil, globalIds: [Int64]? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: [UUID]? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCodes: [String]? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: [UUID]? = nil, tags: [String]? = nil) {
+    public init(projectIds: [UUID]? = nil, externalIds: [String]? = nil, globalIds: [Int64]? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: [UUID]? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCodes: [String]? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: [UUID]? = nil, tags: [String]? = nil, excludeTags: [String]? = nil) {
         self.projectIds = projectIds
         self.externalIds = externalIds
         self.globalIds = globalIds
@@ -56,6 +57,7 @@ public struct AutoTestFilterModel: Codable, JSONEncodable, Hashable {
         self.externalKey = externalKey
         self.lastTestResultConfigurationIds = lastTestResultConfigurationIds
         self.tags = tags
+        self.excludeTags = excludeTags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -80,6 +82,7 @@ public struct AutoTestFilterModel: Codable, JSONEncodable, Hashable {
         case externalKey
         case lastTestResultConfigurationIds
         case tags
+        case excludeTags
     }
 
     // Encodable protocol methods
@@ -107,6 +110,7 @@ public struct AutoTestFilterModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(externalKey, forKey: .externalKey)
         try container.encodeIfPresent(lastTestResultConfigurationIds, forKey: .lastTestResultConfigurationIds)
         try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(excludeTags, forKey: .excludeTags)
     }
 }
 

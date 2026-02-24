@@ -68,8 +68,12 @@ public struct WorkItemLocalFilterModel: Codable, JSONEncodable, Hashable {
     public var autoTestIds: Set<UUID>?
     /** Collection of identifiers work items versions. */
     public var workItemVersionIds: [UUID]?
+    /** Specifies a work item filter by its links */
+    public var links: WorkItemLinkFilterModel?
+    /** Specifies work item filter by its external metadata */
+    public var externalMetadata: WorkItemExternalMetadataFilterModel?
 
-    public init(name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, sourceTypes: Set<WorkItemSourceTypeModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, excludeTags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil) {
+    public init(name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, sourceTypes: Set<WorkItemSourceTypeModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, excludeTags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil, links: WorkItemLinkFilterModel? = nil, externalMetadata: WorkItemExternalMetadataFilterModel? = nil) {
         self.name = name
         self.ids = ids
         self.globalIds = globalIds
@@ -91,6 +95,8 @@ public struct WorkItemLocalFilterModel: Codable, JSONEncodable, Hashable {
         self.excludeTags = excludeTags
         self.autoTestIds = autoTestIds
         self.workItemVersionIds = workItemVersionIds
+        self.links = links
+        self.externalMetadata = externalMetadata
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -115,6 +121,8 @@ public struct WorkItemLocalFilterModel: Codable, JSONEncodable, Hashable {
         case excludeTags
         case autoTestIds
         case workItemVersionIds
+        case links
+        case externalMetadata
     }
 
     // Encodable protocol methods
@@ -142,6 +150,8 @@ public struct WorkItemLocalFilterModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(excludeTags, forKey: .excludeTags)
         try container.encodeIfPresent(autoTestIds, forKey: .autoTestIds)
         try container.encodeIfPresent(workItemVersionIds, forKey: .workItemVersionIds)
+        try container.encodeIfPresent(links, forKey: .links)
+        try container.encodeIfPresent(externalMetadata, forKey: .externalMetadata)
     }
 }
 

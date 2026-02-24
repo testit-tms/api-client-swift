@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **externalKey** | **String** |  | [optional] 
 **lastTestResultConfigurationIds** | **[UUID]** |  | [optional] 
 **tags** | **[String]** |  | [optional] 
+**excludeTags** | **[String]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -29,6 +29,10 @@ public struct TestResultsFilterApiModel: Codable, JSONEncodable, Hashable {
     public var className: String?
     /** Specifies an autotest global IDs to search results for */
     public var autoTestGlobalIds: [Int64]?
+    /** Specifies autotest tags to include in the search. */
+    public var autoTestTags: [String]?
+    /** Specifies autotest tags to exclude from the search. */
+    public var excludeAutoTestTags: [String]?
     /** Specifies an autotest name to search results for */
     public var name: String?
     /** Specifies a test result creation date and time range to search for */
@@ -46,7 +50,7 @@ public struct TestResultsFilterApiModel: Codable, JSONEncodable, Hashable {
     /** Specifies a test result test run IDs to search for */
     public var testRunIds: [UUID]?
 
-    public init(configurationIds: [UUID]? = nil, outcomes: [TestResultOutcome]? = nil, statusCodes: [String]? = nil, failureCategories: [FailureCategoryModel]? = nil, namespace: String? = nil, className: String? = nil, autoTestGlobalIds: [Int64]? = nil, name: String? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, startedOn: DateTimeRangeSelectorModel? = nil, completedOn: DateTimeRangeSelectorModel? = nil, duration: Int64RangeSelectorModel? = nil, resultReasons: [String]? = nil, testRunIds: [UUID]? = nil) {
+    public init(configurationIds: [UUID]? = nil, outcomes: [TestResultOutcome]? = nil, statusCodes: [String]? = nil, failureCategories: [FailureCategoryModel]? = nil, namespace: String? = nil, className: String? = nil, autoTestGlobalIds: [Int64]? = nil, autoTestTags: [String]? = nil, excludeAutoTestTags: [String]? = nil, name: String? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, startedOn: DateTimeRangeSelectorModel? = nil, completedOn: DateTimeRangeSelectorModel? = nil, duration: Int64RangeSelectorModel? = nil, resultReasons: [String]? = nil, testRunIds: [UUID]? = nil) {
         self.configurationIds = configurationIds
         self.outcomes = outcomes
         self.statusCodes = statusCodes
@@ -54,6 +58,8 @@ public struct TestResultsFilterApiModel: Codable, JSONEncodable, Hashable {
         self.namespace = namespace
         self.className = className
         self.autoTestGlobalIds = autoTestGlobalIds
+        self.autoTestTags = autoTestTags
+        self.excludeAutoTestTags = excludeAutoTestTags
         self.name = name
         self.createdDate = createdDate
         self.modifiedDate = modifiedDate
@@ -72,6 +78,8 @@ public struct TestResultsFilterApiModel: Codable, JSONEncodable, Hashable {
         case namespace
         case className
         case autoTestGlobalIds
+        case autoTestTags
+        case excludeAutoTestTags
         case name
         case createdDate
         case modifiedDate
@@ -93,6 +101,8 @@ public struct TestResultsFilterApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(namespace, forKey: .namespace)
         try container.encodeIfPresent(className, forKey: .className)
         try container.encodeIfPresent(autoTestGlobalIds, forKey: .autoTestGlobalIds)
+        try container.encodeIfPresent(autoTestTags, forKey: .autoTestTags)
+        try container.encodeIfPresent(excludeAutoTestTags, forKey: .excludeAutoTestTags)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(createdDate, forKey: .createdDate)
         try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)

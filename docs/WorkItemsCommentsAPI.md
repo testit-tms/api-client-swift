@@ -63,7 +63,7 @@ Void (empty response body)
 
 # **apiV2WorkItemsCommentsPost**
 ```swift
-    open class func apiV2WorkItemsCommentsPost(workItemCommentPostModel: WorkItemCommentPostModel? = nil, completion: @escaping (_ data: WorkItemCommentModel?, _ error: Error?) -> Void)
+    open class func apiV2WorkItemsCommentsPost(createWorkItemCommentApiModel: CreateWorkItemCommentApiModel? = nil, completion: @escaping (_ data: WorkItemCommentApiResult?, _ error: Error?) -> Void)
 ```
 
 Create WorkItem comment
@@ -75,10 +75,10 @@ Create WorkItem comment
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let workItemCommentPostModel = WorkItemCommentPostModel(text: "text_example", workItemId: 123) // WorkItemCommentPostModel |  (optional)
+let createWorkItemCommentApiModel = CreateWorkItemCommentApiModel(workItemId: 123, text: "text_example") // CreateWorkItemCommentApiModel |  (optional)
 
 // Create WorkItem comment
-WorkItemsCommentsAPI.apiV2WorkItemsCommentsPost(workItemCommentPostModel: workItemCommentPostModel) { (response, error) in
+WorkItemsCommentsAPI.apiV2WorkItemsCommentsPost(createWorkItemCommentApiModel: createWorkItemCommentApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -94,11 +94,11 @@ WorkItemsCommentsAPI.apiV2WorkItemsCommentsPost(workItemCommentPostModel: workIt
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workItemCommentPostModel** | [**WorkItemCommentPostModel**](WorkItemCommentPostModel.md) |  | [optional] 
+ **createWorkItemCommentApiModel** | [**CreateWorkItemCommentApiModel**](CreateWorkItemCommentApiModel.md) |  | [optional] 
 
 ### Return type
 
-[**WorkItemCommentModel**](WorkItemCommentModel.md)
+[**WorkItemCommentApiResult**](WorkItemCommentApiResult.md)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 # **apiV2WorkItemsCommentsPut**
 ```swift
-    open class func apiV2WorkItemsCommentsPut(workItemCommentPutModel: WorkItemCommentPutModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func apiV2WorkItemsCommentsPut(updateWorkItemCommentApiModel: UpdateWorkItemCommentApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Update work item comment
@@ -123,10 +123,10 @@ Update work item comment
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let workItemCommentPutModel = WorkItemCommentPutModel(text: "text_example", id: 123) // WorkItemCommentPutModel |  (optional)
+let updateWorkItemCommentApiModel = UpdateWorkItemCommentApiModel(id: 123, text: "text_example") // UpdateWorkItemCommentApiModel |  (optional)
 
 // Update work item comment
-WorkItemsCommentsAPI.apiV2WorkItemsCommentsPut(workItemCommentPutModel: workItemCommentPutModel) { (response, error) in
+WorkItemsCommentsAPI.apiV2WorkItemsCommentsPut(updateWorkItemCommentApiModel: updateWorkItemCommentApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -142,7 +142,7 @@ WorkItemsCommentsAPI.apiV2WorkItemsCommentsPut(workItemCommentPutModel: workItem
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workItemCommentPutModel** | [**WorkItemCommentPutModel**](WorkItemCommentPutModel.md) |  | [optional] 
+ **updateWorkItemCommentApiModel** | [**UpdateWorkItemCommentApiModel**](UpdateWorkItemCommentApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 # **apiV2WorkItemsIdCommentsGet**
 ```swift
-    open class func apiV2WorkItemsIdCommentsGet(id: String, completion: @escaping (_ data: [WorkItemCommentModel]?, _ error: Error?) -> Void)
+    open class func apiV2WorkItemsIdCommentsGet(id: String, completion: @escaping (_ data: [WorkItemCommentApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get work item comments
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[WorkItemCommentModel]**](WorkItemCommentModel.md)
+[**[WorkItemCommentApiResult]**](WorkItemCommentApiResult.md)
 
 ### Authorization
 

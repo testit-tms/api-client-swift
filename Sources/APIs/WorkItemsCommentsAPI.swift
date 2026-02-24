@@ -65,13 +65,13 @@ open class WorkItemsCommentsAPI {
     /**
      Create WorkItem comment
      
-     - parameter workItemCommentPostModel: (body)  (optional)
+     - parameter createWorkItemCommentApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2WorkItemsCommentsPost(workItemCommentPostModel: WorkItemCommentPostModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkItemCommentModel?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2WorkItemsCommentsPostWithRequestBuilder(workItemCommentPostModel: workItemCommentPostModel).execute(apiResponseQueue) { result in
+    open class func apiV2WorkItemsCommentsPost(createWorkItemCommentApiModel: CreateWorkItemCommentApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkItemCommentApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WorkItemsCommentsPostWithRequestBuilder(createWorkItemCommentApiModel: createWorkItemCommentApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -88,13 +88,13 @@ open class WorkItemsCommentsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter workItemCommentPostModel: (body)  (optional)
-     - returns: RequestBuilder<WorkItemCommentModel> 
+     - parameter createWorkItemCommentApiModel: (body)  (optional)
+     - returns: RequestBuilder<WorkItemCommentApiResult> 
      */
-    open class func apiV2WorkItemsCommentsPostWithRequestBuilder(workItemCommentPostModel: WorkItemCommentPostModel? = nil) -> RequestBuilder<WorkItemCommentModel> {
+    open class func apiV2WorkItemsCommentsPostWithRequestBuilder(createWorkItemCommentApiModel: CreateWorkItemCommentApiModel? = nil) -> RequestBuilder<WorkItemCommentApiResult> {
         let localVariablePath = "/api/v2/workItems/comments"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: workItemCommentPostModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createWorkItemCommentApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -104,7 +104,7 @@ open class WorkItemsCommentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<WorkItemCommentModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WorkItemCommentApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -112,13 +112,13 @@ open class WorkItemsCommentsAPI {
     /**
      Update work item comment
      
-     - parameter workItemCommentPutModel: (body)  (optional)
+     - parameter updateWorkItemCommentApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2WorkItemsCommentsPut(workItemCommentPutModel: WorkItemCommentPutModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return apiV2WorkItemsCommentsPutWithRequestBuilder(workItemCommentPutModel: workItemCommentPutModel).execute(apiResponseQueue) { result in
+    open class func apiV2WorkItemsCommentsPut(updateWorkItemCommentApiModel: UpdateWorkItemCommentApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WorkItemsCommentsPutWithRequestBuilder(updateWorkItemCommentApiModel: updateWorkItemCommentApiModel).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 completion((), nil)
@@ -134,13 +134,13 @@ open class WorkItemsCommentsAPI {
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
-     - parameter workItemCommentPutModel: (body)  (optional)
+     - parameter updateWorkItemCommentApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func apiV2WorkItemsCommentsPutWithRequestBuilder(workItemCommentPutModel: WorkItemCommentPutModel? = nil) -> RequestBuilder<Void> {
+    open class func apiV2WorkItemsCommentsPutWithRequestBuilder(updateWorkItemCommentApiModel: UpdateWorkItemCommentApiModel? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/v2/workItems/comments"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: workItemCommentPutModel)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateWorkItemCommentApiModel)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -212,7 +212,7 @@ open class WorkItemsCommentsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2WorkItemsIdCommentsGet(id: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [WorkItemCommentModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2WorkItemsIdCommentsGet(id: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [WorkItemCommentApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2WorkItemsIdCommentsGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -230,9 +230,9 @@ open class WorkItemsCommentsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Unique or global ID of the work item 
-     - returns: RequestBuilder<[WorkItemCommentModel]> 
+     - returns: RequestBuilder<[WorkItemCommentApiResult]> 
      */
-    open class func apiV2WorkItemsIdCommentsGetWithRequestBuilder(id: String) -> RequestBuilder<[WorkItemCommentModel]> {
+    open class func apiV2WorkItemsIdCommentsGetWithRequestBuilder(id: String) -> RequestBuilder<[WorkItemCommentApiResult]> {
         var localVariablePath = "/api/v2/workItems/{id}/comments"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -248,7 +248,7 @@ open class WorkItemsCommentsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[WorkItemCommentModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[WorkItemCommentApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

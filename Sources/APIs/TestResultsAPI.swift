@@ -372,7 +372,7 @@ open class TestResultsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestResultsIdRerunsGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: RerunsModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2TestResultsIdRerunsGet(id: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: RerunsApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TestResultsIdRerunsGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -390,9 +390,9 @@ open class TestResultsAPI {
        - type: apiKey Authorization (HEADER)
        - name: Bearer or PrivateToken
      - parameter id: (path) Test result unique ID 
-     - returns: RequestBuilder<RerunsModel> 
+     - returns: RequestBuilder<RerunsApiResult> 
      */
-    open class func apiV2TestResultsIdRerunsGetWithRequestBuilder(id: UUID) -> RequestBuilder<RerunsModel> {
+    open class func apiV2TestResultsIdRerunsGetWithRequestBuilder(id: UUID) -> RequestBuilder<RerunsApiResult> {
         var localVariablePath = "/api/v2/testResults/{id}/reruns"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -408,7 +408,7 @@ open class TestResultsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<RerunsModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RerunsApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

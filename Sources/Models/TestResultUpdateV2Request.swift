@@ -12,8 +12,8 @@ import AnyCodable
 
 public struct TestResultUpdateV2Request: Codable, JSONEncodable, Hashable {
 
-    static let durationInMsRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: -9223372036854775616, exclusiveMaximum: false, multipleOf: nil)
-    static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: -9223372036854775616, exclusiveMaximum: false, multipleOf: nil)
+    static let durationInMsRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
+    static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
     public var failureClassIds: [UUID]?
     @available(*, deprecated, message: "This property is deprecated.")
     public var outcome: TestResultOutcome?
