@@ -44,8 +44,12 @@ public struct TestRunFilterApiModel: Codable, JSONEncodable, Hashable {
     public var completedDate: DateTimeRangeSelectorModel?
     /** Specifies a test result configuration IDs to search for */
     public var testResultsConfigurationIds: [UUID]?
+    /** Specifies a test run tags to search for */
+    public var tags: [String]?
+    /** Specifies a test run excluded tags to search for */
+    public var excludeTags: [String]?
 
-    public init(projectIds: [UUID]? = nil, name: String? = nil, states: [TestRunState]? = nil, statusCodes: [String]? = nil, createdDate: DateTimeRangeSelectorModel? = nil, startedDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedByIds: [UUID]? = nil, isDeleted: Bool? = nil, autoTestsCount: Int32RangeSelectorModel? = nil, testResultsOutcome: [TestResultOutcome]? = nil, testResultsStatusCodes: [String]? = nil, failureCategory: [FailureCategory]? = nil, completedDate: DateTimeRangeSelectorModel? = nil, testResultsConfigurationIds: [UUID]? = nil) {
+    public init(projectIds: [UUID]? = nil, name: String? = nil, states: [TestRunState]? = nil, statusCodes: [String]? = nil, createdDate: DateTimeRangeSelectorModel? = nil, startedDate: DateTimeRangeSelectorModel? = nil, createdByIds: [UUID]? = nil, modifiedByIds: [UUID]? = nil, isDeleted: Bool? = nil, autoTestsCount: Int32RangeSelectorModel? = nil, testResultsOutcome: [TestResultOutcome]? = nil, testResultsStatusCodes: [String]? = nil, failureCategory: [FailureCategory]? = nil, completedDate: DateTimeRangeSelectorModel? = nil, testResultsConfigurationIds: [UUID]? = nil, tags: [String]? = nil, excludeTags: [String]? = nil) {
         self.projectIds = projectIds
         self.name = name
         self.states = states
@@ -61,6 +65,8 @@ public struct TestRunFilterApiModel: Codable, JSONEncodable, Hashable {
         self.failureCategory = failureCategory
         self.completedDate = completedDate
         self.testResultsConfigurationIds = testResultsConfigurationIds
+        self.tags = tags
+        self.excludeTags = excludeTags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -79,6 +85,8 @@ public struct TestRunFilterApiModel: Codable, JSONEncodable, Hashable {
         case failureCategory
         case completedDate
         case testResultsConfigurationIds
+        case tags
+        case excludeTags
     }
 
     // Encodable protocol methods
@@ -100,6 +108,8 @@ public struct TestRunFilterApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(failureCategory, forKey: .failureCategory)
         try container.encodeIfPresent(completedDate, forKey: .completedDate)
         try container.encodeIfPresent(testResultsConfigurationIds, forKey: .testResultsConfigurationIds)
+        try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(excludeTags, forKey: .excludeTags)
     }
 }
 

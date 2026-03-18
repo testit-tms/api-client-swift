@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **completedDate** | [**DateTimeRangeSelectorModel**](DateTimeRangeSelectorModel.md) |  | [optional] 
 **createdByIds** | **Set<UUID>** |  | [optional] 
 **modifiedByIds** | **Set<UUID>** |  | [optional] 
+**tags** | **Set<String>** |  | [optional] 
+**excludeTags** | **Set<String>** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

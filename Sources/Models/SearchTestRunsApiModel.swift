@@ -17,6 +17,8 @@ public struct SearchTestRunsApiModel: Codable, JSONEncodable, Hashable {
     static let statusCodesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     static let createdByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     static let modifiedByIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let excludeTagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     public var name: String?
     @available(*, deprecated, message: "This property is deprecated.")
     public var states: Set<TestRunState>?
@@ -25,8 +27,10 @@ public struct SearchTestRunsApiModel: Codable, JSONEncodable, Hashable {
     public var completedDate: DateTimeRangeSelectorModel?
     public var createdByIds: Set<UUID>?
     public var modifiedByIds: Set<UUID>?
+    public var tags: Set<String>?
+    public var excludeTags: Set<String>?
 
-    public init(name: String? = nil, states: Set<TestRunState>? = nil, statusCodes: Set<String>? = nil, startedDate: DateTimeRangeSelectorModel? = nil, completedDate: DateTimeRangeSelectorModel? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil) {
+    public init(name: String? = nil, states: Set<TestRunState>? = nil, statusCodes: Set<String>? = nil, startedDate: DateTimeRangeSelectorModel? = nil, completedDate: DateTimeRangeSelectorModel? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, tags: Set<String>? = nil, excludeTags: Set<String>? = nil) {
         self.name = name
         self.states = states
         self.statusCodes = statusCodes
@@ -34,6 +38,8 @@ public struct SearchTestRunsApiModel: Codable, JSONEncodable, Hashable {
         self.completedDate = completedDate
         self.createdByIds = createdByIds
         self.modifiedByIds = modifiedByIds
+        self.tags = tags
+        self.excludeTags = excludeTags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -44,6 +50,8 @@ public struct SearchTestRunsApiModel: Codable, JSONEncodable, Hashable {
         case completedDate
         case createdByIds
         case modifiedByIds
+        case tags
+        case excludeTags
     }
 
     // Encodable protocol methods
@@ -57,6 +65,8 @@ public struct SearchTestRunsApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(completedDate, forKey: .completedDate)
         try container.encodeIfPresent(createdByIds, forKey: .createdByIds)
         try container.encodeIfPresent(modifiedByIds, forKey: .modifiedByIds)
+        try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(excludeTags, forKey: .excludeTags)
     }
 }
 

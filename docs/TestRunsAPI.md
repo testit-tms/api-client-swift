@@ -44,7 +44,7 @@ Delete multiple test runs
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let testRunSelectApiModel = TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectApiModel |  (optional)
+let testRunSelectApiModel = TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123], tags: ["tags_example"], excludeTags: ["excludeTags_example"]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectApiModel |  (optional)
 
 // Delete multiple test runs
 TestRunsAPI.apiV2TestRunsDelete(testRunSelectApiModel: testRunSelectApiModel) { (response, error) in
@@ -538,7 +538,7 @@ Permanently delete multiple test runs from archive
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let testRunSelectApiModel = TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectApiModel |  (optional)
+let testRunSelectApiModel = TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123], tags: ["tags_example"], excludeTags: ["excludeTags_example"]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectApiModel |  (optional)
 
 // Permanently delete multiple test runs from archive
 TestRunsAPI.apiV2TestRunsPurgeBulkPost(testRunSelectApiModel: testRunSelectApiModel) { (response, error) in
@@ -588,7 +588,7 @@ Restore multiple test runs from the archive
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let testRunSelectApiModel = TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectApiModel |  (optional)
+let testRunSelectApiModel = TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123], tags: ["tags_example"], excludeTags: ["excludeTags_example"]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // TestRunSelectApiModel |  (optional)
 
 // Restore multiple test runs from the archive
 TestRunsAPI.apiV2TestRunsRestoreBulkPost(testRunSelectApiModel: testRunSelectApiModel) { (response, error) in
@@ -641,7 +641,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let testRunFilterApiModel = TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]) // TestRunFilterApiModel |  (optional)
+let testRunFilterApiModel = TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123], tags: ["tags_example"], excludeTags: ["excludeTags_example"]) // TestRunFilterApiModel |  (optional)
 
 // Search for test runs
 TestRunsAPI.apiV2TestRunsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testRunFilterApiModel: testRunFilterApiModel) { (response, error) in
@@ -694,7 +694,7 @@ Update multiple test runs
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let updateMultipleTestRunsApiModel = UpdateMultipleTestRunsApiModel(selectModel: TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))), description: "description_example", attachmentUpdateScheme: UpdateMultipleAttachmentsApiModel(action: ActionUpdate(), attachmentIds: [123]), linkUpdateScheme: UpdateMultipleLinksApiModel(action: nil, links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)])) // UpdateMultipleTestRunsApiModel |  (optional)
+let updateMultipleTestRunsApiModel = UpdateMultipleTestRunsApiModel(selectModel: TestRunSelectApiModel(filter: TestRunFilterApiModel(projectIds: [123], name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), startedDate: nil, createdByIds: [123], modifiedByIds: [123], isDeleted: false, autoTestsCount: Int32RangeSelectorModel(from: 123, to: 123), testResultsOutcome: [TestResultOutcome()], testResultsStatusCodes: ["testResultsStatusCodes_example"], failureCategory: [FailureCategory()], completedDate: nil, testResultsConfigurationIds: [123], tags: ["tags_example"], excludeTags: ["excludeTags_example"]), extractionModel: TestRunExtractionApiModel(ids: GuidExtractionModel(include: [123], exclude: [123]))), description: "description_example", attachmentUpdateScheme: UpdateMultipleAttachmentsApiModel(action: ActionUpdate(), attachmentIds: [123]), linkUpdateScheme: UpdateMultipleLinksApiModel(action: nil, links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]), tagUpdateScheme: UpdateMultipleTagsApiModel(action: nil, tags: [TagApiModel(name: "name_example")])) // UpdateMultipleTestRunsApiModel |  (optional)
 
 // Update multiple test runs
 TestRunsAPI.apiV2TestRunsUpdateMultiplePost(updateMultipleTestRunsApiModel: updateMultipleTestRunsApiModel) { (response, error) in
@@ -794,7 +794,7 @@ This method creates a test run based on an autotest and a configuration. The dif
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestRunAndFillByAutoTestsApiModel = CreateTestRunAndFillByAutoTestsApiModel(projectId: 123, name: "name_example", configurationIds: [123], autoTestExternalIds: ["autoTestExternalIds_example"], description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // CreateTestRunAndFillByAutoTestsApiModel |  (optional)
+let createTestRunAndFillByAutoTestsApiModel = CreateTestRunAndFillByAutoTestsApiModel(projectId: 123, name: "name_example", configurationIds: [123], autoTestExternalIds: ["autoTestExternalIds_example"], description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"]) // CreateTestRunAndFillByAutoTestsApiModel |  (optional)
 
 // Create test runs based on autotests and configurations
 TestRunsAPI.createAndFillByAutoTests(createTestRunAndFillByAutoTestsApiModel: createTestRunAndFillByAutoTestsApiModel) { (response, error) in
@@ -844,7 +844,7 @@ This method creates a test run based on a combination of a configuration and a w
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestRunAndFillByConfigurationsApiModel = CreateTestRunAndFillByConfigurationsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], testPointSelectors: [TestPointSelector(configurationId: 123, workItemIds: [123])]) // CreateTestRunAndFillByConfigurationsApiModel |  (optional)
+let createTestRunAndFillByConfigurationsApiModel = CreateTestRunAndFillByConfigurationsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], testPointSelectors: [TestPointSelector(configurationId: 123, workItemIds: [123])]) // CreateTestRunAndFillByConfigurationsApiModel |  (optional)
 
 // Create test runs picking the needed test points
 TestRunsAPI.createAndFillByConfigurations(createTestRunAndFillByConfigurationsApiModel: createTestRunAndFillByConfigurationsApiModel) { (response, error) in
@@ -894,7 +894,7 @@ This method creates a test run based on a combination of configuration and work 
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestRunAndFillByWorkItemsApiModel = CreateTestRunAndFillByWorkItemsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], configurationIds: [123], workItemIds: [123]) // CreateTestRunAndFillByWorkItemsApiModel |  (optional)
+let createTestRunAndFillByWorkItemsApiModel = CreateTestRunAndFillByWorkItemsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], configurationIds: [123], workItemIds: [123]) // CreateTestRunAndFillByWorkItemsApiModel |  (optional)
 
 // Create test run based on configurations and work items
 TestRunsAPI.createAndFillByWorkItems(createTestRunAndFillByWorkItemsApiModel: createTestRunAndFillByWorkItemsApiModel) { (response, error) in
@@ -944,7 +944,7 @@ Create empty TestRun
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createEmptyTestRunApiModel = CreateEmptyTestRunApiModel(projectId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // CreateEmptyTestRunApiModel |  (optional)
+let createEmptyTestRunApiModel = CreateEmptyTestRunApiModel(projectId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"]) // CreateEmptyTestRunApiModel |  (optional)
 
 // Create empty TestRun
 TestRunsAPI.createEmpty(createEmptyTestRunApiModel: createEmptyTestRunApiModel) { (response, error) in
@@ -1196,7 +1196,7 @@ Update empty TestRun
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let updateEmptyTestRunApiModel = UpdateEmptyTestRunApiModel(id: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [UpdateLinkApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // UpdateEmptyTestRunApiModel |  (optional)
+let updateEmptyTestRunApiModel = UpdateEmptyTestRunApiModel(id: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [UpdateLinkApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"]) // UpdateEmptyTestRunApiModel |  (optional)
 
 // Update empty TestRun
 TestRunsAPI.updateEmpty(updateEmptyTestRunApiModel: updateEmptyTestRunApiModel) { (response, error) in

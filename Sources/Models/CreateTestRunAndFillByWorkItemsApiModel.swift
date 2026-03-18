@@ -28,12 +28,14 @@ public struct CreateTestRunAndFillByWorkItemsApiModel: Codable, JSONEncodable, H
     public var attachments: [AssignAttachmentApiModel]?
     /** Collection of links to relate to the test run */
     public var links: [CreateLinkApiModel]?
+    /** Collection of tags to assign to the test run */
+    public var tags: [String]?
     /** Specifies the configuration GUIDs, from which test points are created. You can specify several GUIDs. */
     public var configurationIds: [UUID]
     /** Specifies the work item GUIDs, from which test points are created. You can specify several GUIDs. */
     public var workItemIds: [UUID]
 
-    public init(projectId: UUID, testPlanId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, configurationIds: [UUID], workItemIds: [UUID]) {
+    public init(projectId: UUID, testPlanId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, tags: [String]? = nil, configurationIds: [UUID], workItemIds: [UUID]) {
         self.projectId = projectId
         self.testPlanId = testPlanId
         self.name = name
@@ -41,6 +43,7 @@ public struct CreateTestRunAndFillByWorkItemsApiModel: Codable, JSONEncodable, H
         self.launchSource = launchSource
         self.attachments = attachments
         self.links = links
+        self.tags = tags
         self.configurationIds = configurationIds
         self.workItemIds = workItemIds
     }
@@ -53,6 +56,7 @@ public struct CreateTestRunAndFillByWorkItemsApiModel: Codable, JSONEncodable, H
         case launchSource
         case attachments
         case links
+        case tags
         case configurationIds
         case workItemIds
     }
@@ -68,6 +72,7 @@ public struct CreateTestRunAndFillByWorkItemsApiModel: Codable, JSONEncodable, H
         try container.encodeIfPresent(launchSource, forKey: .launchSource)
         try container.encodeIfPresent(attachments, forKey: .attachments)
         try container.encodeIfPresent(links, forKey: .links)
+        try container.encodeIfPresent(tags, forKey: .tags)
         try container.encode(configurationIds, forKey: .configurationIds)
         try container.encode(workItemIds, forKey: .workItemIds)
     }

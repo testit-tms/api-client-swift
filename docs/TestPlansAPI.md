@@ -923,7 +923,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let searchTestRunsApiModel = SearchTestRunsApiModel(name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], startedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), completedDate: nil, createdByIds: [123], modifiedByIds: [123]) // SearchTestRunsApiModel |  (optional)
+let searchTestRunsApiModel = SearchTestRunsApiModel(name: "name_example", states: [TestRunState()], statusCodes: ["statusCodes_example"], startedDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), completedDate: nil, createdByIds: [123], modifiedByIds: [123], tags: ["tags_example"], excludeTags: ["excludeTags_example"]) // SearchTestRunsApiModel |  (optional)
 
 // Search TestRuns of TestPlan
 TestPlansAPI.apiV2TestPlansIdTestRunsSearchPost(id: id, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, searchTestRunsApiModel: searchTestRunsApiModel) { (response, error) in

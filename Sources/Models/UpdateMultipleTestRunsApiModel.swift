@@ -20,12 +20,15 @@ public struct UpdateMultipleTestRunsApiModel: Codable, JSONEncodable, Hashable {
     public var attachmentUpdateScheme: UpdateMultipleAttachmentsApiModel?
     /** Set of links */
     public var linkUpdateScheme: UpdateMultipleLinksApiModel?
+    /** Set of tags */
+    public var tagUpdateScheme: UpdateMultipleTagsApiModel?
 
-    public init(selectModel: TestRunSelectApiModel, description: String? = nil, attachmentUpdateScheme: UpdateMultipleAttachmentsApiModel? = nil, linkUpdateScheme: UpdateMultipleLinksApiModel? = nil) {
+    public init(selectModel: TestRunSelectApiModel, description: String? = nil, attachmentUpdateScheme: UpdateMultipleAttachmentsApiModel? = nil, linkUpdateScheme: UpdateMultipleLinksApiModel? = nil, tagUpdateScheme: UpdateMultipleTagsApiModel? = nil) {
         self.selectModel = selectModel
         self.description = description
         self.attachmentUpdateScheme = attachmentUpdateScheme
         self.linkUpdateScheme = linkUpdateScheme
+        self.tagUpdateScheme = tagUpdateScheme
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -33,6 +36,7 @@ public struct UpdateMultipleTestRunsApiModel: Codable, JSONEncodable, Hashable {
         case description
         case attachmentUpdateScheme
         case linkUpdateScheme
+        case tagUpdateScheme
     }
 
     // Encodable protocol methods
@@ -43,6 +47,7 @@ public struct UpdateMultipleTestRunsApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(attachmentUpdateScheme, forKey: .attachmentUpdateScheme)
         try container.encodeIfPresent(linkUpdateScheme, forKey: .linkUpdateScheme)
+        try container.encodeIfPresent(tagUpdateScheme, forKey: .tagUpdateScheme)
     }
 }
 

@@ -41,8 +41,9 @@ public struct TestRunApiResult: Codable, JSONEncodable, Hashable {
     public var createdById: UUID
     public var modifiedById: UUID?
     public var createdByUserName: String?
+    public var tags: [String]
 
-    public init(id: UUID, isDeleted: Bool, startedDate: Date? = nil, completedDate: Date? = nil, build: String, description: String? = nil, stateName: TestRunState, status: TestStatusApiResult, projectId: UUID, testPlanId: UUID? = nil, runByUserId: UUID? = nil, stoppedByUserId: UUID? = nil, name: String? = nil, launchSource: String? = nil, autoTests: [AutoTestApiResult], autoTestsCount: Int, testSuiteIds: [UUID], isAutomated: Bool, analytic: TestRunAnalyticApiResult, testResults: [TestResultApiResult], testPlan: TestPlanApiResult? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, createdByUserName: String? = nil) {
+    public init(id: UUID, isDeleted: Bool, startedDate: Date? = nil, completedDate: Date? = nil, build: String, description: String? = nil, stateName: TestRunState, status: TestStatusApiResult, projectId: UUID, testPlanId: UUID? = nil, runByUserId: UUID? = nil, stoppedByUserId: UUID? = nil, name: String? = nil, launchSource: String? = nil, autoTests: [AutoTestApiResult], autoTestsCount: Int, testSuiteIds: [UUID], isAutomated: Bool, analytic: TestRunAnalyticApiResult, testResults: [TestResultApiResult], testPlan: TestPlanApiResult? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, createdByUserName: String? = nil, tags: [String]) {
         self.id = id
         self.isDeleted = isDeleted
         self.startedDate = startedDate
@@ -69,6 +70,7 @@ public struct TestRunApiResult: Codable, JSONEncodable, Hashable {
         self.createdById = createdById
         self.modifiedById = modifiedById
         self.createdByUserName = createdByUserName
+        self.tags = tags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -98,6 +100,7 @@ public struct TestRunApiResult: Codable, JSONEncodable, Hashable {
         case createdById
         case modifiedById
         case createdByUserName
+        case tags
     }
 
     // Encodable protocol methods
@@ -130,6 +133,7 @@ public struct TestRunApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(createdById, forKey: .createdById)
         try container.encodeIfPresent(modifiedById, forKey: .modifiedById)
         try container.encodeIfPresent(createdByUserName, forKey: .createdByUserName)
+        try container.encode(tags, forKey: .tags)
     }
 }
 

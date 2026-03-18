@@ -24,14 +24,17 @@ public struct CreateEmptyTestRunApiModel: Codable, JSONEncodable, Hashable {
     public var attachments: [AssignAttachmentApiModel]?
     /** Collection of links to relate to the test run */
     public var links: [CreateLinkApiModel]?
+    /** Collection of tags to assign to the test run */
+    public var tags: [String]?
 
-    public init(projectId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil) {
+    public init(projectId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, tags: [String]? = nil) {
         self.projectId = projectId
         self.name = name
         self.description = description
         self.launchSource = launchSource
         self.attachments = attachments
         self.links = links
+        self.tags = tags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -41,6 +44,7 @@ public struct CreateEmptyTestRunApiModel: Codable, JSONEncodable, Hashable {
         case launchSource
         case attachments
         case links
+        case tags
     }
 
     // Encodable protocol methods
@@ -53,6 +57,7 @@ public struct CreateEmptyTestRunApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(launchSource, forKey: .launchSource)
         try container.encodeIfPresent(attachments, forKey: .attachments)
         try container.encodeIfPresent(links, forKey: .links)
+        try container.encodeIfPresent(tags, forKey: .tags)
     }
 }
 

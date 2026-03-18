@@ -22,13 +22,16 @@ public struct TestPlanTestPointsAutoTestsRunApiModel: Codable, JSONEncodable, Ha
     public var build: String?
     /** Reset test point status when actual work item does not automated. */
     public var resetNotActualAutomatedTestPoints: Bool
+    /** Tags of the test run. */
+    public var tags: [String]?
 
-    public init(filter: TestPlanTestPointsSearchApiModel? = nil, extractionModel: TestPlanTestPointsExtractionApiModel? = nil, webhookIds: [UUID], build: String? = nil, resetNotActualAutomatedTestPoints: Bool) {
+    public init(filter: TestPlanTestPointsSearchApiModel? = nil, extractionModel: TestPlanTestPointsExtractionApiModel? = nil, webhookIds: [UUID], build: String? = nil, resetNotActualAutomatedTestPoints: Bool, tags: [String]? = nil) {
         self.filter = filter
         self.extractionModel = extractionModel
         self.webhookIds = webhookIds
         self.build = build
         self.resetNotActualAutomatedTestPoints = resetNotActualAutomatedTestPoints
+        self.tags = tags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -37,6 +40,7 @@ public struct TestPlanTestPointsAutoTestsRunApiModel: Codable, JSONEncodable, Ha
         case webhookIds
         case build
         case resetNotActualAutomatedTestPoints
+        case tags
     }
 
     // Encodable protocol methods
@@ -48,6 +52,7 @@ public struct TestPlanTestPointsAutoTestsRunApiModel: Codable, JSONEncodable, Ha
         try container.encode(webhookIds, forKey: .webhookIds)
         try container.encodeIfPresent(build, forKey: .build)
         try container.encode(resetNotActualAutomatedTestPoints, forKey: .resetNotActualAutomatedTestPoints)
+        try container.encodeIfPresent(tags, forKey: .tags)
     }
 }
 

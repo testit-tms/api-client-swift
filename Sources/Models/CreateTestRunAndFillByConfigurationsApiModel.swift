@@ -26,10 +26,12 @@ public struct CreateTestRunAndFillByConfigurationsApiModel: Codable, JSONEncodab
     public var attachments: [AssignAttachmentApiModel]?
     /** Collection of links to relate to the test run */
     public var links: [CreateLinkApiModel]?
+    /** Collection of tags to assign to the test run */
+    public var tags: [String]?
     /** Specifies an array of work items and configuration to create a test run for. */
     public var testPointSelectors: [TestPointSelector]
 
-    public init(projectId: UUID, testPlanId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, testPointSelectors: [TestPointSelector]) {
+    public init(projectId: UUID, testPlanId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, tags: [String]? = nil, testPointSelectors: [TestPointSelector]) {
         self.projectId = projectId
         self.testPlanId = testPlanId
         self.name = name
@@ -37,6 +39,7 @@ public struct CreateTestRunAndFillByConfigurationsApiModel: Codable, JSONEncodab
         self.launchSource = launchSource
         self.attachments = attachments
         self.links = links
+        self.tags = tags
         self.testPointSelectors = testPointSelectors
     }
 
@@ -48,6 +51,7 @@ public struct CreateTestRunAndFillByConfigurationsApiModel: Codable, JSONEncodab
         case launchSource
         case attachments
         case links
+        case tags
         case testPointSelectors
     }
 
@@ -62,6 +66,7 @@ public struct CreateTestRunAndFillByConfigurationsApiModel: Codable, JSONEncodab
         try container.encodeIfPresent(launchSource, forKey: .launchSource)
         try container.encodeIfPresent(attachments, forKey: .attachments)
         try container.encodeIfPresent(links, forKey: .links)
+        try container.encodeIfPresent(tags, forKey: .tags)
         try container.encode(testPointSelectors, forKey: .testPointSelectors)
     }
 }

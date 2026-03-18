@@ -39,8 +39,10 @@ public struct TestRunShortApiResult: Codable, JSONEncodable, Hashable {
     public var statistics: TestResultsStatisticsApiResult
     /** Test results configurations */
     public var testResultsConfigurations: [ConfigurationShortApiResult]
+    /** Collection of tags associated with the test run */
+    public var tags: [String]
 
-    public init(id: UUID, name: String, state: TestRunState, status: TestStatusApiResult, createdDate: Date, startedDate: Date? = nil, completedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, isDeleted: Bool, autoTestsCount: Int, statistics: TestResultsStatisticsApiResult, testResultsConfigurations: [ConfigurationShortApiResult]) {
+    public init(id: UUID, name: String, state: TestRunState, status: TestStatusApiResult, createdDate: Date, startedDate: Date? = nil, completedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, isDeleted: Bool, autoTestsCount: Int, statistics: TestResultsStatisticsApiResult, testResultsConfigurations: [ConfigurationShortApiResult], tags: [String]) {
         self.id = id
         self.name = name
         self.state = state
@@ -54,6 +56,7 @@ public struct TestRunShortApiResult: Codable, JSONEncodable, Hashable {
         self.autoTestsCount = autoTestsCount
         self.statistics = statistics
         self.testResultsConfigurations = testResultsConfigurations
+        self.tags = tags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -70,6 +73,7 @@ public struct TestRunShortApiResult: Codable, JSONEncodable, Hashable {
         case autoTestsCount
         case statistics
         case testResultsConfigurations
+        case tags
     }
 
     // Encodable protocol methods
@@ -89,6 +93,7 @@ public struct TestRunShortApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(autoTestsCount, forKey: .autoTestsCount)
         try container.encode(statistics, forKey: .statistics)
         try container.encode(testResultsConfigurations, forKey: .testResultsConfigurations)
+        try container.encode(tags, forKey: .tags)
     }
 }
 
