@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **startedOn** | **Date** | Date when the test result has been started | [optional] 
 **completedOn** | **Date** | Date when the test result has been completed | [optional] 
 **duration** | **Int64** | Time which it took to run the test | [optional] 
-**links** | [LinkShort] | Collection of links attached to the test result | 
+**links** | [TestResultLinkApiResult] | Collection of links attached to the test result | 
 **attachments** | [AttachmentApiResult] | Collection of files attached to the test result | 
 **rerunCompletedCount** | **Int** | Run count | 
 

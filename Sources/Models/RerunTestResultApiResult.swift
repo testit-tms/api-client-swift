@@ -12,12 +12,16 @@ import AnyCodable
 
 public struct RerunTestResultApiResult: Codable, JSONEncodable, Hashable {
 
+    /** Identifier of the rerun result. */
     public var id: UUID
+    /** Status of the autotest run. */
     public var outcome: String
-    public var status: TestStatusApiResult
+    /** Status of the autotest run. */
+    public var status: TestStatusShortApiResult
+    /** Number of the run (e.g., 1 for the first attempt). */
     public var runNumber: Int
 
-    public init(id: UUID, outcome: String, status: TestStatusApiResult, runNumber: Int) {
+    public init(id: UUID, outcome: String, status: TestStatusShortApiResult, runNumber: Int) {
         self.id = id
         self.outcome = outcome
         self.status = status
