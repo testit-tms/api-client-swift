@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **webhookIds** | **[UUID]** | Webhook ids to run. | 
 **build** | **String** | Specifies the test run build. | [optional] 
 **resetNotActualAutomatedTestPoints** | **Bool** | Reset test point status when actual work item does not automated. | 
+**tags** | **[String]** | Tags of the test run. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

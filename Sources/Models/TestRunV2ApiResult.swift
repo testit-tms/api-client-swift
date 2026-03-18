@@ -55,8 +55,10 @@ public struct TestRunV2ApiResult: Codable, JSONEncodable, Hashable {
     public var webhooks: [NamedEntityApiModel]
     /** Run count */
     public var runCount: Int
+    /** Collection of tags associated with the test run */
+    public var tags: [String]
 
-    public init(id: UUID, name: String, description: String? = nil, launchSource: String? = nil, startedOn: Date? = nil, completedOn: Date? = nil, stateName: TestRunState, status: TestStatusApiResult, projectId: UUID, testPlanId: UUID? = nil, testResults: [TestResultV2GetModel]? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, createdByUserName: String? = nil, attachments: [AttachmentApiResult], links: [LinkApiResult], customParameters: [String: String]? = nil, webhooks: [NamedEntityApiModel], runCount: Int) {
+    public init(id: UUID, name: String, description: String? = nil, launchSource: String? = nil, startedOn: Date? = nil, completedOn: Date? = nil, stateName: TestRunState, status: TestStatusApiResult, projectId: UUID, testPlanId: UUID? = nil, testResults: [TestResultV2GetModel]? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, createdByUserName: String? = nil, attachments: [AttachmentApiResult], links: [LinkApiResult], customParameters: [String: String]? = nil, webhooks: [NamedEntityApiModel], runCount: Int, tags: [String]) {
         self.id = id
         self.name = name
         self.description = description
@@ -78,6 +80,7 @@ public struct TestRunV2ApiResult: Codable, JSONEncodable, Hashable {
         self.customParameters = customParameters
         self.webhooks = webhooks
         self.runCount = runCount
+        self.tags = tags
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -102,6 +105,7 @@ public struct TestRunV2ApiResult: Codable, JSONEncodable, Hashable {
         case customParameters
         case webhooks
         case runCount
+        case tags
     }
 
     // Encodable protocol methods
@@ -129,6 +133,7 @@ public struct TestRunV2ApiResult: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(customParameters, forKey: .customParameters)
         try container.encode(webhooks, forKey: .webhooks)
         try container.encode(runCount, forKey: .runCount)
+        try container.encode(tags, forKey: .tags)
     }
 }
 
