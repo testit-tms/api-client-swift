@@ -18,7 +18,7 @@ public struct TestPlanTestPointsWorkItemSearchApiResult: Codable, JSONEncodable,
     public var versionNumber: Int
     public var medianDuration: Int64?
     public var isDeleted: Bool?
-    public var duration: Int
+    public var duration: Int64
     public var state: WorkItemState
     public var tags: [String]
     public var attributes: [String: AnyCodable]
@@ -30,7 +30,7 @@ public struct TestPlanTestPointsWorkItemSearchApiResult: Codable, JSONEncodable,
     public var created: AuditApiResult
     public var modified: AuditApiResult?
 
-    public init(id: UUID, globalId: Int64, versionId: UUID, versionNumber: Int, medianDuration: Int64? = nil, isDeleted: Bool? = nil, duration: Int, state: WorkItemState, tags: [String], attributes: [String: AnyCodable], orderRank: String? = nil, isAutomated: Bool, name: String, priority: WorkItemPriority, section: TestPlanTestPointsSectionSearchApiResult, created: AuditApiResult, modified: AuditApiResult? = nil) {
+    public init(id: UUID, globalId: Int64, versionId: UUID, versionNumber: Int, medianDuration: Int64? = nil, isDeleted: Bool? = nil, duration: Int64, state: WorkItemState, tags: [String], attributes: [String: AnyCodable], orderRank: String? = nil, isAutomated: Bool, name: String, priority: WorkItemPriority, section: TestPlanTestPointsSectionSearchApiResult, created: AuditApiResult, modified: AuditApiResult? = nil) {
         self.id = id
         self.globalId = globalId
         self.versionId = versionId

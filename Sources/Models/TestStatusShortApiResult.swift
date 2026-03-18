@@ -12,23 +12,26 @@ import AnyCodable
 
 public struct TestStatusShortApiResult: Codable, JSONEncodable, Hashable {
 
+    /** Identifier of the test status. */
     public var id: UUID
-    public var name: String
+    /** Code representing the test status. */
     public var code: String
-    /** Collection of possible status types */
+    /** Name of the test status. */
+    public var name: String
+    /** Type of the test status (e.g., Passed, Failed). */
     public var type: TestStatusApiType
 
-    public init(id: UUID, name: String, code: String, type: TestStatusApiType) {
+    public init(id: UUID, code: String, name: String, type: TestStatusApiType) {
         self.id = id
-        self.name = name
         self.code = code
+        self.name = name
         self.type = type
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
-        case name
         case code
+        case name
         case type
     }
 
@@ -37,8 +40,8 @@ public struct TestStatusShortApiResult: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
         try container.encode(code, forKey: .code)
+        try container.encode(name, forKey: .name)
         try container.encode(type, forKey: .type)
     }
 }

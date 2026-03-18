@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **versionNumber** | **Int** |  | 
 **medianDuration** | **Int64** |  | [optional] 
 **isDeleted** | **Bool** |  | [optional] 
-**duration** | **Int** |  | 
+**duration** | **Int64** |  | 
 **state** | [**WorkItemState**](WorkItemState.md) |  | 
 **tags** | **[String]** |  | 
 **attributes** | **[String: AnyCodable]** |  | 

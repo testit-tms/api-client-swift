@@ -33,7 +33,7 @@ public struct WorkItemShortApiResult: Codable, JSONEncodable, Hashable {
     /** Work Item global identifier */
     public var globalId: Int64
     /** Work Item duration */
-    public var duration: Int
+    public var duration: Int64
     /** Work Item median duration */
     public var medianDuration: Int64?
     /** Work Item attributes */
@@ -61,7 +61,7 @@ public struct WorkItemShortApiResult: Codable, JSONEncodable, Hashable {
     /** Set of links related to Work Item */
     public var links: [LinkShortApiResult]
 
-    public init(id: UUID, versionId: UUID, versionNumber: Int, name: String, entityTypeName: String, projectId: UUID, sectionId: UUID, sectionName: String, isAutomated: Bool, globalId: Int64, duration: Int, medianDuration: Int64? = nil, attributes: [String: AnyCodable]? = nil, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, isDeleted: Bool, tagNames: [String]? = nil, iterations: [IterationApiResult], links: [LinkShortApiResult]) {
+    public init(id: UUID, versionId: UUID, versionNumber: Int, name: String, entityTypeName: String, projectId: UUID, sectionId: UUID, sectionName: String, isAutomated: Bool, globalId: Int64, duration: Int64, medianDuration: Int64? = nil, attributes: [String: AnyCodable]? = nil, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, isDeleted: Bool, tagNames: [String]? = nil, iterations: [IterationApiResult], links: [LinkShortApiResult]) {
         self.id = id
         self.versionId = versionId
         self.versionNumber = versionNumber

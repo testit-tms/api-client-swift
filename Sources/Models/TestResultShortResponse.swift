@@ -50,13 +50,13 @@ public struct TestResultShortResponse: Codable, JSONEncodable, Hashable {
     /** Time which it took to run the test */
     public var duration: Int64?
     /** Collection of links attached to the test result */
-    public var links: [LinkShort]
+    public var links: [TestResultLinkApiResult]
     /** Collection of files attached to the test result */
     public var attachments: [AttachmentApiResult]
     /** Run count */
     public var rerunCompletedCount: Int
 
-    public init(id: UUID, name: String, autotestGlobalId: Int64, autotestExternalId: String? = nil, autoTestTags: [String], testRunId: UUID, configurationId: UUID, configurationName: String, outcome: String? = nil, status: TestStatusApiResult, resultReasons: [AutoTestResultReasonShort], comment: String? = nil, date: Date, createdDate: Date, modifiedDate: Date? = nil, startedOn: Date? = nil, completedOn: Date? = nil, duration: Int64? = nil, links: [LinkShort], attachments: [AttachmentApiResult], rerunCompletedCount: Int) {
+    public init(id: UUID, name: String, autotestGlobalId: Int64, autotestExternalId: String? = nil, autoTestTags: [String], testRunId: UUID, configurationId: UUID, configurationName: String, outcome: String? = nil, status: TestStatusApiResult, resultReasons: [AutoTestResultReasonShort], comment: String? = nil, date: Date, createdDate: Date, modifiedDate: Date? = nil, startedOn: Date? = nil, completedOn: Date? = nil, duration: Int64? = nil, links: [TestResultLinkApiResult], attachments: [AttachmentApiResult], rerunCompletedCount: Int) {
         self.id = id
         self.name = name
         self.autotestGlobalId = autotestGlobalId

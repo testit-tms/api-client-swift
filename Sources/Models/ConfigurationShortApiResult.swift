@@ -12,7 +12,9 @@ import AnyCodable
 
 public struct ConfigurationShortApiResult: Codable, JSONEncodable, Hashable {
 
+    /** Identifier of the configuration. */
     public var id: UUID
+    /** Name of the configuration. */
     public var name: String
 
     public init(id: UUID, name: String) {
