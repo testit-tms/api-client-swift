@@ -44,8 +44,10 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
     public var iterations: [AssignIterationApiModel]?
     /** Collection of autotest internal ids */
     public var autoTests: [AutoTestIdModel]?
+    /** Set of parameter keys related to the work item */
+    public var parameters: [WorkItemParameterKeyApiModel]?
 
-    public init(id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel? = nil, steps: [UpdateStepApiModel], preconditionSteps: [UpdateStepApiModel], postconditionSteps: [UpdateStepApiModel], duration: Int64, attributes: [String: AnyCodable], tags: [TagModel], links: [UpdateLinkApiModel], name: String, attachments: [AssignAttachmentApiModel], iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil) {
+    public init(id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel? = nil, steps: [UpdateStepApiModel], preconditionSteps: [UpdateStepApiModel], postconditionSteps: [UpdateStepApiModel], duration: Int64, attributes: [String: AnyCodable], tags: [TagModel], links: [UpdateLinkApiModel], name: String, attachments: [AssignAttachmentApiModel], iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil, parameters: [WorkItemParameterKeyApiModel]? = nil) {
         self.id = id
         self.sectionId = sectionId
         self.description = description
@@ -63,6 +65,7 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         self.attachments = attachments
         self.iterations = iterations
         self.autoTests = autoTests
+        self.parameters = parameters
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -83,6 +86,7 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         case attachments
         case iterations
         case autoTests
+        case parameters
     }
 
     // Encodable protocol methods
@@ -106,6 +110,7 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         try container.encode(attachments, forKey: .attachments)
         try container.encodeIfPresent(iterations, forKey: .iterations)
         try container.encodeIfPresent(autoTests, forKey: .autoTests)
+        try container.encodeIfPresent(parameters, forKey: .parameters)
     }
 }
 

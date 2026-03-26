@@ -645,7 +645,7 @@ Creates work item
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createWorkItemApiModel = CreateWorkItemApiModel(projectId: 123, sectionId: 123, name: "name_example", description: "description_example", entityTypeName: WorkItemEntityTypeApiModel(), duration: 123, state: WorkItemStateApiModel(), priority: WorkItemPriorityApiModel(), attributes: "TODO", tags: [TagModel(name: "name_example")], preconditionSteps: [CreateStepApiModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], steps: [nil], postconditionSteps: [nil], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)]) // CreateWorkItemApiModel |  (optional)
+let createWorkItemApiModel = CreateWorkItemApiModel(projectId: 123, sectionId: 123, name: "name_example", description: "description_example", entityTypeName: WorkItemEntityTypeApiModel(), duration: 123, state: WorkItemStateApiModel(), priority: WorkItemPriorityApiModel(), attributes: "TODO", tags: [TagModel(name: "name_example")], preconditionSteps: [CreateStepApiModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], steps: [nil], postconditionSteps: [nil], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], parameters: [WorkItemParameterKeyApiModel(id: 123)]) // CreateWorkItemApiModel |  (optional)
 
 // Creates work item
 WorkItemsAPI.apiV2WorkItemsPost(createWorkItemApiModel: createWorkItemApiModel) { (response, error) in
@@ -1117,7 +1117,7 @@ Name | Type | Description  | Notes
 
 # **getWorkItemById**
 ```swift
-    open class func getWorkItemById(id: String, versionId: UUID? = nil, versionNumber: Int? = nil, completion: @escaping (_ data: WorkItemModel?, _ error: Error?) -> Void)
+    open class func getWorkItemById(id: String, versionId: UUID? = nil, versionNumber: Int? = nil, completion: @escaping (_ data: WorkItemApiResult?, _ error: Error?) -> Void)
 ```
 
 Get Test Case, Checklist or Shared Step by Id or GlobalId
@@ -1156,7 +1156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WorkItemModel**](WorkItemModel.md)
+[**WorkItemApiResult**](WorkItemApiResult.md)
 
 ### Authorization
 
@@ -1383,7 +1383,7 @@ Update Test Case, Checklist or Shared Step
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let updateWorkItemApiModel = UpdateWorkItemApiModel(id: 123, sectionId: 123, description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), sourceType: WorkItemSourceTypeModel(), steps: [UpdateStepApiModel(id: 123, action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagModel(name: "name_example")], links: [UpdateLinkApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example", attachments: [AssignAttachmentApiModel(id: 123)], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)]) // UpdateWorkItemApiModel |  (optional)
+let updateWorkItemApiModel = UpdateWorkItemApiModel(id: 123, sectionId: 123, description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), sourceType: WorkItemSourceTypeModel(), steps: [UpdateStepApiModel(id: 123, action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagModel(name: "name_example")], links: [UpdateLinkApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example", attachments: [AssignAttachmentApiModel(id: 123)], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], parameters: [WorkItemParameterKeyApiModel(id: 123)]) // UpdateWorkItemApiModel |  (optional)
 
 // Update Test Case, Checklist or Shared Step
 WorkItemsAPI.updateWorkItem(updateWorkItemApiModel: updateWorkItemApiModel) { (response, error) in

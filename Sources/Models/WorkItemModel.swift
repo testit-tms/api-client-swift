@@ -35,6 +35,7 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
     public var modifiedById: UUID?
     public var globalId: Int64
     public var externalIssues: [ExternalIssueModel]
+    public var parameters: [WorkItemParameterKeyModel]
     public var id: UUID
     public var sectionId: UUID
     public var description: String?
@@ -50,7 +51,7 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
     public var links: [LinkModel]
     public var name: String
 
-    public init(versionId: UUID, medianDuration: Int64, isDeleted: Bool, projectId: UUID, entityTypeName: WorkItemEntityTypes, isAutomated: Bool, autoTests: [AutoTestModel]? = nil, attachments: [AttachmentModel]? = nil, sectionPreconditionSteps: [StepModel]? = nil, sectionPostconditionSteps: [StepModel]? = nil, versionNumber: Int, iterations: [IterationModel]? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, externalIssues: [ExternalIssueModel], id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, steps: [StepModel], preconditionSteps: [StepModel], postconditionSteps: [StepModel], duration: Int64, attributes: [String: AnyCodable], tags: [TagModel], links: [LinkModel], name: String) {
+    public init(versionId: UUID, medianDuration: Int64, isDeleted: Bool, projectId: UUID, entityTypeName: WorkItemEntityTypes, isAutomated: Bool, autoTests: [AutoTestModel]? = nil, attachments: [AttachmentModel]? = nil, sectionPreconditionSteps: [StepModel]? = nil, sectionPostconditionSteps: [StepModel]? = nil, versionNumber: Int, iterations: [IterationModel]? = nil, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, externalIssues: [ExternalIssueModel], parameters: [WorkItemParameterKeyModel], id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, steps: [StepModel], preconditionSteps: [StepModel], postconditionSteps: [StepModel], duration: Int64, attributes: [String: AnyCodable], tags: [TagModel], links: [LinkModel], name: String) {
         self.versionId = versionId
         self.medianDuration = medianDuration
         self.isDeleted = isDeleted
@@ -69,6 +70,7 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
         self.modifiedById = modifiedById
         self.globalId = globalId
         self.externalIssues = externalIssues
+        self.parameters = parameters
         self.id = id
         self.sectionId = sectionId
         self.description = description
@@ -104,6 +106,7 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
         case modifiedById
         case globalId
         case externalIssues
+        case parameters
         case id
         case sectionId
         case description
@@ -142,6 +145,7 @@ public struct WorkItemModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedById, forKey: .modifiedById)
         try container.encode(globalId, forKey: .globalId)
         try container.encode(externalIssues, forKey: .externalIssues)
+        try container.encode(parameters, forKey: .parameters)
         try container.encode(id, forKey: .id)
         try container.encode(sectionId, forKey: .sectionId)
         try container.encodeIfPresent(description, forKey: .description)

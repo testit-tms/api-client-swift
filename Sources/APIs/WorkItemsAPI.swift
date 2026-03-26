@@ -1168,7 +1168,7 @@ open class WorkItemsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getWorkItemById(id: String, versionId: UUID? = nil, versionNumber: Int? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkItemModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getWorkItemById(id: String, versionId: UUID? = nil, versionNumber: Int? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkItemApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return getWorkItemByIdWithRequestBuilder(id: id, versionId: versionId, versionNumber: versionNumber).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1189,9 +1189,9 @@ open class WorkItemsAPI {
      - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter versionId: (query) WorkItem version (guid format) identifier\&quot; (optional)
      - parameter versionNumber: (query) WorkItem version number (0 is the last version)\&quot; (optional)
-     - returns: RequestBuilder<WorkItemModel> 
+     - returns: RequestBuilder<WorkItemApiResult> 
      */
-    open class func getWorkItemByIdWithRequestBuilder(id: String, versionId: UUID? = nil, versionNumber: Int? = nil) -> RequestBuilder<WorkItemModel> {
+    open class func getWorkItemByIdWithRequestBuilder(id: String, versionId: UUID? = nil, versionNumber: Int? = nil) -> RequestBuilder<WorkItemApiResult> {
         var localVariablePath = "/api/v2/workItems/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1211,7 +1211,7 @@ open class WorkItemsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<WorkItemModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WorkItemApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

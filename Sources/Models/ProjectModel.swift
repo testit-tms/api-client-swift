@@ -46,6 +46,7 @@ public struct ProjectModel: Codable, JSONEncodable, Hashable {
     public var globalId: Int64
     /** Type of the project */
     public var type: ProjectTypeModel
+    /** Identifier of current workflow */
     public var workflowId: UUID
 
     public init(id: UUID, description: String? = nil, name: String, isFavorite: Bool, attributesScheme: [CustomAttributeModel]? = nil, testPlansAttributesScheme: [CustomAttributeModel]? = nil, testCasesCount: Int? = nil, sharedStepsCount: Int? = nil, checkListsCount: Int? = nil, autoTestsCount: Int? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectTypeModel, workflowId: UUID) {
