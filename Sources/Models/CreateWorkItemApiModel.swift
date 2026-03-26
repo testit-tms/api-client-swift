@@ -48,8 +48,10 @@ public struct CreateWorkItemApiModel: Codable, JSONEncodable, Hashable {
     public var attachments: [AssignAttachmentApiModel]?
     /** Set of links related to the work item */
     public var links: [CreateLinkApiModel]
+    /** Set of parameter keys related to the work item */
+    public var parameters: [WorkItemParameterKeyApiModel]?
 
-    public init(projectId: UUID, sectionId: UUID? = nil, name: String, description: String? = nil, entityTypeName: WorkItemEntityTypeApiModel, duration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, attributes: [String: AnyCodable], tags: [TagModel], preconditionSteps: [CreateStepApiModel], steps: [CreateStepApiModel], postconditionSteps: [CreateStepApiModel], iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]) {
+    public init(projectId: UUID, sectionId: UUID? = nil, name: String, description: String? = nil, entityTypeName: WorkItemEntityTypeApiModel, duration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, attributes: [String: AnyCodable], tags: [TagModel], preconditionSteps: [CreateStepApiModel], steps: [CreateStepApiModel], postconditionSteps: [CreateStepApiModel], iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel], parameters: [WorkItemParameterKeyApiModel]? = nil) {
         self.projectId = projectId
         self.sectionId = sectionId
         self.name = name
@@ -67,6 +69,7 @@ public struct CreateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         self.autoTests = autoTests
         self.attachments = attachments
         self.links = links
+        self.parameters = parameters
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -87,6 +90,7 @@ public struct CreateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         case autoTests
         case attachments
         case links
+        case parameters
     }
 
     // Encodable protocol methods
@@ -110,6 +114,7 @@ public struct CreateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(autoTests, forKey: .autoTests)
         try container.encodeIfPresent(attachments, forKey: .attachments)
         try container.encode(links, forKey: .links)
+        try container.encodeIfPresent(parameters, forKey: .parameters)
     }
 }
 

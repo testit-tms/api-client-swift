@@ -65,6 +65,8 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
     public var links: [LinkModel]
     /** Set of external issues related to the work item */
     public var externalIssues: [ExternalIssueApiResult]
+    /** Set of parameters related to the work item */
+    public var parameters: [WorkItemParameterKeyApiResult]
     /** Creation date of the work item */
     public var createdDate: Date
     /** Unique identifier of the work item creator */
@@ -76,7 +78,7 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
     /** Indicates whether the work item is marked as deleted */
     public var isDeleted: Bool
 
-    public init(id: UUID, globalId: Int64, versionId: UUID, versionNumber: Int, projectId: UUID, sectionId: UUID, name: String, description: String? = nil, sourceType: WorkItemSourceTypeApiModel, entityTypeName: WorkItemEntityTypeApiModel, duration: Int, medianDuration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, isAutomated: Bool, attributes: [String: AnyCodable], tags: [TagModel], sectionPreconditionSteps: [StepModel], sectionPostconditionSteps: [StepModel], preconditionSteps: [StepModel], steps: [StepModel], postconditionSteps: [StepModel], iterations: [IterationModel], autoTests: [AutoTestModel], attachments: [AttachmentModel], links: [LinkModel], externalIssues: [ExternalIssueApiResult], createdDate: Date, createdById: UUID, modifiedDate: Date? = nil, modifiedById: UUID? = nil, isDeleted: Bool) {
+    public init(id: UUID, globalId: Int64, versionId: UUID, versionNumber: Int, projectId: UUID, sectionId: UUID, name: String, description: String? = nil, sourceType: WorkItemSourceTypeApiModel, entityTypeName: WorkItemEntityTypeApiModel, duration: Int, medianDuration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, isAutomated: Bool, attributes: [String: AnyCodable], tags: [TagModel], sectionPreconditionSteps: [StepModel], sectionPostconditionSteps: [StepModel], preconditionSteps: [StepModel], steps: [StepModel], postconditionSteps: [StepModel], iterations: [IterationModel], autoTests: [AutoTestModel], attachments: [AttachmentModel], links: [LinkModel], externalIssues: [ExternalIssueApiResult], parameters: [WorkItemParameterKeyApiResult], createdDate: Date, createdById: UUID, modifiedDate: Date? = nil, modifiedById: UUID? = nil, isDeleted: Bool) {
         self.id = id
         self.globalId = globalId
         self.versionId = versionId
@@ -104,6 +106,7 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
         self.attachments = attachments
         self.links = links
         self.externalIssues = externalIssues
+        self.parameters = parameters
         self.createdDate = createdDate
         self.createdById = createdById
         self.modifiedDate = modifiedDate
@@ -139,6 +142,7 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
         case attachments
         case links
         case externalIssues
+        case parameters
         case createdDate
         case createdById
         case modifiedDate
@@ -177,6 +181,7 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(attachments, forKey: .attachments)
         try container.encode(links, forKey: .links)
         try container.encode(externalIssues, forKey: .externalIssues)
+        try container.encode(parameters, forKey: .parameters)
         try container.encode(createdDate, forKey: .createdDate)
         try container.encode(createdById, forKey: .createdById)
         try container.encodeIfPresent(modifiedDate, forKey: .modifiedDate)

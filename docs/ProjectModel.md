@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **modifiedById** | **UUID** | Unique ID of the project last editor | [optional] 
 **globalId** | **Int64** | Global ID of the project | 
 **type** | [**ProjectTypeModel**](ProjectTypeModel.md) | Type of the project | 
-**workflowId** | **UUID** |  | 
+**workflowId** | **UUID** | Identifier of current workflow | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

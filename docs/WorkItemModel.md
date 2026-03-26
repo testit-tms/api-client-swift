@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **modifiedById** | **UUID** |  | [optional] 
 **globalId** | **Int64** |  | 
 **externalIssues** | [ExternalIssueModel] |  | 
+**parameters** | [WorkItemParameterKeyModel] |  | 
 **id** | **UUID** |  | 
 **sectionId** | **UUID** |  | 
 **description** | **String** |  | [optional] 

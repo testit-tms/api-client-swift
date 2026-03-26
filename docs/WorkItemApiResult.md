@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **attachments** | [AttachmentModel] | Files attached to the work item | 
 **links** | [LinkModel] | Set of links related to the work item | 
 **externalIssues** | [ExternalIssueApiResult] | Set of external issues related to the work item | 
+**parameters** | [WorkItemParameterKeyApiResult] | Set of parameters related to the work item | 
 **createdDate** | **Date** | Creation date of the work item | 
 **createdById** | **UUID** | Unique identifier of the work item creator | 
 **modifiedDate** | **Date** | Modification date of the work item | [optional] 

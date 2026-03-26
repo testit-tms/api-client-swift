@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **attachments** | [AssignAttachmentApiModel] |  | 
 **iterations** | [AssignIterationApiModel] | Collection of parameter id sets | [optional] 
 **autoTests** | [AutoTestIdModel] | Collection of autotest internal ids | [optional] 
+**parameters** | [WorkItemParameterKeyApiModel] | Set of parameter keys related to the work item | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
