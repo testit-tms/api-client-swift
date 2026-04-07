@@ -58,4 +58,142 @@ open class UsersAPI {
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
+
+    /**
+
+     - parameter createUserApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2UsersPost(createUserApiModel: CreateUserApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserApiModel?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2UsersPostWithRequestBuilder(createUserApiModel: createUserApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /api/v2/users
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter createUserApiModel: (body)  (optional)
+     - returns: RequestBuilder<UserApiModel> 
+     */
+    open class func apiV2UsersPostWithRequestBuilder(createUserApiModel: CreateUserApiModel? = nil) -> RequestBuilder<UserApiModel> {
+        let localVariablePath = "/api/v2/users"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createUserApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UserApiModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+
+     - parameter userId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2UsersUserIdDelete(userId: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2UsersUserIdDeleteWithRequestBuilder(userId: userId).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - DELETE /api/v2/users/{userId}
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter userId: (path)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func apiV2UsersUserIdDeleteWithRequestBuilder(userId: UUID) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/users/{userId}"
+        let userIdPreEscape = "\(APIHelper.mapValueToPathItem(userId))"
+        let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{userId}", with: userIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+
+     - parameter userId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2UsersUserIdGet(userId: UUID, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: UserApiModel?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2UsersUserIdGetWithRequestBuilder(userId: userId).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - GET /api/v2/users/{userId}
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: Bearer or PrivateToken
+     - parameter userId: (path)  
+     - returns: RequestBuilder<UserApiModel> 
+     */
+    open class func apiV2UsersUserIdGetWithRequestBuilder(userId: UUID) -> RequestBuilder<UserApiModel> {
+        var localVariablePath = "/api/v2/users/{userId}"
+        let userIdPreEscape = "\(APIHelper.mapValueToPathItem(userId))"
+        let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{userId}", with: userIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<UserApiModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
 }

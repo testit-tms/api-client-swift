@@ -1,12 +1,10 @@
-# LinkShortModel
+# RoleApiModelApiCollection
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | 
-**title** | **String** |  | [optional] 
-**type** | **String** |  | [optional] 
-**url** | **String** |  | 
+**data** | [RoleApiModel] | Items | 
+**totalCount** | **Int64** | Total count | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
