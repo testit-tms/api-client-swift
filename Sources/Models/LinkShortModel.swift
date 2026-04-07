@@ -13,11 +13,11 @@ import AnyCodable
 public struct LinkShortModel: Codable, JSONEncodable, Hashable {
 
     public var id: UUID
-    public var title: String
+    public var title: String?
     public var type: String?
     public var url: String
 
-    public init(id: UUID, title: String, type: String? = nil, url: String) {
+    public init(id: UUID, title: String? = nil, type: String? = nil, url: String) {
         self.id = id
         self.title = title
         self.type = type
@@ -36,7 +36,7 @@ public struct LinkShortModel: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
-        try container.encode(title, forKey: .title)
+        try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(type, forKey: .type)
         try container.encode(url, forKey: .url)
     }

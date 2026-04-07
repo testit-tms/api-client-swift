@@ -1,8 +1,8 @@
 # Using 7.18.0
 # npm install @openapitools/openapi-generator-cli -g
 
-FILE_NAME="cloud-swagger.json"
-NEW_VERSION="0.5.4"
+FILE_NAME="5.7-swagger.json"
+NEW_VERSION="0.5.5-tms.5.7"
 GENERATOR="openapi-generator-cli-7.9.0.jar"
 
 if [ ! -f ".swagger/$FILE_NAME" ]; then
