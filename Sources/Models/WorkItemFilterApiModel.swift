@@ -59,7 +59,7 @@ public struct WorkItemFilterApiModel: Codable, JSONEncodable, Hashable {
     /** Source type of work item (manual creation or AI generated) */
     public var sourceTypes: Set<WorkItemSourceTypeModel>?
     /** Collection of types of work item */
-    public var types: Set<WorkItemEntityTypes>?
+    public var types: Set<WorkItemTypeModel>?
     /** Specifies a work item range of creation date to search for */
     public var createdDate: DateTimeRangeSelectorModel?
     /** Specifies a work item range of last modification date to search for */
@@ -83,7 +83,7 @@ public struct WorkItemFilterApiModel: Codable, JSONEncodable, Hashable {
     /** Specifies work item filter by its external metadata */
     public var externalMetadata: WorkItemExternalMetadataFilterApiModel?
 
-    public init(nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, projectIds: Set<UUID>? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, sourceTypes: Set<WorkItemSourceTypeModel>? = nil, types: Set<WorkItemEntityTypes>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, excludeTags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil, links: WorkItemLinkFilterApiModel? = nil, externalMetadata: WorkItemExternalMetadataFilterApiModel? = nil) {
+    public init(nameOrId: String? = nil, includeIds: Set<UUID>? = nil, excludeIds: Set<UUID>? = nil, projectIds: Set<UUID>? = nil, name: String? = nil, ids: Set<UUID>? = nil, globalIds: Set<Int64>? = nil, attributes: [String: Set<String>]? = nil, isDeleted: Bool? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, sourceTypes: Set<WorkItemSourceTypeModel>? = nil, types: Set<WorkItemTypeModel>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, duration: Int32RangeSelectorModel? = nil, medianDuration: Int64RangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil, excludeTags: Set<String>? = nil, autoTestIds: Set<UUID>? = nil, workItemVersionIds: [UUID]? = nil, links: WorkItemLinkFilterApiModel? = nil, externalMetadata: WorkItemExternalMetadataFilterApiModel? = nil) {
         self.nameOrId = nameOrId
         self.includeIds = includeIds
         self.excludeIds = excludeIds

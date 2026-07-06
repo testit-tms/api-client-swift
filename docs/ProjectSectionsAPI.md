@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get project sections
 
- Use case  User sets project internal or global identifier and runs method execution  System search project  System search all sections related to the project  System returns array of sections (listed in response)
+  Use case    User sets project internal or global identifier and runs method execution    System search project    System search all sections related to the project    System returns array of sections (listed in response)
 
 ### Example
 ```swift
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 

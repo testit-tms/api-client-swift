@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -98,7 +98,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -194,7 +194,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestStatusesSearchPost**
 ```swift
-    open class func apiV2TestStatusesSearchPost(searchTestStatusesApiModel: SearchTestStatusesApiModel? = nil, completion: @escaping (_ data: TestStatusApiResultReply?, _ error: Error?) -> Void)
+    open class func apiV2TestStatusesSearchPost(searchTestStatusesApiModel: SearchTestStatusesApiModel? = nil, completion: @escaping (_ data: TestStatusApiResultIReply?, _ error: Error?) -> Void)
 ```
 
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let searchTestStatusesApiModel = SearchTestStatusesApiModel(inquiry: Inquiry(filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123))) // SearchTestStatusesApiModel |  (optional)
+let searchTestStatusesApiModel = SearchTestStatusesApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123))) // SearchTestStatusesApiModel |  (optional)
 
 TestStatusesAPI.apiV2TestStatusesSearchPost(searchTestStatusesApiModel: searchTestStatusesApiModel) { (response, error) in
     guard error == nil else {
@@ -331,11 +331,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TestStatusApiResultReply**](TestStatusApiResultReply.md)
+[**TestStatusApiResultIReply**](TestStatusApiResultIReply.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 

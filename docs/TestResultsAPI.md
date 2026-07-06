@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**apiV2TestResultsIdAttachmentsAttachmentIdPut**](TestResultsAPI.md#apiv2testresultsidattachmentsattachmentidput) | **PUT** /api/v2/testResults/{id}/attachments/{attachmentId} | Attach file to the test result
 [**apiV2TestResultsIdAttachmentsInfoGet**](TestResultsAPI.md#apiv2testresultsidattachmentsinfoget) | **GET** /api/v2/testResults/{id}/attachments/info | Get test result attachments meta-information
 [**apiV2TestResultsIdGet**](TestResultsAPI.md#apiv2testresultsidget) | **GET** /api/v2/testResults/{id} | Get test result by ID
+[**apiV2TestResultsIdPatch**](TestResultsAPI.md#apiv2testresultsidpatch) | **PATCH** /api/v2/testResults/{id} | Patch test result by ID
 [**apiV2TestResultsIdPut**](TestResultsAPI.md#apiv2testresultsidput) | **PUT** /api/v2/testResults/{id} | Edit test result by ID
 [**apiV2TestResultsIdRerunsGet**](TestResultsAPI.md#apiv2testresultsidrerunsget) | **GET** /api/v2/testResults/{id}/reruns | Get reruns
 [**apiV2TestResultsSearchPost**](TestResultsAPI.md#apiv2testresultssearchpost) | **POST** /api/v2/testResults/search | Search for test results
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -110,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -158,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -208,7 +209,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -256,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -304,11 +305,63 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **apiV2TestResultsIdPatch**
+```swift
+    open class func apiV2TestResultsIdPatch(id: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch test result by ID
+
+See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let id = 987 // UUID | Test result unique ID
+let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
+
+// Patch test result by ID
+TestResultsAPI.apiV2TestResultsIdPatch(id: id, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID** | Test result unique ID | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -326,7 +379,7 @@ Edit test result by ID
 import TestitApiClient
 
 let id = 987 // UUID | Test result unique ID
-let testResultUpdateV2Request = TestResultUpdateV2Request(failureClassIds: [123], outcome: TestResultOutcome(), statusCode: "statusCode_example", statusType: TestStatusType(), comment: "comment_example", links: [Link(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], stepResults: [StepResultApiModel(stepId: 123, outcome: "outcome_example", sharedStepVersionId: 123, sharedStepResults: [SharedStepResultApiModel(stepId: 123, outcome: "outcome_example")], comment: StepCommentApiModel(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [AttachmentApiResult(id: 123, fileId: "fileId_example", type: "type_example", size: 123, createdDate: Date(), modifiedDate: Date(), createdById: 123, modifiedById: 123, name: "name_example")], testResultId: 123, createdById: 123, modifiedById: 123, createdDate: Date(), modifiedDate: Date()))], attachments: [AttachmentUpdateRequest(id: 123)], durationInMs: 123, duration: 123, stepComments: [TestResultStepCommentUpdateRequest(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [nil])], setupResults: [AutoTestStepResultUpdateRequest(title: "title_example", description: "description_example", info: "info_example", startedOn: Date(), completedOn: Date(), duration: 123, outcome: AvailableTestResultOutcome(), stepResults: [nil], attachments: [nil], parameters: "TODO")], teardownResults: [nil], message: "message_example", trace: "trace_example") // TestResultUpdateV2Request |  (optional)
+let testResultUpdateV2Request = TestResultUpdateV2Request(failureClassIds: [123], outcome: TestResultOutcome(), statusCode: "statusCode_example", statusType: TestStatusType(), comment: "comment_example", links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], stepResults: [StepResultApiModel(stepId: 123, outcome: "outcome_example", sharedStepVersionId: 123, sharedStepResults: [SharedStepResultApiModel(stepId: 123, outcome: "outcome_example")], comment: StepCommentApiModel(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [AttachmentApiResult(id: 123, fileId: "fileId_example", type: "type_example", size: 123, createdDate: Date(), modifiedDate: Date(), createdById: 123, modifiedById: 123, name: "name_example")], testResultId: 123, createdById: 123, modifiedById: 123, createdDate: Date(), modifiedDate: Date()))], attachments: [AttachmentUpdateRequest(id: 123)], durationInMs: 123, duration: 123, stepComments: [TestResultStepCommentUpdateRequest(id: 123, text: "text_example", stepId: 123, parentStepId: 123, attachments: [nil])], setupResults: [AutoTestStepResultUpdateRequest(title: "title_example", description: "description_example", info: "info_example", startedOn: Date(), completedOn: Date(), duration: 123, outcome: AvailableTestResultOutcome(), stepResults: [nil], attachments: [nil], parameters: "TODO")], teardownResults: [nil], message: "message_example", trace: "trace_example") // TestResultUpdateV2Request |  (optional)
 
 // Edit test result by ID
 TestResultsAPI.apiV2TestResultsIdPut(id: id, testResultUpdateV2Request: testResultUpdateV2Request) { (response, error) in
@@ -354,7 +407,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -402,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -460,7 +513,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -508,7 +561,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -524,7 +577,7 @@ Name | Type | Description  | Notes
 
 Upload and link attachment to TestResult
 
- Use case  User sets testResultId  User attaches a file  System creates attachment and links it to the test result  System returns attachment identifier
+  Use case    User sets testResultId    User attaches a file    System creates attachment and links it to the test result    System returns attachment identifier
 
 ### Example
 ```swift
@@ -560,7 +613,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -576,7 +629,7 @@ Void (empty response body)
 
 Remove attachment and unlink from TestResult
 
- Use case  User sets testResultId and attachmentId  User attaches a file  User runs method execution  System deletes attachment and unlinks it from the test result  System returns attachment identifier
+  Use case    User sets testResultId and attachmentId    User attaches a file    User runs method execution    System deletes attachment and unlinks it from the test result    System returns attachment identifier
 
 ### Example
 ```swift
@@ -612,7 +665,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -628,7 +681,7 @@ Void (empty response body)
 
 Get attachment of TestResult
 
- Use case  User sets attachmentId and testResultId  [Optional] User sets resize configuration  User runs method execution  System search attachments by the attachmentId and the testResultId  [Optional] If resize configuration is set, System resizes the attachment according to the resize                     configuration  [Optional] Otherwise, System does not resize the attachment  System returns attachment as a file
+  Use case    User sets attachmentId and testResultId    [Optional] User sets resize configuration    User runs method execution    System search attachments by the attachmentId and the testResultId    [Optional] If resize configuration is set, System resizes the attachment according to the resize                      configuration    [Optional] Otherwise, System does not resize the attachment    System returns attachment as a file
 
 ### Example
 ```swift
@@ -674,7 +727,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -690,7 +743,7 @@ Void (empty response body)
 
 Get Metadata of TestResult's attachment
 
- Use case  User sets attachmentId and testResultId  User runs method execution  System search attachment by the attachmentId and the testResultId  System returns attachment data
+  Use case    User sets attachmentId and testResultId    User runs method execution    System search attachment by the attachmentId and the testResultId    System returns attachment data
 
 ### Example
 ```swift
@@ -726,7 +779,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -742,7 +795,7 @@ Name | Type | Description  | Notes
 
 Get all attachments of TestResult
 
- Use case  User sets testResultId  User runs method execution  System search all attachments of the test result  System returns attachments enumeration
+  Use case    User sets testResultId    User runs method execution    System search all attachments of the test result    System returns attachments enumeration
 
 ### Example
 ```swift
@@ -776,7 +829,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 

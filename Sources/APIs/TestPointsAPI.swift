@@ -36,7 +36,10 @@ open class TestPointsAPI {
      - GET /api/v2/testPoints/{id}/testRuns
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test point unique ID 
      - returns: RequestBuilder<[TestRunApiResult]> 
      */
@@ -85,7 +88,10 @@ open class TestPointsAPI {
      - GET /api/v2/testPoints/{id}/workItem
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test point unique ID 
      - returns: RequestBuilder<WorkItemModel> 
      */
@@ -139,7 +145,10 @@ open class TestPointsAPI {
      - POST /api/v2/testPoints/search/id
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -203,7 +212,10 @@ open class TestPointsAPI {
      - POST /api/v2/testPoints/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)

@@ -1,5 +1,5 @@
 licenseName: "Apache-2.0"
-projectVersion: "0.5.4"
+projectVersion: "0.6.0-tms.5.8"
 swiftPackagePath: Sources
 projectName: TestitApiClient
 nonPublicApi: false

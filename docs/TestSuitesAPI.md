@@ -32,7 +32,7 @@ Add test-points to test suite
 import TestitApiClient
 
 let id = 987 // UUID | Test suite internal identifier
-let workItemSelectModel = WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectModel | Filter object to retrieve work items for test-suite's project (optional)
+let workItemSelectModel = WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemTypeModel()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectModel | Filter object to retrieve work items for test-suite's project (optional)
 
 // Add test-points to test suite
 TestSuitesAPI.addTestPointsToTestSuite(id: id, workItemSelectModel: workItemSelectModel) { (response, error) in
@@ -60,7 +60,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -112,7 +112,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -160,7 +160,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -210,7 +210,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -306,7 +306,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -322,7 +322,7 @@ Void (empty response body)
 
 Delete TestSuite
 
- Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System deletes test suite  System returns no content response
+  Use case    User sets test suite identifier    User runs method execution    System search test suite by identifier    System deletes test suite    System returns no content response
 
 ### Example
 ```swift
@@ -356,7 +356,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -372,7 +372,7 @@ Void (empty response body)
 
 Get Configurations By Id
 
- Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configurations related to the test points  System returns configurations array
+  Use case    User sets test suite identifier    User runs method execution    System search test suite by identifier    System search test points related to the test suite    System search configurations related to the test points    System returns configurations array
 
 ### Example
 ```swift
@@ -406,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 
 Get TestPoints By Id
 
- Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System returns test points array
+  Use case    User sets test suite identifier    User runs method execution    System search test suite by identifier    System search test points related to the test suite    System returns test points array
 
 ### Example
 ```swift
@@ -456,7 +456,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -472,7 +472,7 @@ Name | Type | Description  | Notes
 
 Get TestResults By Id
 
- Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search test results related to the test points  System returns test results array
+  Use case    User sets test suite identifier    User runs method execution    System search test suite by identifier    System search test points related to the test suite    System search test results related to the test points    System returns test results array
 
 ### Example
 ```swift
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -522,7 +522,7 @@ Name | Type | Description  | Notes
 
 Get TestSuite by Id
 
- Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System returns test suite
+  Use case    User sets test suite identifier    User runs method execution    System search test suite by identifier    System returns test suite
 
 ### Example
 ```swift
@@ -556,7 +556,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -572,7 +572,7 @@ Name | Type | Description  | Notes
 
 Search WorkItems
 
- Use case  User sets test suite identifier  [Optional] User sets filter  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search work items related to the test points  [Optional] User sets filter, system applies filter  System returns work items array
+  Use case    User sets test suite identifier    [Optional] User sets filter    User runs method execution    System search test suite by identifier    System search test points related to the test suite    System search work items related to the test points    [Optional] User sets filter, system applies filter    System returns work items array
 
 ### Example
 ```swift
@@ -585,7 +585,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let testSuiteWorkItemsSearchModel = TestSuiteWorkItemsSearchModel(tagNames: ["tagNames_example"], entityTypes: [WorkItemEntityTypes()], nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [nil], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])) // TestSuiteWorkItemsSearchModel |  (optional)
+let testSuiteWorkItemsSearchModel = TestSuiteWorkItemsSearchModel(tagNames: ["tagNames_example"], entityTypes: [WorkItemTypeModel()], nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [nil], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])) // TestSuiteWorkItemsSearchModel |  (optional)
 
 // Search WorkItems
 TestSuitesAPI.searchWorkItems(id: id, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, testSuiteWorkItemsSearchModel: testSuiteWorkItemsSearchModel) { (response, error) in
@@ -618,7 +618,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -634,7 +634,7 @@ Name | Type | Description  | Notes
 
 Set Configurations By TestSuite Id
 
- Use case  User sets test suite identifier  User sets collection of configuration identifiers  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configuration  System restores(if exist) or creates test points with listed configuration  System returns no content response
+  Use case    User sets test suite identifier    User sets collection of configuration identifiers    User runs method execution    System search test suite by identifier    System search test points related to the test suite    System search configuration    System restores(if exist) or creates test points with listed configuration    System returns no content response
 
 ### Example
 ```swift
@@ -670,7 +670,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 

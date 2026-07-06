@@ -41,7 +41,10 @@ open class WebhooksLogsAPI {
      - GET /api/v2/webhooks/logs
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (query) Project unique ID (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -101,7 +104,10 @@ open class WebhooksLogsAPI {
      - DELETE /api/v2/webhooks/logs/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Webhook log unique ID 
      - returns: RequestBuilder<Void> 
      */
@@ -150,7 +156,10 @@ open class WebhooksLogsAPI {
      - GET /api/v2/webhooks/logs/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Webhook log unique ID 
      - returns: RequestBuilder<WebhookLogApiResult> 
      */

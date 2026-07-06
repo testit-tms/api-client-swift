@@ -15,12 +15,16 @@ public struct CustomAttributeModel: Codable, JSONEncodable, Hashable {
     static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     /** Unique ID of the attribute */
     public var id: UUID
-    /** Collection of the attribute options   Available for attributes of type `options` and `multiple options` only */
+    /** Collection of the attribute targets      Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans) */
+    public var targets: [String]
+    /** Collection of the attribute options      Available for attributes of type `options` and `multiple options` only */
     public var options: [CustomAttributeOptionModel]
     /** Type of the attribute */
     public var type: CustomAttributeTypesEnum
     /** Indicates if the attribute is deleted */
     public var isDeleted: Bool
+    /** Indicates if the attribute is system */
+    public var isSystem: Bool
     /** Name of the attribute */
     public var name: String
     /** Indicates if the attribute is enabled */
@@ -30,11 +34,13 @@ public struct CustomAttributeModel: Codable, JSONEncodable, Hashable {
     /** Indicates if the attribute is available across all projects */
     public var isGlobal: Bool
 
-    public init(id: UUID, options: [CustomAttributeOptionModel], type: CustomAttributeTypesEnum, isDeleted: Bool, name: String, isEnabled: Bool, isRequired: Bool, isGlobal: Bool) {
+    public init(id: UUID, targets: [String], options: [CustomAttributeOptionModel], type: CustomAttributeTypesEnum, isDeleted: Bool, isSystem: Bool, name: String, isEnabled: Bool, isRequired: Bool, isGlobal: Bool) {
         self.id = id
+        self.targets = targets
         self.options = options
         self.type = type
         self.isDeleted = isDeleted
+        self.isSystem = isSystem
         self.name = name
         self.isEnabled = isEnabled
         self.isRequired = isRequired
@@ -43,9 +49,11 @@ public struct CustomAttributeModel: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case targets
         case options
         case type
         case isDeleted
+        case isSystem
         case name
         case isEnabled
         case isRequired
@@ -57,9 +65,11 @@ public struct CustomAttributeModel: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
+        try container.encode(targets, forKey: .targets)
         try container.encode(options, forKey: .options)
         try container.encode(type, forKey: .type)
         try container.encode(isDeleted, forKey: .isDeleted)
+        try container.encode(isSystem, forKey: .isSystem)
         try container.encode(name, forKey: .name)
         try container.encode(isEnabled, forKey: .isEnabled)
         try container.encode(isRequired, forKey: .isRequired)

@@ -12,17 +12,20 @@ import AnyCodable
 
 public struct Inquiry: Codable, JSONEncodable, Hashable {
 
+    public var group: Group?
     public var filter: CompositeFilter?
     public var order: [Order]
     public var page: Page?
 
-    public init(filter: CompositeFilter? = nil, order: [Order], page: Page? = nil) {
+    public init(group: Group? = nil, filter: CompositeFilter? = nil, order: [Order], page: Page? = nil) {
+        self.group = group
         self.filter = filter
         self.order = order
         self.page = page
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case group
         case filter
         case order
         case page
@@ -32,6 +35,7 @@ public struct Inquiry: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(group, forKey: .group)
         try container.encodeIfPresent(filter, forKey: .filter)
         try container.encode(order, forKey: .order)
         try container.encodeIfPresent(page, forKey: .page)

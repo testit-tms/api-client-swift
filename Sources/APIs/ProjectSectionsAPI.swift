@@ -39,10 +39,13 @@ open class ProjectSectionsAPI {
     /**
      Get project sections
      - GET /api/v2/projects/{projectId}/sections
-     -  Use case  User sets project internal or global identifier and runs method execution  System search project  System search all sections related to the project  System returns array of sections (listed in response)
+     -   Use case    User sets project internal or global identifier and runs method execution    System search project    System search all sections related to the project    System returns array of sections (listed in response)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)

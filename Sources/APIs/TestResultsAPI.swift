@@ -19,6 +19,7 @@ open class TestResultsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPost(externalProjectId: UUID, testResultsSelectApiModel: TestResultsSelectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: GetExternalFormApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPostWithRequestBuilder(externalProjectId: externalProjectId, testResultsSelectApiModel: testResultsSelectApiModel).execute(apiResponseQueue) { result in
@@ -35,11 +36,15 @@ open class TestResultsAPI {
      - POST /api/v2/testResults/external-projects/{externalProjectId}/defects/external-forms
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter externalProjectId: (path)  
      - parameter testResultsSelectApiModel: (body)  (optional)
      - returns: RequestBuilder<GetExternalFormApiResult> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsExternalFormsPostWithRequestBuilder(externalProjectId: UUID, testResultsSelectApiModel: TestResultsSelectApiModel? = nil) -> RequestBuilder<GetExternalFormApiResult> {
         var localVariablePath = "/api/v2/testResults/external-projects/{externalProjectId}/defects/external-forms"
         let externalProjectIdPreEscape = "\(APIHelper.mapValueToPathItem(externalProjectId))"
@@ -68,6 +73,7 @@ open class TestResultsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsPost(externalProjectId: UUID, createDefectApiModel: CreateDefectApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: DefectApiModel?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TestResultsExternalProjectsExternalProjectIdDefectsPostWithRequestBuilder(externalProjectId: externalProjectId, createDefectApiModel: createDefectApiModel).execute(apiResponseQueue) { result in
@@ -84,11 +90,15 @@ open class TestResultsAPI {
      - POST /api/v2/testResults/external-projects/{externalProjectId}/defects
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter externalProjectId: (path)  
      - parameter createDefectApiModel: (body)  (optional)
      - returns: RequestBuilder<DefectApiModel> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func apiV2TestResultsExternalProjectsExternalProjectIdDefectsPostWithRequestBuilder(externalProjectId: UUID, createDefectApiModel: CreateDefectApiModel? = nil) -> RequestBuilder<DefectApiModel> {
         var localVariablePath = "/api/v2/testResults/external-projects/{externalProjectId}/defects"
         let externalProjectIdPreEscape = "\(APIHelper.mapValueToPathItem(externalProjectId))"
@@ -135,7 +145,10 @@ open class TestResultsAPI {
      - GET /api/v2/testResults/{id}/aggregated
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result unique ID 
      - returns: RequestBuilder<TestResultResponse> 
      */
@@ -186,7 +199,10 @@ open class TestResultsAPI {
      - PUT /api/v2/testResults/{id}/attachments/{attachmentId}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result unique ID 
      - parameter attachmentId: (path) Attachment unique ID 
      - returns: RequestBuilder<Void> 
@@ -239,7 +255,10 @@ open class TestResultsAPI {
      - GET /api/v2/testResults/{id}/attachments/info
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result unique ID 
      - returns: RequestBuilder<[AttachmentApiResult]> 
      */
@@ -288,7 +307,10 @@ open class TestResultsAPI {
      - GET /api/v2/testResults/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result unique ID 
      - returns: RequestBuilder<TestResultResponse> 
      */
@@ -311,6 +333,61 @@ open class TestResultsAPI {
         let localVariableRequestBuilder: RequestBuilder<TestResultResponse>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Patch test result by ID
+     
+     - parameter id: (path) Test result unique ID 
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2TestResultsIdPatch(id: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestResultsIdPatchWithRequestBuilder(id: id, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch test result by ID
+     - PATCH /api/v2/testResults/{id}
+     - See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
+     - parameter id: (path) Test result unique ID 
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func apiV2TestResultsIdPatchWithRequestBuilder(id: UUID, operation: [Operation]? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/testResults/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -338,7 +415,10 @@ open class TestResultsAPI {
      - PUT /api/v2/testResults/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result unique ID 
      - parameter testResultUpdateV2Request: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -388,7 +468,10 @@ open class TestResultsAPI {
      - GET /api/v2/testResults/{id}/reruns
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result unique ID 
      - returns: RequestBuilder<RerunsApiResult> 
      */
@@ -442,7 +525,10 @@ open class TestResultsAPI {
      - POST /api/v2/testResults/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -501,7 +587,10 @@ open class TestResultsAPI {
      - POST /api/v2/testResults/statistics/filter
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter testResultsFilterApiModel: (body)  (optional)
      - returns: RequestBuilder<TestResultsStatisticsApiResult> 
      */
@@ -546,10 +635,13 @@ open class TestResultsAPI {
     /**
      Upload and link attachment to TestResult
      - POST /api/v2/testResults/{id}/attachments
-     -  Use case  User sets testResultId  User attaches a file  System creates attachment and links it to the test result  System returns attachment identifier
+     -   Use case    User sets testResultId    User attaches a file    System creates attachment and links it to the test result    System returns attachment identifier
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result internal identifier (guid format) 
      - parameter file: (form) Select file (optional)
      - returns: RequestBuilder<Void> 
@@ -603,10 +695,13 @@ open class TestResultsAPI {
     /**
      Remove attachment and unlink from TestResult
      - DELETE /api/v2/testResults/{id}/attachments/{attachmentId}
-     -  Use case  User sets testResultId and attachmentId  User attaches a file  User runs method execution  System deletes attachment and unlinks it from the test result  System returns attachment identifier
+     -   Use case    User sets testResultId and attachmentId    User attaches a file    User runs method execution    System deletes attachment and unlinks it from the test result    System returns attachment identifier
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result internal identifier (guid format) 
      - parameter attachmentId: (path) Attachment internal identifier (guid format) 
      - returns: RequestBuilder<Void> 
@@ -663,10 +758,13 @@ open class TestResultsAPI {
     /**
      Get attachment of TestResult
      - GET /api/v2/testResults/{id}/attachments/{attachmentId}
-     -  Use case  User sets attachmentId and testResultId  [Optional] User sets resize configuration  User runs method execution  System search attachments by the attachmentId and the testResultId  [Optional] If resize configuration is set, System resizes the attachment according to the resize                     configuration  [Optional] Otherwise, System does not resize the attachment  System returns attachment as a file
+     -   Use case    User sets attachmentId and testResultId    [Optional] User sets resize configuration    User runs method execution    System search attachments by the attachmentId and the testResultId    [Optional] If resize configuration is set, System resizes the attachment according to the resize                      configuration    [Optional] Otherwise, System does not resize the attachment    System returns attachment as a file
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter attachmentId: (path) Attachment internal identifier (guid format) 
      - parameter id: (path) Test result internal identifier (guid format) 
      - parameter width: (query) Width of the result image (optional)
@@ -730,10 +828,13 @@ open class TestResultsAPI {
     /**
      Get Metadata of TestResult's attachment
      - GET /api/v2/testResults/{id}/attachments/{attachmentId}/info
-     -  Use case  User sets attachmentId and testResultId  User runs method execution  System search attachment by the attachmentId and the testResultId  System returns attachment data
+     -   Use case    User sets attachmentId and testResultId    User runs method execution    System search attachment by the attachmentId and the testResultId    System returns attachment data
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result internal identifier (guid format) 
      - parameter attachmentId: (path) Attachment internal identifier (guid format) 
      - returns: RequestBuilder<AttachmentApiResult> 
@@ -784,10 +885,13 @@ open class TestResultsAPI {
     /**
      Get all attachments of TestResult
      - GET /api/v2/testResults/{id}/attachments
-     -  Use case  User sets testResultId  User runs method execution  System search all attachments of the test result  System returns attachments enumeration
+     -   Use case    User sets testResultId    User runs method execution    System search all attachments of the test result    System returns attachments enumeration
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Test result internal identifier (guid format) 
      - returns: RequestBuilder<[AttachmentApiResult]> 
      */

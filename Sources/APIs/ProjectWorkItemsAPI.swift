@@ -13,6 +13,110 @@ import AnyCodable
 open class ProjectWorkItemsAPI {
 
     /**
+
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter createWorkItemPreviewsApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2ProjectsProjectIdWorkItemsPreviewsBulkPost(projectId: String, createWorkItemPreviewsApiModel: CreateWorkItemPreviewsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsProjectIdWorkItemsPreviewsBulkPostWithRequestBuilder(projectId: projectId, createWorkItemPreviewsApiModel: createWorkItemPreviewsApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /api/v2/projects/{projectId}/work-items/previews/bulk
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter createWorkItemPreviewsApiModel: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func apiV2ProjectsProjectIdWorkItemsPreviewsBulkPostWithRequestBuilder(projectId: String, createWorkItemPreviewsApiModel: CreateWorkItemPreviewsApiModel? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/projects/{projectId}/work-items/previews/bulk"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createWorkItemPreviewsApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter generateWorkItemPreviewsApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2ProjectsProjectIdWorkItemsPreviewsPost(projectId: String, generateWorkItemPreviewsApiModel: GenerateWorkItemPreviewsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: GenerateWorkItemPreviewsApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsProjectIdWorkItemsPreviewsPostWithRequestBuilder(projectId: projectId, generateWorkItemPreviewsApiModel: generateWorkItemPreviewsApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     - POST /api/v2/projects/{projectId}/work-items/previews
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter generateWorkItemPreviewsApiModel: (body)  (optional)
+     - returns: RequestBuilder<GenerateWorkItemPreviewsApiResult> 
+     */
+    open class func apiV2ProjectsProjectIdWorkItemsPreviewsPostWithRequestBuilder(projectId: String, generateWorkItemPreviewsApiModel: GenerateWorkItemPreviewsApiModel? = nil) -> RequestBuilder<GenerateWorkItemPreviewsApiResult> {
+        var localVariablePath = "/api/v2/projects/{projectId}/work-items/previews"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: generateWorkItemPreviewsApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GenerateWorkItemPreviewsApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Search for work items and group results by attribute
      
      - parameter projectId: (path) Unique or global ID of the project 
@@ -42,7 +146,10 @@ open class ProjectWorkItemsAPI {
      - POST /api/v2/projects/{projectId}/workItems/search/grouped
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Unique or global ID of the project 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -111,7 +218,10 @@ open class ProjectWorkItemsAPI {
      - POST /api/v2/projects/{projectId}/workItems/search/id
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Unique or global ID of the project 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -180,7 +290,10 @@ open class ProjectWorkItemsAPI {
      - POST /api/v2/projects/{projectId}/workItems/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Unique or global ID of the project 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -250,7 +363,10 @@ open class ProjectWorkItemsAPI {
      - POST /api/v2/projects/{projectId}/workItems/search/{workItemId}/index
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter workItemId: (path)  
@@ -316,10 +432,13 @@ open class ProjectWorkItemsAPI {
     /**
      Get WorkItems Tags
      - GET /api/v2/projects/{projectId}/workItems/tags
-     -  Use case  User sets project internal identifier  User runs method execution  System returns work items tags
+     -   Use case    User sets project internal identifier    User runs method execution    System returns work items tags
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (path) Project internal (UUID) identifier 
      - parameter isDeleted: (query)  (optional)
      - returns: RequestBuilder<[TagShortApiResult]> 
@@ -379,10 +498,13 @@ open class ProjectWorkItemsAPI {
     /**
      Get project work items
      - GET /api/v2/projects/{projectId}/workItems
-     -  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project  [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted  If User did not set isDeleted field value, System search all  workitems related to project  System returns array of found workitems (listed in response model)
+     -   Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project    [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted    If User did not set isDeleted field value, System search all  workitems related to project    System returns array of found workitems (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter isDeleted: (query) If result must consist of only actual/deleted work items (optional, default to false)

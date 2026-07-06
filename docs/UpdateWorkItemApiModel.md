@@ -3,24 +3,23 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** | Workitem internal identifier | 
-**sectionId** | **UUID** | Internal identifier of section where workitem is located | 
-**description** | **String** | Workitem description | [optional] 
-**state** | [**WorkItemStates**](WorkItemStates.md) |  | 
-**priority** | [**WorkItemPriorityModel**](WorkItemPriorityModel.md) |  | 
-**sourceType** | [**WorkItemSourceTypeModel**](WorkItemSourceTypeModel.md) |  | [optional] 
-**steps** | [UpdateStepApiModel] | Collection of workitem steps | 
-**preconditionSteps** | [UpdateStepApiModel] | Collection of workitem precondtion steps | 
-**postconditionSteps** | [UpdateStepApiModel] | Collection of workitem postcondition steps | 
-**duration** | **Int64** | Workitem duration in milliseconds | 
-**attributes** | **[String: AnyCodable]** | Key value pair of custom workitem attributes | 
-**tags** | [TagModel] | Collection of workitem tags | 
-**links** | [UpdateLinkApiModel] | Collection of workitem links | 
-**name** | **String** | Workitem name | 
-**attachments** | [AssignAttachmentApiModel] |  | 
-**iterations** | [AssignIterationApiModel] | Collection of parameter id sets | [optional] 
-**autoTests** | [AutoTestIdModel] | Collection of autotest internal ids | [optional] 
-**parameters** | [WorkItemParameterKeyApiModel] | Set of parameter keys related to the work item | [optional] 
+**id** | **UUID** | Unique identifier of the work item | 
+**sectionId** | **UUID** | Unique identifier of the section within a project | 
+**name** | **String** | Name of the work item | 
+**description** | **String** | Description of the work item | [optional] 
+**duration** | **Int64** | Duration of the work item in milliseconds | 
+**state** | [**WorkItemStateApiModel**](WorkItemStateApiModel.md) | Current state of the work item | 
+**priority** | [**WorkItemPriorityApiModel**](WorkItemPriorityApiModel.md) | Priority level assigned to the work item | 
+**attributes** | **[String: AnyCodable]** | Set of custom attributes associated with the work item | [optional] 
+**tags** | [TagModel] | Set of tags applied to the work item | [optional] 
+**preconditionSteps** | [UpdateStepApiModel] | Set of precondition steps that must be executed before the main steps | [optional] 
+**steps** | [UpdateStepApiModel] | Set of main steps or actions defined for the work item | [optional] 
+**postconditionSteps** | [UpdateStepApiModel] | Set of postcondition steps that are executed after completing the main steps | [optional] 
+**iterations** | [AssignIterationApiModel] | Set of iterations associated with the work item | [optional] 
+**autoTests** | [AutoTestIdModel] | Set of automated tests linked to the work item | [optional] 
+**attachments** | [AssignAttachmentApiModel] | Set of files attached to the work item | [optional] 
+**links** | [UpdateLinkApiModel] | Set of links related to the work item | [optional] 
+**parameters** | [WorkItemParameterKeyApiModel] | Set of parameter keys associated with the work item | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

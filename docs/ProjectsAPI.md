@@ -5,7 +5,6 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addGlobalAttributesToProject**](ProjectsAPI.md#addglobalattributestoproject) | **POST** /api/v2/projects/{id}/globalAttributes | Add global attributes to project
-[**apiV2ProjectsDemoPost**](ProjectsAPI.md#apiv2projectsdemopost) | **POST** /api/v2/projects/demo | 
 [**apiV2ProjectsIdDelete**](ProjectsAPI.md#apiv2projectsiddelete) | **DELETE** /api/v2/projects/{id} | Archive project
 [**apiV2ProjectsIdFailureClassesGet**](ProjectsAPI.md#apiv2projectsidfailureclassesget) | **GET** /api/v2/projects/{id}/failureClasses | Get failure classes
 [**apiV2ProjectsIdFavoritePut**](ProjectsAPI.md#apiv2projectsidfavoriteput) | **PUT** /api/v2/projects/{id}/favorite | Mark Project as favorite
@@ -38,7 +37,7 @@ Method | HTTP request | Description
 
 Add global attributes to project
 
- Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
+  Use case    User sets project internal or global identifier and attributes identifiers    System search project    System relates global attributes with project    System returns no content response
 
 ### Example
 ```swift
@@ -74,54 +73,11 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **apiV2ProjectsDemoPost**
-```swift
-    open class func apiV2ProjectsDemoPost(completion: @escaping (_ data: DemoProjectApiResult?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
-
-
-ProjectsAPI.apiV2ProjectsDemoPost() { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**DemoProjectApiResult**](DemoProjectApiResult.md)
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -165,7 +121,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -215,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -263,7 +219,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -279,7 +235,7 @@ Void (empty response body)
 
 Get Project filters
 
- Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
+  Use case    User sets project internal or global identifier    User runs method execution    System returns project filters
 
 ### Example
 ```swift
@@ -313,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -365,7 +321,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -413,7 +369,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -461,7 +417,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -477,7 +433,7 @@ Void (empty response body)
 
 Delete attribute from project's test plans
 
- Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
+  Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
 
 ### Example
 ```swift
@@ -513,7 +469,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -529,7 +485,7 @@ Void (empty response body)
 
 Update attribute of project's test plans
 
- Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
+  Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
 
 ### Example
 ```swift
@@ -565,7 +521,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -581,7 +537,7 @@ Void (empty response body)
 
 Get Project TestRuns full models
 
- Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
+  Use case    User sets project internal or global identifier    User sets query params    User runs method execution    System returns project test runs full models
 
 ### Example
 ```swift
@@ -643,7 +599,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -690,7 +646,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -738,7 +694,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -786,7 +742,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -797,7 +753,7 @@ Name | Type | Description  | Notes
 
 # **apiV2ProjectsSearchPost**
 ```swift
-    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, completion: @escaping (_ data: [ProjectShortModel]?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, completion: @escaping (_ data: [ProjectApiResult]?, _ error: Error?) -> Void)
 ```
 
 Search for projects
@@ -840,11 +796,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ProjectShortModel]**](ProjectShortModel.md)
+[**[ProjectApiResult]**](ProjectApiResult.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -855,19 +811,19 @@ Name | Type | Description  | Notes
 
 # **apiV2ProjectsShortsPost**
 ```swift
-    open class func apiV2ProjectsShortsPost(getShortProjectsApiModel: GetShortProjectsApiModel? = nil, completion: @escaping (_ data: ProjectShortApiResultReply?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsShortsPost(getShortProjectsApiModel: GetShortProjectsApiModel? = nil, completion: @escaping (_ data: ProjectShortApiResultIReply?, _ error: Error?) -> Void)
 ```
 
 Get projects short models
 
- Use case  User sets query params  User runs method execution  System return projects short models
+  Use case    User sets query params    User runs method execution    System return projects short models
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let getShortProjectsApiModel = GetShortProjectsApiModel(inquiry: Inquiry(filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), permissionName: "permissionName_example", permissionType: "permissionType_example") // GetShortProjectsApiModel |  (optional)
+let getShortProjectsApiModel = GetShortProjectsApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), permissionName: "permissionName_example", permissionType: "permissionType_example") // GetShortProjectsApiModel |  (optional)
 
 // Get projects short models
 ProjectsAPI.apiV2ProjectsShortsPost(getShortProjectsApiModel: getShortProjectsApiModel) { (response, error) in
@@ -890,11 +846,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectShortApiResultReply**](ProjectShortApiResultReply.md)
+[**ProjectShortApiResultIReply**](ProjectShortApiResultIReply.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -910,7 +866,7 @@ Name | Type | Description  | Notes
 
 Create project
 
- Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
+  Use case    User sets project parameters (listed in request example) and runs method execution    System creates project    System returns project model (example listed in response parameters)
 
 ### Example
 ```swift
@@ -944,7 +900,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -992,7 +948,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1003,12 +959,12 @@ Void (empty response body)
 
 # **getAllProjects**
 ```swift
-    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ProjectShortModel]?, _ error: Error?) -> Void)
+    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ProjectApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get all projects
 
- Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
+  Use case    [Optional] User sets isDeleted field value    [Optional] If User sets isDeleted field value as true, System search all deleted projects    [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted    If User did not set isDeleted field value, System search all projects    System returns array of all found projects(listed in response model)
 
 ### Example
 ```swift
@@ -1050,11 +1006,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ProjectShortModel]**](ProjectShortModel.md)
+[**[ProjectApiResult]**](ProjectApiResult.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1070,7 +1026,7 @@ Name | Type | Description  | Notes
 
 Get namespaces of autotests in project
 
- Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
+  Use case    User sets project internal or global identifier and runs method execution    System search project    System search all autotest related to the project    System returns array of autotest with namespaces and classnames (listed in response)
 
 ### Example
 ```swift
@@ -1104,7 +1060,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1115,12 +1071,12 @@ Name | Type | Description  | Notes
 
 # **getProjectById**
 ```swift
-    open class func getProjectById(id: String, completion: @escaping (_ data: ProjectModel?, _ error: Error?) -> Void)
+    open class func getProjectById(id: String, completion: @escaping (_ data: DetailedProjectApiResult?, _ error: Error?) -> Void)
 ```
 
 Get project by ID
 
- Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
+  Use case    User sets project internal or global identifier and runs method execution    System search project    System returns project (example listed in response parameters)
 
 ### Example
 ```swift
@@ -1150,11 +1106,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectModel**](ProjectModel.md)
+[**DetailedProjectApiResult**](DetailedProjectApiResult.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1170,7 +1126,7 @@ Name | Type | Description  | Notes
 
 Get project test plans
 
- Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
+  Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to                      project    [Optional] If User sets isDeleted field value as false, System search all test plans related to project which                      are not deleted    [Optional] If User did not set isDeleted field value, System search all v related to project    System returns array of found test plans (listed in response model)
 
 ### Example
 ```swift
@@ -1206,7 +1162,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1222,7 +1178,7 @@ Name | Type | Description  | Notes
 
 Get project test runs
 
- Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
+  Use case    User sets project internal or global identifier    User runs method execution    System search project    System search all test runs related to project    System returns array of found test runs (listed in response model)
 
 ### Example
 ```swift
@@ -1280,7 +1236,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1296,7 +1252,7 @@ Name | Type | Description  | Notes
 
 Update project
 
- Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
+  Use case    User sets project parameters (listed in request example) and runs method execution    System updates project    System returns updated project model (example listed in response parameters)
 
 ### Example
 ```swift
@@ -1330,7 +1286,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 

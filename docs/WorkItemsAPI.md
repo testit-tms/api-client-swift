@@ -11,11 +11,13 @@ Method | HTTP request | Description
 [**apiV2WorkItemsIdLikePost**](WorkItemsAPI.md#apiv2workitemsidlikepost) | **POST** /api/v2/workItems/{id}/like | Set like to WorkItem
 [**apiV2WorkItemsIdLikesCountGet**](WorkItemsAPI.md#apiv2workitemsidlikescountget) | **GET** /api/v2/workItems/{id}/likes/count | Get likes count of WorkItem
 [**apiV2WorkItemsIdLikesGet**](WorkItemsAPI.md#apiv2workitemsidlikesget) | **GET** /api/v2/workItems/{id}/likes | Get likes of WorkItem
+[**apiV2WorkItemsIdPatch**](WorkItemsAPI.md#apiv2workitemsidpatch) | **PATCH** /api/v2/workItems/{id} | Patch Test Case, Checklist or Shared Step
 [**apiV2WorkItemsIdTestResultsHistoryGet**](WorkItemsAPI.md#apiv2workitemsidtestresultshistoryget) | **GET** /api/v2/workItems/{id}/testResults/history | Get test results history of WorkItem
 [**apiV2WorkItemsIdVersionVersionIdActualPost**](WorkItemsAPI.md#apiv2workitemsidversionversionidactualpost) | **POST** /api/v2/workItems/{id}/version/{versionId}/actual | Set WorkItem as actual
 [**apiV2WorkItemsLinksUrlsSearchPost**](WorkItemsAPI.md#apiv2workitemslinksurlssearchpost) | **POST** /api/v2/workItems/links/urls/search | 
 [**apiV2WorkItemsMovePost**](WorkItemsAPI.md#apiv2workitemsmovepost) | **POST** /api/v2/workItems/move | Move WorkItem to another section
 [**apiV2WorkItemsPost**](WorkItemsAPI.md#apiv2workitemspost) | **POST** /api/v2/workItems | Creates work item
+[**apiV2WorkItemsPut**](WorkItemsAPI.md#apiv2workitemsput) | **PUT** /api/v2/workItems | Update Test Case, Checklist or Shared Step
 [**apiV2WorkItemsSearchPost**](WorkItemsAPI.md#apiv2workitemssearchpost) | **POST** /api/v2/workItems/search | Search for work items
 [**apiV2WorkItemsSharedStepIdReferencesSectionsPost**](WorkItemsAPI.md#apiv2workitemssharedstepidreferencessectionspost) | **POST** /api/v2/workItems/{sharedStepId}/references/sections | Get SharedStep references in sections
 [**apiV2WorkItemsSharedStepIdReferencesWorkItemsPost**](WorkItemsAPI.md#apiv2workitemssharedstepidreferencesworkitemspost) | **POST** /api/v2/workItems/{sharedStepId}/references/workItems | Get SharedStep references in work items
@@ -29,7 +31,6 @@ Method | HTTP request | Description
 [**getWorkItemVersions**](WorkItemsAPI.md#getworkitemversions) | **GET** /api/v2/workItems/{id}/versions | Get WorkItem versions
 [**purgeWorkItem**](WorkItemsAPI.md#purgeworkitem) | **POST** /api/v2/workItems/{id}/purge | Permanently delete test case, checklist or shared steps from archive
 [**restoreWorkItem**](WorkItemsAPI.md#restoreworkitem) | **POST** /api/v2/workItems/{id}/restore | Restore test case, checklist or shared steps from archive
-[**updateWorkItem**](WorkItemsAPI.md#updateworkitem) | **PUT** /api/v2/workItems | Update Test Case, Checklist or Shared Step
 
 
 # **apiV2WorkItemsIdAttachmentsPost**
@@ -39,7 +40,7 @@ Method | HTTP request | Description
 
 Upload and link attachment to WorkItem
 
- Use case  User sets workItemId  User attaches a file  System creates attachment and links it to the work item  System returns attachment identifier
+  Use case    User sets workItemId    User attaches a file    System creates attachment and links it to the work item    System returns attachment identifier
 
 ### Example
 ```swift
@@ -75,7 +76,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -91,7 +92,7 @@ Void (empty response body)
 
 Transform CheckList to TestCase
 
- Use case  User sets checklist identifier  User runs method execution  System transform CheckList to TestCase
+  Use case    User sets checklist identifier    User runs method execution    System transform CheckList to TestCase
 
 ### Example
 ```swift
@@ -125,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -141,7 +142,7 @@ Name | Type | Description  | Notes
 
 Get change history of WorkItem
 
- Use case  User sets work item identifier  User runs method execution  System return change history of WorkItem
+  Use case    User sets work item identifier    User runs method execution    System return change history of WorkItem
 
 ### Example
 ```swift
@@ -185,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -201,7 +202,7 @@ Name | Type | Description  | Notes
 
 Delete like from WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System delete like from WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System delete like from WorkItem
 
 ### Example
 ```swift
@@ -235,7 +236,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -251,7 +252,7 @@ Void (empty response body)
 
 Set like to WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System set like to WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System set like to WorkItem
 
 ### Example
 ```swift
@@ -285,7 +286,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -301,7 +302,7 @@ Void (empty response body)
 
 Get likes count of WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System return likes count of WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System return likes count of WorkItem
 
 ### Example
 ```swift
@@ -335,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -351,7 +352,7 @@ Name | Type | Description  | Notes
 
 Get likes of WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System return likes of WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System return likes of WorkItem
 
 ### Example
 ```swift
@@ -385,11 +386,63 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **apiV2WorkItemsIdPatch**
+```swift
+    open class func apiV2WorkItemsIdPatch(id: String, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch Test Case, Checklist or Shared Step
+
+See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
+
+// Patch Test Case, Checklist or Shared Step
+WorkItemsAPI.apiV2WorkItemsIdPatch(id: id, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -401,7 +454,7 @@ Name | Type | Description  | Notes
 
 Get test results history of WorkItem
 
- Use case  User sets WorkItem identifier  User runs method execution  System return test results history of WorkItem
+  Use case    User sets WorkItem identifier    User runs method execution    System return test results history of WorkItem
 
 ### Example
 ```swift
@@ -465,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -481,7 +534,7 @@ Name | Type | Description  | Notes
 
 Set WorkItem as actual
 
- Use case  User sets work item identifier  User runs method execution  System set WorkItem as actual
+  Use case    User sets work item identifier    User runs method execution    System set WorkItem as actual
 
 ### Example
 ```swift
@@ -517,7 +570,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -543,7 +596,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let workItemLinkUrlApiModel = WorkItemLinkUrlApiModel(filter: WorkItemLinkUrlFilterApiModel(types: [WorkItemEntityTypes()], searchUrl: "searchUrl_example"), extractionModel: WorkItemLinkExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), workItemIds: nil, linkUrls: StringExtractionModel(include: ["include_example"], exclude: ["exclude_example"]))) // WorkItemLinkUrlApiModel |  (optional)
+let workItemLinkUrlApiModel = WorkItemLinkUrlApiModel(filter: WorkItemLinkUrlFilterApiModel(types: [WorkItemTypeModel()], searchUrl: "searchUrl_example"), extractionModel: WorkItemLinkExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), workItemIds: nil, linkUrls: StringExtractionModel(include: ["include_example"], exclude: ["exclude_example"]))) // WorkItemLinkUrlApiModel |  (optional)
 
 WorkItemsAPI.apiV2WorkItemsLinksUrlsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemLinkUrlApiModel: workItemLinkUrlApiModel) { (response, error) in
     guard error == nil else {
@@ -574,7 +627,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -590,7 +643,7 @@ Name | Type | Description  | Notes
 
 Move WorkItem to another section
 
- Use case  User sets WorkItem identifier  User runs method execution  System move WorkItem to another section
+  Use case    User sets WorkItem identifier    User runs method execution    System move WorkItem to another section
 
 ### Example
 ```swift
@@ -624,7 +677,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -645,7 +698,7 @@ Creates work item
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createWorkItemApiModel = CreateWorkItemApiModel(projectId: 123, sectionId: 123, name: "name_example", description: "description_example", entityTypeName: WorkItemEntityTypeApiModel(), duration: 123, state: WorkItemStateApiModel(), priority: WorkItemPriorityApiModel(), attributes: "TODO", tags: [TagModel(name: "name_example")], preconditionSteps: [CreateStepApiModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], steps: [nil], postconditionSteps: [nil], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], parameters: [WorkItemParameterKeyApiModel(id: 123)]) // CreateWorkItemApiModel |  (optional)
+let createWorkItemApiModel = CreateWorkItemApiModel(projectId: 123, sectionId: 123, name: "name_example", description: "description_example", entityTypeName: WorkItemEntityTypeApiModel(), duration: 123, state: WorkItemStateApiModel(), priority: WorkItemPriorityApiModel(), attributes: "TODO", tags: [TagModel(name: "name_example")], preconditionSteps: [CreateStepApiModel(action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], steps: [nil], postconditionSteps: [nil], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123, sharedStepId: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], parameters: [WorkItemParameterKeyApiModel(id: 123)]) // CreateWorkItemApiModel |  (optional)
 
 // Creates work item
 WorkItemsAPI.apiV2WorkItemsPost(createWorkItemApiModel: createWorkItemApiModel) { (response, error) in
@@ -672,7 +725,57 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **apiV2WorkItemsPut**
+```swift
+    open class func apiV2WorkItemsPut(updateWorkItemApiModel: UpdateWorkItemApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Update Test Case, Checklist or Shared Step
+
+  Use case    User sets work item properties (listed in request parameters)    User runs method execution    System updates work item by identifier    System returns updated work item model (listed in response parameters)
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let updateWorkItemApiModel = UpdateWorkItemApiModel(id: 123, sectionId: 123, name: "name_example", description: "description_example", duration: 123, state: WorkItemStateApiModel(), priority: WorkItemPriorityApiModel(), attributes: "TODO", tags: [TagModel(name: "name_example")], preconditionSteps: [UpdateStepApiModel(id: 123, action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], steps: [nil], postconditionSteps: [nil], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123, sharedStepId: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], attachments: [AssignAttachmentApiModel(id: 123)], links: [UpdateLinkApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], parameters: [WorkItemParameterKeyApiModel(id: 123)]) // UpdateWorkItemApiModel |  (optional)
+
+// Update Test Case, Checklist or Shared Step
+WorkItemsAPI.apiV2WorkItemsPut(updateWorkItemApiModel: updateWorkItemApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorkItemApiModel** | [**UpdateWorkItemApiModel**](UpdateWorkItemApiModel.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -698,7 +801,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterApiModel(ids: [WorkItemExternalMetadataFieldFilterApiModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
+let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemTypeModel()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterApiModel(ids: [WorkItemExternalMetadataFieldFilterApiModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
 
 // Search for work items
 WorkItemsAPI.apiV2WorkItemsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel) { (response, error) in
@@ -730,7 +833,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -746,7 +849,7 @@ Name | Type | Description  | Notes
 
 Get SharedStep references in sections
 
- Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
+  Use case    User sets SharedStep identifier    User runs method execution    System return SharedStep references
 
 ### Example
 ```swift
@@ -792,7 +895,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -808,7 +911,7 @@ Name | Type | Description  | Notes
 
 Get SharedStep references in work items
 
- Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
+  Use case    User sets SharedStep identifier    User runs method execution    System return SharedStep references
 
 ### Example
 ```swift
@@ -821,7 +924,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let sharedStepReferencesQueryFilterModel = SharedStepReferencesQueryFilterModel(name: "name_example", globalIds: [123], sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], entityTypes: ["entityTypes_example"], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, isAutomated: false, tags: ["tags_example"]) // SharedStepReferencesQueryFilterModel |  (optional)
+let sharedStepReferencesQueryFilterModel = SharedStepReferencesQueryFilterModel(name: "name_example", globalIds: [123], sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], entityTypes: [WorkItemTypeModel()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, isAutomated: false, tags: ["tags_example"]) // SharedStepReferencesQueryFilterModel |  (optional)
 
 // Get SharedStep references in work items
 WorkItemsAPI.apiV2WorkItemsSharedStepIdReferencesWorkItemsPost(sharedStepId: sharedStepId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, sharedStepReferencesQueryFilterModel: sharedStepReferencesQueryFilterModel) { (response, error) in
@@ -854,7 +957,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -870,7 +973,7 @@ Name | Type | Description  | Notes
 
 Get SharedStep references
 
- Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
+  Use case    User sets SharedStep identifier    User runs method execution    System return SharedStep references
 
 ### Example
 ```swift
@@ -904,7 +1007,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -920,14 +1023,14 @@ Name | Type | Description  | Notes
 
 Delete all links AutoTests from WorkItem by Id or GlobalId
 
- Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search and delete all autotests, related to found work item  System returns no content response
+  Use case    User sets work item identifier    User runs method execution    System search work item by identifier    System search and delete all autotests, related to found work item    System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 
 // Delete all links AutoTests from WorkItem by Id or GlobalId
 WorkItemsAPI.deleteAllWorkItemsFromAutoTest(id: id) { (response, error) in
@@ -946,7 +1049,7 @@ WorkItemsAPI.deleteAllWorkItemsFromAutoTest(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
 
 ### Return type
 
@@ -954,7 +1057,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -970,14 +1073,14 @@ Void (empty response body)
 
 Delete Test Case, Checklist or Shared Step by Id or GlobalId
 
- Use case  User sets work item identifier  User runs method execution  System deletes work item  System returns no content response
+  Use case    User sets work item identifier    User runs method execution    System deletes work item    System returns no content response
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 
 // Delete Test Case, Checklist or Shared Step by Id or GlobalId
 WorkItemsAPI.deleteWorkItem(id: id) { (response, error) in
@@ -996,7 +1099,7 @@ WorkItemsAPI.deleteWorkItem(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
 
 ### Return type
 
@@ -1004,7 +1107,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1020,14 +1123,14 @@ Void (empty response body)
 
 Get all AutoTests linked to WorkItem by Id or GlobalId
 
- Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search all autotests, related to found work item  System returns list of found autotests
+  Use case    User sets work item identifier    User runs method execution    System search work item by identifier    System search all autotests, related to found work item    System returns list of found autotests
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 
 // Get all AutoTests linked to WorkItem by Id or GlobalId
 WorkItemsAPI.getAutoTestsForWorkItem(id: id) { (response, error) in
@@ -1046,7 +1149,7 @@ WorkItemsAPI.getAutoTestsForWorkItem(id: id) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
 
 ### Return type
 
@@ -1054,7 +1157,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1075,7 +1178,7 @@ Get iterations by work item Id or GlobalId
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 let versionId = 987 // UUID | WorkItem version (guid format) identifier (optional)
 let versionNumber = 987 // Int | WorkItem version number (0 is the last version)\" (optional)
 
@@ -1096,7 +1199,7 @@ WorkItemsAPI.getIterations(id: id, versionId: versionId, versionNumber: versionN
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
  **versionId** | **UUID** | WorkItem version (guid format) identifier | [optional] 
  **versionNumber** | **Int** | WorkItem version number (0 is the last version)\&quot; | [optional] 
 
@@ -1106,7 +1209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1122,14 +1225,14 @@ Name | Type | Description  | Notes
 
 Get Test Case, Checklist or Shared Step by Id or GlobalId
 
- Use case  User sets work item identifier  [Optional] User sets work item version identifier  [Optional] User sets work item version number  User runs method execution  System search work item by identifier  [Optional] if User sets work item version identifier, system search work item version by identifier.  [Optional] if user sets work item version number, system search work item version by number  Otherwise, system search last work item version  System returns work item
+  Use case    User sets work item identifier    [Optional] User sets work item version identifier    [Optional] User sets work item version number    User runs method execution    System search work item by identifier    [Optional] if User sets work item version identifier, system search work item version by identifier.    [Optional] if user sets work item version number, system search work item version by number    Otherwise, system search last work item version    System returns work item
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
 let versionId = 987 // UUID | WorkItem version (guid format) identifier\" (optional)
 let versionNumber = 987 // Int | WorkItem version number (0 is the last version)\" (optional)
 
@@ -1150,7 +1253,7 @@ WorkItemsAPI.getWorkItemById(id: id, versionId: versionId, versionNumber: versio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
  **versionId** | **UUID** | WorkItem version (guid format) identifier\&quot; | [optional] 
  **versionNumber** | **Int** | WorkItem version number (0 is the last version)\&quot; | [optional] 
 
@@ -1160,7 +1263,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1176,7 +1279,7 @@ Name | Type | Description  | Notes
 
 Get WorkItem chronology by Id or GlobalId
 
- Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search test results of all autotests, related to found work item  System sort results by CompletedOn ascending, then by CreatedDate ascending  System returns sorted collection of test results
+  Use case    User sets work item identifier    User runs method execution    System search work item by identifier    System search test results of all autotests, related to found work item    System sort results by CompletedOn ascending, then by CreatedDate ascending    System returns sorted collection of test results
 
 ### Example
 ```swift
@@ -1210,7 +1313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1226,16 +1329,16 @@ Name | Type | Description  | Notes
 
 Get WorkItem versions
 
- Use case  User sets work item identifier  [Optional] User sets work item version identifier  User runs method execution  System search work item by identifier  [Optional] If User set work item version identifier, System search work item version by version identifier                     Otherwise, system search all version of work item  System returns array of work item version models (listed in response example)
+  Use case    User sets work item identifier    [Optional] User sets work item version identifier    User runs method execution    System search work item by identifier    [Optional] If User set work item version identifier, System search work item version by version identifier                      Otherwise, system search all version of work item    System returns array of work item version models (listed in response example)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let id = "id_example" // String | WorkItem internal (guid format) or global(integer format) identifier\"
-let workItemVersionId = 987 // UUID | WorkItem version (guid format) identifier\" (optional)
-let versionNumber = 987 // Int | WorkItem version (integer format) number\" (optional)
+let id = "id_example" // String | WorkItem internal (guid format) or  global(integer format) identifier\"
+let workItemVersionId = 987 // UUID | WorkItem version (guid format)  identifier\" (optional)
+let versionNumber = 987 // Int | WorkItem version (integer format)  number\" (optional)
 
 // Get WorkItem versions
 WorkItemsAPI.getWorkItemVersions(id: id, workItemVersionId: workItemVersionId, versionNumber: versionNumber) { (response, error) in
@@ -1254,9 +1357,9 @@ WorkItemsAPI.getWorkItemVersions(id: id, workItemVersionId: workItemVersionId, v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String** | WorkItem internal (guid format) or global(integer format) identifier\&quot; | 
- **workItemVersionId** | **UUID** | WorkItem version (guid format) identifier\&quot; | [optional] 
- **versionNumber** | **Int** | WorkItem version (integer format) number\&quot; | [optional] 
+ **id** | **String** | WorkItem internal (guid format) or  global(integer format) identifier\&quot; | 
+ **workItemVersionId** | **UUID** | WorkItem version (guid format)  identifier\&quot; | [optional] 
+ **versionNumber** | **Int** | WorkItem version (integer format)  number\&quot; | [optional] 
 
 ### Return type
 
@@ -1264,7 +1367,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1312,7 +1415,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -1360,61 +1463,11 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateWorkItem**
-```swift
-    open class func updateWorkItem(updateWorkItemApiModel: UpdateWorkItemApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
-```
-
-Update Test Case, Checklist or Shared Step
-
- Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import TestitApiClient
-
-let updateWorkItemApiModel = UpdateWorkItemApiModel(id: 123, sectionId: 123, description: "description_example", state: WorkItemStates(), priority: WorkItemPriorityModel(), sourceType: WorkItemSourceTypeModel(), steps: [UpdateStepApiModel(id: 123, action: "action_example", expected: "expected_example", testData: "testData_example", comments: "comments_example", workItemId: 123)], preconditionSteps: [nil], postconditionSteps: [nil], duration: 123, attributes: "TODO", tags: [TagModel(name: "name_example")], links: [UpdateLinkApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], name: "name_example", attachments: [AssignAttachmentApiModel(id: 123)], iterations: [AssignIterationApiModel(parameters: [ParameterIterationModel(id: 123)], id: 123)], autoTests: [AutoTestIdModel(id: 123)], parameters: [WorkItemParameterKeyApiModel(id: 123)]) // UpdateWorkItemApiModel |  (optional)
-
-// Update Test Case, Checklist or Shared Step
-WorkItemsAPI.updateWorkItem(updateWorkItemApiModel: updateWorkItemApiModel) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **updateWorkItemApiModel** | [**UpdateWorkItemApiModel**](UpdateWorkItemApiModel.md) |  | [optional] 
-
-### Return type
-
-Void (empty response body)
-
-### Authorization
-
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

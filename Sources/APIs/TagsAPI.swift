@@ -34,10 +34,13 @@ open class TagsAPI {
     /**
      Delete tags
      - DELETE /api/v2/tags
-     -  Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
+     -   Use case    User sets collection of tags internal (guid format) identifiers    System searches and deletes a collection of tags
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter selectTagsApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -81,10 +84,13 @@ open class TagsAPI {
     /**
      Delete tag
      - DELETE /api/v2/tags/{id}
-     -  Use case  User sets tag internal (guid format) identifier  System search and delete tag
+     -   Use case    User sets tag internal (guid format) identifier    System search and delete tag
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Tag internal (UUID) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -131,10 +137,13 @@ open class TagsAPI {
     /**
      Create tag
      - POST /api/v2/tags
-     -  Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
+     -   Use case    User sets tag model (listed in the request example)    User runs method execution    System creates tag    System returns tag model (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter createTagApiModel: (body)  (optional)
      - returns: RequestBuilder<TagApiResult> 
      */
@@ -179,10 +188,13 @@ open class TagsAPI {
     /**
      Update tag
      - PUT /api/v2/tags
-     -  Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
+     -   Use case    User sets tag ID and model (listed in the request example)    User runs method execution    System updates tag    System returns tag model (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (query)  (optional)
      - parameter updateTagApiModel: (body)  (optional)
      - returns: RequestBuilder<TagApiResult> 
@@ -234,10 +246,13 @@ open class TagsAPI {
     /**
      Search tags
      - GET /api/v2/tags/search
-     -  Use case  User runs method execution  System returns collection of tags (listed in the response example)
+     -   Use case    User runs method execution    System returns collection of tags (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -297,10 +312,13 @@ open class TagsAPI {
     /**
      Get all Tags that are used in TestPlans
      - GET /api/v2/tags/testPlansTags
-     -  Use case  User runs method execution  System returns tags (listed in the response example)
+     -   Use case    User runs method execution    System returns tags (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)

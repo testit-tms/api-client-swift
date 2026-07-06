@@ -28,8 +28,16 @@ public struct AutoTestProjectSettingsApiResult: Codable, JSONEncodable, Hashable
     public var workItemUpdatingEnabled: Bool
     /** Autotest to work item updating fields */
     public var workItemUpdatingFields: WorkItemUpdatingFieldsApiResult
+    /** Indicates whether archiving of outdated test runs is enabled for the project. */
+    public var archiveOutdatedTestRunsEnabled: Bool
+    /** Indicates whether a limit is enforced on the number of archived test runs. */
+    public var testRunsArchiveLimitEnabled: Bool
+    /**  The retention period in days for test runs. After this period,  outdated test runs may be archived based on project settings */
+    public var testRunsRetentionPeriodDays: Int
+    /** Maximum number of active test runs to keep. When this limit is exceeded,  older test runs are automatically archived */
+    public var maxActiveTestRunsCount: Int
 
-    public init(projectId: UUID, isFlakyAuto: Bool, flakyStabilityPercentage: Int, flakyTestRunCount: Int, rerunEnabled: Bool, rerunAttemptsCount: Int, workItemUpdatingEnabled: Bool, workItemUpdatingFields: WorkItemUpdatingFieldsApiResult) {
+    public init(projectId: UUID, isFlakyAuto: Bool, flakyStabilityPercentage: Int, flakyTestRunCount: Int, rerunEnabled: Bool, rerunAttemptsCount: Int, workItemUpdatingEnabled: Bool, workItemUpdatingFields: WorkItemUpdatingFieldsApiResult, archiveOutdatedTestRunsEnabled: Bool, testRunsArchiveLimitEnabled: Bool, testRunsRetentionPeriodDays: Int, maxActiveTestRunsCount: Int) {
         self.projectId = projectId
         self.isFlakyAuto = isFlakyAuto
         self.flakyStabilityPercentage = flakyStabilityPercentage
@@ -38,6 +46,10 @@ public struct AutoTestProjectSettingsApiResult: Codable, JSONEncodable, Hashable
         self.rerunAttemptsCount = rerunAttemptsCount
         self.workItemUpdatingEnabled = workItemUpdatingEnabled
         self.workItemUpdatingFields = workItemUpdatingFields
+        self.archiveOutdatedTestRunsEnabled = archiveOutdatedTestRunsEnabled
+        self.testRunsArchiveLimitEnabled = testRunsArchiveLimitEnabled
+        self.testRunsRetentionPeriodDays = testRunsRetentionPeriodDays
+        self.maxActiveTestRunsCount = maxActiveTestRunsCount
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -49,6 +61,10 @@ public struct AutoTestProjectSettingsApiResult: Codable, JSONEncodable, Hashable
         case rerunAttemptsCount
         case workItemUpdatingEnabled
         case workItemUpdatingFields
+        case archiveOutdatedTestRunsEnabled
+        case testRunsArchiveLimitEnabled
+        case testRunsRetentionPeriodDays
+        case maxActiveTestRunsCount
     }
 
     // Encodable protocol methods
@@ -63,6 +79,10 @@ public struct AutoTestProjectSettingsApiResult: Codable, JSONEncodable, Hashable
         try container.encode(rerunAttemptsCount, forKey: .rerunAttemptsCount)
         try container.encode(workItemUpdatingEnabled, forKey: .workItemUpdatingEnabled)
         try container.encode(workItemUpdatingFields, forKey: .workItemUpdatingFields)
+        try container.encode(archiveOutdatedTestRunsEnabled, forKey: .archiveOutdatedTestRunsEnabled)
+        try container.encode(testRunsArchiveLimitEnabled, forKey: .testRunsArchiveLimitEnabled)
+        try container.encode(testRunsRetentionPeriodDays, forKey: .testRunsRetentionPeriodDays)
+        try container.encode(maxActiveTestRunsCount, forKey: .maxActiveTestRunsCount)
     }
 }
 

@@ -34,7 +34,10 @@ open class WorkflowsAPI {
      - DELETE /api/v2/workflows/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
      */
@@ -81,7 +84,10 @@ open class WorkflowsAPI {
      - GET /api/v2/workflows/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - returns: RequestBuilder<WorkflowApiResult> 
      */
@@ -130,7 +136,10 @@ open class WorkflowsAPI {
      - See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - parameter operation: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -164,7 +173,7 @@ open class WorkflowsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2WorkflowsIdProjectsSearchPost(id: UUID, searchWorkflowProjectsApiModel: SearchWorkflowProjectsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkflowProjectApiResultReply?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2WorkflowsIdProjectsSearchPost(id: UUID, searchWorkflowProjectsApiModel: SearchWorkflowProjectsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkflowProjectApiResultIReply?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2WorkflowsIdProjectsSearchPostWithRequestBuilder(id: id, searchWorkflowProjectsApiModel: searchWorkflowProjectsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -179,12 +188,15 @@ open class WorkflowsAPI {
      - POST /api/v2/workflows/{id}/projects/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - parameter searchWorkflowProjectsApiModel: (body)  (optional)
-     - returns: RequestBuilder<WorkflowProjectApiResultReply> 
+     - returns: RequestBuilder<WorkflowProjectApiResultIReply> 
      */
-    open class func apiV2WorkflowsIdProjectsSearchPostWithRequestBuilder(id: UUID, searchWorkflowProjectsApiModel: SearchWorkflowProjectsApiModel? = nil) -> RequestBuilder<WorkflowProjectApiResultReply> {
+    open class func apiV2WorkflowsIdProjectsSearchPostWithRequestBuilder(id: UUID, searchWorkflowProjectsApiModel: SearchWorkflowProjectsApiModel? = nil) -> RequestBuilder<WorkflowProjectApiResultIReply> {
         var localVariablePath = "/api/v2/workflows/{id}/projects/search"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -200,7 +212,7 @@ open class WorkflowsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<WorkflowProjectApiResultReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WorkflowProjectApiResultIReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -228,7 +240,10 @@ open class WorkflowsAPI {
      - PUT /api/v2/workflows/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - parameter updateWorkflowApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -276,7 +291,10 @@ open class WorkflowsAPI {
      - GET /api/v2/workflows/name/{name}/exists
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter name: (path)  
      - returns: RequestBuilder<WorkflowExistsByNameApiResult> 
      */
@@ -323,7 +341,10 @@ open class WorkflowsAPI {
      - POST /api/v2/workflows
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter createWorkflowApiModel: (body)  (optional)
      - returns: RequestBuilder<WorkflowApiResult> 
      */
@@ -352,7 +373,7 @@ open class WorkflowsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2WorkflowsSearchPost(searchWorkflowsApiModel: SearchWorkflowsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkflowShortApiResultReply?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2WorkflowsSearchPost(searchWorkflowsApiModel: SearchWorkflowsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: WorkflowShortApiResultIReply?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2WorkflowsSearchPostWithRequestBuilder(searchWorkflowsApiModel: searchWorkflowsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -367,11 +388,14 @@ open class WorkflowsAPI {
      - POST /api/v2/workflows/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter searchWorkflowsApiModel: (body)  (optional)
-     - returns: RequestBuilder<WorkflowShortApiResultReply> 
+     - returns: RequestBuilder<WorkflowShortApiResultIReply> 
      */
-    open class func apiV2WorkflowsSearchPostWithRequestBuilder(searchWorkflowsApiModel: SearchWorkflowsApiModel? = nil) -> RequestBuilder<WorkflowShortApiResultReply> {
+    open class func apiV2WorkflowsSearchPostWithRequestBuilder(searchWorkflowsApiModel: SearchWorkflowsApiModel? = nil) -> RequestBuilder<WorkflowShortApiResultIReply> {
         let localVariablePath = "/api/v2/workflows/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: searchWorkflowsApiModel)
@@ -384,7 +408,7 @@ open class WorkflowsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<WorkflowShortApiResultReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WorkflowShortApiResultIReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

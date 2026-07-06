@@ -37,7 +37,10 @@ open class ProjectSettingsAPI {
      - POST /api/v2/projects/{projectId}/settings/autotests
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter autoTestProjectSettingsApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -87,7 +90,10 @@ open class ProjectSettingsAPI {
      - GET /api/v2/projects/{projectId}/settings/autotests
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - returns: RequestBuilder<AutoTestProjectSettingsApiResult> 
      */

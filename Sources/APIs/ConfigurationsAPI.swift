@@ -36,7 +36,10 @@ open class ConfigurationsAPI {
      - POST /api/v2/configurations/createByParameters
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter configurationByParametersModel: (body)  (optional)
      - returns: RequestBuilder<[UUID]> 
      */
@@ -82,7 +85,10 @@ open class ConfigurationsAPI {
      - POST /api/v2/configurations/delete/bulk
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter configurationSelectApiModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
@@ -128,7 +134,10 @@ open class ConfigurationsAPI {
      - DELETE /api/v2/configurations/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique or global ID of the configuration 
      - returns: RequestBuilder<Void> 
      */
@@ -179,7 +188,10 @@ open class ConfigurationsAPI {
      - See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique ID of the configuration 
      - parameter operation: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -229,7 +241,10 @@ open class ConfigurationsAPI {
      - POST /api/v2/configurations/{id}/purge
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique or global ID of the configuration 
      - returns: RequestBuilder<Void> 
      */
@@ -278,7 +293,10 @@ open class ConfigurationsAPI {
      - POST /api/v2/configurations/{id}/restore
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique or global ID of the configuration 
      - returns: RequestBuilder<Void> 
      */
@@ -327,7 +345,10 @@ open class ConfigurationsAPI {
      - POST /api/v2/configurations/purge/bulk
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter configurationSelectModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
@@ -373,7 +394,10 @@ open class ConfigurationsAPI {
      - PUT /api/v2/configurations
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter configurationPutModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -419,7 +443,10 @@ open class ConfigurationsAPI {
      - POST /api/v2/configurations/restore/bulk
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter configurationSelectModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
@@ -470,7 +497,10 @@ open class ConfigurationsAPI {
      - POST /api/v2/configurations/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -527,10 +557,13 @@ open class ConfigurationsAPI {
     /**
      Create Configuration
      - POST /api/v2/configurations
-     -  Use case  User sets configuration model (listed in the request example)  User runs method execution  System creates configuration  System returns created configuration (listed in the response example)
+     -   Use case    User sets configuration model (listed in the request example)    User runs method execution    System creates configuration    System returns created configuration (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter configurationPostModel: (body)  (optional)
      - returns: RequestBuilder<ConfigurationModel> 
      */
@@ -574,10 +607,13 @@ open class ConfigurationsAPI {
     /**
      Get configuration by internal or global ID
      - GET /api/v2/configurations/{id}
-     -  Use case  User sets configuration internal (guid format) or global (integer format) identifier  User runs method execution  System search configuration using the identifier  System returns configuration
+     -   Use case    User sets configuration internal (guid format) or global (integer format) identifier    User runs method execution    System search configuration using the identifier    System returns configuration
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Configuration internal (guid format) or global (integer format) identifier 
      - returns: RequestBuilder<ConfigurationModel> 
      */

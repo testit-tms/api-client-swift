@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get project configurations
 
- Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all configurations related to project  System returns array of found configurations (listed in response model)
+  Use case    User sets project internal or global identifier    User runs method execution    System search project    System search all configurations related to project    System returns array of found configurations (listed in response model)
 
 ### Example
 ```swift
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 

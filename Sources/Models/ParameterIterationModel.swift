@@ -13,13 +13,16 @@ import AnyCodable
 public struct ParameterIterationModel: Codable, JSONEncodable, Hashable {
 
     public var id: UUID
+    public var sharedStepId: UUID?
 
-    public init(id: UUID) {
+    public init(id: UUID, sharedStepId: UUID? = nil) {
         self.id = id
+        self.sharedStepId = sharedStepId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case sharedStepId
     }
 
     // Encodable protocol methods
@@ -27,6 +30,7 @@ public struct ParameterIterationModel: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(sharedStepId, forKey: .sharedStepId)
     }
 }
 

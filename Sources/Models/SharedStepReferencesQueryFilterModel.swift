@@ -34,8 +34,8 @@ public struct SharedStepReferencesQueryFilterModel: Codable, JSONEncodable, Hash
     public var states: Set<WorkItemStates>?
     /** Collection of priorities of work item */
     public var priorities: Set<WorkItemPriorityModel>?
-    /** Collection of types of work item  Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
-    public var entityTypes: Set<String>?
+    /** Collection of types of work item    Allowed values: `TestCases`, `CheckLists`, `SharedSteps` */
+    public var entityTypes: Set<WorkItemTypeModel>?
     /** Date and time of work item creation */
     public var createdDate: DateTimeRangeSelectorModel?
     /** Date and time of work item last modification */
@@ -45,7 +45,7 @@ public struct SharedStepReferencesQueryFilterModel: Codable, JSONEncodable, Hash
     /** Collection of tags */
     public var tags: Set<String>?
 
-    public init(name: String? = nil, globalIds: Set<Int64>? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, entityTypes: Set<String>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil) {
+    public init(name: String? = nil, globalIds: Set<Int64>? = nil, sectionIds: Set<UUID>? = nil, createdByIds: Set<UUID>? = nil, modifiedByIds: Set<UUID>? = nil, states: Set<WorkItemStates>? = nil, priorities: Set<WorkItemPriorityModel>? = nil, entityTypes: Set<WorkItemTypeModel>? = nil, createdDate: DateTimeRangeSelectorModel? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, isAutomated: Bool? = nil, tags: Set<String>? = nil) {
         self.name = name
         self.globalIds = globalIds
         self.sectionIds = sectionIds

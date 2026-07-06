@@ -34,10 +34,13 @@ open class NotificationsAPI {
     /**
      Get unread Notifications total in last 7 days
      - GET /api/v2/notifications/count
-     -  Use case  User runs method execution  System returns unread notifications total (listed in the response example)
+     -   Use case    User runs method execution    System returns unread notifications total (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter isRead: (query)  (optional)
      - returns: RequestBuilder<Int> 
      */
@@ -89,10 +92,13 @@ open class NotificationsAPI {
     /**
      Get all Notifications for current User
      - GET /api/v2/notifications
-     -  Use case  User runs method execution  System returns notifications (listed in the response example)
+     -   Use case    User runs method execution    System returns notifications (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter notificationType: (query)  (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -150,10 +156,13 @@ open class NotificationsAPI {
     /**
      Set Notification as read
      - POST /api/v2/notifications/{id}/read
-     -  Use case  User sets notification internal (guid format) identifier  User runs method execution  System set notification as read
+     -   Use case    User sets notification internal (guid format) identifier    User runs method execution    System set notification as read
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
      */
@@ -199,10 +208,13 @@ open class NotificationsAPI {
     /**
      Set all Notifications as read
      - POST /api/v2/notifications/read
-     -  Use case  User runs method execution  System set all notifications as read
+     -   Use case    User runs method execution    System set all notifications as read
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - returns: RequestBuilder<Void> 
      */
     open class func apiV2NotificationsReadPostWithRequestBuilder() -> RequestBuilder<Void> {
@@ -250,10 +262,13 @@ open class NotificationsAPI {
     /**
      Search Notifications for current User
      - POST /api/v2/notifications/search
-     -  Use case  User set filter and runs method execution  System returns notifications (listed in the response example)
+     -   Use case    User set filter and runs method execution    System returns notifications (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)

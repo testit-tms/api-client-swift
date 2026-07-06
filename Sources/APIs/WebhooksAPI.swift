@@ -34,7 +34,10 @@ open class WebhooksAPI {
      - DELETE /api/v2/webhooks
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter webhooksDeleteApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -80,7 +83,10 @@ open class WebhooksAPI {
      - GET /api/v2/webhooks
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (query) Project unique ID (optional)
      - returns: RequestBuilder<[WebHookModel]> 
      */
@@ -129,7 +135,10 @@ open class WebhooksAPI {
      - DELETE /api/v2/webhooks/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Webhook unique ID 
      - returns: RequestBuilder<Void> 
      */
@@ -178,7 +187,10 @@ open class WebhooksAPI {
      - GET /api/v2/webhooks/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Webhook unique ID 
      - returns: RequestBuilder<WebHookModel> 
      */
@@ -228,7 +240,10 @@ open class WebhooksAPI {
      - PUT /api/v2/webhooks/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Webhook unique ID 
      - parameter webHookPostModel: (body)  (optional)
      - returns: RequestBuilder<WebHookModel> 
@@ -278,7 +293,10 @@ open class WebhooksAPI {
      - POST /api/v2/webhooks
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter webHookPostModel: (body)  (optional)
      - returns: RequestBuilder<WebHookModel> 
      */
@@ -322,7 +340,10 @@ open class WebhooksAPI {
      - PUT /api/v2/webhooks
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter webhooksUpdateApiModel: (body)  (optional)
      - returns: RequestBuilder<WebhooksUpdateApiResult> 
      */
@@ -373,7 +394,10 @@ open class WebhooksAPI {
      - POST /api/v2/webhooks/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -433,7 +457,10 @@ open class WebhooksAPI {
      - GET /api/v2/webhooks/specialVariables
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter eventType: (query) Webhook event type (optional)
      - parameter variablesType: (query)  (optional)
      - returns: RequestBuilder<[String]> 
@@ -484,7 +511,10 @@ open class WebhooksAPI {
      - POST /api/v2/webhooks/test
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter webHookTestModel: (body)  (optional)
      - returns: RequestBuilder<WebhookResponse> 
      */

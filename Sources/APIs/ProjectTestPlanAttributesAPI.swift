@@ -35,10 +35,13 @@ open class ProjectTestPlanAttributesAPI {
     /**
      Add attributes to project's test plans
      - POST /api/v2/projects/{projectId}/testPlans/attributes
-     -  Use case  User sets project internal or global identifier and attributes identifiers  User runs method execution  System updates project and add attributes to project for test plans  System returns no content response
+     -   Use case    User sets project internal or global identifier and attributes identifiers    User runs method execution    System updates project and add attributes to project for test plans    System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter requestBody: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -87,10 +90,13 @@ open class ProjectTestPlanAttributesAPI {
     /**
      Delete attribute from project's test plans
      - DELETE /api/v2/projects/{projectId}/testPlans/attributes/{attributeId}
-     -  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
+     -   Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter attributeId: (path)  
      - returns: RequestBuilder<Void> 
@@ -141,10 +147,13 @@ open class ProjectTestPlanAttributesAPI {
     /**
      Get project's test plan attributes
      - GET /api/v2/projects/{projectId}/testPlans/attributes
-     -  Use case  User runs method execution  System returns project for test plans attributes by project identifier
+     -   Use case    User runs method execution    System returns project for test plans attributes by project identifier
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - returns: RequestBuilder<[CustomAttributeModel]> 
      */
@@ -199,7 +208,10 @@ open class ProjectTestPlanAttributesAPI {
      - POST /api/v2/projects/{projectId}/testPlans/attributes/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Unique or global project ID 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -261,10 +273,13 @@ open class ProjectTestPlanAttributesAPI {
     /**
      Update attribute of project's test plans
      - PUT /api/v2/projects/{projectId}/testPlans/attributes
-     -  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
+     -   Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter customAttributeTestPlanProjectRelationPutModel: (body)  (optional)
      - returns: RequestBuilder<Void> 

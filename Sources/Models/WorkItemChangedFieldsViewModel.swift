@@ -32,8 +32,9 @@ public struct WorkItemChangedFieldsViewModel: Codable, JSONEncodable, Hashable {
     public var globalId: Int64ChangedFieldViewModel
     public var versionNumber: Int32ChangedFieldViewModel
     public var entityTypeName: StringChangedFieldViewModel
+    public var parentId: GuidNullableChangedFieldViewModel
 
-    public init(name: StringChangedFieldWithDiffsViewModel? = nil, isDeleted: BooleanChangedFieldViewModel, projectId: GuidChangedFieldViewModel, isAutomated: BooleanChangedFieldViewModel, sectionId: GuidChangedFieldViewModel, description: StringChangedFieldWithDiffsViewModel? = nil, state: StringChangedFieldViewModel, priority: StringChangedFieldViewModel, duration: Int32ChangedFieldViewModel, attributes: [String: WorkItemChangedAttributeViewModel], steps: WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel, preconditionSteps: WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel, postconditionSteps: WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel, autoTests: AutoTestChangeViewModelArrayChangedFieldViewModel, attachments: AttachmentChangeViewModelArrayChangedFieldViewModel, tags: StringArrayChangedFieldViewModel, links: WorkItemLinkChangeViewModelArrayChangedFieldViewModel, globalId: Int64ChangedFieldViewModel, versionNumber: Int32ChangedFieldViewModel, entityTypeName: StringChangedFieldViewModel) {
+    public init(name: StringChangedFieldWithDiffsViewModel? = nil, isDeleted: BooleanChangedFieldViewModel, projectId: GuidChangedFieldViewModel, isAutomated: BooleanChangedFieldViewModel, sectionId: GuidChangedFieldViewModel, description: StringChangedFieldWithDiffsViewModel? = nil, state: StringChangedFieldViewModel, priority: StringChangedFieldViewModel, duration: Int32ChangedFieldViewModel, attributes: [String: WorkItemChangedAttributeViewModel], steps: WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel, preconditionSteps: WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel, postconditionSteps: WorkItemStepChangeViewModelArrayChangedFieldWithDiffsViewModel, autoTests: AutoTestChangeViewModelArrayChangedFieldViewModel, attachments: AttachmentChangeViewModelArrayChangedFieldViewModel, tags: StringArrayChangedFieldViewModel, links: WorkItemLinkChangeViewModelArrayChangedFieldViewModel, globalId: Int64ChangedFieldViewModel, versionNumber: Int32ChangedFieldViewModel, entityTypeName: StringChangedFieldViewModel, parentId: GuidNullableChangedFieldViewModel) {
         self.name = name
         self.isDeleted = isDeleted
         self.projectId = projectId
@@ -54,6 +55,7 @@ public struct WorkItemChangedFieldsViewModel: Codable, JSONEncodable, Hashable {
         self.globalId = globalId
         self.versionNumber = versionNumber
         self.entityTypeName = entityTypeName
+        self.parentId = parentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -77,6 +79,7 @@ public struct WorkItemChangedFieldsViewModel: Codable, JSONEncodable, Hashable {
         case globalId
         case versionNumber
         case entityTypeName
+        case parentId
     }
 
     // Encodable protocol methods
@@ -103,6 +106,7 @@ public struct WorkItemChangedFieldsViewModel: Codable, JSONEncodable, Hashable {
         try container.encode(globalId, forKey: .globalId)
         try container.encode(versionNumber, forKey: .versionNumber)
         try container.encode(entityTypeName, forKey: .entityTypeName)
+        try container.encode(parentId, forKey: .parentId)
     }
 }
 

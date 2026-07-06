@@ -52,7 +52,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -150,7 +150,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -161,7 +161,7 @@ Void (empty response body)
 
 # **apiV2WorkflowsIdProjectsSearchPost**
 ```swift
-    open class func apiV2WorkflowsIdProjectsSearchPost(id: UUID, searchWorkflowProjectsApiModel: SearchWorkflowProjectsApiModel? = nil, completion: @escaping (_ data: WorkflowProjectApiResultReply?, _ error: Error?) -> Void)
+    open class func apiV2WorkflowsIdProjectsSearchPost(id: UUID, searchWorkflowProjectsApiModel: SearchWorkflowProjectsApiModel? = nil, completion: @escaping (_ data: WorkflowProjectApiResultIReply?, _ error: Error?) -> Void)
 ```
 
 
@@ -172,7 +172,7 @@ Void (empty response body)
 import TestitApiClient
 
 let id = 987 // UUID | 
-let searchWorkflowProjectsApiModel = SearchWorkflowProjectsApiModel(inquiry: Inquiry(filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123))) // SearchWorkflowProjectsApiModel |  (optional)
+let searchWorkflowProjectsApiModel = SearchWorkflowProjectsApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123))) // SearchWorkflowProjectsApiModel |  (optional)
 
 WorkflowsAPI.apiV2WorkflowsIdProjectsSearchPost(id: id, searchWorkflowProjectsApiModel: searchWorkflowProjectsApiModel) { (response, error) in
     guard error == nil else {
@@ -195,11 +195,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WorkflowProjectApiResultReply**](WorkflowProjectApiResultReply.md)
+[**WorkflowProjectApiResultIReply**](WorkflowProjectApiResultIReply.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -248,7 +248,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 # **apiV2WorkflowsSearchPost**
 ```swift
-    open class func apiV2WorkflowsSearchPost(searchWorkflowsApiModel: SearchWorkflowsApiModel? = nil, completion: @escaping (_ data: WorkflowShortApiResultReply?, _ error: Error?) -> Void)
+    open class func apiV2WorkflowsSearchPost(searchWorkflowsApiModel: SearchWorkflowsApiModel? = nil, completion: @escaping (_ data: WorkflowShortApiResultIReply?, _ error: Error?) -> Void)
 ```
 
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let searchWorkflowsApiModel = SearchWorkflowsApiModel(inquiry: Inquiry(filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123))) // SearchWorkflowsApiModel |  (optional)
+let searchWorkflowsApiModel = SearchWorkflowsApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123))) // SearchWorkflowsApiModel |  (optional)
 
 WorkflowsAPI.apiV2WorkflowsSearchPost(searchWorkflowsApiModel: searchWorkflowsApiModel) { (response, error) in
     guard error == nil else {
@@ -385,11 +385,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WorkflowShortApiResultReply**](WorkflowShortApiResultReply.md)
+[**WorkflowShortApiResultIReply**](WorkflowShortApiResultIReply.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 

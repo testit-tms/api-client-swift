@@ -35,7 +35,10 @@ open class BackgroundJobsAPI {
      - DELETE /api/v2/backgroundJobs/completed
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - returns: RequestBuilder<Void> 
      */
     open class func apiV2BackgroundJobsCompletedDeleteWithRequestBuilder() -> RequestBuilder<Void> {
@@ -83,7 +86,10 @@ open class BackgroundJobsAPI {
      - GET /api/v2/backgroundJobs
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -142,7 +148,10 @@ open class BackgroundJobsAPI {
      - POST /api/v2/backgroundJobs/{id}/cancel
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
      */
@@ -191,7 +200,10 @@ open class BackgroundJobsAPI {
      - GET /api/v2/backgroundJobs/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique ID of the background job 
      - returns: RequestBuilder<BackgroundJobGetModel> 
      */
@@ -240,7 +252,10 @@ open class BackgroundJobsAPI {
      - GET /api/v2/backgroundJobs/{id}/status
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique ID of the background job 
      - returns: RequestBuilder<BackgroundJobState> 
      */
@@ -294,7 +309,10 @@ open class BackgroundJobsAPI {
      - POST /api/v2/backgroundJobs/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)

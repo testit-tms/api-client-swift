@@ -34,7 +34,10 @@ open class TestStatusesAPI {
      - GET /api/v2/testStatuses/code/{code}/exists
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter code: (path)  
      - returns: RequestBuilder<Bool> 
      */
@@ -81,7 +84,10 @@ open class TestStatusesAPI {
      - DELETE /api/v2/testStatuses/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
      */
@@ -128,7 +134,10 @@ open class TestStatusesAPI {
      - GET /api/v2/testStatuses/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - returns: RequestBuilder<TestStatusApiResult> 
      */
@@ -176,7 +185,10 @@ open class TestStatusesAPI {
      - PUT /api/v2/testStatuses/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path)  
      - parameter updateTestStatusApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -224,7 +236,10 @@ open class TestStatusesAPI {
      - GET /api/v2/testStatuses/name/{name}/exists
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter name: (path)  
      - returns: RequestBuilder<Bool> 
      */
@@ -271,7 +286,10 @@ open class TestStatusesAPI {
      - POST /api/v2/testStatuses
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter createTestStatusApiModel: (body)  (optional)
      - returns: RequestBuilder<TestStatusApiResult> 
      */
@@ -300,7 +318,7 @@ open class TestStatusesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2TestStatusesSearchPost(searchTestStatusesApiModel: SearchTestStatusesApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestStatusApiResultReply?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2TestStatusesSearchPost(searchTestStatusesApiModel: SearchTestStatusesApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestStatusApiResultIReply?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2TestStatusesSearchPostWithRequestBuilder(searchTestStatusesApiModel: searchTestStatusesApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -315,11 +333,14 @@ open class TestStatusesAPI {
      - POST /api/v2/testStatuses/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter searchTestStatusesApiModel: (body)  (optional)
-     - returns: RequestBuilder<TestStatusApiResultReply> 
+     - returns: RequestBuilder<TestStatusApiResultIReply> 
      */
-    open class func apiV2TestStatusesSearchPostWithRequestBuilder(searchTestStatusesApiModel: SearchTestStatusesApiModel? = nil) -> RequestBuilder<TestStatusApiResultReply> {
+    open class func apiV2TestStatusesSearchPostWithRequestBuilder(searchTestStatusesApiModel: SearchTestStatusesApiModel? = nil) -> RequestBuilder<TestStatusApiResultIReply> {
         let localVariablePath = "/api/v2/testStatuses/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: searchTestStatusesApiModel)
@@ -332,7 +353,7 @@ open class TestStatusesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestStatusApiResultReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestStatusApiResultIReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

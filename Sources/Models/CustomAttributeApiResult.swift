@@ -14,7 +14,7 @@ public struct CustomAttributeApiResult: Codable, JSONEncodable, Hashable {
 
     /** Unique ID of the attribute */
     public var id: UUID
-    /** Collection of the attribute options   Available for attributes of type `options` and `multiple options` only */
+    /** Collection of the attribute options      Available for attributes of type `options` and `multiple options` only */
     public var options: [CustomAttributeOptionApiResult]
     /** Type of the attribute */
     public var type: CustomAttributeType
@@ -28,8 +28,12 @@ public struct CustomAttributeApiResult: Codable, JSONEncodable, Hashable {
     public var isRequired: Bool
     /** Indicates if the attribute is available across all projects */
     public var isGlobal: Bool
+    /** Indicates if the attribute is system */
+    public var isSystem: Bool
+    /** Collection of the attribute targets      Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans) */
+    public var targets: [String]
 
-    public init(id: UUID, options: [CustomAttributeOptionApiResult], type: CustomAttributeType, isDeleted: Bool, name: String, isEnabled: Bool, isRequired: Bool, isGlobal: Bool) {
+    public init(id: UUID, options: [CustomAttributeOptionApiResult], type: CustomAttributeType, isDeleted: Bool, name: String, isEnabled: Bool, isRequired: Bool, isGlobal: Bool, isSystem: Bool, targets: [String]) {
         self.id = id
         self.options = options
         self.type = type
@@ -38,6 +42,8 @@ public struct CustomAttributeApiResult: Codable, JSONEncodable, Hashable {
         self.isEnabled = isEnabled
         self.isRequired = isRequired
         self.isGlobal = isGlobal
+        self.isSystem = isSystem
+        self.targets = targets
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -49,6 +55,8 @@ public struct CustomAttributeApiResult: Codable, JSONEncodable, Hashable {
         case isEnabled
         case isRequired
         case isGlobal
+        case isSystem
+        case targets
     }
 
     // Encodable protocol methods
@@ -63,6 +71,8 @@ public struct CustomAttributeApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(isEnabled, forKey: .isEnabled)
         try container.encode(isRequired, forKey: .isRequired)
         try container.encode(isGlobal, forKey: .isGlobal)
+        try container.encode(isSystem, forKey: .isSystem)
+        try container.encode(targets, forKey: .targets)
     }
 }
 

@@ -21,14 +21,14 @@ public struct TestResultLinkApiResult: Codable, JSONEncodable, Hashable {
     /** Link description. */
     public var description: String?
     /** Specifies the type of the link. */
-    public var type: LinkType?
+    public var type: LinkType
     /** Flag defines if link relates to integrated jira service */
     public var hasInfo: Bool
     /** Link name. Backward compatibility. */
     @available(*, deprecated, message: "This property is deprecated.")
     public var name: String?
 
-    public init(id: UUID? = nil, title: String? = nil, url: String, description: String? = nil, type: LinkType? = nil, hasInfo: Bool, name: String? = nil) {
+    public init(id: UUID? = nil, title: String? = nil, url: String, description: String? = nil, type: LinkType, hasInfo: Bool, name: String? = nil) {
         self.id = id
         self.title = title
         self.url = url
@@ -56,7 +56,7 @@ public struct TestResultLinkApiResult: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encode(url, forKey: .url)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(type, forKey: .type)
+        try container.encode(type, forKey: .type)
         try container.encode(hasInfo, forKey: .hasInfo)
         try container.encodeIfPresent(name, forKey: .name)
     }

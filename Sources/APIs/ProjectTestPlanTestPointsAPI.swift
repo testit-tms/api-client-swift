@@ -13,6 +13,65 @@ import AnyCodable
 open class ProjectTestPlanTestPointsAPI {
 
     /**
+     Get test points analytics.
+     
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter testPlanId: (path)  
+     - parameter testPlanTestPointsAnalyticsApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsAnalyticsPost(projectId: String, testPlanId: UUID, testPlanTestPointsAnalyticsApiModel: TestPlanTestPointsAnalyticsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestPlanTestPointsAnalyticsApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsAnalyticsPostWithRequestBuilder(projectId: projectId, testPlanId: testPlanId, testPlanTestPointsAnalyticsApiModel: testPlanTestPointsAnalyticsApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Get test points analytics.
+     - POST /api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/analytics
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter testPlanId: (path)  
+     - parameter testPlanTestPointsAnalyticsApiModel: (body)  (optional)
+     - returns: RequestBuilder<TestPlanTestPointsAnalyticsApiResult> 
+     */
+    open class func apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsAnalyticsPostWithRequestBuilder(projectId: String, testPlanId: UUID, testPlanTestPointsAnalyticsApiModel: TestPlanTestPointsAnalyticsApiModel? = nil) -> RequestBuilder<TestPlanTestPointsAnalyticsApiResult> {
+        var localVariablePath = "/api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/analytics"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let testPlanIdPreEscape = "\(APIHelper.mapValueToPathItem(testPlanId))"
+        let testPlanIdPostEscape = testPlanIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{testPlanId}", with: testPlanIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testPlanTestPointsAnalyticsApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<TestPlanTestPointsAnalyticsApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Rerun autotests.
      
      - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
@@ -38,7 +97,10 @@ open class ProjectTestPlanTestPointsAPI {
      - POST /api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/autotests/rerun
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter testPlanId: (path)  
      - parameter testPlanTestPointsAutoTestsRerunApiModel: (body)  (optional)
@@ -94,7 +156,10 @@ open class ProjectTestPlanTestPointsAPI {
      - POST /api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/autotests/run
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter testPlanId: (path)  
      - parameter testPlanTestPointsAutoTestsRunApiModel: (body)  (optional)
@@ -120,6 +185,124 @@ open class ProjectTestPlanTestPointsAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<TestRunNameApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Search test points in test plan.
+     
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter testPlanId: (path)  
+     - parameter testPlanTestPointsApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsGroupingSearchPost(projectId: String, testPlanId: UUID, testPlanTestPointsApiModel: TestPlanTestPointsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestPlanTestPointsGroupSearchApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsGroupingSearchPostWithRequestBuilder(projectId: projectId, testPlanId: testPlanId, testPlanTestPointsApiModel: testPlanTestPointsApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Search test points in test plan.
+     - POST /api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/grouping-search
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter testPlanId: (path)  
+     - parameter testPlanTestPointsApiModel: (body)  (optional)
+     - returns: RequestBuilder<TestPlanTestPointsGroupSearchApiResult> 
+     */
+    open class func apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsGroupingSearchPostWithRequestBuilder(projectId: String, testPlanId: UUID, testPlanTestPointsApiModel: TestPlanTestPointsApiModel? = nil) -> RequestBuilder<TestPlanTestPointsGroupSearchApiResult> {
+        var localVariablePath = "/api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/grouping-search"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let testPlanIdPreEscape = "\(APIHelper.mapValueToPathItem(testPlanId))"
+        let testPlanIdPostEscape = testPlanIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{testPlanId}", with: testPlanIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testPlanTestPointsApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<TestPlanTestPointsGroupSearchApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Distribute test points between the users.
+     
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter testPlanId: (path)  
+     - parameter testPlanTestPointsSetTestersApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsTestersPost(projectId: String, testPlanId: UUID, testPlanTestPointsSetTestersApiModel: TestPlanTestPointsSetTestersApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsTestersPostWithRequestBuilder(projectId: projectId, testPlanId: testPlanId, testPlanTestPointsSetTestersApiModel: testPlanTestPointsSetTestersApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Distribute test points between the users.
+     - POST /api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/testers
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
+     - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
+     - parameter testPlanId: (path)  
+     - parameter testPlanTestPointsSetTestersApiModel: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func apiV2ProjectsProjectIdTestPlansTestPlanIdTestPointsTestersPostWithRequestBuilder(projectId: String, testPlanId: UUID, testPlanTestPointsSetTestersApiModel: TestPlanTestPointsSetTestersApiModel? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/testers"
+        let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
+        let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{projectId}", with: projectIdPostEscape, options: .literal, range: nil)
+        let testPlanIdPreEscape = "\(APIHelper.mapValueToPathItem(testPlanId))"
+        let testPlanIdPostEscape = testPlanIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{testPlanId}", with: testPlanIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testPlanTestPointsSetTestersApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

@@ -4,6 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apiV2ProjectsProjectIdWorkItemsPreviewsBulkPost**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemspreviewsbulkpost) | **POST** /api/v2/projects/{projectId}/work-items/previews/bulk | 
+[**apiV2ProjectsProjectIdWorkItemsPreviewsPost**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemspreviewspost) | **POST** /api/v2/projects/{projectId}/work-items/previews | 
 [**apiV2ProjectsProjectIdWorkItemsSearchGroupedPost**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemssearchgroupedpost) | **POST** /api/v2/projects/{projectId}/workItems/search/grouped | Search for work items and group results by attribute
 [**apiV2ProjectsProjectIdWorkItemsSearchIdPost**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemssearchidpost) | **POST** /api/v2/projects/{projectId}/workItems/search/id | Search for work items and extract IDs only
 [**apiV2ProjectsProjectIdWorkItemsSearchPost**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemssearchpost) | **POST** /api/v2/projects/{projectId}/workItems/search | Search for work items
@@ -11,6 +13,104 @@ Method | HTTP request | Description
 [**apiV2ProjectsProjectIdWorkItemsTagsGet**](ProjectWorkItemsAPI.md#apiv2projectsprojectidworkitemstagsget) | **GET** /api/v2/projects/{projectId}/workItems/tags | Get WorkItems Tags
 [**getWorkItemsByProjectId**](ProjectWorkItemsAPI.md#getworkitemsbyprojectid) | **GET** /api/v2/projects/{projectId}/workItems | Get project work items
 
+
+# **apiV2ProjectsProjectIdWorkItemsPreviewsBulkPost**
+```swift
+    open class func apiV2ProjectsProjectIdWorkItemsPreviewsBulkPost(projectId: String, createWorkItemPreviewsApiModel: CreateWorkItemPreviewsApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let projectId = "projectId_example" // String | Internal (UUID) or global (integer) identifier
+let createWorkItemPreviewsApiModel = CreateWorkItemPreviewsApiModel(sectionId: 123, previews: [WorkItemPreviewApiModel(name: "name_example", description: "description_example", steps: [WorkItemPreviewStepApiModel(number: 123, action: "action_example", expected: "expected_example")])], attributes: "TODO", link: PreviewsIssueLinkApiModel(title: "title_example", url: "url_example")) // CreateWorkItemPreviewsApiModel |  (optional)
+
+ProjectWorkItemsAPI.apiV2ProjectsProjectIdWorkItemsPreviewsBulkPost(projectId: projectId, createWorkItemPreviewsApiModel: createWorkItemPreviewsApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **String** | Internal (UUID) or global (integer) identifier | 
+ **createWorkItemPreviewsApiModel** | [**CreateWorkItemPreviewsApiModel**](CreateWorkItemPreviewsApiModel.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **apiV2ProjectsProjectIdWorkItemsPreviewsPost**
+```swift
+    open class func apiV2ProjectsProjectIdWorkItemsPreviewsPost(projectId: String, generateWorkItemPreviewsApiModel: GenerateWorkItemPreviewsApiModel? = nil, completion: @escaping (_ data: GenerateWorkItemPreviewsApiResult?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let projectId = "projectId_example" // String | Internal (UUID) or global (integer) identifier
+let generateWorkItemPreviewsApiModel = GenerateWorkItemPreviewsApiModel(externalServiceId: 123, issueKey: "issueKey_example", userContext: "userContext_example", temperature: 123, previewLimit: 123) // GenerateWorkItemPreviewsApiModel |  (optional)
+
+ProjectWorkItemsAPI.apiV2ProjectsProjectIdWorkItemsPreviewsPost(projectId: projectId, generateWorkItemPreviewsApiModel: generateWorkItemPreviewsApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **String** | Internal (UUID) or global (integer) identifier | 
+ **generateWorkItemPreviewsApiModel** | [**GenerateWorkItemPreviewsApiModel**](GenerateWorkItemPreviewsApiModel.md) |  | [optional] 
+
+### Return type
+
+[**GenerateWorkItemPreviewsApiResult**](GenerateWorkItemPreviewsApiResult.md)
+
+### Authorization
+
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **apiV2ProjectsProjectIdWorkItemsSearchGroupedPost**
 ```swift
@@ -30,7 +130,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let workItemGroupGetModel = WorkItemGroupGetModel(selectModel: WorkItemLocalSelectModel(filter: WorkItemLocalFilterModel(name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)), groupType: WorkItemGroupType(), customAttributeId: 123) // WorkItemGroupGetModel |  (optional)
+let workItemGroupGetModel = WorkItemGroupGetModel(selectModel: WorkItemLocalSelectModel(filter: WorkItemLocalFilterModel(name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemTypeModel()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)), groupType: WorkItemGroupType(), customAttributeId: 123) // WorkItemGroupGetModel |  (optional)
 
 // Search for work items and group results by attribute
 ProjectWorkItemsAPI.apiV2ProjectsProjectIdWorkItemsSearchGroupedPost(projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemGroupGetModel: workItemGroupGetModel) { (response, error) in
@@ -63,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -90,7 +190,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let workItemSelectModel = WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectModel |  (optional)
+let workItemSelectModel = WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemTypeModel()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectModel |  (optional)
 
 // Search for work items and extract IDs only
 ProjectWorkItemsAPI.apiV2ProjectsProjectIdWorkItemsSearchIdPost(projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectModel: workItemSelectModel) { (response, error) in
@@ -123,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -150,7 +250,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterApiModel(ids: [WorkItemExternalMetadataFieldFilterApiModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
+let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemTypeModel()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterApiModel(ids: [WorkItemExternalMetadataFieldFilterApiModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
 
 // Search for work items
 ProjectWorkItemsAPI.apiV2ProjectsProjectIdWorkItemsSearchPost(projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel) { (response, error) in
@@ -183,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -211,7 +311,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterApiModel(ids: [WorkItemExternalMetadataFieldFilterApiModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
+let workItemSelectApiModel = WorkItemSelectApiModel(filter: WorkItemFilterApiModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemTypeModel()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int32RangeSelectorModel(from: 123, to: 123), medianDuration: Int64RangeSelectorModel(from: 123, to: 123), isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterApiModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterApiModel(ids: [WorkItemExternalMetadataFieldFilterApiModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionApiModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectApiModel |  (optional)
 
 // Get work item index (position) in a collection by its id.
 ProjectWorkItemsAPI.apiV2ProjectsProjectIdWorkItemsSearchWorkItemIdIndexPost(projectId: projectId, workItemId: workItemId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, workItemSelectApiModel: workItemSelectApiModel) { (response, error) in
@@ -245,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -261,7 +361,7 @@ Name | Type | Description  | Notes
 
 Get WorkItems Tags
 
- Use case  User sets project internal identifier  User runs method execution  System returns work items tags
+  Use case    User sets project internal identifier    User runs method execution    System returns work items tags
 
 ### Example
 ```swift
@@ -297,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 
@@ -313,7 +413,7 @@ Name | Type | Description  | Notes
 
 Get project work items
 
- Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project  [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted  If User did not set isDeleted field value, System search all  workitems related to project  System returns array of found workitems (listed in response model)
+  Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project    [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted    If User did not set isDeleted field value, System search all  workitems related to project    System returns array of found workitems (listed in response model)
 
 ### Example
 ```swift
@@ -363,7 +463,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
 
 ### HTTP request headers
 

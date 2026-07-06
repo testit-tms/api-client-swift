@@ -20,7 +20,7 @@ open class ExternalIssuesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ExternalIssuesSuggestionsPost(getExternalIssueSuggestionsApiModel: GetExternalIssueSuggestionsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExternalIssueApiFieldSuggestionReply?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2ExternalIssuesSuggestionsPost(getExternalIssueSuggestionsApiModel: GetExternalIssueSuggestionsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ExternalIssueApiFieldSuggestionIReply?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ExternalIssuesSuggestionsPostWithRequestBuilder(getExternalIssueSuggestionsApiModel: getExternalIssueSuggestionsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -36,11 +36,14 @@ open class ExternalIssuesAPI {
      - POST /api/v2/external-issues/suggestions
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter getExternalIssueSuggestionsApiModel: (body)  (optional)
-     - returns: RequestBuilder<ExternalIssueApiFieldSuggestionReply> 
+     - returns: RequestBuilder<ExternalIssueApiFieldSuggestionIReply> 
      */
-    open class func apiV2ExternalIssuesSuggestionsPostWithRequestBuilder(getExternalIssueSuggestionsApiModel: GetExternalIssueSuggestionsApiModel? = nil) -> RequestBuilder<ExternalIssueApiFieldSuggestionReply> {
+    open class func apiV2ExternalIssuesSuggestionsPostWithRequestBuilder(getExternalIssueSuggestionsApiModel: GetExternalIssueSuggestionsApiModel? = nil) -> RequestBuilder<ExternalIssueApiFieldSuggestionIReply> {
         let localVariablePath = "/api/v2/external-issues/suggestions"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getExternalIssueSuggestionsApiModel)
@@ -53,7 +56,7 @@ open class ExternalIssuesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ExternalIssueApiFieldSuggestionReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ExternalIssueApiFieldSuggestionIReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

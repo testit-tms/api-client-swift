@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | 
+**sharedStepId** | **UUID** |  | [optional] 
 **parameterKeyId** | **UUID** |  | 
 **value** | **String** | Value of the parameter | 
 **name** | **String** | Key of the parameter | 

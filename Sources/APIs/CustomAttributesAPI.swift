@@ -35,7 +35,10 @@ open class CustomAttributesAPI {
      - GET /api/v2/customAttributes/exists
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter name: (query)  (optional)
      - parameter isGlobal: (query)  (optional)
      - returns: RequestBuilder<CustomAttributeValidationResult> 
@@ -86,7 +89,10 @@ open class CustomAttributesAPI {
      - DELETE /api/v2/customAttributes/global/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique ID of attribute 
      - returns: RequestBuilder<Void> 
      */
@@ -136,7 +142,10 @@ open class CustomAttributesAPI {
      - PUT /api/v2/customAttributes/global/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique ID of attribute 
      - parameter globalCustomAttributeUpdateModel: (body)  (optional)
      - returns: RequestBuilder<CustomAttributeModel> 
@@ -186,7 +195,10 @@ open class CustomAttributesAPI {
      - POST /api/v2/customAttributes/global
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter globalCustomAttributePostModel: (body)  (optional)
      - returns: RequestBuilder<CustomAttributeModel> 
      */
@@ -232,7 +244,10 @@ open class CustomAttributesAPI {
      - GET /api/v2/customAttributes/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique ID of attribute 
      - returns: RequestBuilder<CustomAttributeModel> 
      */
@@ -286,7 +301,10 @@ open class CustomAttributesAPI {
      - POST /api/v2/customAttributes/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)

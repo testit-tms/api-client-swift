@@ -12,16 +12,12 @@ import AnyCodable
 
 public struct GenerateWorkItemPreviewsApiModel: Codable, JSONEncodable, Hashable {
 
-    static let taskKeyRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let issueKeyRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let userContextRule = StringRule(minLength: 0, maxLength: 30000, pattern: nil)
     static let temperatureRule = NumericRule<Float>(minimum: 0, exclusiveMinimum: false, maximum: 1, exclusiveMaximum: false, multipleOf: nil)
     static let previewLimitRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 30, exclusiveMaximum: false, multipleOf: nil)
     /** The ID of the external AI service to be used for generation. */
     public var externalServiceId: UUID
-    /** The key of the issue in an issue tracker (e.g., JIRA-123). */
-    @available(*, deprecated, message: "This property is deprecated.")
-    public var taskKey: String?
     /** The key of the issue in an issue tracker (e.g., JIRA-123). */
     public var issueKey: String?
     /** Additional user context or description of the issue if no issue key is provided. */
@@ -31,9 +27,8 @@ public struct GenerateWorkItemPreviewsApiModel: Codable, JSONEncodable, Hashable
     /** Number of work item previews to generate. */
     public var previewLimit: Int
 
-    public init(externalServiceId: UUID, taskKey: String? = nil, issueKey: String? = nil, userContext: String? = nil, temperature: Float, previewLimit: Int) {
+    public init(externalServiceId: UUID, issueKey: String? = nil, userContext: String? = nil, temperature: Float, previewLimit: Int) {
         self.externalServiceId = externalServiceId
-        self.taskKey = taskKey
         self.issueKey = issueKey
         self.userContext = userContext
         self.temperature = temperature
@@ -42,7 +37,6 @@ public struct GenerateWorkItemPreviewsApiModel: Codable, JSONEncodable, Hashable
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case externalServiceId
-        case taskKey
         case issueKey
         case userContext
         case temperature
@@ -54,7 +48,6 @@ public struct GenerateWorkItemPreviewsApiModel: Codable, JSONEncodable, Hashable
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(externalServiceId, forKey: .externalServiceId)
-        try container.encodeIfPresent(taskKey, forKey: .taskKey)
         try container.encodeIfPresent(issueKey, forKey: .issueKey)
         try container.encodeIfPresent(userContext, forKey: .userContext)
         try container.encode(temperature, forKey: .temperature)

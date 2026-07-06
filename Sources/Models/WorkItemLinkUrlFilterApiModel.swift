@@ -13,10 +13,10 @@ import AnyCodable
 public struct WorkItemLinkUrlFilterApiModel: Codable, JSONEncodable, Hashable {
 
     static let typesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
-    public var types: Set<WorkItemEntityTypes>?
+    public var types: Set<WorkItemTypeModel>?
     public var searchUrl: String?
 
-    public init(types: Set<WorkItemEntityTypes>? = nil, searchUrl: String? = nil) {
+    public init(types: Set<WorkItemTypeModel>? = nil, searchUrl: String? = nil) {
         self.types = types
         self.searchUrl = searchUrl
     }

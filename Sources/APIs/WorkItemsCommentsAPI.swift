@@ -34,10 +34,13 @@ open class WorkItemsCommentsAPI {
     /**
      Delete WorkItem comment
      - DELETE /api/v2/workItems/comments/{commentId}
-     -  Use case  User sets comment identifier  User runs method execution  System delete comment  System returns success status code
+     -   Use case    User sets comment identifier    User runs method execution    System delete comment    System returns success status code
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter commentId: (path) Comment internal (guid format) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -84,10 +87,13 @@ open class WorkItemsCommentsAPI {
     /**
      Create WorkItem comment
      - POST /api/v2/workItems/comments
-     -  Use case  User sets comment properties (listed in request parameters)  User runs method execution  System creates comment  System returns comment model (listed in response parameters)
+     -   Use case    User sets comment properties (listed in request parameters)    User runs method execution    System creates comment    System returns comment model (listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter createWorkItemCommentApiModel: (body)  (optional)
      - returns: RequestBuilder<WorkItemCommentApiResult> 
      */
@@ -133,7 +139,10 @@ open class WorkItemsCommentsAPI {
      - PUT /api/v2/workItems/comments
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter updateWorkItemCommentApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -179,7 +188,10 @@ open class WorkItemsCommentsAPI {
      - GET /api/v2/workItems/{id}/comments/count
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique or global ID of the work item 
      - returns: RequestBuilder<Int> 
      */
@@ -228,7 +240,10 @@ open class WorkItemsCommentsAPI {
      - GET /api/v2/workItems/{id}/comments
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Unique or global ID of the work item 
      - returns: RequestBuilder<[WorkItemCommentApiResult]> 
      */

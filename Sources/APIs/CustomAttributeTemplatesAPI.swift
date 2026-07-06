@@ -34,7 +34,10 @@ open class CustomAttributeTemplatesAPI {
      - GET /api/v2/customAttributes/templates/exists
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter name: (query)  (optional)
      - returns: RequestBuilder<CustomAttributeTemplateValidationResult> 
      */
@@ -82,10 +85,13 @@ open class CustomAttributeTemplatesAPI {
     /**
      Exclude CustomAttributes from CustomAttributeTemplate
      - POST /api/v2/customAttributes/templates/{id}/customAttributes/exclude
-     -  Use case  User sets attribute template internal identifier  User sets attribute internal identifiers  User runs method execution  System delete attributes from attributes tempalte
+     -   Use case    User sets attribute template internal identifier    User sets attribute internal identifiers    User runs method execution    System delete attributes from attributes tempalte
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Attribute template internal (UUID) identifier 
      - parameter requestBody: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -134,10 +140,13 @@ open class CustomAttributeTemplatesAPI {
     /**
      Include CustomAttributes to CustomAttributeTemplate
      - POST /api/v2/customAttributes/templates/{id}/customAttributes/include
-     -  Use case  User sets attribute template internal identifier  User sets attribute internal identifiers  User runs method execution  System add attributes to attributes tempalte
+     -   Use case    User sets attribute template internal identifier    User sets attribute internal identifiers    User runs method execution    System add attributes to attributes tempalte
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Attribute template internal (UUID) identifier 
      - parameter requestBody: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -185,10 +194,13 @@ open class CustomAttributeTemplatesAPI {
     /**
      Delete CustomAttributeTemplate
      - DELETE /api/v2/customAttributes/templates/{id}
-     -  Use case  User sets attribute template internal identifier  User runs method execution  System search and delete attribute template  System returns no content response
+     -   Use case    User sets attribute template internal identifier    User runs method execution    System search and delete attribute template    System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) Attribute template internal (UUID) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -235,10 +247,13 @@ open class CustomAttributeTemplatesAPI {
     /**
      Get CustomAttributeTemplate by ID
      - GET /api/v2/customAttributes/templates/{id}
-     -  Use case  User sets attribute template internal identifier  User runs method execution  System return attribute template (listed in response example)
+     -   Use case    User sets attribute template internal identifier    User runs method execution    System return attribute template (listed in response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter id: (path) CustomAttributeTemplate internal (UUID) identifier 
      - returns: RequestBuilder<CustomAttributeTemplateModel> 
      */
@@ -285,10 +300,13 @@ open class CustomAttributeTemplatesAPI {
     /**
      Get CustomAttributeTemplate by name
      - GET /api/v2/customAttributes/templates/{name}
-     -  Use case  User sets attribute template name  User runs method execution  System search and return list of attribute templates (listed in response example)
+     -   Use case    User sets attribute template name    User runs method execution    System search and return list of attribute templates (listed in response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter name: (path) CustomAttributeTemplate name for search 
      - returns: RequestBuilder<CustomAttributeTemplateModel> 
      */
@@ -335,10 +353,13 @@ open class CustomAttributeTemplatesAPI {
     /**
      Create CustomAttributeTemplate
      - POST /api/v2/customAttributes/templates
-     -  Use case  User sets attribute template parameters (listed in request example)  User runs method execution  System creates attribute template  System returns attribute template model (example listed in response parameters)
+     -   Use case    User sets attribute template parameters (listed in request example)    User runs method execution    System creates attribute template    System returns attribute template model (example listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter customAttributeTemplatePostModel: (body)  (optional)
      - returns: RequestBuilder<CustomAttributeTemplateModel> 
      */
@@ -384,7 +405,10 @@ open class CustomAttributeTemplatesAPI {
      - PUT /api/v2/customAttributes/templates
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - parameter customAttributeTemplatePutModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -433,10 +457,13 @@ open class CustomAttributeTemplatesAPI {
     /**
      Search CustomAttributeTemplates
      - POST /api/v2/customAttributes/templates/search
-     -  Use case  User sets search params model (listed in request example)  User runs method execution  System return attribute templates (listed in response example)
+     -   Use case    User sets search params model (listed in request example)    User runs method execution    System return attribute templates (listed in response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
