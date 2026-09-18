@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **versionId** | **UUID** | Work Item version identifier | 
 **versionNumber** | **Int** | Work Item version number | 
 **name** | **String** | Work Item name | 
-**entityTypeName** | **String** | Work Item type. Possible values: CheckLists, SharedSteps, TestCases | 
+**entityTypeName** | [**WorkItemTypeModel**](WorkItemTypeModel.md) | Work Item type. Possible values: CheckLists, SharedSteps, TestCases | 
 **projectId** | **UUID** | Project unique identifier | 
 **sectionId** | **UUID** | Identifier of Section where Work Item is located | 
 **sectionName** | **String** | Section name of Work Item | 

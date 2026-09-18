@@ -44,7 +44,10 @@ open class ProjectTestPlansAPI {
      -  Use case  User sets project internal identifier  User sets query params  User runs method execution  System return analytics
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Project internal (UUID) identifier 
      - parameter isDeleted: (query)  (optional)
@@ -111,7 +114,10 @@ open class ProjectTestPlansAPI {
      - POST /api/v2/projects/{projectId}/testPlans/delete/bulk
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Unique or global ID of the project 
      - parameter testPlanSelectModel: (body)  (optional)
      - returns: RequestBuilder<[UUID]> 
@@ -163,7 +169,10 @@ open class ProjectTestPlansAPI {
      -  Use case  User sets project internal or global identifier  User runs method execution  System purge delete project workitems
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter name: (path) TestPlan name to check 
      - returns: RequestBuilder<Bool> 
@@ -217,7 +226,10 @@ open class ProjectTestPlansAPI {
      - POST /api/v2/projects/{projectId}/testPlans/purge/bulk
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Unique or global ID of the project 
      - parameter testPlanSelectModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -268,7 +280,10 @@ open class ProjectTestPlansAPI {
      - POST /api/v2/projects/{projectId}/testPlans/restore/bulk
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Unique or global ID of the project 
      - parameter testPlanSelectModel: (body)  (optional)
      - returns: RequestBuilder<[UUID]> 
@@ -326,7 +341,10 @@ open class ProjectTestPlansAPI {
      -  Use case  User sets project internal or global identifier  User sets request body  User runs method execution  System returns project testplans with analytics
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter mustUpdateCache: (query)  (optional, default to false)

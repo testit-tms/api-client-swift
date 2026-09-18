@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**apiV2TestRunsDelete**](TestRunsAPI.md#apiv2testrunsdelete) | **DELETE** /api/v2/testRuns | Delete multiple test runs
 [**apiV2TestRunsIdAutoTestsNamespacesGet**](TestRunsAPI.md#apiv2testrunsidautotestsnamespacesget) | **GET** /api/v2/testRuns/{id}/autoTestsNamespaces | Get autotest classes and namespaces in test run
 [**apiV2TestRunsIdDelete**](TestRunsAPI.md#apiv2testrunsiddelete) | **DELETE** /api/v2/testRuns/{id} | Delete test run
+[**apiV2TestRunsIdPatch**](TestRunsAPI.md#apiv2testrunsidpatch) | **PATCH** /api/v2/testRuns/{id} | Patch test run
 [**apiV2TestRunsIdPurgePost**](TestRunsAPI.md#apiv2testrunsidpurgepost) | **POST** /api/v2/testRuns/{id}/purge | Permanently delete test run from archive
 [**apiV2TestRunsIdRerunsPost**](TestRunsAPI.md#apiv2testrunsidrerunspost) | **POST** /api/v2/testRuns/{id}/reruns | Manual autotests rerun in test run
 [**apiV2TestRunsIdRestorePost**](TestRunsAPI.md#apiv2testrunsidrestorepost) | **POST** /api/v2/testRuns/{id}/restore | Restore test run from the archive
@@ -71,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -119,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -169,11 +170,63 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **apiV2TestRunsIdPatch**
+```swift
+    open class func apiV2TestRunsIdPatch(id: UUID, operation: [Operation]? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+Patch test run
+
+See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let id = 987 // UUID | Test Run internal identifier (GUID format)
+let operation = [Operation(value: 123, path: "path_example", op: "op_example", from: "from_example")] // [Operation] |  (optional)
+
+// Patch test run
+TestRunsAPI.apiV2TestRunsIdPatch(id: id, operation: operation) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID** | Test Run internal identifier (GUID format) | 
+ **operation** | [**[Operation]**](Operation.md) |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -219,7 +272,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -269,7 +322,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -319,7 +372,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -369,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -417,7 +470,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -467,7 +520,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -515,7 +568,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -565,7 +618,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -615,7 +668,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -673,7 +726,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -721,7 +774,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -771,7 +824,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -794,7 +847,7 @@ This method creates a test run based on an autotest and a configuration. The dif
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestRunAndFillByAutoTestsApiModel = CreateTestRunAndFillByAutoTestsApiModel(projectId: 123, name: "name_example", configurationIds: [123], autoTestExternalIds: ["autoTestExternalIds_example"], description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"]) // CreateTestRunAndFillByAutoTestsApiModel |  (optional)
+let createTestRunAndFillByAutoTestsApiModel = CreateTestRunAndFillByAutoTestsApiModel(projectId: 123, name: "name_example", configurationIds: [123], autoTestExternalIds: ["autoTestExternalIds_example"], description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], option: TestRunLaunchOptionApiModel(customParameters: "TODO", webhookIds: [123])) // CreateTestRunAndFillByAutoTestsApiModel |  (optional)
 
 // Create test runs based on autotests and configurations
 TestRunsAPI.createAndFillByAutoTests(createTestRunAndFillByAutoTestsApiModel: createTestRunAndFillByAutoTestsApiModel) { (response, error) in
@@ -821,7 +874,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -844,7 +897,7 @@ This method creates a test run based on a combination of a configuration and a w
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestRunAndFillByConfigurationsApiModel = CreateTestRunAndFillByConfigurationsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], testPointSelectors: [TestPointSelector(configurationId: 123, workItemIds: [123])]) // CreateTestRunAndFillByConfigurationsApiModel |  (optional)
+let createTestRunAndFillByConfigurationsApiModel = CreateTestRunAndFillByConfigurationsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], testPointSelectors: [TestPointSelector(configurationId: 123, workItemIds: [123])], option: TestRunLaunchOptionApiModel(customParameters: "TODO", webhookIds: [123])) // CreateTestRunAndFillByConfigurationsApiModel |  (optional)
 
 // Create test runs picking the needed test points
 TestRunsAPI.createAndFillByConfigurations(createTestRunAndFillByConfigurationsApiModel: createTestRunAndFillByConfigurationsApiModel) { (response, error) in
@@ -871,7 +924,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -894,7 +947,7 @@ This method creates a test run based on a combination of configuration and work 
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestRunAndFillByWorkItemsApiModel = CreateTestRunAndFillByWorkItemsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], configurationIds: [123], workItemIds: [123]) // CreateTestRunAndFillByWorkItemsApiModel |  (optional)
+let createTestRunAndFillByWorkItemsApiModel = CreateTestRunAndFillByWorkItemsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], configurationIds: [123], workItemIds: [123], option: TestRunLaunchOptionApiModel(customParameters: "TODO", webhookIds: [123])) // CreateTestRunAndFillByWorkItemsApiModel |  (optional)
 
 // Create test run based on configurations and work items
 TestRunsAPI.createAndFillByWorkItems(createTestRunAndFillByWorkItemsApiModel: createTestRunAndFillByWorkItemsApiModel) { (response, error) in
@@ -921,7 +974,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -971,7 +1024,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1021,7 +1074,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1073,7 +1126,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1123,7 +1176,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1173,7 +1226,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1223,7 +1276,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 

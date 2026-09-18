@@ -20,18 +20,16 @@ public struct ProjectApiResult: Codable, JSONEncodable, Hashable {
     public var name: String
     /** Indicates if the project is marked as favorite */
     public var isFavorite: Bool
-    /** Collection of the project attributes */
-    public var attributesScheme: [CustomAttributeApiResult]?
-    /** Collection of the project test plans attributes */
-    public var testPlansAttributesScheme: [CustomAttributeApiResult]?
+    /** Number of work items in the project */
+    public var workItemsCount: Int64
     /** Number of test cases in the project */
-    public var testCasesCount: Int?
+    public var testCasesCount: Int64?
     /** Number of shared steps in the project */
-    public var sharedStepsCount: Int?
+    public var sharedStepsCount: Int64?
     /** Number of checklists in the project */
-    public var checkListsCount: Int?
+    public var checkListsCount: Int64?
     /** Number of autotests in the project */
-    public var autoTestsCount: Int?
+    public var autoTestsCount: Int64?
     /** Indicates if the project is deleted */
     public var isDeleted: Bool
     /** Creation date of the project */
@@ -46,19 +44,15 @@ public struct ProjectApiResult: Codable, JSONEncodable, Hashable {
     public var globalId: Int64
     /** Type of the project */
     public var type: ProjectType
-    /** Indicates if the status \"Flaky/Stable\" inits automatically */
-    @available(*, deprecated, message: "This property is deprecated.")
-    public var isFlakyAuto: Bool?
     /** ID of the workflow used in project */
     public var workflowId: UUID
 
-    public init(id: UUID, description: String? = nil, name: String, isFavorite: Bool, attributesScheme: [CustomAttributeApiResult]? = nil, testPlansAttributesScheme: [CustomAttributeApiResult]? = nil, testCasesCount: Int? = nil, sharedStepsCount: Int? = nil, checkListsCount: Int? = nil, autoTestsCount: Int? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectType, isFlakyAuto: Bool? = nil, workflowId: UUID) {
+    public init(id: UUID, description: String? = nil, name: String, isFavorite: Bool, workItemsCount: Int64, testCasesCount: Int64? = nil, sharedStepsCount: Int64? = nil, checkListsCount: Int64? = nil, autoTestsCount: Int64? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectType, workflowId: UUID) {
         self.id = id
         self.description = description
         self.name = name
         self.isFavorite = isFavorite
-        self.attributesScheme = attributesScheme
-        self.testPlansAttributesScheme = testPlansAttributesScheme
+        self.workItemsCount = workItemsCount
         self.testCasesCount = testCasesCount
         self.sharedStepsCount = sharedStepsCount
         self.checkListsCount = checkListsCount
@@ -70,7 +64,6 @@ public struct ProjectApiResult: Codable, JSONEncodable, Hashable {
         self.modifiedById = modifiedById
         self.globalId = globalId
         self.type = type
-        self.isFlakyAuto = isFlakyAuto
         self.workflowId = workflowId
     }
 
@@ -79,8 +72,7 @@ public struct ProjectApiResult: Codable, JSONEncodable, Hashable {
         case description
         case name
         case isFavorite
-        case attributesScheme
-        case testPlansAttributesScheme
+        case workItemsCount
         case testCasesCount
         case sharedStepsCount
         case checkListsCount
@@ -92,7 +84,6 @@ public struct ProjectApiResult: Codable, JSONEncodable, Hashable {
         case modifiedById
         case globalId
         case type
-        case isFlakyAuto
         case workflowId
     }
 
@@ -104,8 +95,7 @@ public struct ProjectApiResult: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encode(name, forKey: .name)
         try container.encode(isFavorite, forKey: .isFavorite)
-        try container.encodeIfPresent(attributesScheme, forKey: .attributesScheme)
-        try container.encodeIfPresent(testPlansAttributesScheme, forKey: .testPlansAttributesScheme)
+        try container.encode(workItemsCount, forKey: .workItemsCount)
         try container.encodeIfPresent(testCasesCount, forKey: .testCasesCount)
         try container.encodeIfPresent(sharedStepsCount, forKey: .sharedStepsCount)
         try container.encodeIfPresent(checkListsCount, forKey: .checkListsCount)
@@ -117,7 +107,6 @@ public struct ProjectApiResult: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(modifiedById, forKey: .modifiedById)
         try container.encode(globalId, forKey: .globalId)
         try container.encode(type, forKey: .type)
-        try container.encodeIfPresent(isFlakyAuto, forKey: .isFlakyAuto)
         try container.encode(workflowId, forKey: .workflowId)
     }
 }

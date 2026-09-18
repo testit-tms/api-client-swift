@@ -37,7 +37,10 @@ open class NotificationsAPI {
      -  Use case  User runs method execution  System returns unread notifications total (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter isRead: (query)  (optional)
      - returns: RequestBuilder<Int> 
      */
@@ -92,7 +95,10 @@ open class NotificationsAPI {
      -  Use case  User runs method execution  System returns notifications (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter notificationType: (query)  (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -153,7 +159,10 @@ open class NotificationsAPI {
      -  Use case  User sets notification internal (guid format) identifier  User runs method execution  System set notification as read
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
      */
@@ -202,7 +211,10 @@ open class NotificationsAPI {
      -  Use case  User runs method execution  System set all notifications as read
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - returns: RequestBuilder<Void> 
      */
     open class func apiV2NotificationsReadPostWithRequestBuilder() -> RequestBuilder<Void> {
@@ -253,7 +265,10 @@ open class NotificationsAPI {
      -  Use case  User set filter and runs method execution  System returns notifications (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)

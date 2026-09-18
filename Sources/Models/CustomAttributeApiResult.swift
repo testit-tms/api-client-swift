@@ -26,10 +26,16 @@ public struct CustomAttributeApiResult: Codable, JSONEncodable, Hashable {
     public var isEnabled: Bool
     /** Indicates if the attribute value is mandatory to specify */
     public var isRequired: Bool
+    /** Indicates if the attribute value is read-only */
+    public var isReadOnly: Bool
     /** Indicates if the attribute is available across all projects */
     public var isGlobal: Bool
+    /** Indicates if the attribute is system */
+    public var isSystem: Bool
+    /** Collection of the attribute targets   Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans) */
+    public var targets: [String]
 
-    public init(id: UUID, options: [CustomAttributeOptionApiResult], type: CustomAttributeType, isDeleted: Bool, name: String, isEnabled: Bool, isRequired: Bool, isGlobal: Bool) {
+    public init(id: UUID, options: [CustomAttributeOptionApiResult], type: CustomAttributeType, isDeleted: Bool, name: String, isEnabled: Bool, isRequired: Bool, isReadOnly: Bool, isGlobal: Bool, isSystem: Bool, targets: [String]) {
         self.id = id
         self.options = options
         self.type = type
@@ -37,7 +43,10 @@ public struct CustomAttributeApiResult: Codable, JSONEncodable, Hashable {
         self.name = name
         self.isEnabled = isEnabled
         self.isRequired = isRequired
+        self.isReadOnly = isReadOnly
         self.isGlobal = isGlobal
+        self.isSystem = isSystem
+        self.targets = targets
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -48,7 +57,10 @@ public struct CustomAttributeApiResult: Codable, JSONEncodable, Hashable {
         case name
         case isEnabled
         case isRequired
+        case isReadOnly
         case isGlobal
+        case isSystem
+        case targets
     }
 
     // Encodable protocol methods
@@ -62,7 +74,10 @@ public struct CustomAttributeApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(isEnabled, forKey: .isEnabled)
         try container.encode(isRequired, forKey: .isRequired)
+        try container.encode(isReadOnly, forKey: .isReadOnly)
         try container.encode(isGlobal, forKey: .isGlobal)
+        try container.encode(isSystem, forKey: .isSystem)
+        try container.encode(targets, forKey: .targets)
     }
 }
 

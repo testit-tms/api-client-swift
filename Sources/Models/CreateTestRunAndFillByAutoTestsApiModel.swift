@@ -32,8 +32,10 @@ public struct CreateTestRunAndFillByAutoTestsApiModel: Codable, JSONEncodable, H
     public var links: [CreateLinkApiModel]?
     /** Collection of tags to assign to the test run */
     public var tags: [String]?
+    /** Test run launching options. */
+    public var option: TestRunLaunchOptionApiModel?
 
-    public init(projectId: UUID, name: String? = nil, configurationIds: [UUID], autoTestExternalIds: [String], description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, tags: [String]? = nil) {
+    public init(projectId: UUID, name: String? = nil, configurationIds: [UUID], autoTestExternalIds: [String], description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, tags: [String]? = nil, option: TestRunLaunchOptionApiModel? = nil) {
         self.projectId = projectId
         self.name = name
         self.configurationIds = configurationIds
@@ -43,6 +45,7 @@ public struct CreateTestRunAndFillByAutoTestsApiModel: Codable, JSONEncodable, H
         self.attachments = attachments
         self.links = links
         self.tags = tags
+        self.option = option
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -55,6 +58,7 @@ public struct CreateTestRunAndFillByAutoTestsApiModel: Codable, JSONEncodable, H
         case attachments
         case links
         case tags
+        case option
     }
 
     // Encodable protocol methods
@@ -70,6 +74,7 @@ public struct CreateTestRunAndFillByAutoTestsApiModel: Codable, JSONEncodable, H
         try container.encodeIfPresent(attachments, forKey: .attachments)
         try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(option, forKey: .option)
     }
 }
 

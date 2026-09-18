@@ -60,8 +60,10 @@ public struct WorkItemShortApiResult: Codable, JSONEncodable, Hashable {
     public var iterations: [IterationApiResult]
     /** Set of links related to Work Item */
     public var links: [LinkShortApiResult]
+    /** Test pyramid layer of Work Item */
+    public var layer: WorkItemLayerApiResult?
 
-    public init(id: UUID, versionId: UUID, versionNumber: Int, name: String, entityTypeName: String, projectId: UUID, sectionId: UUID, sectionName: String, isAutomated: Bool, globalId: Int64, duration: Int64, medianDuration: Int64? = nil, attributes: [String: AnyCodable]? = nil, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, isDeleted: Bool, tagNames: [String]? = nil, iterations: [IterationApiResult], links: [LinkShortApiResult]) {
+    public init(id: UUID, versionId: UUID, versionNumber: Int, name: String, entityTypeName: String, projectId: UUID, sectionId: UUID, sectionName: String, isAutomated: Bool, globalId: Int64, duration: Int64, medianDuration: Int64? = nil, attributes: [String: AnyCodable]? = nil, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, isDeleted: Bool, tagNames: [String]? = nil, iterations: [IterationApiResult], links: [LinkShortApiResult], layer: WorkItemLayerApiResult? = nil) {
         self.id = id
         self.versionId = versionId
         self.versionNumber = versionNumber
@@ -86,6 +88,7 @@ public struct WorkItemShortApiResult: Codable, JSONEncodable, Hashable {
         self.tagNames = tagNames
         self.iterations = iterations
         self.links = links
+        self.layer = layer
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -113,6 +116,7 @@ public struct WorkItemShortApiResult: Codable, JSONEncodable, Hashable {
         case tagNames
         case iterations
         case links
+        case layer
     }
 
     // Encodable protocol methods
@@ -143,6 +147,7 @@ public struct WorkItemShortApiResult: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(tagNames, forKey: .tagNames)
         try container.encode(iterations, forKey: .iterations)
         try container.encode(links, forKey: .links)
+        try container.encodeIfPresent(layer, forKey: .layer)
     }
 }
 

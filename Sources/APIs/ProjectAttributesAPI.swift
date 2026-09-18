@@ -38,7 +38,10 @@ open class ProjectAttributesAPI {
      -  Use case  User sets attribute parameters (listed in request example) and runs method execution  System search project  System creates attribute and relates it to the project  System returns project attribute properties (example listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter customAttributePostModel: (body)  (optional)
      - returns: RequestBuilder<CustomAttributeModel> 
@@ -90,7 +93,10 @@ open class ProjectAttributesAPI {
      -  Use case  User sets project identifier and runs method execution  User sets attribute identifier  User runs method execution  System search project  System search and delete attribute  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter attributeId: (path) Project attribute internal (UUID) 
      - returns: RequestBuilder<Void> 
@@ -145,7 +151,10 @@ open class ProjectAttributesAPI {
      -  Use case  User sets project internal or global identifier  User sets project attribute identifier  User runs method execution  System search project  System search project attribute  System returns project attribute (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter attributeId: (path) Project attribute internal (UUID) or global (integer) identifier 
      - returns: RequestBuilder<CustomAttributeModel> 
@@ -200,7 +209,10 @@ open class ProjectAttributesAPI {
      -  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted attributes related to project  [Optional] If User sets isDeleted field value as false, System search all attributes related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all attributes related to project  System returns array of found attributes (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter isDeleted: (query)  (optional)
      - returns: RequestBuilder<[CustomAttributeModel]> 
@@ -243,7 +255,7 @@ open class ProjectAttributesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func searchAttributesInProject(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CustomAttributeGetModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func searchAttributesInProject(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CustomAttributeModel]?, _ error: Error?) -> Void)) -> RequestTask {
         return searchAttributesInProjectWithRequestBuilder(projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectAttributesFilterModel: projectAttributesFilterModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -259,7 +271,10 @@ open class ProjectAttributesAPI {
      - POST /api/v2/projects/{projectId}/attributes/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Unique or global project ID 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -268,9 +283,9 @@ open class ProjectAttributesAPI {
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
      - parameter projectAttributesFilterModel: (body)  (optional)
-     - returns: RequestBuilder<[CustomAttributeGetModel]> 
+     - returns: RequestBuilder<[CustomAttributeModel]> 
      */
-    open class func searchAttributesInProjectWithRequestBuilder(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil) -> RequestBuilder<[CustomAttributeGetModel]> {
+    open class func searchAttributesInProjectWithRequestBuilder(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil) -> RequestBuilder<[CustomAttributeModel]> {
         var localVariablePath = "/api/v2/projects/{projectId}/attributes/search"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -293,7 +308,7 @@ open class ProjectAttributesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[CustomAttributeGetModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[CustomAttributeModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -323,7 +338,10 @@ open class ProjectAttributesAPI {
      - PUT /api/v2/projects/{projectId}/attributes
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Unique or global project ID 
      - parameter customAttributePutModel: (body)  (optional)
      - returns: RequestBuilder<Void> 

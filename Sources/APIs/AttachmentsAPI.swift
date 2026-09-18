@@ -36,7 +36,10 @@ open class AttachmentsAPI {
      - DELETE /api/v2/attachments/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
      */
@@ -90,7 +93,10 @@ open class AttachmentsAPI {
      - GET /api/v2/attachments/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - parameter width: (query) Width of the result image (optional)
      - parameter height: (query) Height of the result image (optional)
@@ -151,7 +157,10 @@ open class AttachmentsAPI {
      - GET /api/v2/attachments/{id}/metadata
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - returns: RequestBuilder<AttachmentModel> 
      */
@@ -199,7 +208,10 @@ open class AttachmentsAPI {
      - GET /api/v2/attachments/occupiedFileStorageSize
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - returns: RequestBuilder<Int64> 
      */
     open class func apiV2AttachmentsOccupiedFileStorageSizeGetWithRequestBuilder() -> RequestBuilder<Int64> {
@@ -245,7 +257,10 @@ open class AttachmentsAPI {
      - File size is restricted to 50 MB (52 428 800 bytes)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter file: (form)  (optional)
      - returns: RequestBuilder<AttachmentModel> 
      */

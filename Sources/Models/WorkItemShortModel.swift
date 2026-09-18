@@ -13,7 +13,6 @@ import AnyCodable
 public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    static let entityTypeNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     static let sectionNameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
     /** Work Item internal unique identifier */
     public var id: UUID
@@ -24,7 +23,7 @@ public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
     /** Work Item name */
     public var name: String
     /** Work Item type. Possible values: CheckLists, SharedSteps, TestCases */
-    public var entityTypeName: String
+    public var entityTypeName: WorkItemTypeModel
     /** Project unique identifier */
     public var projectId: UUID
     /** Identifier of Section where Work Item is located */
@@ -64,7 +63,7 @@ public struct WorkItemShortModel: Codable, JSONEncodable, Hashable {
     /** Set of links related to Work Item */
     public var links: [LinkShortModel]
 
-    public init(id: UUID, versionId: UUID, versionNumber: Int, name: String, entityTypeName: String, projectId: UUID, sectionId: UUID, sectionName: String, isAutomated: Bool, globalId: Int64, duration: Int64, medianDuration: Int64? = nil, attributes: [String: AnyCodable]? = nil, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, isDeleted: Bool, tagNames: [String]? = nil, iterations: [IterationModel], links: [LinkShortModel]) {
+    public init(id: UUID, versionId: UUID, versionNumber: Int, name: String, entityTypeName: WorkItemTypeModel, projectId: UUID, sectionId: UUID, sectionName: String, isAutomated: Bool, globalId: Int64, duration: Int64, medianDuration: Int64? = nil, attributes: [String: AnyCodable]? = nil, createdById: UUID, modifiedById: UUID? = nil, createdDate: Date? = nil, modifiedDate: Date? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel, isDeleted: Bool, tagNames: [String]? = nil, iterations: [IterationModel], links: [LinkShortModel]) {
         self.id = id
         self.versionId = versionId
         self.versionNumber = versionNumber

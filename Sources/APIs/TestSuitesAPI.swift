@@ -37,7 +37,10 @@ open class TestSuitesAPI {
      - POST /api/v2/testSuites/{id}/test-points
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test suite internal identifier 
      - parameter workItemSelectModel: (body) Filter object to retrieve work items for test-suite&#39;s project (optional)
      - returns: RequestBuilder<Void> 
@@ -89,7 +92,10 @@ open class TestSuitesAPI {
      - See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test Suite internal (UUID) identifier 
      - parameter operation: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -139,7 +145,10 @@ open class TestSuitesAPI {
      - POST /api/v2/testSuites/{id}/refresh
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test Suite internal (UUID) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -189,7 +198,10 @@ open class TestSuitesAPI {
      - POST /api/v2/testSuites/{id}/workItems
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique ID of the test suite 
      - parameter requestBody: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -239,7 +251,10 @@ open class TestSuitesAPI {
      - POST /api/v2/testSuites
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter testSuiteV2PostModel: (body)  (optional)
      - returns: RequestBuilder<TestSuiteV2GetModel> 
      */
@@ -285,7 +300,10 @@ open class TestSuitesAPI {
      - PUT /api/v2/testSuites
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter testSuiteV2PutModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -332,7 +350,10 @@ open class TestSuitesAPI {
      -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System deletes test suite  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test suite internal (guid format) identifier\&quot; 
      - returns: RequestBuilder<Void> 
      */
@@ -382,7 +403,10 @@ open class TestSuitesAPI {
      -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configurations related to the test points  System returns configurations array
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test suite internal (guid format) identifier\&quot; 
      - returns: RequestBuilder<[ConfigurationModel]> 
      */
@@ -432,7 +456,10 @@ open class TestSuitesAPI {
      -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System returns test points array
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test suite internal (guid format) identifier\&quot; 
      - returns: RequestBuilder<[TestPointByTestSuiteModel]> 
      */
@@ -482,7 +509,10 @@ open class TestSuitesAPI {
      -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search test results related to the test points  System returns test results array
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test suite internal (guid format) identifier\&quot; 
      - returns: RequestBuilder<[TestResultV2ShortModel]> 
      */
@@ -532,7 +562,10 @@ open class TestSuitesAPI {
      -  Use case  User sets test suite identifier  User runs method execution  System search test suite by identifier  System returns test suite
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test suite internal (guid format) identifier\&quot; 
      - returns: RequestBuilder<TestSuiteApiResult> 
      */
@@ -589,7 +622,10 @@ open class TestSuitesAPI {
      -  Use case  User sets test suite identifier  [Optional] User sets filter  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search work items related to the test points  [Optional] User sets filter, system applies filter  System returns work items array
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter id: (path) Test suite internal (guid format) identifier\&quot; 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -655,7 +691,10 @@ open class TestSuitesAPI {
      -  Use case  User sets test suite identifier  User sets collection of configuration identifiers  User runs method execution  System search test suite by identifier  System search test points related to the test suite  System search configuration  System restores(if exist) or creates test points with listed configuration  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test suite internal (guid format) identifier\&quot; 
      - parameter requestBody: (body) Collection of configuration identifiers\&quot; (optional)
      - returns: RequestBuilder<Void> 

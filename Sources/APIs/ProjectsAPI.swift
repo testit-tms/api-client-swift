@@ -38,7 +38,10 @@ open class ProjectsAPI {
      -  Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
      - parameter requestBody: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -85,7 +88,10 @@ open class ProjectsAPI {
      - POST /api/v2/projects/demo
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - returns: RequestBuilder<DemoProjectApiResult> 
      */
     open class func apiV2ProjectsDemoPostWithRequestBuilder() -> RequestBuilder<DemoProjectApiResult> {
@@ -130,7 +136,10 @@ open class ProjectsAPI {
      - DELETE /api/v2/projects/{id}
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global ID of the project 
      - returns: RequestBuilder<Void> 
      */
@@ -181,7 +190,10 @@ open class ProjectsAPI {
      - GET /api/v2/projects/{id}/failureClasses
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global ID of the project 
      - parameter isDeleted: (query)  (optional)
      - returns: RequestBuilder<[FailureCategoryApiResult]> 
@@ -235,7 +247,10 @@ open class ProjectsAPI {
      - PUT /api/v2/projects/{id}/favorite
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -285,7 +300,10 @@ open class ProjectsAPI {
      -  Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
      - returns: RequestBuilder<[FilterModel]> 
      */
@@ -336,7 +354,10 @@ open class ProjectsAPI {
      - See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global Id of project 
      - parameter operation: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -386,7 +407,10 @@ open class ProjectsAPI {
      - POST /api/v2/projects/{id}/purge
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global ID of the project 
      - returns: RequestBuilder<Void> 
      */
@@ -435,7 +459,10 @@ open class ProjectsAPI {
      - POST /api/v2/projects/{id}/restore
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global ID of the project 
      - returns: RequestBuilder<Void> 
      */
@@ -487,7 +514,10 @@ open class ProjectsAPI {
      -  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
      - parameter attributeId: (path)  
      - returns: RequestBuilder<Void> 
@@ -544,7 +574,10 @@ open class ProjectsAPI {
      -  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
      - parameter customAttributeTestPlanProjectRelationPutModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -610,7 +643,10 @@ open class ProjectsAPI {
      -  Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
      - parameter includeTestResults: (query)  (optional)
@@ -688,7 +724,10 @@ open class ProjectsAPI {
      - GET /api/v2/projects/name/{name}/exists
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter name: (path)  
      - returns: RequestBuilder<Bool> 
      */
@@ -737,7 +776,10 @@ open class ProjectsAPI {
      - POST /api/v2/projects/purge/bulk
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectSelectModel: (body)  (optional)
      - returns: RequestBuilder<Int64> 
      */
@@ -783,7 +825,10 @@ open class ProjectsAPI {
      - POST /api/v2/projects/restore/bulk
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectSelectModel: (body)  (optional)
      - returns: RequestBuilder<Int64> 
      */
@@ -818,7 +863,7 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProjectShortModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProjectApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ProjectsSearchPostWithRequestBuilder(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectsFilterModel: projectsFilterModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -834,7 +879,10 @@ open class ProjectsAPI {
      - POST /api/v2/projects/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -842,9 +890,9 @@ open class ProjectsAPI {
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
      - parameter projectsFilterModel: (body)  (optional)
-     - returns: RequestBuilder<[ProjectShortModel]> 
+     - returns: RequestBuilder<[ProjectApiResult]> 
      */
-    open class func apiV2ProjectsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil) -> RequestBuilder<[ProjectShortModel]> {
+    open class func apiV2ProjectsSearchPostWithRequestBuilder(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil) -> RequestBuilder<[ProjectApiResult]> {
         let localVariablePath = "/api/v2/projects/search"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: projectsFilterModel)
@@ -864,7 +912,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ProjectShortModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ProjectApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -877,7 +925,7 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func apiV2ProjectsShortsPost(getShortProjectsApiModel: GetShortProjectsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectShortApiResultReply?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func apiV2ProjectsShortsPost(getShortProjectsApiModel: GetShortProjectsApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectShortApiResultIReply?, _ error: Error?) -> Void)) -> RequestTask {
         return apiV2ProjectsShortsPostWithRequestBuilder(getShortProjectsApiModel: getShortProjectsApiModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -894,11 +942,14 @@ open class ProjectsAPI {
      -  Use case  User sets query params  User runs method execution  System return projects short models
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter getShortProjectsApiModel: (body)  (optional)
-     - returns: RequestBuilder<ProjectShortApiResultReply> 
+     - returns: RequestBuilder<ProjectShortApiResultIReply> 
      */
-    open class func apiV2ProjectsShortsPostWithRequestBuilder(getShortProjectsApiModel: GetShortProjectsApiModel? = nil) -> RequestBuilder<ProjectShortApiResultReply> {
+    open class func apiV2ProjectsShortsPostWithRequestBuilder(getShortProjectsApiModel: GetShortProjectsApiModel? = nil) -> RequestBuilder<ProjectShortApiResultIReply> {
         let localVariablePath = "/api/v2/projects/shorts"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getShortProjectsApiModel)
@@ -911,7 +962,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProjectShortApiResultReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ProjectShortApiResultIReply>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -941,7 +992,10 @@ open class ProjectsAPI {
      -  Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createProjectApiModel: (body)  (optional)
      - returns: RequestBuilder<ProjectApiResult> 
      */
@@ -987,7 +1041,10 @@ open class ProjectsAPI {
      - DELETE /api/v2/projects/{id}/autoTests
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global ID of the project 
      - returns: RequestBuilder<Void> 
      */
@@ -1027,7 +1084,7 @@ open class ProjectsAPI {
      */
     @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
-    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProjectShortModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [ProjectApiResult]?, _ error: Error?) -> Void)) -> RequestTask {
         return getAllProjectsWithRequestBuilder(isDeleted: isDeleted, projectName: projectName, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1044,7 +1101,10 @@ open class ProjectsAPI {
      -  Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter isDeleted: (query) If result must consist of only actual/deleted parameters (optional)
      - parameter projectName: (query)  (optional)
@@ -1053,10 +1113,10 @@ open class ProjectsAPI {
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
-     - returns: RequestBuilder<[ProjectShortModel]> 
+     - returns: RequestBuilder<[ProjectApiResult]> 
      */
     @available(*, deprecated, message: "This operation is deprecated.")
-    open class func getAllProjectsWithRequestBuilder(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ProjectShortModel]> {
+    open class func getAllProjectsWithRequestBuilder(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil) -> RequestBuilder<[ProjectApiResult]> {
         let localVariablePath = "/api/v2/projects"
         let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -1078,7 +1138,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ProjectShortModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ProjectApiResult]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -1108,7 +1168,10 @@ open class ProjectsAPI {
      -  Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
      - returns: RequestBuilder<[AutoTestNamespaceApiResult]> 
      */
@@ -1141,7 +1204,7 @@ open class ProjectsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getProjectById(id: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectModel?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getProjectById(id: String, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: DetailedProjectApiResult?, _ error: Error?) -> Void)) -> RequestTask {
         return getProjectByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1158,11 +1221,14 @@ open class ProjectsAPI {
      -  Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
-     - returns: RequestBuilder<ProjectModel> 
+     - returns: RequestBuilder<DetailedProjectApiResult> 
      */
-    open class func getProjectByIdWithRequestBuilder(id: String) -> RequestBuilder<ProjectModel> {
+    open class func getProjectByIdWithRequestBuilder(id: String) -> RequestBuilder<DetailedProjectApiResult> {
         var localVariablePath = "/api/v2/projects/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1178,7 +1244,7 @@ open class ProjectsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProjectModel>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<DetailedProjectApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -1206,10 +1272,13 @@ open class ProjectsAPI {
     /**
      Get project test plans
      - GET /api/v2/projects/{id}/testPlans
-     -  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
+     -  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to                     project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which                     are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
      - parameter isDeleted: (query) If result must consist of only actual/archived test plans (optional)
      - returns: RequestBuilder<[TestPlanModel]> 
@@ -1275,7 +1344,10 @@ open class ProjectsAPI {
      -  Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter id: (path) Project internal (UUID) or global (integer) identifier 
      - parameter notStarted: (query)  
@@ -1352,7 +1424,10 @@ open class ProjectsAPI {
      -  Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter updateProjectApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */

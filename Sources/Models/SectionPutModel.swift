@@ -15,16 +15,14 @@ public struct SectionPutModel: Codable, JSONEncodable, Hashable {
     static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var id: UUID
     public var name: String
-    public var projectId: UUID
     public var parentId: UUID?
     public var preconditionSteps: [StepPutModel]?
     public var postconditionSteps: [StepPutModel]?
     public var attachments: [AttachmentPutModel]
 
-    public init(id: UUID, name: String, projectId: UUID, parentId: UUID? = nil, preconditionSteps: [StepPutModel]? = nil, postconditionSteps: [StepPutModel]? = nil, attachments: [AttachmentPutModel]) {
+    public init(id: UUID, name: String, parentId: UUID? = nil, preconditionSteps: [StepPutModel]? = nil, postconditionSteps: [StepPutModel]? = nil, attachments: [AttachmentPutModel]) {
         self.id = id
         self.name = name
-        self.projectId = projectId
         self.parentId = parentId
         self.preconditionSteps = preconditionSteps
         self.postconditionSteps = postconditionSteps
@@ -34,7 +32,6 @@ public struct SectionPutModel: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
-        case projectId
         case parentId
         case preconditionSteps
         case postconditionSteps
@@ -47,7 +44,6 @@ public struct SectionPutModel: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encode(projectId, forKey: .projectId)
         try container.encodeIfPresent(parentId, forKey: .parentId)
         try container.encodeIfPresent(preconditionSteps, forKey: .preconditionSteps)
         try container.encodeIfPresent(postconditionSteps, forKey: .postconditionSteps)

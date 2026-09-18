@@ -37,7 +37,10 @@ open class ProjectConfigurationsAPI {
      -  Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all configurations related to project  System returns array of found configurations (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - returns: RequestBuilder<[ConfigurationModel]> 
      */

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **externalId** | **String** | External ID of the autotest | 
-**links** | [Link] | Collection of the autotest links | [optional] 
+**links** | [LinkApiResult] | Collection of the autotest links | [optional] 
 **projectId** | **UUID** | Unique ID of the autotest project | 
 **name** | **String** | Name of the autotest | 
 **namespace** | **String** | Name of the autotest namespace | [optional] 

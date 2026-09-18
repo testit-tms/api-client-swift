@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -125,7 +125,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -177,7 +177,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -341,7 +341,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -399,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -499,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -549,7 +549,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -601,7 +601,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -698,7 +698,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -748,7 +748,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -798,7 +798,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -848,7 +848,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -898,7 +898,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -952,7 +952,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1004,7 +1004,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1027,7 +1027,7 @@ Update autotest
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestUpdateApiModel = AutoTestUpdateApiModel(id: 123, projectId: 123, externalId: "externalId_example", externalKey: "externalKey_example", name: "name_example", namespace: "namespace_example", classname: "classname_example", title: "title_example", description: "description_example", isFlaky: false, steps: [AutoTestStepApiModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], workItemIds: [123], workItemIdsForLinkWithAutoTest: [123], labels: [LabelApiModel(name: "name_example")], links: [LinkUpdateApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"]) // AutoTestUpdateApiModel |  (optional)
+let autoTestUpdateApiModel = AutoTestUpdateApiModel(id: 123, projectId: 123, externalId: "externalId_example", externalKey: "externalKey_example", name: "name_example", namespace: "namespace_example", classname: "classname_example", title: "title_example", description: "description_example", isFlaky: false, resetLayer: false, steps: [AutoTestStepApiModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], workItemIds: [123], workItemIdsForLinkWithAutoTest: [123], labels: [LabelApiModel(name: "name_example")], links: [LinkUpdateApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"]) // AutoTestUpdateApiModel |  (optional)
 
 // Update autotest
 AutoTestsAPI.updateAutoTest(autoTestUpdateApiModel: autoTestUpdateApiModel) { (response, error) in
@@ -1054,7 +1054,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1077,7 +1077,7 @@ Update multiple autotests
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let autoTestUpdateApiModel = [AutoTestUpdateApiModel(id: 123, projectId: 123, externalId: "externalId_example", externalKey: "externalKey_example", name: "name_example", namespace: "namespace_example", classname: "classname_example", title: "title_example", description: "description_example", isFlaky: false, steps: [AutoTestStepApiModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], workItemIds: [123], workItemIdsForLinkWithAutoTest: [123], labels: [LabelApiModel(name: "name_example")], links: [LinkUpdateApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"])] // [AutoTestUpdateApiModel] |  (optional)
+let autoTestUpdateApiModel = [AutoTestUpdateApiModel(id: 123, projectId: 123, externalId: "externalId_example", externalKey: "externalKey_example", name: "name_example", namespace: "namespace_example", classname: "classname_example", title: "title_example", description: "description_example", isFlaky: false, resetLayer: false, steps: [AutoTestStepApiModel(title: "title_example", description: "description_example", steps: [nil])], setup: [nil], teardown: [nil], workItemIds: [123], workItemIdsForLinkWithAutoTest: [123], labels: [LabelApiModel(name: "name_example")], links: [LinkUpdateApiModel(id: 123, title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"])] // [AutoTestUpdateApiModel] |  (optional)
 
 // Update multiple autotests
 AutoTestsAPI.updateMultiple(autoTestUpdateApiModel: autoTestUpdateApiModel) { (response, error) in
@@ -1104,7 +1104,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
