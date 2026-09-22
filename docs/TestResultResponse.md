@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **outcome** | [**TestResultOutcome**](TestResultOutcome.md) |  | [optional] 
 **status** | [**TestStatusApiResult**](TestStatusApiResult.md) |  | [optional] 
 **comment** | **String** |  | [optional] 
-**links** | [Link] |  | [optional] 
+**links** | [LinkApiResult] |  | [optional] 
 **stepResults** | [StepResultApiModel] |  | [optional] 
 **attachments** | [AttachmentApiResult] |  | [optional] 
 **autoTestId** | **UUID** |  | [optional] 

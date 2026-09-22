@@ -12,80 +12,80 @@ import AnyCodable
 
 public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
 
+    static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     static let durationRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: 86400000, exclusiveMaximum: false, multipleOf: nil)
-    static let nameRule = StringRule(minLength: 1, maxLength: nil, pattern: nil)
-    /** Workitem internal identifier */
+    /** Unique identifier of the work item */
     public var id: UUID
-    /** Internal identifier of section where workitem is located */
+    /** Unique identifier of the section within a project */
     public var sectionId: UUID
-    /** Workitem description */
-    public var description: String?
-    public var state: WorkItemStates
-    public var priority: WorkItemPriorityModel
-    public var sourceType: WorkItemSourceTypeModel?
-    /** Collection of workitem steps */
-    public var steps: [UpdateStepApiModel]
-    /** Collection of workitem precondtion steps */
-    public var preconditionSteps: [UpdateStepApiModel]
-    /** Collection of workitem postcondition steps */
-    public var postconditionSteps: [UpdateStepApiModel]
-    /** Workitem duration in milliseconds */
-    public var duration: Int64
-    /** Key value pair of custom workitem attributes */
-    public var attributes: [String: AnyCodable]
-    /** Collection of workitem tags */
-    public var tags: [TagModel]
-    /** Collection of workitem links */
-    public var links: [UpdateLinkApiModel]
-    /** Workitem name */
+    /** Name of the work item */
     public var name: String
-    public var attachments: [AssignAttachmentApiModel]
-    /** Collection of parameter id sets */
+    /** Description of the work item */
+    public var description: String?
+    /** Duration of the work item in milliseconds */
+    public var duration: Int64
+    /** Current state of the work item */
+    public var state: WorkItemStateApiModel
+    /** Priority level assigned to the work item */
+    public var priority: WorkItemPriorityApiModel
+    /** Set of custom attributes associated with the work item */
+    public var attributes: [String: AnyCodable]?
+    /** Set of tags applied to the work item */
+    public var tags: [TagModel]?
+    /** Set of precondition steps that must be executed before the main steps */
+    public var preconditionSteps: [UpdateStepApiModel]?
+    /** Set of main steps or actions defined for the work item */
+    public var steps: [UpdateStepApiModel]?
+    /** Set of postcondition steps that are executed after completing the main steps */
+    public var postconditionSteps: [UpdateStepApiModel]?
+    /** Set of iterations associated with the work item */
     public var iterations: [AssignIterationApiModel]?
-    /** Collection of autotest internal ids */
+    /** Set of automated tests linked to the work item */
     public var autoTests: [AutoTestIdModel]?
-    /** Set of parameter keys related to the work item */
+    /** Set of files attached to the work item */
+    public var attachments: [AssignAttachmentApiModel]?
+    /** Set of links related to the work item */
+    public var links: [UpdateLinkApiModel]?
+    /** Set of parameter keys associated with the work item */
     public var parameters: [WorkItemParameterKeyApiModel]?
 
-    public init(id: UUID, sectionId: UUID, description: String? = nil, state: WorkItemStates, priority: WorkItemPriorityModel, sourceType: WorkItemSourceTypeModel? = nil, steps: [UpdateStepApiModel], preconditionSteps: [UpdateStepApiModel], postconditionSteps: [UpdateStepApiModel], duration: Int64, attributes: [String: AnyCodable], tags: [TagModel], links: [UpdateLinkApiModel], name: String, attachments: [AssignAttachmentApiModel], iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil, parameters: [WorkItemParameterKeyApiModel]? = nil) {
+    public init(id: UUID, sectionId: UUID, name: String, description: String? = nil, duration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, attributes: [String: AnyCodable]? = nil, tags: [TagModel]? = nil, preconditionSteps: [UpdateStepApiModel]? = nil, steps: [UpdateStepApiModel]? = nil, postconditionSteps: [UpdateStepApiModel]? = nil, iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [UpdateLinkApiModel]? = nil, parameters: [WorkItemParameterKeyApiModel]? = nil) {
         self.id = id
         self.sectionId = sectionId
+        self.name = name
         self.description = description
+        self.duration = duration
         self.state = state
         self.priority = priority
-        self.sourceType = sourceType
-        self.steps = steps
-        self.preconditionSteps = preconditionSteps
-        self.postconditionSteps = postconditionSteps
-        self.duration = duration
         self.attributes = attributes
         self.tags = tags
-        self.links = links
-        self.name = name
-        self.attachments = attachments
+        self.preconditionSteps = preconditionSteps
+        self.steps = steps
+        self.postconditionSteps = postconditionSteps
         self.iterations = iterations
         self.autoTests = autoTests
+        self.attachments = attachments
+        self.links = links
         self.parameters = parameters
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case sectionId
+        case name
         case description
+        case duration
         case state
         case priority
-        case sourceType
-        case steps
-        case preconditionSteps
-        case postconditionSteps
-        case duration
         case attributes
         case tags
-        case links
-        case name
-        case attachments
+        case preconditionSteps
+        case steps
+        case postconditionSteps
         case iterations
         case autoTests
+        case attachments
+        case links
         case parameters
     }
 
@@ -95,21 +95,20 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(sectionId, forKey: .sectionId)
+        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
+        try container.encode(duration, forKey: .duration)
         try container.encode(state, forKey: .state)
         try container.encode(priority, forKey: .priority)
-        try container.encodeIfPresent(sourceType, forKey: .sourceType)
-        try container.encode(steps, forKey: .steps)
-        try container.encode(preconditionSteps, forKey: .preconditionSteps)
-        try container.encode(postconditionSteps, forKey: .postconditionSteps)
-        try container.encode(duration, forKey: .duration)
-        try container.encode(attributes, forKey: .attributes)
-        try container.encode(tags, forKey: .tags)
-        try container.encode(links, forKey: .links)
-        try container.encode(name, forKey: .name)
-        try container.encode(attachments, forKey: .attachments)
+        try container.encodeIfPresent(attributes, forKey: .attributes)
+        try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(preconditionSteps, forKey: .preconditionSteps)
+        try container.encodeIfPresent(steps, forKey: .steps)
+        try container.encodeIfPresent(postconditionSteps, forKey: .postconditionSteps)
         try container.encodeIfPresent(iterations, forKey: .iterations)
         try container.encodeIfPresent(autoTests, forKey: .autoTests)
+        try container.encodeIfPresent(attachments, forKey: .attachments)
+        try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(parameters, forKey: .parameters)
     }
 }

@@ -12,29 +12,37 @@ import AnyCodable
 
 public struct Inquiry: Codable, JSONEncodable, Hashable {
 
+    public var group: Group?
     public var filter: CompositeFilter?
     public var order: [Order]
     public var page: Page?
+    public var mode: Mode
 
-    public init(filter: CompositeFilter? = nil, order: [Order], page: Page? = nil) {
+    public init(group: Group? = nil, filter: CompositeFilter? = nil, order: [Order], page: Page? = nil, mode: Mode) {
+        self.group = group
         self.filter = filter
         self.order = order
         self.page = page
+        self.mode = mode
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case group
         case filter
         case order
         case page
+        case mode
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(group, forKey: .group)
         try container.encodeIfPresent(filter, forKey: .filter)
         try container.encode(order, forKey: .order)
         try container.encodeIfPresent(page, forKey: .page)
+        try container.encode(mode, forKey: .mode)
     }
 }
 

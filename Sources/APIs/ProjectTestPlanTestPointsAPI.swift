@@ -38,7 +38,10 @@ open class ProjectTestPlanTestPointsAPI {
      - POST /api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/autotests/rerun
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter testPlanId: (path)  
      - parameter testPlanTestPointsAutoTestsRerunApiModel: (body)  (optional)
@@ -94,7 +97,10 @@ open class ProjectTestPlanTestPointsAPI {
      - POST /api/v2/projects/{projectId}/test-plans/{testPlanId}/test-points/autotests/run
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter testPlanId: (path)  
      - parameter testPlanTestPointsAutoTestsRunApiModel: (body)  (optional)

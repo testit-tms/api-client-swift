@@ -17,7 +17,7 @@ public struct AutoTest: Codable, JSONEncodable, Hashable {
     /** External ID of the autotest */
     public var externalId: String
     /** Collection of the autotest links */
-    public var links: [Link]?
+    public var links: [LinkApiResult]?
     /** Unique ID of the autotest project */
     public var projectId: UUID
     /** Name of the autotest */
@@ -71,7 +71,7 @@ public struct AutoTest: Codable, JSONEncodable, Hashable {
     /** Stability percentage of the autotest */
     public var stabilityPercentage: Int?
 
-    public init(externalId: String, links: [Link]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStep]? = nil, setup: [AutoTestStep]? = nil, teardown: [AutoTestStep]? = nil, title: String? = nil, description: String? = nil, labels: [Label]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil, globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShort? = nil, lastTestResultOutcome: String? = nil, stabilityPercentage: Int? = nil) {
+    public init(externalId: String, links: [LinkApiResult]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStep]? = nil, setup: [AutoTestStep]? = nil, teardown: [AutoTestStep]? = nil, title: String? = nil, description: String? = nil, labels: [Label]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil, globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShort? = nil, lastTestResultOutcome: String? = nil, stabilityPercentage: Int? = nil) {
         self.externalId = externalId
         self.links = links
         self.projectId = projectId

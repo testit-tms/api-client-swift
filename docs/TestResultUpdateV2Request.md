@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **statusCode** | **String** |  | [optional] 
 **statusType** | [**TestStatusType**](TestStatusType.md) |  | [optional] 
 **comment** | **String** |  | [optional] 
-**links** | [Link] |  | [optional] 
+**links** | [CreateLinkApiModel] |  | [optional] 
 **stepResults** | [StepResultApiModel] |  | [optional] 
 **attachments** | [AttachmentUpdateRequest] |  | [optional] 
 **durationInMs** | **Int64** |  | [optional] 

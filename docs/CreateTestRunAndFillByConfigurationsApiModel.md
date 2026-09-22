@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **links** | [CreateLinkApiModel] | Collection of links to relate to the test run | [optional] 
 **tags** | **[String]** | Collection of tags to assign to the test run | [optional] 
 **testPointSelectors** | [TestPointSelector] | Specifies an array of work items and configuration to create a test run for. | 
+**option** | [**TestRunLaunchOptionApiModel**](TestRunLaunchOptionApiModel.md) | Test run launching options. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

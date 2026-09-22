@@ -15,6 +15,7 @@ public struct ParameterShortModel: Codable, JSONEncodable, Hashable {
     static let valueRule = StringRule(minLength: 0, maxLength: 1500, pattern: nil)
     static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var id: UUID
+    public var sharedStepId: UUID?
     public var parameterKeyId: UUID
     /** Value of the parameter */
     public var value: String
@@ -22,8 +23,9 @@ public struct ParameterShortModel: Codable, JSONEncodable, Hashable {
     public var name: String
     public var projectIds: [UUID]
 
-    public init(id: UUID, parameterKeyId: UUID, value: String, name: String, projectIds: [UUID]) {
+    public init(id: UUID, sharedStepId: UUID? = nil, parameterKeyId: UUID, value: String, name: String, projectIds: [UUID]) {
         self.id = id
+        self.sharedStepId = sharedStepId
         self.parameterKeyId = parameterKeyId
         self.value = value
         self.name = name
@@ -32,6 +34,7 @@ public struct ParameterShortModel: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case sharedStepId
         case parameterKeyId
         case value
         case name
@@ -43,6 +46,7 @@ public struct ParameterShortModel: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(sharedStepId, forKey: .sharedStepId)
         try container.encode(parameterKeyId, forKey: .parameterKeyId)
         try container.encode(value, forKey: .value)
         try container.encode(name, forKey: .name)

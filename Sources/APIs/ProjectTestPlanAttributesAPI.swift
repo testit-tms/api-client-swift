@@ -38,7 +38,10 @@ open class ProjectTestPlanAttributesAPI {
      -  Use case  User sets project internal or global identifier and attributes identifiers  User runs method execution  System updates project and add attributes to project for test plans  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter requestBody: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -90,7 +93,10 @@ open class ProjectTestPlanAttributesAPI {
      -  Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter attributeId: (path)  
      - returns: RequestBuilder<Void> 
@@ -144,7 +150,10 @@ open class ProjectTestPlanAttributesAPI {
      -  Use case  User runs method execution  System returns project for test plans attributes by project identifier
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - returns: RequestBuilder<[CustomAttributeModel]> 
      */
@@ -183,7 +192,7 @@ open class ProjectTestPlanAttributesAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func searchTestPlanAttributesInProject(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CustomAttributeGetModel]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func searchTestPlanAttributesInProject(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: [CustomAttributeModel]?, _ error: Error?) -> Void)) -> RequestTask {
         return searchTestPlanAttributesInProjectWithRequestBuilder(projectId: projectId, skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectAttributesFilterModel: projectAttributesFilterModel).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -199,7 +208,10 @@ open class ProjectTestPlanAttributesAPI {
      - POST /api/v2/projects/{projectId}/testPlans/attributes/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Unique or global project ID 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -208,9 +220,9 @@ open class ProjectTestPlanAttributesAPI {
      - parameter searchField: (query) Property name for searching (optional)
      - parameter searchValue: (query) Value for searching (optional)
      - parameter projectAttributesFilterModel: (body)  (optional)
-     - returns: RequestBuilder<[CustomAttributeGetModel]> 
+     - returns: RequestBuilder<[CustomAttributeModel]> 
      */
-    open class func searchTestPlanAttributesInProjectWithRequestBuilder(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil) -> RequestBuilder<[CustomAttributeGetModel]> {
+    open class func searchTestPlanAttributesInProjectWithRequestBuilder(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil) -> RequestBuilder<[CustomAttributeModel]> {
         var localVariablePath = "/api/v2/projects/{projectId}/testPlans/attributes/search"
         let projectIdPreEscape = "\(APIHelper.mapValueToPathItem(projectId))"
         let projectIdPostEscape = projectIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -233,7 +245,7 @@ open class ProjectTestPlanAttributesAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[CustomAttributeGetModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[CustomAttributeModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -264,7 +276,10 @@ open class ProjectTestPlanAttributesAPI {
      -  Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter customAttributeTestPlanProjectRelationPutModel: (body)  (optional)
      - returns: RequestBuilder<Void> 

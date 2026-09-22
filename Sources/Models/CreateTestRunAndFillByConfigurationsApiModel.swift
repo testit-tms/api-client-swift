@@ -30,8 +30,10 @@ public struct CreateTestRunAndFillByConfigurationsApiModel: Codable, JSONEncodab
     public var tags: [String]?
     /** Specifies an array of work items and configuration to create a test run for. */
     public var testPointSelectors: [TestPointSelector]
+    /** Test run launching options. */
+    public var option: TestRunLaunchOptionApiModel?
 
-    public init(projectId: UUID, testPlanId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, tags: [String]? = nil, testPointSelectors: [TestPointSelector]) {
+    public init(projectId: UUID, testPlanId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, tags: [String]? = nil, testPointSelectors: [TestPointSelector], option: TestRunLaunchOptionApiModel? = nil) {
         self.projectId = projectId
         self.testPlanId = testPlanId
         self.name = name
@@ -41,6 +43,7 @@ public struct CreateTestRunAndFillByConfigurationsApiModel: Codable, JSONEncodab
         self.links = links
         self.tags = tags
         self.testPointSelectors = testPointSelectors
+        self.option = option
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -53,6 +56,7 @@ public struct CreateTestRunAndFillByConfigurationsApiModel: Codable, JSONEncodab
         case links
         case tags
         case testPointSelectors
+        case option
     }
 
     // Encodable protocol methods
@@ -68,6 +72,7 @@ public struct CreateTestRunAndFillByConfigurationsApiModel: Codable, JSONEncodab
         try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(tags, forKey: .tags)
         try container.encode(testPointSelectors, forKey: .testPointSelectors)
+        try container.encodeIfPresent(option, forKey: .option)
     }
 }
 

@@ -33,7 +33,10 @@ open class OpenIdConnectionsAPI {
      - GET /api/v2/openid-connections
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - returns: RequestBuilder<[OpenIdConnectionClientShortModel]> 
      */
     open class func apiV2OpenidConnectionsGetWithRequestBuilder() -> RequestBuilder<[OpenIdConnectionClientShortModel]> {

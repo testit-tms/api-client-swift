@@ -37,7 +37,10 @@ open class WorkItemsCommentsAPI {
      -  Use case  User sets comment identifier  User runs method execution  System delete comment  System returns success status code
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter commentId: (path) Comment internal (guid format) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -87,7 +90,10 @@ open class WorkItemsCommentsAPI {
      -  Use case  User sets comment properties (listed in request parameters)  User runs method execution  System creates comment  System returns comment model (listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createWorkItemCommentApiModel: (body)  (optional)
      - returns: RequestBuilder<WorkItemCommentApiResult> 
      */
@@ -133,7 +139,10 @@ open class WorkItemsCommentsAPI {
      - PUT /api/v2/workItems/comments
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter updateWorkItemCommentApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -179,7 +188,10 @@ open class WorkItemsCommentsAPI {
      - GET /api/v2/workItems/{id}/comments/count
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global ID of the work item 
      - returns: RequestBuilder<Int> 
      */
@@ -228,7 +240,10 @@ open class WorkItemsCommentsAPI {
      - GET /api/v2/workItems/{id}/comments
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global ID of the work item 
      - returns: RequestBuilder<[WorkItemCommentApiResult]> 
      */

@@ -42,7 +42,10 @@ open class ProjectWorkItemsAPI {
      - POST /api/v2/projects/{projectId}/workItems/search/grouped
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Unique or global ID of the project 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -111,7 +114,10 @@ open class ProjectWorkItemsAPI {
      - POST /api/v2/projects/{projectId}/workItems/search/id
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Unique or global ID of the project 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -180,7 +186,10 @@ open class ProjectWorkItemsAPI {
      - POST /api/v2/projects/{projectId}/workItems/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Unique or global ID of the project 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -250,7 +259,10 @@ open class ProjectWorkItemsAPI {
      - POST /api/v2/projects/{projectId}/workItems/search/{workItemId}/index
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Internal (UUID) or global (integer) identifier 
      - parameter workItemId: (path)  
@@ -319,7 +331,10 @@ open class ProjectWorkItemsAPI {
      -  Use case  User sets project internal identifier  User runs method execution  System returns work items tags
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter projectId: (path) Project internal (UUID) identifier 
      - parameter isDeleted: (query)  (optional)
      - returns: RequestBuilder<[TagShortApiResult]> 
@@ -382,7 +397,10 @@ open class ProjectWorkItemsAPI {
      -  Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted workitems related to project  [Optional] If User sets isDeleted field value as false, System search all workitems related to project which are not deleted  If User did not set isDeleted field value, System search all  workitems related to project  System returns array of found workitems (listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectId: (path) Project internal (UUID) or global (integer) identifier 
      - parameter isDeleted: (query) If result must consist of only actual/deleted work items (optional, default to false)

@@ -20,7 +20,7 @@ public struct TestResultUpdateV2Request: Codable, JSONEncodable, Hashable {
     public var statusCode: String?
     public var statusType: TestStatusType?
     public var comment: String?
-    public var links: [Link]?
+    public var links: [CreateLinkApiModel]?
     public var stepResults: [StepResultApiModel]?
     public var attachments: [AttachmentUpdateRequest]?
     @available(*, deprecated, message: "This property is deprecated.")
@@ -32,7 +32,7 @@ public struct TestResultUpdateV2Request: Codable, JSONEncodable, Hashable {
     public var message: String?
     public var trace: String?
 
-    public init(failureClassIds: [UUID]? = nil, outcome: TestResultOutcome? = nil, statusCode: String? = nil, statusType: TestStatusType? = nil, comment: String? = nil, links: [Link]? = nil, stepResults: [StepResultApiModel]? = nil, attachments: [AttachmentUpdateRequest]? = nil, durationInMs: Int64? = nil, duration: Int64? = nil, stepComments: [TestResultStepCommentUpdateRequest]? = nil, setupResults: [AutoTestStepResultUpdateRequest]? = nil, teardownResults: [AutoTestStepResultUpdateRequest]? = nil, message: String? = nil, trace: String? = nil) {
+    public init(failureClassIds: [UUID]? = nil, outcome: TestResultOutcome? = nil, statusCode: String? = nil, statusType: TestStatusType? = nil, comment: String? = nil, links: [CreateLinkApiModel]? = nil, stepResults: [StepResultApiModel]? = nil, attachments: [AttachmentUpdateRequest]? = nil, durationInMs: Int64? = nil, duration: Int64? = nil, stepComments: [TestResultStepCommentUpdateRequest]? = nil, setupResults: [AutoTestStepResultUpdateRequest]? = nil, teardownResults: [AutoTestStepResultUpdateRequest]? = nil, message: String? = nil, trace: String? = nil) {
         self.failureClassIds = failureClassIds
         self.outcome = outcome
         self.statusCode = statusCode

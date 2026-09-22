@@ -50,7 +50,7 @@ Add test-points to TestPlan with sections
 import TestitApiClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int format) identifier
-let workItemSelectModel = WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectModel | Filter object to retrieve work items for test-suite's project (optional)
+let workItemSelectModel = WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemTypeModel()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)) // WorkItemSelectModel | Filter object to retrieve work items for test-suite's project (optional)
 
 // Add test-points to TestPlan with sections
 TestPlansAPI.addTestPointsWithSections(id: id, workItemSelectModel: workItemSelectModel) { (response, error) in
@@ -78,7 +78,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -130,7 +130,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 # **apiV2TestPlansIdExportTestPointsXlsxPost**
 ```swift
-    open class func apiV2TestPlansIdExportTestPointsXlsxPost(id: String, timeZoneOffsetInMinutes: Int64? = nil, getXlsxTestPointsByTestPlanModel: GetXlsxTestPointsByTestPlanModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func apiV2TestPlansIdExportTestPointsXlsxPost(id: String, timeZoneOffsetInMinutes: Int64? = nil, getXlsxTestPointsByTestPlanApiModel: GetXlsxTestPointsByTestPlanApiModel? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Export TestPoints from TestPlan in xls format
@@ -305,10 +305,10 @@ import TestitApiClient
 
 let id = "id_example" // String | Test plan internal (guid format) or global (int format) identifier
 let timeZoneOffsetInMinutes = 987 // Int64 |  (optional)
-let getXlsxTestPointsByTestPlanModel = GetXlsxTestPointsByTestPlanModel(includeName: false, includeSection: false, includePriority: false, includeSourceType: false, includeAutomated: false, includeStatus: false, includeDuration: false, includeCreationDate: false, includeAuthor: false, includeModificationDate: false, includeModifiedBy: false, includeTags: false, includeIterations: false, customAttributesIds: [123], configurationIds: [123]) // GetXlsxTestPointsByTestPlanModel |  (optional)
+let getXlsxTestPointsByTestPlanApiModel = GetXlsxTestPointsByTestPlanApiModel(includeName: false, includeSection: false, includePriority: false, includeSourceType: false, includeAutomated: false, includeStatus: false, includeDuration: false, includeCreationDate: false, includeAuthor: false, includeModificationDate: false, includeModifiedBy: false, includeTags: false, includeIterations: false, customAttributesIds: [123], filter: TestPlanTestPointsSearchApiModel(testSuiteIds: [123], workItemGlobalIds: [123], workItemMedianDuration: Int64RangeSelectorModel(from: 123, to: 123), statuses: [TestPointStatus()], statusCodes: ["statusCodes_example"], priorities: [WorkItemPriorityModel()], isAutomated: false, name: "name_example", configurationIds: [123], testerIds: [123], duration: nil, sectionIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], modifiedDate: nil, modifiedByIds: [123], tags: ["tags_example"], excludeTags: ["excludeTags_example"], attributes: "TODO", workItemCreatedDate: nil, workItemCreatedByIds: [123], workItemModifiedDate: nil, workItemModifiedByIds: [123]), order: [Order(field: "field_example", direction: ListSortDirection())], configurationIds: [123]) // GetXlsxTestPointsByTestPlanApiModel |  (optional)
 
 // Export TestPoints from TestPlan in xls format
-TestPlansAPI.apiV2TestPlansIdExportTestPointsXlsxPost(id: id, timeZoneOffsetInMinutes: timeZoneOffsetInMinutes, getXlsxTestPointsByTestPlanModel: getXlsxTestPointsByTestPlanModel) { (response, error) in
+TestPlansAPI.apiV2TestPlansIdExportTestPointsXlsxPost(id: id, timeZoneOffsetInMinutes: timeZoneOffsetInMinutes, getXlsxTestPointsByTestPlanApiModel: getXlsxTestPointsByTestPlanApiModel) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** | Test plan internal (guid format) or global (int format) identifier | 
  **timeZoneOffsetInMinutes** | **Int64** |  | [optional] 
- **getXlsxTestPointsByTestPlanModel** | [**GetXlsxTestPointsByTestPlanModel**](GetXlsxTestPointsByTestPlanModel.md) |  | [optional] 
+ **getXlsxTestPointsByTestPlanApiModel** | [**GetXlsxTestPointsByTestPlanApiModel**](GetXlsxTestPointsByTestPlanApiModel.md) |  | [optional] 
 
 ### Return type
 
@@ -334,7 +334,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -392,7 +392,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -560,7 +560,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -672,7 +672,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -724,7 +724,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -774,7 +774,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -826,7 +826,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -894,7 +894,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -956,7 +956,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1004,7 +1004,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1054,7 +1054,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1106,7 +1106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1156,7 +1156,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1206,7 +1206,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1229,7 +1229,7 @@ Create TestPlan
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestPlanApiModel = CreateTestPlanApiModel(tags: [TagApiModel(name: "name_example")], name: "name_example", startDate: Date(), endDate: Date(), description: "description_example", build: "build_example", projectId: 123, productName: "productName_example", hasAutomaticDurationTimer: false, attributes: "TODO", testSuite: TestSuiteTestPlanApiModel(name: "name_example", configurationIds: [123], type: TestSuiteType(), saveStructure: false, workItemsSelector: WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemEntityTypes()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)))) // CreateTestPlanApiModel |  (optional)
+let createTestPlanApiModel = CreateTestPlanApiModel(tags: [TagApiModel(name: "name_example")], name: "name_example", startDate: Date(), endDate: Date(), description: "description_example", build: "build_example", projectId: 123, productName: "productName_example", hasAutomaticDurationTimer: false, attributes: "TODO", testSuite: TestSuiteTestPlanApiModel(name: "name_example", configurationIds: [123], type: TestSuiteType(), saveStructure: false, workItemsSelector: WorkItemSelectModel(filter: WorkItemFilterModel(nameOrId: "nameOrId_example", includeIds: [123], excludeIds: [123], projectIds: [123], name: "name_example", ids: [123], globalIds: [123], attributes: "TODO", isDeleted: false, sectionIds: [123], createdByIds: [123], modifiedByIds: [123], states: [WorkItemStates()], priorities: [WorkItemPriorityModel()], sourceTypes: [WorkItemSourceTypeModel()], types: [WorkItemTypeModel()], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), modifiedDate: nil, duration: Int64RangeSelectorModel(from: 123, to: 123), medianDuration: nil, isAutomated: false, tags: ["tags_example"], excludeTags: ["excludeTags_example"], autoTestIds: [123], workItemVersionIds: [123], links: WorkItemLinkFilterModel(types: [LinkType()], title: "title_example", urls: ["urls_example"], onlyWithoutLinks: false), externalMetadata: WorkItemExternalMetadataFilterModel(ids: [WorkItemExternalMetadataFieldFilterModel(value: "value_example", externalServiceId: 123)], types: [nil], priorities: [nil], statuses: [nil], assignees: [nil])), extractionModel: WorkItemExtractionModel(projectIds: GuidExtractionModel(include: [123], exclude: [123]), ids: nil, sectionIds: nil)))) // CreateTestPlanApiModel |  (optional)
 
 // Create TestPlan
 TestPlansAPI.createTestPlan(createTestPlanApiModel: createTestPlanApiModel) { (response, error) in
@@ -1256,7 +1256,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1306,7 +1306,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1356,7 +1356,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1406,7 +1406,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1456,7 +1456,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1504,7 +1504,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1554,7 +1554,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1604,7 +1604,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1654,7 +1654,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 

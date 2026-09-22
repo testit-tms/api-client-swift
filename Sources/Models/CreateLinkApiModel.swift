@@ -20,11 +20,11 @@ public struct CreateLinkApiModel: Codable, JSONEncodable, Hashable {
     /** Link description. */
     public var description: String?
     /** Specifies the type of the link. */
-    public var type: LinkType?
+    public var type: LinkType
     /** Flag defines if link relates to integrated jira service */
     public var hasInfo: Bool
 
-    public init(title: String? = nil, url: String, description: String? = nil, type: LinkType? = nil, hasInfo: Bool) {
+    public init(title: String? = nil, url: String, description: String? = nil, type: LinkType, hasInfo: Bool) {
         self.title = title
         self.url = url
         self.description = description
@@ -47,7 +47,7 @@ public struct CreateLinkApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encode(url, forKey: .url)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(type, forKey: .type)
+        try container.encode(type, forKey: .type)
         try container.encode(hasInfo, forKey: .hasInfo)
     }
 }

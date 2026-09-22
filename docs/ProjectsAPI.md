@@ -74,7 +74,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -117,7 +117,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -165,7 +165,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -263,7 +263,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -365,7 +365,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -413,7 +413,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -461,7 +461,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -513,7 +513,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -565,7 +565,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -643,7 +643,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -690,7 +690,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -711,7 +711,7 @@ Purge multiple projects
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
+let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int64RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
 
 // Purge multiple projects
 ProjectsAPI.apiV2ProjectsPurgeBulkPost(projectSelectModel: projectSelectModel) { (response, error) in
@@ -738,7 +738,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -759,7 +759,7 @@ Restore multiple projects
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
+let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int64RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
 
 // Restore multiple projects
 ProjectsAPI.apiV2ProjectsRestoreBulkPost(projectSelectModel: projectSelectModel) { (response, error) in
@@ -786,7 +786,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -797,7 +797,7 @@ Name | Type | Description  | Notes
 
 # **apiV2ProjectsSearchPost**
 ```swift
-    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, completion: @escaping (_ data: [ProjectShortModel]?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsSearchPost(skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectsFilterModel: ProjectsFilterModel? = nil, completion: @escaping (_ data: [ProjectApiResult]?, _ error: Error?) -> Void)
 ```
 
 Search for projects
@@ -812,7 +812,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let projectsFilterModel = ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]) // ProjectsFilterModel |  (optional)
+let projectsFilterModel = ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int64RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]) // ProjectsFilterModel |  (optional)
 
 // Search for projects
 ProjectsAPI.apiV2ProjectsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectsFilterModel: projectsFilterModel) { (response, error) in
@@ -840,11 +840,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ProjectShortModel]**](ProjectShortModel.md)
+[**[ProjectApiResult]**](ProjectApiResult.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -855,7 +855,7 @@ Name | Type | Description  | Notes
 
 # **apiV2ProjectsShortsPost**
 ```swift
-    open class func apiV2ProjectsShortsPost(getShortProjectsApiModel: GetShortProjectsApiModel? = nil, completion: @escaping (_ data: ProjectShortApiResultReply?, _ error: Error?) -> Void)
+    open class func apiV2ProjectsShortsPost(getShortProjectsApiModel: GetShortProjectsApiModel? = nil, completion: @escaping (_ data: ProjectShortApiResultIReply?, _ error: Error?) -> Void)
 ```
 
 Get projects short models
@@ -867,7 +867,7 @@ Get projects short models
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let getShortProjectsApiModel = GetShortProjectsApiModel(inquiry: Inquiry(filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), permissionName: "permissionName_example", permissionType: "permissionType_example") // GetShortProjectsApiModel |  (optional)
+let getShortProjectsApiModel = GetShortProjectsApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: JsonElement(valueKind: JsonValueKind()), field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123), mode: Mode()), permissionName: "permissionName_example", permissionType: "permissionType_example") // GetShortProjectsApiModel |  (optional)
 
 // Get projects short models
 ProjectsAPI.apiV2ProjectsShortsPost(getShortProjectsApiModel: getShortProjectsApiModel) { (response, error) in
@@ -890,11 +890,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectShortApiResultReply**](ProjectShortApiResultReply.md)
+[**ProjectShortApiResultIReply**](ProjectShortApiResultIReply.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -944,7 +944,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -992,7 +992,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1003,7 +1003,7 @@ Void (empty response body)
 
 # **getAllProjects**
 ```swift
-    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ProjectShortModel]?, _ error: Error?) -> Void)
+    open class func getAllProjects(isDeleted: Bool? = nil, projectName: String? = nil, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, completion: @escaping (_ data: [ProjectApiResult]?, _ error: Error?) -> Void)
 ```
 
 Get all projects
@@ -1050,11 +1050,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[ProjectShortModel]**](ProjectShortModel.md)
+[**[ProjectApiResult]**](ProjectApiResult.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1104,7 +1104,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1115,7 +1115,7 @@ Name | Type | Description  | Notes
 
 # **getProjectById**
 ```swift
-    open class func getProjectById(id: String, completion: @escaping (_ data: ProjectModel?, _ error: Error?) -> Void)
+    open class func getProjectById(id: String, completion: @escaping (_ data: DetailedProjectApiResult?, _ error: Error?) -> Void)
 ```
 
 Get project by ID
@@ -1150,11 +1150,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectModel**](ProjectModel.md)
+[**DetailedProjectApiResult**](DetailedProjectApiResult.md)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1170,7 +1170,7 @@ Name | Type | Description  | Notes
 
 Get project test plans
 
- Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
+ Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to                     project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which                     are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
 
 ### Example
 ```swift
@@ -1206,7 +1206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1280,7 +1280,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 
@@ -1330,7 +1330,7 @@ Void (empty response body)
 
 ### Authorization
 
-[Bearer or PrivateToken](../README.md#Bearer or PrivateToken)
+[PrivateToken](../README.md#PrivateToken), [Identity.Application](../README.md#Identity.Application)
 
 ### HTTP request headers
 

@@ -26,32 +26,32 @@ public struct CreateWorkItemApiModel: Codable, JSONEncodable, Hashable {
     public var entityTypeName: WorkItemEntityTypeApiModel
     /** Duration of the work item in milliseconds */
     public var duration: Int64
-    /** State of the work item */
+    /** Current state of the work item */
     public var state: WorkItemStateApiModel
-    /** Priority level of the work item */
+    /** Priority level assigned to the work item */
     public var priority: WorkItemPriorityApiModel
     /** Set of custom attributes associated with the work item */
-    public var attributes: [String: AnyCodable]
+    public var attributes: [String: AnyCodable]?
     /** Set of tags applied to the work item */
-    public var tags: [TagModel]
-    /** Set of precondition steps that need to be executed before starting the main steps */
-    public var preconditionSteps: [CreateStepApiModel]
-    /** Main steps or actions defined for the work item */
-    public var steps: [CreateStepApiModel]
+    public var tags: [TagModel]?
+    /** Set of precondition steps that must be executed before the main steps */
+    public var preconditionSteps: [CreateStepApiModel]?
+    /** Set of main steps or actions defined for the work item */
+    public var steps: [CreateStepApiModel]?
     /** Set of postcondition steps that are executed after completing the main steps */
-    public var postconditionSteps: [CreateStepApiModel]
-    /** Associated iterations linked to the work item */
+    public var postconditionSteps: [CreateStepApiModel]?
+    /** Set of iterations associated with the work item */
     public var iterations: [AssignIterationApiModel]?
-    /** Automated tests associated with the work item */
+    /** Set of automated tests linked to the work item */
     public var autoTests: [AutoTestIdModel]?
-    /** Files attached to the work item */
+    /** Set of files attached to the work item */
     public var attachments: [AssignAttachmentApiModel]?
     /** Set of links related to the work item */
-    public var links: [CreateLinkApiModel]
-    /** Set of parameter keys related to the work item */
+    public var links: [CreateLinkApiModel]?
+    /** Set of parameter keys associated with the work item */
     public var parameters: [WorkItemParameterKeyApiModel]?
 
-    public init(projectId: UUID, sectionId: UUID? = nil, name: String, description: String? = nil, entityTypeName: WorkItemEntityTypeApiModel, duration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, attributes: [String: AnyCodable], tags: [TagModel], preconditionSteps: [CreateStepApiModel], steps: [CreateStepApiModel], postconditionSteps: [CreateStepApiModel], iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel], parameters: [WorkItemParameterKeyApiModel]? = nil) {
+    public init(projectId: UUID, sectionId: UUID? = nil, name: String, description: String? = nil, entityTypeName: WorkItemEntityTypeApiModel, duration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, attributes: [String: AnyCodable]? = nil, tags: [TagModel]? = nil, preconditionSteps: [CreateStepApiModel]? = nil, steps: [CreateStepApiModel]? = nil, postconditionSteps: [CreateStepApiModel]? = nil, iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, parameters: [WorkItemParameterKeyApiModel]? = nil) {
         self.projectId = projectId
         self.sectionId = sectionId
         self.name = name
@@ -105,15 +105,15 @@ public struct CreateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         try container.encode(duration, forKey: .duration)
         try container.encode(state, forKey: .state)
         try container.encode(priority, forKey: .priority)
-        try container.encode(attributes, forKey: .attributes)
-        try container.encode(tags, forKey: .tags)
-        try container.encode(preconditionSteps, forKey: .preconditionSteps)
-        try container.encode(steps, forKey: .steps)
-        try container.encode(postconditionSteps, forKey: .postconditionSteps)
+        try container.encodeIfPresent(attributes, forKey: .attributes)
+        try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(preconditionSteps, forKey: .preconditionSteps)
+        try container.encodeIfPresent(steps, forKey: .steps)
+        try container.encodeIfPresent(postconditionSteps, forKey: .postconditionSteps)
         try container.encodeIfPresent(iterations, forKey: .iterations)
         try container.encodeIfPresent(autoTests, forKey: .autoTests)
         try container.encodeIfPresent(attachments, forKey: .attachments)
-        try container.encode(links, forKey: .links)
+        try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(parameters, forKey: .parameters)
     }
 }

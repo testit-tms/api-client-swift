@@ -37,7 +37,10 @@ open class TestRunsAPI {
      -  Use case  User sets selection parameters of test runs  System search and delete collection of test runs  System returns the number of deleted test runs
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter testRunSelectApiModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
@@ -83,7 +86,10 @@ open class TestRunsAPI {
      - GET /api/v2/testRuns/{id}/autoTestsNamespaces
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - returns: RequestBuilder<AutoTestNamespacesCountResponse> 
      */
@@ -133,7 +139,10 @@ open class TestRunsAPI {
      -  Use case  User sets test run internal (guid format) identifier  System search and delete test run
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test run internal (UUID) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -156,6 +165,61 @@ open class TestRunsAPI {
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Patch test run
+     
+     - parameter id: (path) Test Run internal identifier (GUID format) 
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2TestRunsIdPatch(id: UUID, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsIdPatchWithRequestBuilder(id: id, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch test run
+     - PATCH /api/v2/testRuns/{id}
+     - See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
+     - parameter id: (path) Test Run internal identifier (GUID format) 
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func apiV2TestRunsIdPatchWithRequestBuilder(id: UUID, operation: [Operation]? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/testRuns/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -183,7 +247,10 @@ open class TestRunsAPI {
      -  Use case  User sets archived test run internal (guid format) identifier  System search and purge archived test run
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test run internal (UUID) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -233,7 +300,10 @@ open class TestRunsAPI {
      - POST /api/v2/testRuns/{id}/reruns
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - parameter manualRerunSelectTestResultsApiModel: (body)  (optional)
      - returns: RequestBuilder<ManualRerunApiResult> 
@@ -284,7 +354,10 @@ open class TestRunsAPI {
      -  Use case  User sets archived test run internal (guid format) identifier  System search and restore test run
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique ID of the test run 
      - returns: RequestBuilder<Void> 
      */
@@ -334,7 +407,10 @@ open class TestRunsAPI {
      - POST /api/v2/testRuns/{id}/statistics/filter
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test run unique ID 
      - parameter testRunStatisticsFilterApiModel: (body)  (optional)
      - returns: RequestBuilder<TestResultsStatisticsApiResult> 
@@ -384,7 +460,10 @@ open class TestRunsAPI {
      - GET /api/v2/testRuns/{id}/testPoints/results
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test run unique ID 
      - returns: RequestBuilder<[TestPointResultApiResult]> 
      */
@@ -434,7 +513,10 @@ open class TestRunsAPI {
      - PUT /api/v2/testRuns/{id}/testResults/bulk
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test run unique ID 
      - parameter testRunTestResultsPartialBulkSetModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -484,7 +566,10 @@ open class TestRunsAPI {
      - GET /api/v2/testRuns/{id}/testResults/lastModified/modificationDate
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test run unique ID 
      - returns: RequestBuilder<Date> 
      */
@@ -534,7 +619,10 @@ open class TestRunsAPI {
      -  Use case  User sets selection parameters of archived test runs  System search and delete collection of archived test runs  System returns the number of deleted archived test runs
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter testRunSelectApiModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
@@ -581,7 +669,10 @@ open class TestRunsAPI {
      -  Use case  User sets selection parameters of archived test runs  System search and restore collection of archived test runs  System returns the number of restored test runs
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter testRunSelectApiModel: (body)  (optional)
      - returns: RequestBuilder<Int> 
      */
@@ -632,7 +723,10 @@ open class TestRunsAPI {
      - POST /api/v2/testRuns/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -691,7 +785,10 @@ open class TestRunsAPI {
      - POST /api/v2/testRuns/updateMultiple
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter updateMultipleTestRunsApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -738,7 +835,10 @@ open class TestRunsAPI {
      -  Use case  User sets test run identifier  User runs method execution  System completes test run  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test Run internal identifier (GUID format) 
      - returns: RequestBuilder<Void> 
      */
@@ -788,7 +888,10 @@ open class TestRunsAPI {
      - This method creates a test run based on an autotest and a configuration. The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is that in this method there is no need to create a test plan and work items (test cases and checklists).
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createTestRunAndFillByAutoTestsApiModel: (body)  (optional)
      - returns: RequestBuilder<TestRunV2ApiResult> 
      */
@@ -835,7 +938,10 @@ open class TestRunsAPI {
      - This method creates a test run based on a combination of a configuration and a work item(test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated. This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a jagged array within the \"<b>testPointSelectors</b>\" parameter.
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createTestRunAndFillByConfigurationsApiModel: (body)  (optional)
      - returns: RequestBuilder<TestRunV2ApiResult> 
      */
@@ -882,7 +988,10 @@ open class TestRunsAPI {
      - This method creates a test run based on a combination of configuration and work item (test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated.
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createTestRunAndFillByWorkItemsApiModel: (body)  (optional)
      - returns: RequestBuilder<TestRunV2ApiResult> 
      */
@@ -929,7 +1038,10 @@ open class TestRunsAPI {
      -  Use case  User sets test run model (listed in the request example)  User runs method execution  System creates test run  System returns test run model
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createEmptyTestRunApiModel: (body)  (optional)
      - returns: RequestBuilder<TestRunV2ApiResult> 
      */
@@ -976,7 +1088,10 @@ open class TestRunsAPI {
      -  Use case  User sets test run identifier  User runs method execution  System finds test run  System returns test run
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test Run internal identifier (GUID format) 
      - returns: RequestBuilder<TestRunV2ApiResult> 
      */
@@ -1027,7 +1142,10 @@ open class TestRunsAPI {
      - This method sends test results to the test management system.
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test Run internal identifier (GUID format) 
      - parameter autoTestResultsForTestRunModel: (body)  (optional)
      - returns: RequestBuilder<[UUID]> 
@@ -1078,7 +1196,10 @@ open class TestRunsAPI {
      -  Use case  User sets test run identifier  User runs method execution  System starts test run  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test Run internal identifier (GUID format) 
      - returns: RequestBuilder<Void> 
      */
@@ -1128,7 +1249,10 @@ open class TestRunsAPI {
      -  Use case  User sets test run identifier  User runs method execution  System stops test run  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Test Run internal identifier (GUID format) 
      - returns: RequestBuilder<Void> 
      */
@@ -1178,7 +1302,10 @@ open class TestRunsAPI {
      -  Use case  User sets test run properties (listed in the request example)  User runs method execution  System updates test run  System returns returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter updateEmptyTestRunApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */

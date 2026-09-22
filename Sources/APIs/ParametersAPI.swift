@@ -38,7 +38,10 @@ open class ParametersAPI {
      -  Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System creates parameters  System returns list of parameter model (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<[ParameterApiResult]> 
      */
@@ -87,7 +90,10 @@ open class ParametersAPI {
      -  Use case  User sets list of parameter model (listed in the request example)  User runs method execution  System updates parameters
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter updateParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -144,7 +150,10 @@ open class ParametersAPI {
      -  Use case  User runs method execution  System search parameters  System returns parameters models as groups (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter parameterKeyIds: (query)  (optional)
      - parameter name: (query)  (optional)
@@ -213,7 +222,10 @@ open class ParametersAPI {
      -  Use case  User sets name of parameter key  User runs method execution  System search parameter key  System returns the flag for the existence of the parameter key in the system
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter name: (path)  
      - returns: RequestBuilder<Bool> 
      */
@@ -265,7 +277,10 @@ open class ParametersAPI {
      -  Use case  User sets parameter key (string format)  User runs method execution  System search parameter values using the key  System returns parameter
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter key: (path) Parameter key (string format) 
      - returns: RequestBuilder<[String]> 
      */
@@ -322,7 +337,10 @@ open class ParametersAPI {
      -  Use case  User runs method execution  System search all parameter keys  System returns parameter keys
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter projectIds: (query)  (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -389,7 +407,10 @@ open class ParametersAPI {
      - POST /api/v2/parameters/search/groups
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -455,7 +476,10 @@ open class ParametersAPI {
      - POST /api/v2/parameters/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -517,7 +541,10 @@ open class ParametersAPI {
      -  Use case  User sets parameter model (listed in the request example)  User runs method execution  System creates parameter  System returns parameter model
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<ParameterApiResult> 
      */
@@ -566,7 +593,10 @@ open class ParametersAPI {
      - Deletes parameter and all it's values
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter name: (path) Name of the parameter 
      - returns: RequestBuilder<Void> 
      */
@@ -618,7 +648,10 @@ open class ParametersAPI {
      - Deletes parameter and all it's values by parameter key identifier
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter keyId: (path) Identifier of the parameter key 
      - returns: RequestBuilder<Void> 
      */
@@ -670,7 +703,10 @@ open class ParametersAPI {
      -  Use case  User sets parameter internal (guid format) identifier  System search and delete parameter  System returns deleted parameter
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Parameter internal (UUID) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -727,7 +763,10 @@ open class ParametersAPI {
      -  Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted parameters  [Optional] If User sets isDeleted field value as false, System search all parameters which are not deleted  If User did not set isDeleted field value, System search all parameters  System returns array of all found parameters(listed in response model)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter isDeleted: (query) If result must consist of only actual/deleted parameters (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -790,7 +829,10 @@ open class ParametersAPI {
      -  Use case  User sets parameter internal (guid format) identifier  User runs method execution  System search parameter using the identifier  System returns parameter
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Parameter internal (UUID) identifier 
      - returns: RequestBuilder<ParameterApiResult> 
      */
@@ -842,7 +884,10 @@ open class ParametersAPI {
      -  Use case  User sets parameter updated properties(listed in the request example)  User runs method execution  System updated parameter using updated properties  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter updateParameterApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */

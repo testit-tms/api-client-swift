@@ -23,7 +23,7 @@ public struct TestResultResponse: Codable, JSONEncodable, Hashable {
     public var outcome: TestResultOutcome?
     public var status: TestStatusApiResult?
     public var comment: String?
-    public var links: [Link]?
+    public var links: [LinkApiResult]?
     public var stepResults: [StepResultApiModel]?
     public var attachments: [AttachmentApiResult]?
     public var autoTestId: UUID?
@@ -48,7 +48,7 @@ public struct TestResultResponse: Codable, JSONEncodable, Hashable {
     public var parameters: [String: String]?
     public var properties: [String: String]?
 
-    public init(id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, stepComments: [StepCommentApiModel]? = nil, failureClassIds: [UUID], outcome: TestResultOutcome? = nil, status: TestStatusApiResult? = nil, comment: String? = nil, links: [Link]? = nil, stepResults: [StepResultApiModel]? = nil, attachments: [AttachmentApiResult]? = nil, autoTestId: UUID? = nil, configurationId: UUID, startedOn: Date? = nil, completedOn: Date? = nil, durationInMs: Int64? = nil, traces: String? = nil, failureType: String? = nil, message: String? = nil, runByUserId: UUID? = nil, stoppedByUserId: UUID? = nil, testPointId: UUID, testRunId: UUID, testPoint: TestPoint? = nil, autoTest: AutoTest? = nil, autoTestStepResults: [AutoTestStepResult]? = nil, setupResults: [AutoTestStepResult]? = nil, teardownResults: [AutoTestStepResult]? = nil, workItemVersionId: UUID, workItemVersionNumber: Int? = nil, parameters: [String: String]? = nil, properties: [String: String]? = nil) {
+    public init(id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, stepComments: [StepCommentApiModel]? = nil, failureClassIds: [UUID], outcome: TestResultOutcome? = nil, status: TestStatusApiResult? = nil, comment: String? = nil, links: [LinkApiResult]? = nil, stepResults: [StepResultApiModel]? = nil, attachments: [AttachmentApiResult]? = nil, autoTestId: UUID? = nil, configurationId: UUID, startedOn: Date? = nil, completedOn: Date? = nil, durationInMs: Int64? = nil, traces: String? = nil, failureType: String? = nil, message: String? = nil, runByUserId: UUID? = nil, stoppedByUserId: UUID? = nil, testPointId: UUID, testRunId: UUID, testPoint: TestPoint? = nil, autoTest: AutoTest? = nil, autoTestStepResults: [AutoTestStepResult]? = nil, setupResults: [AutoTestStepResult]? = nil, teardownResults: [AutoTestStepResult]? = nil, workItemVersionId: UUID, workItemVersionNumber: Int? = nil, parameters: [String: String]? = nil, properties: [String: String]? = nil) {
         self.id = id
         self.createdDate = createdDate
         self.modifiedDate = modifiedDate

@@ -37,7 +37,10 @@ open class TagsAPI {
      -  Use case  User sets collection of tags internal (guid format) identifiers  System searches and deletes a collection of tags
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter selectTagsApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -84,7 +87,10 @@ open class TagsAPI {
      -  Use case  User sets tag internal (guid format) identifier  System search and delete tag
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Tag internal (UUID) identifier 
      - returns: RequestBuilder<Void> 
      */
@@ -134,7 +140,10 @@ open class TagsAPI {
      -  Use case  User sets tag model (listed in the request example)  User runs method execution  System creates tag  System returns tag model (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createTagApiModel: (body)  (optional)
      - returns: RequestBuilder<TagApiResult> 
      */
@@ -182,7 +191,10 @@ open class TagsAPI {
      -  Use case  User sets tag ID and model (listed in the request example)  User runs method execution  System updates tag  System returns tag model (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (query)  (optional)
      - parameter updateTagApiModel: (body)  (optional)
      - returns: RequestBuilder<TagApiResult> 
@@ -237,7 +249,10 @@ open class TagsAPI {
      -  Use case  User runs method execution  System returns collection of tags (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -300,7 +315,10 @@ open class TagsAPI {
      -  Use case  User runs method execution  System returns tags (listed in the response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)

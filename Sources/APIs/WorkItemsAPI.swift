@@ -38,7 +38,10 @@ open class WorkItemsAPI {
      -  Use case  User sets workItemId  User attaches a file  System creates attachment and links it to the work item  System returns attachment identifier
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Work item internal identifier (guid format) 
      - parameter file: (form) Select file (optional)
      - returns: RequestBuilder<Void> 
@@ -94,7 +97,10 @@ open class WorkItemsAPI {
      -  Use case  User sets checklist identifier  User runs method execution  System transform CheckList to TestCase
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - returns: RequestBuilder<WorkItemModel> 
      */
@@ -149,7 +155,10 @@ open class WorkItemsAPI {
      -  Use case  User sets work item identifier  User runs method execution  System return change history of WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter id: (path)  
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -212,7 +221,10 @@ open class WorkItemsAPI {
      -  Use case  User sets WorkItem identifier  User runs method execution  System delete like from WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
      */
@@ -262,7 +274,10 @@ open class WorkItemsAPI {
      -  Use case  User sets WorkItem identifier  User runs method execution  System set like to WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
      */
@@ -312,7 +327,10 @@ open class WorkItemsAPI {
      -  Use case  User sets WorkItem identifier  User runs method execution  System return likes count of WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - returns: RequestBuilder<Int> 
      */
@@ -362,7 +380,10 @@ open class WorkItemsAPI {
      -  Use case  User sets WorkItem identifier  User runs method execution  System return likes of WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - returns: RequestBuilder<[WorkItemLikeModel]> 
      */
@@ -385,6 +406,61 @@ open class WorkItemsAPI {
         let localVariableRequestBuilder: RequestBuilder<[WorkItemLikeModel]>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Patch Test Case, Checklist or Shared Step
+     
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
+     - parameter operation: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2WorkItemsIdPatch(id: String, operation: [Operation]? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WorkItemsIdPatchWithRequestBuilder(id: id, operation: operation).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Patch Test Case, Checklist or Shared Step
+     - PATCH /api/v2/workItems/{id}
+     - See <a href=\"https://www.rfc-editor.org/rfc/rfc6902\" target=\"_blank\">RFC 6902: JavaScript Object Notation (JSON) Patch</a> for details
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
+     - parameter operation: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func apiV2WorkItemsIdPatchWithRequestBuilder(id: String, operation: [Operation]? = nil) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/v2/workItems/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: operation)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -427,7 +503,10 @@ open class WorkItemsAPI {
      -  Use case  User sets WorkItem identifier  User runs method execution  System return test results history of WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter id: (path)  
      - parameter from: (query) Take results from this date (optional)
@@ -511,7 +590,10 @@ open class WorkItemsAPI {
      -  Use case  User sets work item identifier  User runs method execution  System set WorkItem as actual
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path)  
      - parameter versionId: (path)  
      - returns: RequestBuilder<WorkItemModel> 
@@ -567,7 +649,10 @@ open class WorkItemsAPI {
      - POST /api/v2/workItems/links/urls/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -627,7 +712,10 @@ open class WorkItemsAPI {
      -  Use case  User sets WorkItem identifier  User runs method execution  System move WorkItem to another section
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter workItemMovePostModel: (body)  (optional)
      - returns: RequestBuilder<WorkItemShortModel> 
      */
@@ -673,7 +761,10 @@ open class WorkItemsAPI {
      - POST /api/v2/workItems
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter createWorkItemApiModel: (body)  (optional)
      - returns: RequestBuilder<WorkItemApiResult> 
      */
@@ -693,6 +784,56 @@ open class WorkItemsAPI {
         let localVariableRequestBuilder: RequestBuilder<WorkItemApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     Update Test Case, Checklist or Shared Step
+     
+     - parameter updateWorkItemApiModel: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2WorkItemsPut(updateWorkItemApiModel: UpdateWorkItemApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2WorkItemsPutWithRequestBuilder(updateWorkItemApiModel: updateWorkItemApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                completion((), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Update Test Case, Checklist or Shared Step
+     - PUT /api/v2/workItems
+     -  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
+     - parameter updateWorkItemApiModel: (body)  (optional)
+     - returns: RequestBuilder<Void> 
+     */
+    open class func apiV2WorkItemsPutWithRequestBuilder(updateWorkItemApiModel: UpdateWorkItemApiModel? = nil) -> RequestBuilder<Void> {
+        let localVariablePath = "/api/v2/workItems"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateWorkItemApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -724,7 +865,10 @@ open class WorkItemsAPI {
      - POST /api/v2/workItems/search
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -790,7 +934,10 @@ open class WorkItemsAPI {
      -  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter sharedStepId: (path)  
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -860,7 +1007,10 @@ open class WorkItemsAPI {
      -  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
      - parameter sharedStepId: (path)  
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
@@ -925,7 +1075,10 @@ open class WorkItemsAPI {
      -  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter sharedStepId: (path)  
      - returns: RequestBuilder<[SharedStepReferenceModel]> 
      */
@@ -976,7 +1129,10 @@ open class WorkItemsAPI {
      -  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search and delete all autotests, related to found work item  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - returns: RequestBuilder<Void> 
      */
@@ -1026,7 +1182,10 @@ open class WorkItemsAPI {
      -  Use case  User sets work item identifier  User runs method execution  System deletes work item  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - returns: RequestBuilder<Void> 
      */
@@ -1076,7 +1235,10 @@ open class WorkItemsAPI {
      -  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search all autotests, related to found work item  System returns list of found autotests
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - returns: RequestBuilder<[AutoTestModel]> 
      */
@@ -1127,7 +1289,10 @@ open class WorkItemsAPI {
      - GET /api/v2/workItems/{id}/iterations
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter versionId: (query) WorkItem version (guid format) identifier (optional)
      - parameter versionNumber: (query) WorkItem version number (0 is the last version)\&quot; (optional)
@@ -1185,7 +1350,10 @@ open class WorkItemsAPI {
      -  Use case  User sets work item identifier  [Optional] User sets work item version identifier  [Optional] User sets work item version number  User runs method execution  System search work item by identifier  [Optional] if User sets work item version identifier, system search work item version by identifier.  [Optional] if user sets work item version number, system search work item version by number  Otherwise, system search last work item version  System returns work item
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter versionId: (query) WorkItem version (guid format) identifier\&quot; (optional)
      - parameter versionNumber: (query) WorkItem version number (0 is the last version)\&quot; (optional)
@@ -1242,7 +1410,10 @@ open class WorkItemsAPI {
      -  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search test results of all autotests, related to found work item  System sort results by CompletedOn ascending, then by CreatedDate ascending  System returns sorted collection of test results
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Internal (UUID) or global (integer) identifier 
      - returns: RequestBuilder<[TestResultChronologyModel]> 
      */
@@ -1295,7 +1466,10 @@ open class WorkItemsAPI {
      -  Use case  User sets work item identifier  [Optional] User sets work item version identifier  User runs method execution  System search work item by identifier  [Optional] If User set work item version identifier, System search work item version by version identifier                     Otherwise, system search all version of work item  System returns array of work item version models (listed in response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter workItemVersionId: (query) WorkItem version (guid format) identifier\&quot; (optional)
      - parameter versionNumber: (query) WorkItem version (integer format) number\&quot; (optional)
@@ -1350,7 +1524,10 @@ open class WorkItemsAPI {
      - POST /api/v2/workItems/{id}/purge
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global ID of the work item 
      - returns: RequestBuilder<Void> 
      */
@@ -1399,7 +1576,10 @@ open class WorkItemsAPI {
      - POST /api/v2/workItems/{id}/restore
      - API Key:
        - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey backoffice 
+       - name: Identity.Application
      - parameter id: (path) Unique or global ID of the work item 
      - returns: RequestBuilder<Void> 
      */
@@ -1422,52 +1602,5 @@ open class WorkItemsAPI {
         let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-     Update Test Case, Checklist or Shared Step
-     
-     - parameter updateWorkItemApiModel: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
-    open class func updateWorkItem(updateWorkItemApiModel: UpdateWorkItemApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateWorkItemWithRequestBuilder(updateWorkItemApiModel: updateWorkItemApiModel).execute(apiResponseQueue) { result in
-            switch result {
-            case .success:
-                completion((), nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Update Test Case, Checklist or Shared Step
-     - PUT /api/v2/workItems
-     -  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
-     - API Key:
-       - type: apiKey Authorization (HEADER)
-       - name: Bearer or PrivateToken
-     - parameter updateWorkItemApiModel: (body)  (optional)
-     - returns: RequestBuilder<Void> 
-     */
-    open class func updateWorkItemWithRequestBuilder(updateWorkItemApiModel: UpdateWorkItemApiModel? = nil) -> RequestBuilder<Void> {
-        let localVariablePath = "/api/v2/workItems"
-        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateWorkItemApiModel)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = TestitApiClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }
