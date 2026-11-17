@@ -16,12 +16,14 @@ public struct Inquiry: Codable, JSONEncodable, Hashable {
     public var filter: CompositeFilter?
     public var order: [Order]
     public var page: Page?
+    public var mode: Mode
 
-    public init(group: Group? = nil, filter: CompositeFilter? = nil, order: [Order], page: Page? = nil) {
+    public init(group: Group? = nil, filter: CompositeFilter? = nil, order: [Order], page: Page? = nil, mode: Mode) {
         self.group = group
         self.filter = filter
         self.order = order
         self.page = page
+        self.mode = mode
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -29,6 +31,7 @@ public struct Inquiry: Codable, JSONEncodable, Hashable {
         case filter
         case order
         case page
+        case mode
     }
 
     // Encodable protocol methods
@@ -39,6 +42,7 @@ public struct Inquiry: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(filter, forKey: .filter)
         try container.encode(order, forKey: .order)
         try container.encodeIfPresent(page, forKey: .page)
+        try container.encode(mode, forKey: .mode)
     }
 }
 

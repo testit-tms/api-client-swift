@@ -34,8 +34,10 @@ public struct CreateTestRunAndFillByWorkItemsApiModel: Codable, JSONEncodable, H
     public var configurationIds: [UUID]
     /** Specifies the work item GUIDs, from which test points are created. You can specify several GUIDs. */
     public var workItemIds: [UUID]
+    /** Test run launching options. */
+    public var option: TestRunLaunchOptionApiModel?
 
-    public init(projectId: UUID, testPlanId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, tags: [String]? = nil, configurationIds: [UUID], workItemIds: [UUID]) {
+    public init(projectId: UUID, testPlanId: UUID, name: String? = nil, description: String? = nil, launchSource: String? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [CreateLinkApiModel]? = nil, tags: [String]? = nil, configurationIds: [UUID], workItemIds: [UUID], option: TestRunLaunchOptionApiModel? = nil) {
         self.projectId = projectId
         self.testPlanId = testPlanId
         self.name = name
@@ -46,6 +48,7 @@ public struct CreateTestRunAndFillByWorkItemsApiModel: Codable, JSONEncodable, H
         self.tags = tags
         self.configurationIds = configurationIds
         self.workItemIds = workItemIds
+        self.option = option
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -59,6 +62,7 @@ public struct CreateTestRunAndFillByWorkItemsApiModel: Codable, JSONEncodable, H
         case tags
         case configurationIds
         case workItemIds
+        case option
     }
 
     // Encodable protocol methods
@@ -75,6 +79,7 @@ public struct CreateTestRunAndFillByWorkItemsApiModel: Codable, JSONEncodable, H
         try container.encodeIfPresent(tags, forKey: .tags)
         try container.encode(configurationIds, forKey: .configurationIds)
         try container.encode(workItemIds, forKey: .workItemIds)
+        try container.encodeIfPresent(option, forKey: .option)
     }
 }
 

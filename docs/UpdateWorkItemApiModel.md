@@ -17,9 +17,14 @@ Name | Type | Description | Notes
 **postconditionSteps** | [UpdateStepApiModel] | Set of postcondition steps that are executed after completing the main steps | [optional] 
 **iterations** | [AssignIterationApiModel] | Set of iterations associated with the work item | [optional] 
 **autoTests** | [AutoTestIdModel] | Set of automated tests linked to the work item | [optional] 
+**manualTestId** | **UUID** | Identifier of the linked manual test | [optional] 
+**autoTestCases** | [AssignAutoTestCaseIdApiModel] | Set of automated test cases linked to the work item | [optional] 
 **attachments** | [AssignAttachmentApiModel] | Set of files attached to the work item | [optional] 
 **links** | [UpdateLinkApiModel] | Set of links related to the work item | [optional] 
 **parameters** | [WorkItemParameterKeyApiModel] | Set of parameter keys associated with the work item | [optional] 
+**layerName** | **String** | Name of test pyramid layer associated with the work item | [optional] 
+**layerSource** | [**LayerSource**](LayerSource.md) | Source of test pyramid layer associated with the work item | [optional] 
+**resetLayer** | **Bool** | Reset current test pyramid layer associated with the work item and re-evaluates it | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

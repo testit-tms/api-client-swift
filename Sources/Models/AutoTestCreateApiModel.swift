@@ -32,12 +32,16 @@ public struct AutoTestCreateApiModel: Codable, JSONEncodable, Hashable {
     public var description: String?
     /** Indicates if the autotest is marked as flaky */
     public var isFlaky: Bool?
+    /** Layer of the autotest. Assigns layer by rules if omitted. */
+    public var layer: LayerApiModel?
     /** Collection of the autotest steps */
     public var steps: [AutoTestStepApiModel]?
     /** Collection of the autotest setup steps */
     public var setup: [AutoTestStepApiModel]?
     /** Collection of the autotest teardown steps */
     public var teardown: [AutoTestStepApiModel]?
+    /** ID of the manual test to be linked with the autotest */
+    public var manualTestId: UUID?
     /** Creates a test case linked to the autotest. */
     public var shouldCreateWorkItem: Bool?
     /** Specifies the IDs of work items to link your autotest to. You can specify several IDs. */
@@ -54,7 +58,7 @@ public struct AutoTestCreateApiModel: Codable, JSONEncodable, Hashable {
     /** Collection of the autotest tags */
     public var tags: [String]?
 
-    public init(projectId: UUID, externalId: String, externalKey: String? = nil, name: String, namespace: String? = nil, classname: String? = nil, title: String? = nil, description: String? = nil, isFlaky: Bool? = nil, steps: [AutoTestStepApiModel]? = nil, setup: [AutoTestStepApiModel]? = nil, teardown: [AutoTestStepApiModel]? = nil, shouldCreateWorkItem: Bool? = nil, workItemIds: [UUID]? = nil, attributes: [String: AnyCodable]? = nil, workItemIdsForLinkWithAutoTest: [UUID]? = nil, labels: [LabelApiModel]? = nil, links: [LinkCreateApiModel]? = nil, tags: [String]? = nil) {
+    public init(projectId: UUID, externalId: String, externalKey: String? = nil, name: String, namespace: String? = nil, classname: String? = nil, title: String? = nil, description: String? = nil, isFlaky: Bool? = nil, layer: LayerApiModel? = nil, steps: [AutoTestStepApiModel]? = nil, setup: [AutoTestStepApiModel]? = nil, teardown: [AutoTestStepApiModel]? = nil, manualTestId: UUID? = nil, shouldCreateWorkItem: Bool? = nil, workItemIds: [UUID]? = nil, attributes: [String: AnyCodable]? = nil, workItemIdsForLinkWithAutoTest: [UUID]? = nil, labels: [LabelApiModel]? = nil, links: [LinkCreateApiModel]? = nil, tags: [String]? = nil) {
         self.projectId = projectId
         self.externalId = externalId
         self.externalKey = externalKey
@@ -64,9 +68,11 @@ public struct AutoTestCreateApiModel: Codable, JSONEncodable, Hashable {
         self.title = title
         self.description = description
         self.isFlaky = isFlaky
+        self.layer = layer
         self.steps = steps
         self.setup = setup
         self.teardown = teardown
+        self.manualTestId = manualTestId
         self.shouldCreateWorkItem = shouldCreateWorkItem
         self.workItemIds = workItemIds
         self.attributes = attributes
@@ -86,9 +92,11 @@ public struct AutoTestCreateApiModel: Codable, JSONEncodable, Hashable {
         case title
         case description
         case isFlaky
+        case layer
         case steps
         case setup
         case teardown
+        case manualTestId
         case shouldCreateWorkItem
         case workItemIds
         case attributes
@@ -111,9 +119,11 @@ public struct AutoTestCreateApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(isFlaky, forKey: .isFlaky)
+        try container.encodeIfPresent(layer, forKey: .layer)
         try container.encodeIfPresent(steps, forKey: .steps)
         try container.encodeIfPresent(setup, forKey: .setup)
         try container.encodeIfPresent(teardown, forKey: .teardown)
+        try container.encodeIfPresent(manualTestId, forKey: .manualTestId)
         try container.encodeIfPresent(shouldCreateWorkItem, forKey: .shouldCreateWorkItem)
         try container.encodeIfPresent(workItemIds, forKey: .workItemIds)
         try container.encodeIfPresent(attributes, forKey: .attributes)

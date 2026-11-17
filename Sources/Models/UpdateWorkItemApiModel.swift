@@ -42,14 +42,24 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
     public var iterations: [AssignIterationApiModel]?
     /** Set of automated tests linked to the work item */
     public var autoTests: [AutoTestIdModel]?
+    /** Identifier of the linked manual test */
+    public var manualTestId: UUID?
+    /** Set of automated test cases linked to the work item */
+    public var autoTestCases: [AssignAutoTestCaseIdApiModel]?
     /** Set of files attached to the work item */
     public var attachments: [AssignAttachmentApiModel]?
     /** Set of links related to the work item */
     public var links: [UpdateLinkApiModel]?
     /** Set of parameter keys associated with the work item */
     public var parameters: [WorkItemParameterKeyApiModel]?
+    /** Name of test pyramid layer associated with the work item */
+    public var layerName: String?
+    /** Source of test pyramid layer associated with the work item */
+    public var layerSource: LayerSource?
+    /** Reset current test pyramid layer associated with the work item and re-evaluates it */
+    public var resetLayer: Bool?
 
-    public init(id: UUID, sectionId: UUID, name: String, description: String? = nil, duration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, attributes: [String: AnyCodable]? = nil, tags: [TagModel]? = nil, preconditionSteps: [UpdateStepApiModel]? = nil, steps: [UpdateStepApiModel]? = nil, postconditionSteps: [UpdateStepApiModel]? = nil, iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [UpdateLinkApiModel]? = nil, parameters: [WorkItemParameterKeyApiModel]? = nil) {
+    public init(id: UUID, sectionId: UUID, name: String, description: String? = nil, duration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, attributes: [String: AnyCodable]? = nil, tags: [TagModel]? = nil, preconditionSteps: [UpdateStepApiModel]? = nil, steps: [UpdateStepApiModel]? = nil, postconditionSteps: [UpdateStepApiModel]? = nil, iterations: [AssignIterationApiModel]? = nil, autoTests: [AutoTestIdModel]? = nil, manualTestId: UUID? = nil, autoTestCases: [AssignAutoTestCaseIdApiModel]? = nil, attachments: [AssignAttachmentApiModel]? = nil, links: [UpdateLinkApiModel]? = nil, parameters: [WorkItemParameterKeyApiModel]? = nil, layerName: String? = nil, layerSource: LayerSource? = nil, resetLayer: Bool? = nil) {
         self.id = id
         self.sectionId = sectionId
         self.name = name
@@ -64,9 +74,14 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         self.postconditionSteps = postconditionSteps
         self.iterations = iterations
         self.autoTests = autoTests
+        self.manualTestId = manualTestId
+        self.autoTestCases = autoTestCases
         self.attachments = attachments
         self.links = links
         self.parameters = parameters
+        self.layerName = layerName
+        self.layerSource = layerSource
+        self.resetLayer = resetLayer
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -84,9 +99,14 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         case postconditionSteps
         case iterations
         case autoTests
+        case manualTestId
+        case autoTestCases
         case attachments
         case links
         case parameters
+        case layerName
+        case layerSource
+        case resetLayer
     }
 
     // Encodable protocol methods
@@ -107,9 +127,14 @@ public struct UpdateWorkItemApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(postconditionSteps, forKey: .postconditionSteps)
         try container.encodeIfPresent(iterations, forKey: .iterations)
         try container.encodeIfPresent(autoTests, forKey: .autoTests)
+        try container.encodeIfPresent(manualTestId, forKey: .manualTestId)
+        try container.encodeIfPresent(autoTestCases, forKey: .autoTestCases)
         try container.encodeIfPresent(attachments, forKey: .attachments)
         try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(parameters, forKey: .parameters)
+        try container.encodeIfPresent(layerName, forKey: .layerName)
+        try container.encodeIfPresent(layerSource, forKey: .layerSource)
+        try container.encodeIfPresent(resetLayer, forKey: .resetLayer)
     }
 }
 

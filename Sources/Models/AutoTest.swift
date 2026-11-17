@@ -70,8 +70,10 @@ public struct AutoTest: Codable, JSONEncodable, Hashable {
     public var lastTestResultOutcome: String?
     /** Stability percentage of the autotest */
     public var stabilityPercentage: Int?
+    /** Auto test case linked with the autotest */
+    public var autoTestCase: AutoTestCase?
 
-    public init(externalId: String, links: [LinkApiResult]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStep]? = nil, setup: [AutoTestStep]? = nil, teardown: [AutoTestStep]? = nil, title: String? = nil, description: String? = nil, labels: [Label]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil, globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShort? = nil, lastTestResultOutcome: String? = nil, stabilityPercentage: Int? = nil) {
+    public init(externalId: String, links: [LinkApiResult]? = nil, projectId: UUID, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStep]? = nil, setup: [AutoTestStep]? = nil, teardown: [AutoTestStep]? = nil, title: String? = nil, description: String? = nil, labels: [Label]? = nil, isFlaky: Bool? = nil, externalKey: String? = nil, globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, id: UUID, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShort? = nil, lastTestResultOutcome: String? = nil, stabilityPercentage: Int? = nil, autoTestCase: AutoTestCase? = nil) {
         self.externalId = externalId
         self.links = links
         self.projectId = projectId
@@ -100,6 +102,7 @@ public struct AutoTest: Codable, JSONEncodable, Hashable {
         self.lastTestResultConfiguration = lastTestResultConfiguration
         self.lastTestResultOutcome = lastTestResultOutcome
         self.stabilityPercentage = stabilityPercentage
+        self.autoTestCase = autoTestCase
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -131,6 +134,7 @@ public struct AutoTest: Codable, JSONEncodable, Hashable {
         case lastTestResultConfiguration
         case lastTestResultOutcome
         case stabilityPercentage
+        case autoTestCase
     }
 
     // Encodable protocol methods
@@ -165,6 +169,7 @@ public struct AutoTest: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(lastTestResultConfiguration, forKey: .lastTestResultConfiguration)
         try container.encodeIfPresent(lastTestResultOutcome, forKey: .lastTestResultOutcome)
         try container.encodeIfPresent(stabilityPercentage, forKey: .stabilityPercentage)
+        try container.encodeIfPresent(autoTestCase, forKey: .autoTestCase)
     }
 }
 

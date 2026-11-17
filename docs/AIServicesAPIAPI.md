@@ -20,7 +20,7 @@ Ask for models with inquiry filter, cached
 import TestitApiClient
 
 let id = 987 // UUID | 
-let getAIServiceModelsApiModel = GetAIServiceModelsApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123))) // GetAIServiceModelsApiModel |  (optional)
+let getAIServiceModelsApiModel = GetAIServiceModelsApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: JsonElement(valueKind: JsonValueKind()), field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123), mode: Mode())) // GetAIServiceModelsApiModel |  (optional)
 
 // Ask for models with inquiry filter, cached
 AIServicesAPIAPI.apiV2ExternalServicesIdAiModelsPost(id: id, getAIServiceModelsApiModel: getAIServiceModelsApiModel) { (response, error) in

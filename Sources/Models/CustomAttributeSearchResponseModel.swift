@@ -15,17 +15,21 @@ public struct CustomAttributeSearchResponseModel: Codable, JSONEncodable, Hashab
     static let nameRule = StringRule(minLength: 0, maxLength: 255, pattern: nil)
     public var workItemUsage: [ProjectShortestModel]
     public var testPlanUsage: [ProjectShortestModel]
-    /** Unique ID of the attribute */
+    /** Unique ID of the attribute. */
     public var id: UUID
-    /** Collection of the attribute targets      Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans) */
-    public var targets: [String]
-    /** Collection of the attribute options      Available for attributes of type `options` and `multiple options` only */
-    public var options: [CustomAttributeOptionModel]
-    /** Type of the attribute */
+    /** Optional code identifier for the attribute. */
+    public var code: String?
+    /** Type of the attribute. */
     public var type: CustomAttributeTypesEnum
-    /** Indicates if the attribute is deleted */
+    /** Collection of the attribute options. */
+    public var options: [CustomAttributeOptionModel]
+    /** Collection of the attribute targets.   Defines where the attribute can be used (e.g., TestCases, AutoTestCases, TestPlans). */
+    public var targets: [String]
+    /** Indicates if the attribute is read-only. */
+    public var isReadOnly: Bool
+    /** Indicates if the attribute is deleted. */
     public var isDeleted: Bool
-    /** Indicates if the attribute is system */
+    /** Indicates if the attribute is system. */
     public var isSystem: Bool
     /** Name of the attribute */
     public var name: String
@@ -36,13 +40,15 @@ public struct CustomAttributeSearchResponseModel: Codable, JSONEncodable, Hashab
     /** Indicates if the attribute is available across all projects */
     public var isGlobal: Bool
 
-    public init(workItemUsage: [ProjectShortestModel], testPlanUsage: [ProjectShortestModel], id: UUID, targets: [String], options: [CustomAttributeOptionModel], type: CustomAttributeTypesEnum, isDeleted: Bool, isSystem: Bool, name: String, isEnabled: Bool, isRequired: Bool, isGlobal: Bool) {
+    public init(workItemUsage: [ProjectShortestModel], testPlanUsage: [ProjectShortestModel], id: UUID, code: String? = nil, type: CustomAttributeTypesEnum, options: [CustomAttributeOptionModel], targets: [String], isReadOnly: Bool, isDeleted: Bool, isSystem: Bool, name: String, isEnabled: Bool, isRequired: Bool, isGlobal: Bool) {
         self.workItemUsage = workItemUsage
         self.testPlanUsage = testPlanUsage
         self.id = id
-        self.targets = targets
-        self.options = options
+        self.code = code
         self.type = type
+        self.options = options
+        self.targets = targets
+        self.isReadOnly = isReadOnly
         self.isDeleted = isDeleted
         self.isSystem = isSystem
         self.name = name
@@ -55,9 +61,11 @@ public struct CustomAttributeSearchResponseModel: Codable, JSONEncodable, Hashab
         case workItemUsage
         case testPlanUsage
         case id
-        case targets
-        case options
+        case code
         case type
+        case options
+        case targets
+        case isReadOnly
         case isDeleted
         case isSystem
         case name
@@ -73,9 +81,11 @@ public struct CustomAttributeSearchResponseModel: Codable, JSONEncodable, Hashab
         try container.encode(workItemUsage, forKey: .workItemUsage)
         try container.encode(testPlanUsage, forKey: .testPlanUsage)
         try container.encode(id, forKey: .id)
-        try container.encode(targets, forKey: .targets)
-        try container.encode(options, forKey: .options)
+        try container.encodeIfPresent(code, forKey: .code)
         try container.encode(type, forKey: .type)
+        try container.encode(options, forKey: .options)
+        try container.encode(targets, forKey: .targets)
+        try container.encode(isReadOnly, forKey: .isReadOnly)
         try container.encode(isDeleted, forKey: .isDeleted)
         try container.encode(isSystem, forKey: .isSystem)
         try container.encode(name, forKey: .name)

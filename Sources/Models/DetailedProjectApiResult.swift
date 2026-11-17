@@ -25,15 +25,15 @@ public struct DetailedProjectApiResult: Codable, JSONEncodable, Hashable {
     /** Indicates if the project is marked as favorite */
     public var isFavorite: Bool
     /** Number of work items in the project */
-    public var workItemsCount: Int
+    public var workItemsCount: Int64
     /** Number of test cases in the project */
-    public var testCasesCount: Int?
+    public var testCasesCount: Int64?
     /** Number of shared steps in the project */
-    public var sharedStepsCount: Int?
+    public var sharedStepsCount: Int64?
     /** Number of checklists in the project */
-    public var checkListsCount: Int?
+    public var checkListsCount: Int64?
     /** Number of autotests in the project */
-    public var autoTestsCount: Int?
+    public var autoTestsCount: Int64?
     /** Indicates if the project is deleted */
     public var isDeleted: Bool
     /** Creation date of the project */
@@ -50,8 +50,12 @@ public struct DetailedProjectApiResult: Codable, JSONEncodable, Hashable {
     public var type: ProjectType
     /** ID of the workflow used in project */
     public var workflowId: UUID
+    /** Test strategy of the project */
+    public var testStrategy: TestStrategy
+    /** Coverage mode of test cases of the project */
+    public var testCaseCoverageMode: TestCaseCoverageMode
 
-    public init(attributesScheme: [CustomAttributeApiResult]? = nil, testPlansAttributesScheme: [CustomAttributeApiResult]? = nil, id: UUID, description: String? = nil, name: String, isFavorite: Bool, workItemsCount: Int, testCasesCount: Int? = nil, sharedStepsCount: Int? = nil, checkListsCount: Int? = nil, autoTestsCount: Int? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectType, workflowId: UUID) {
+    public init(attributesScheme: [CustomAttributeApiResult]? = nil, testPlansAttributesScheme: [CustomAttributeApiResult]? = nil, id: UUID, description: String? = nil, name: String, isFavorite: Bool, workItemsCount: Int64, testCasesCount: Int64? = nil, sharedStepsCount: Int64? = nil, checkListsCount: Int64? = nil, autoTestsCount: Int64? = nil, isDeleted: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, globalId: Int64, type: ProjectType, workflowId: UUID, testStrategy: TestStrategy, testCaseCoverageMode: TestCaseCoverageMode) {
         self.attributesScheme = attributesScheme
         self.testPlansAttributesScheme = testPlansAttributesScheme
         self.id = id
@@ -71,6 +75,8 @@ public struct DetailedProjectApiResult: Codable, JSONEncodable, Hashable {
         self.globalId = globalId
         self.type = type
         self.workflowId = workflowId
+        self.testStrategy = testStrategy
+        self.testCaseCoverageMode = testCaseCoverageMode
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -93,6 +99,8 @@ public struct DetailedProjectApiResult: Codable, JSONEncodable, Hashable {
         case globalId
         case type
         case workflowId
+        case testStrategy
+        case testCaseCoverageMode
     }
 
     // Encodable protocol methods
@@ -118,6 +126,8 @@ public struct DetailedProjectApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(globalId, forKey: .globalId)
         try container.encode(type, forKey: .type)
         try container.encode(workflowId, forKey: .workflowId)
+        try container.encode(testStrategy, forKey: .testStrategy)
+        try container.encode(testCaseCoverageMode, forKey: .testCaseCoverageMode)
     }
 }
 

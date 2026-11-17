@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **attributes** | [String: Set<String>] | Custom attributes of work item | [optional] 
 **isDeleted** | **Bool** | Is result must consist of only actual/deleted work items | [optional] 
 **sectionIds** | **Set<UUID>** | Collection of section identifiers | [optional] 
+**namespaceIds** | **Set<UUID>** | Collection of namespace identifiers | [optional] 
 **createdByIds** | **Set<UUID>** | Collection of identifiers of users who created work item | [optional] 
 **modifiedByIds** | **Set<UUID>** | Collection of identifiers of users who applied last modification to work item | [optional] 
 **states** | Set<WorkItemStates> | Collection of states of work item | [optional] 
@@ -30,6 +31,9 @@ Name | Type | Description | Notes
 **workItemVersionIds** | **[UUID]** | Collection of identifiers work items versions. | [optional] 
 **links** | [**WorkItemLinkFilterApiModel**](WorkItemLinkFilterApiModel.md) | Specifies a work item filter by its links | [optional] 
 **externalMetadata** | [**WorkItemExternalMetadataFilterApiModel**](WorkItemExternalMetadataFilterApiModel.md) | Specifies work item filter by its external metadata | [optional] 
+**layers** | **Set<String>** | Specifies auto test case layers to search for | [optional] 
+**layerSources** | Set<LayerSource> | Specifies list of auto test case layer sources to search for | [optional] 
+**externalId** | **String** | External identifier of the work item | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

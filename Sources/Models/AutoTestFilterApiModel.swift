@@ -22,6 +22,8 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
     static let lastTestResultConfigurationIdsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     static let tagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     static let excludeTagsRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let layersRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
+    static let layerSourcesRule = ArrayRule(minItems: nil, maxItems: nil, uniqueItems: true)
     /** Specifies an autotest projects IDs to search for */
     public var projectIds: Set<UUID>?
     /** Specifies an autotest external IDs to search for */
@@ -66,8 +68,12 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
     public var tags: Set<String>?
     /** Specifies an autotest tags to exclude */
     public var excludeTags: Set<String>?
+    /** Specifies auto test layers to search for */
+    public var layers: Set<String>?
+    /** Specifies list of auto test layer sources to search for */
+    public var layerSources: Set<LayerSource>?
 
-    public init(projectIds: Set<UUID>? = nil, externalIds: Set<String>? = nil, globalIds: Set<Int64>? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: Set<UUID>? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: Set<UUID>? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCodes: Set<String>? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: Set<UUID>? = nil, tags: Set<String>? = nil, excludeTags: Set<String>? = nil) {
+    public init(projectIds: Set<UUID>? = nil, externalIds: Set<String>? = nil, globalIds: Set<Int64>? = nil, name: String? = nil, isFlaky: Bool? = nil, mustBeApproved: Bool? = nil, stabilityPercentage: Int64RangeSelectorModel? = nil, createdDate: DateTimeRangeSelectorModel? = nil, createdByIds: Set<UUID>? = nil, modifiedDate: DateTimeRangeSelectorModel? = nil, modifiedByIds: Set<UUID>? = nil, isDeleted: Bool? = nil, namespace: String? = nil, isEmptyNamespace: Bool? = nil, className: String? = nil, isEmptyClassName: Bool? = nil, lastTestResultOutcome: AutotestResultOutcome? = nil, lastTestResultStatusCodes: Set<String>? = nil, externalKey: String? = nil, lastTestResultConfigurationIds: Set<UUID>? = nil, tags: Set<String>? = nil, excludeTags: Set<String>? = nil, layers: Set<String>? = nil, layerSources: Set<LayerSource>? = nil) {
         self.projectIds = projectIds
         self.externalIds = externalIds
         self.globalIds = globalIds
@@ -90,6 +96,8 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
         self.lastTestResultConfigurationIds = lastTestResultConfigurationIds
         self.tags = tags
         self.excludeTags = excludeTags
+        self.layers = layers
+        self.layerSources = layerSources
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -115,6 +123,8 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
         case lastTestResultConfigurationIds
         case tags
         case excludeTags
+        case layers
+        case layerSources
     }
 
     // Encodable protocol methods
@@ -143,6 +153,8 @@ public struct AutoTestFilterApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(lastTestResultConfigurationIds, forKey: .lastTestResultConfigurationIds)
         try container.encodeIfPresent(tags, forKey: .tags)
         try container.encodeIfPresent(excludeTags, forKey: .excludeTags)
+        try container.encodeIfPresent(layers, forKey: .layers)
+        try container.encodeIfPresent(layerSources, forKey: .layerSources)
     }
 }
 

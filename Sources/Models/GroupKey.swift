@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct GroupKey: Codable, JSONEncodable, Hashable {
 
-    public var value: String?
+    public var value: JsonElement
     public var displayValue: String?
 
-    public init(value: String?, displayValue: String? = nil) {
+    public init(value: JsonElement, displayValue: String? = nil) {
         self.value = value
         self.displayValue = displayValue
     }

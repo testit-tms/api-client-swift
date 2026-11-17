@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **lastTestResultConfigurationIds** | **Set<UUID>** | Specifies an autotest configuration IDs of the last test result to search for | [optional] 
 **tags** | **Set<String>** | Specifies an autotest tags to search for | [optional] 
 **excludeTags** | **Set<String>** | Specifies an autotest tags to exclude | [optional] 
+**layers** | **Set<String>** | Specifies auto test layers to search for | [optional] 
+**layerSources** | Set<LayerSource> | Specifies list of auto test layer sources to search for | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

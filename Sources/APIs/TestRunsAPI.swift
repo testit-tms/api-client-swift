@@ -13,6 +13,55 @@ import AnyCodable
 open class TestRunsAPI {
 
     /**
+     Create TestRun filled with autotests linked to work items of type \"AutoTestCases\" selected by the filter
+     
+     - parameter createTestRunAndFillByAutoTestCasesApiModel: (body) Test run model with a filter for work items of type \&quot;AutoTestCases\&quot; and configuration IDs (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @discardableResult
+    open class func apiV2TestRunsByAutoTestCasesPost(createTestRunAndFillByAutoTestCasesApiModel: CreateTestRunAndFillByAutoTestCasesApiModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)) -> RequestTask {
+        return apiV2TestRunsByAutoTestCasesPostWithRequestBuilder(createTestRunAndFillByAutoTestCasesApiModel: createTestRunAndFillByAutoTestCasesApiModel).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                completion(response.body, nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
+        }
+    }
+
+    /**
+     Create TestRun filled with autotests linked to work items of type \"AutoTestCases\" selected by the filter
+     - POST /api/v2/testRuns/byAutoTestCases
+     - API Key:
+       - type: apiKey Authorization (HEADER)
+       - name: PrivateToken
+     - API Key:
+       - type: apiKey session 
+       - name: Cookies
+     - parameter createTestRunAndFillByAutoTestCasesApiModel: (body) Test run model with a filter for work items of type \&quot;AutoTestCases\&quot; and configuration IDs (optional)
+     - returns: RequestBuilder<TestRunV2ApiResult> 
+     */
+    open class func apiV2TestRunsByAutoTestCasesPostWithRequestBuilder(createTestRunAndFillByAutoTestCasesApiModel: CreateTestRunAndFillByAutoTestCasesApiModel? = nil) -> RequestBuilder<TestRunV2ApiResult> {
+        let localVariablePath = "/api/v2/testRuns/byAutoTestCases"
+        let localVariableURLString = TestitApiClientAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTestRunAndFillByAutoTestCasesApiModel)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<TestRunV2ApiResult>.Type = TestitApiClientAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
      Delete multiple test runs
      
      - parameter testRunSelectApiModel: (body)  (optional)
@@ -34,7 +83,7 @@ open class TestRunsAPI {
     /**
      Delete multiple test runs
      - DELETE /api/v2/testRuns
-     -   Use case    User sets selection parameters of test runs    System search and delete collection of test runs    System returns the number of deleted test runs
+     -  Use case  User sets selection parameters of test runs  System search and delete collection of test runs  System returns the number of deleted test runs
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -136,7 +185,7 @@ open class TestRunsAPI {
     /**
      Delete test run
      - DELETE /api/v2/testRuns/{id}
-     -   Use case    User sets test run internal (guid format) identifier    System search and delete test run
+     -  Use case  User sets test run internal (guid format) identifier  System search and delete test run
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -244,7 +293,7 @@ open class TestRunsAPI {
     /**
      Permanently delete test run from archive
      - POST /api/v2/testRuns/{id}/purge
-     -   Use case    User sets archived test run internal (guid format) identifier    System search and purge archived test run
+     -  Use case  User sets archived test run internal (guid format) identifier  System search and purge archived test run
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -351,7 +400,7 @@ open class TestRunsAPI {
     /**
      Restore test run from the archive
      - POST /api/v2/testRuns/{id}/restore
-     -   Use case    User sets archived test run internal (guid format) identifier    System search and restore test run
+     -  Use case  User sets archived test run internal (guid format) identifier  System search and restore test run
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -616,7 +665,7 @@ open class TestRunsAPI {
     /**
      Permanently delete multiple test runs from archive
      - POST /api/v2/testRuns/purge/bulk
-     -   Use case    User sets selection parameters of archived test runs    System search and delete collection of archived test runs    System returns the number of deleted archived test runs
+     -  Use case  User sets selection parameters of archived test runs  System search and delete collection of archived test runs  System returns the number of deleted archived test runs
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -666,7 +715,7 @@ open class TestRunsAPI {
     /**
      Restore multiple test runs from the archive
      - POST /api/v2/testRuns/restore/bulk
-     -   Use case    User sets selection parameters of archived test runs    System search and restore collection of archived test runs    System returns the number of restored test runs
+     -  Use case  User sets selection parameters of archived test runs  System search and restore collection of archived test runs  System returns the number of restored test runs
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -832,7 +881,7 @@ open class TestRunsAPI {
     /**
      Complete TestRun
      - POST /api/v2/testRuns/{id}/complete
-     -   Use case    User sets test run identifier    User runs method execution    System completes test run    System returns no content response
+     -  Use case  User sets test run identifier  User runs method execution  System completes test run  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -885,7 +934,7 @@ open class TestRunsAPI {
     /**
      Create test runs based on autotests and configurations
      - POST /api/v2/testRuns/byAutoTests
-     - This method creates a test run based on an autotest and a configuration.  The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is  that in this method there is no need to create a test plan and work items (test cases and checklists).
+     - This method creates a test run based on an autotest and a configuration. The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is that in this method there is no need to create a test plan and work items (test cases and checklists).
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -935,7 +984,7 @@ open class TestRunsAPI {
     /**
      Create test runs picking the needed test points
      - POST /api/v2/testRuns/byConfigurations
-     - This method creates a test run based on a combination of a configuration and a work item(test case or checklist).  Before you create a test run using this method, make sure to create a test plan. Work items must be automated.  This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a  jagged array within the \"<b>testPointSelectors</b>\" parameter.
+     - This method creates a test run based on a combination of a configuration and a work item(test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated. This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a jagged array within the \"<b>testPointSelectors</b>\" parameter.
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -985,7 +1034,7 @@ open class TestRunsAPI {
     /**
      Create test run based on configurations and work items
      - POST /api/v2/testRuns/byWorkItems
-     - This method creates a test run based on a combination of configuration and work item (test case or checklist).  Before you create a test run using this method, make sure to create a test plan.  Work items must be automated.
+     - This method creates a test run based on a combination of configuration and work item (test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated.
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1035,7 +1084,7 @@ open class TestRunsAPI {
     /**
      Create empty TestRun
      - POST /api/v2/testRuns
-     -   Use case    User sets test run model (listed in the request example)    User runs method execution    System creates test run    System returns test run model
+     -  Use case  User sets test run model (listed in the request example)  User runs method execution  System creates test run  System returns test run model
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1085,7 +1134,7 @@ open class TestRunsAPI {
     /**
      Get TestRun by Id
      - GET /api/v2/testRuns/{id}
-     -   Use case    User sets test run identifier    User runs method execution    System finds test run    System returns test run
+     -  Use case  User sets test run identifier  User runs method execution  System finds test run  System returns test run
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1193,7 +1242,7 @@ open class TestRunsAPI {
     /**
      Start TestRun
      - POST /api/v2/testRuns/{id}/start
-     -   Use case    User sets test run identifier    User runs method execution    System starts test run    System returns no content response
+     -  Use case  User sets test run identifier  User runs method execution  System starts test run  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1246,7 +1295,7 @@ open class TestRunsAPI {
     /**
      Stop TestRun
      - POST /api/v2/testRuns/{id}/stop
-     -   Use case    User sets test run identifier    User runs method execution    System stops test run    System returns no content response
+     -  Use case  User sets test run identifier  User runs method execution  System stops test run  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1299,7 +1348,7 @@ open class TestRunsAPI {
     /**
      Update empty TestRun
      - PUT /api/v2/testRuns
-     -   Use case    User sets test run properties (listed in the request example)    User runs method execution    System updates test run    System returns returns no content response
+     -  Use case  User sets test run properties (listed in the request example)  User runs method execution  System updates test run  System returns returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken

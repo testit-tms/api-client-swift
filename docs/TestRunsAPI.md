@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apiV2TestRunsByAutoTestCasesPost**](TestRunsAPI.md#apiv2testrunsbyautotestcasespost) | **POST** /api/v2/testRuns/byAutoTestCases | Create TestRun filled with autotests linked to work items of type \&quot;AutoTestCases\&quot; selected by the filter
 [**apiV2TestRunsDelete**](TestRunsAPI.md#apiv2testrunsdelete) | **DELETE** /api/v2/testRuns | Delete multiple test runs
 [**apiV2TestRunsIdAutoTestsNamespacesGet**](TestRunsAPI.md#apiv2testrunsidautotestsnamespacesget) | **GET** /api/v2/testRuns/{id}/autoTestsNamespaces | Get autotest classes and namespaces in test run
 [**apiV2TestRunsIdDelete**](TestRunsAPI.md#apiv2testrunsiddelete) | **DELETE** /api/v2/testRuns/{id} | Delete test run
@@ -31,6 +32,54 @@ Method | HTTP request | Description
 [**updateEmpty**](TestRunsAPI.md#updateempty) | **PUT** /api/v2/testRuns | Update empty TestRun
 
 
+# **apiV2TestRunsByAutoTestCasesPost**
+```swift
+    open class func apiV2TestRunsByAutoTestCasesPost(createTestRunAndFillByAutoTestCasesApiModel: CreateTestRunAndFillByAutoTestCasesApiModel? = nil, completion: @escaping (_ data: TestRunV2ApiResult?, _ error: Error?) -> Void)
+```
+
+Create TestRun filled with autotests linked to work items of type \"AutoTestCases\" selected by the filter
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import TestitApiClient
+
+let createTestRunAndFillByAutoTestCasesApiModel = CreateTestRunAndFillByAutoTestCasesApiModel(projectId: 123, filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: JsonElement(valueKind: JsonValueKind()), field: "field_example", filter: nil)], _operator: LogicalOperator()), name: "name_example", configurationIds: [123], description: "description_example", launchSource: "launchSource_example", option: TestRunLaunchOptionApiModel(customParameters: "TODO", webhookIds: [123]), tags: ["tags_example"]) // CreateTestRunAndFillByAutoTestCasesApiModel | Test run model with a filter for work items of type \"AutoTestCases\" and configuration IDs (optional)
+
+// Create TestRun filled with autotests linked to work items of type \"AutoTestCases\" selected by the filter
+TestRunsAPI.apiV2TestRunsByAutoTestCasesPost(createTestRunAndFillByAutoTestCasesApiModel: createTestRunAndFillByAutoTestCasesApiModel) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createTestRunAndFillByAutoTestCasesApiModel** | [**CreateTestRunAndFillByAutoTestCasesApiModel**](CreateTestRunAndFillByAutoTestCasesApiModel.md) | Test run model with a filter for work items of type \&quot;AutoTestCases\&quot; and configuration IDs | [optional] 
+
+### Return type
+
+[**TestRunV2ApiResult**](TestRunV2ApiResult.md)
+
+### Authorization
+
+[PrivateToken](../README.md#PrivateToken), [Cookies](../README.md#Cookies)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **apiV2TestRunsDelete**
 ```swift
     open class func apiV2TestRunsDelete(testRunSelectApiModel: TestRunSelectApiModel? = nil, completion: @escaping (_ data: Int?, _ error: Error?) -> Void)
@@ -38,7 +87,7 @@ Method | HTTP request | Description
 
 Delete multiple test runs
 
-  Use case    User sets selection parameters of test runs    System search and delete collection of test runs    System returns the number of deleted test runs
+ Use case  User sets selection parameters of test runs  System search and delete collection of test runs  System returns the number of deleted test runs
 
 ### Example
 ```swift
@@ -136,7 +185,7 @@ Name | Type | Description  | Notes
 
 Delete test run
 
-  Use case    User sets test run internal (guid format) identifier    System search and delete test run
+ Use case  User sets test run internal (guid format) identifier  System search and delete test run
 
 ### Example
 ```swift
@@ -238,7 +287,7 @@ Void (empty response body)
 
 Permanently delete test run from archive
 
-  Use case    User sets archived test run internal (guid format) identifier    System search and purge archived test run
+ Use case  User sets archived test run internal (guid format) identifier  System search and purge archived test run
 
 ### Example
 ```swift
@@ -338,7 +387,7 @@ Name | Type | Description  | Notes
 
 Restore test run from the archive
 
-  Use case    User sets archived test run internal (guid format) identifier    System search and restore test run
+ Use case  User sets archived test run internal (guid format) identifier  System search and restore test run
 
 ### Example
 ```swift
@@ -584,7 +633,7 @@ Name | Type | Description  | Notes
 
 Permanently delete multiple test runs from archive
 
-  Use case    User sets selection parameters of archived test runs    System search and delete collection of archived test runs    System returns the number of deleted archived test runs
+ Use case  User sets selection parameters of archived test runs  System search and delete collection of archived test runs  System returns the number of deleted archived test runs
 
 ### Example
 ```swift
@@ -634,7 +683,7 @@ Name | Type | Description  | Notes
 
 Restore multiple test runs from the archive
 
-  Use case    User sets selection parameters of archived test runs    System search and restore collection of archived test runs    System returns the number of restored test runs
+ Use case  User sets selection parameters of archived test runs  System search and restore collection of archived test runs  System returns the number of restored test runs
 
 ### Example
 ```swift
@@ -790,7 +839,7 @@ Void (empty response body)
 
 Complete TestRun
 
-  Use case    User sets test run identifier    User runs method execution    System completes test run    System returns no content response
+ Use case  User sets test run identifier  User runs method execution  System completes test run  System returns no content response
 
 ### Example
 ```swift
@@ -840,14 +889,14 @@ Void (empty response body)
 
 Create test runs based on autotests and configurations
 
-This method creates a test run based on an autotest and a configuration.  The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is  that in this method there is no need to create a test plan and work items (test cases and checklists).
+This method creates a test run based on an autotest and a configuration. The difference between the `POST /api/v2/testRuns/byWorkItems` and `POST /api/v2/testRuns/byConfigurations` methods is that in this method there is no need to create a test plan and work items (test cases and checklists).
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestRunAndFillByAutoTestsApiModel = CreateTestRunAndFillByAutoTestsApiModel(projectId: 123, name: "name_example", configurationIds: [123], autoTestExternalIds: ["autoTestExternalIds_example"], description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"]) // CreateTestRunAndFillByAutoTestsApiModel |  (optional)
+let createTestRunAndFillByAutoTestsApiModel = CreateTestRunAndFillByAutoTestsApiModel(projectId: 123, name: "name_example", configurationIds: [123], autoTestExternalIds: ["autoTestExternalIds_example"], description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], option: TestRunLaunchOptionApiModel(customParameters: "TODO", webhookIds: [123])) // CreateTestRunAndFillByAutoTestsApiModel |  (optional)
 
 // Create test runs based on autotests and configurations
 TestRunsAPI.createAndFillByAutoTests(createTestRunAndFillByAutoTestsApiModel: createTestRunAndFillByAutoTestsApiModel) { (response, error) in
@@ -890,14 +939,14 @@ Name | Type | Description  | Notes
 
 Create test runs picking the needed test points
 
-This method creates a test run based on a combination of a configuration and a work item(test case or checklist).  Before you create a test run using this method, make sure to create a test plan. Work items must be automated.  This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a  jagged array within the \"<b>testPointSelectors</b>\" parameter.
+This method creates a test run based on a combination of a configuration and a work item(test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated. This method is different from the `POST /api/v2/testRuns/byWorkItems` method because of the ability to send a jagged array within the \"<b>testPointSelectors</b>\" parameter.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestRunAndFillByConfigurationsApiModel = CreateTestRunAndFillByConfigurationsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], testPointSelectors: [TestPointSelector(configurationId: 123, workItemIds: [123])]) // CreateTestRunAndFillByConfigurationsApiModel |  (optional)
+let createTestRunAndFillByConfigurationsApiModel = CreateTestRunAndFillByConfigurationsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], testPointSelectors: [TestPointSelector(configurationId: 123, workItemIds: [123])], option: TestRunLaunchOptionApiModel(customParameters: "TODO", webhookIds: [123])) // CreateTestRunAndFillByConfigurationsApiModel |  (optional)
 
 // Create test runs picking the needed test points
 TestRunsAPI.createAndFillByConfigurations(createTestRunAndFillByConfigurationsApiModel: createTestRunAndFillByConfigurationsApiModel) { (response, error) in
@@ -940,14 +989,14 @@ Name | Type | Description  | Notes
 
 Create test run based on configurations and work items
 
-This method creates a test run based on a combination of configuration and work item (test case or checklist).  Before you create a test run using this method, make sure to create a test plan.  Work items must be automated.
+This method creates a test run based on a combination of configuration and work item (test case or checklist). Before you create a test run using this method, make sure to create a test plan. Work items must be automated.
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createTestRunAndFillByWorkItemsApiModel = CreateTestRunAndFillByWorkItemsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], configurationIds: [123], workItemIds: [123]) // CreateTestRunAndFillByWorkItemsApiModel |  (optional)
+let createTestRunAndFillByWorkItemsApiModel = CreateTestRunAndFillByWorkItemsApiModel(projectId: 123, testPlanId: 123, name: "name_example", description: "description_example", launchSource: "launchSource_example", attachments: [AssignAttachmentApiModel(id: 123)], links: [CreateLinkApiModel(title: "title_example", url: "url_example", description: "description_example", type: LinkType(), hasInfo: false)], tags: ["tags_example"], configurationIds: [123], workItemIds: [123], option: TestRunLaunchOptionApiModel(customParameters: "TODO", webhookIds: [123])) // CreateTestRunAndFillByWorkItemsApiModel |  (optional)
 
 // Create test run based on configurations and work items
 TestRunsAPI.createAndFillByWorkItems(createTestRunAndFillByWorkItemsApiModel: createTestRunAndFillByWorkItemsApiModel) { (response, error) in
@@ -990,7 +1039,7 @@ Name | Type | Description  | Notes
 
 Create empty TestRun
 
-  Use case    User sets test run model (listed in the request example)    User runs method execution    System creates test run    System returns test run model
+ Use case  User sets test run model (listed in the request example)  User runs method execution  System creates test run  System returns test run model
 
 ### Example
 ```swift
@@ -1040,7 +1089,7 @@ Name | Type | Description  | Notes
 
 Get TestRun by Id
 
-  Use case    User sets test run identifier    User runs method execution    System finds test run    System returns test run
+ Use case  User sets test run identifier  User runs method execution  System finds test run  System returns test run
 
 ### Example
 ```swift
@@ -1142,7 +1191,7 @@ Name | Type | Description  | Notes
 
 Start TestRun
 
-  Use case    User sets test run identifier    User runs method execution    System starts test run    System returns no content response
+ Use case  User sets test run identifier  User runs method execution  System starts test run  System returns no content response
 
 ### Example
 ```swift
@@ -1192,7 +1241,7 @@ Void (empty response body)
 
 Stop TestRun
 
-  Use case    User sets test run identifier    User runs method execution    System stops test run    System returns no content response
+ Use case  User sets test run identifier  User runs method execution  System stops test run  System returns no content response
 
 ### Example
 ```swift
@@ -1242,7 +1291,7 @@ Void (empty response body)
 
 Update empty TestRun
 
-  Use case    User sets test run properties (listed in the request example)    User runs method execution    System updates test run    System returns returns no content response
+ Use case  User sets test run properties (listed in the request example)  User runs method execution  System updates test run  System returns returns no content response
 
 ### Example
 ```swift

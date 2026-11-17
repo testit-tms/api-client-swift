@@ -20,12 +20,15 @@ public struct TestStatusShortApiResult: Codable, JSONEncodable, Hashable {
     public var name: String
     /** Type of the test status (e.g., Passed, Failed). */
     public var type: TestStatusApiType
+    /** Identifies test status as system. */
+    public var isSystem: Bool
 
-    public init(id: UUID, code: String, name: String, type: TestStatusApiType) {
+    public init(id: UUID, code: String, name: String, type: TestStatusApiType, isSystem: Bool) {
         self.id = id
         self.code = code
         self.name = name
         self.type = type
+        self.isSystem = isSystem
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -33,6 +36,7 @@ public struct TestStatusShortApiResult: Codable, JSONEncodable, Hashable {
         case code
         case name
         case type
+        case isSystem
     }
 
     // Encodable protocol methods
@@ -43,6 +47,7 @@ public struct TestStatusShortApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(code, forKey: .code)
         try container.encode(name, forKey: .name)
         try container.encode(type, forKey: .type)
+        try container.encode(isSystem, forKey: .isSystem)
     }
 }
 

@@ -12,37 +12,41 @@ import AnyCodable
 
 public struct AutoTestShortApiResult: Codable, JSONEncodable, Hashable {
 
+    public var globalId: Int64
     public var id: UUID
     public var projectId: UUID
-    public var name: String
     public var externalId: String
-    public var globalId: Int64
+    public var name: String
+    public var autoTestCaseGlobalId: Int64?
 
-    public init(id: UUID, projectId: UUID, name: String, externalId: String, globalId: Int64) {
+    public init(globalId: Int64, id: UUID, projectId: UUID, externalId: String, name: String, autoTestCaseGlobalId: Int64? = nil) {
+        self.globalId = globalId
         self.id = id
         self.projectId = projectId
-        self.name = name
         self.externalId = externalId
-        self.globalId = globalId
+        self.name = name
+        self.autoTestCaseGlobalId = autoTestCaseGlobalId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case globalId
         case id
         case projectId
-        case name
         case externalId
-        case globalId
+        case name
+        case autoTestCaseGlobalId
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(globalId, forKey: .globalId)
         try container.encode(id, forKey: .id)
         try container.encode(projectId, forKey: .projectId)
-        try container.encode(name, forKey: .name)
         try container.encode(externalId, forKey: .externalId)
-        try container.encode(globalId, forKey: .globalId)
+        try container.encode(name, forKey: .name)
+        try container.encodeIfPresent(autoTestCaseGlobalId, forKey: .autoTestCaseGlobalId)
     }
 }
 

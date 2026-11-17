@@ -35,7 +35,7 @@ open class WorkItemsAPI {
     /**
      Upload and link attachment to WorkItem
      - POST /api/v2/workItems/{id}/attachments
-     -   Use case    User sets workItemId    User attaches a file    System creates attachment and links it to the work item    System returns attachment identifier
+     -  Use case  User sets workItemId  User attaches a file  System creates attachment and links it to the work item  System returns attachment identifier
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -94,7 +94,7 @@ open class WorkItemsAPI {
     /**
      Transform CheckList to TestCase
      - POST /api/v2/workItems/{id}/checkList/transformTo/testCase
-     -   Use case    User sets checklist identifier    User runs method execution    System transform CheckList to TestCase
+     -  Use case  User sets checklist identifier  User runs method execution  System transform CheckList to TestCase
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -152,7 +152,7 @@ open class WorkItemsAPI {
     /**
      Get change history of WorkItem
      - GET /api/v2/workItems/{id}/history
-     -   Use case    User sets work item identifier    User runs method execution    System return change history of WorkItem
+     -  Use case  User sets work item identifier  User runs method execution  System return change history of WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -218,7 +218,7 @@ open class WorkItemsAPI {
     /**
      Delete like from WorkItem
      - DELETE /api/v2/workItems/{id}/like
-     -   Use case    User sets WorkItem identifier    User runs method execution    System delete like from WorkItem
+     -  Use case  User sets WorkItem identifier  User runs method execution  System delete like from WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -271,7 +271,7 @@ open class WorkItemsAPI {
     /**
      Set like to WorkItem
      - POST /api/v2/workItems/{id}/like
-     -   Use case    User sets WorkItem identifier    User runs method execution    System set like to WorkItem
+     -  Use case  User sets WorkItem identifier  User runs method execution  System set like to WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -324,7 +324,7 @@ open class WorkItemsAPI {
     /**
      Get likes count of WorkItem
      - GET /api/v2/workItems/{id}/likes/count
-     -   Use case    User sets WorkItem identifier    User runs method execution    System return likes count of WorkItem
+     -  Use case  User sets WorkItem identifier  User runs method execution  System return likes count of WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -377,7 +377,7 @@ open class WorkItemsAPI {
     /**
      Get likes of WorkItem
      - GET /api/v2/workItems/{id}/likes
-     -   Use case    User sets WorkItem identifier    User runs method execution    System return likes of WorkItem
+     -  Use case  User sets WorkItem identifier  User runs method execution  System return likes of WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -411,7 +411,7 @@ open class WorkItemsAPI {
     /**
      Patch Test Case, Checklist or Shared Step
      
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter operation: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -438,7 +438,7 @@ open class WorkItemsAPI {
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter operation: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -500,7 +500,7 @@ open class WorkItemsAPI {
     /**
      Get test results history of WorkItem
      - GET /api/v2/workItems/{id}/testResults/history
-     -   Use case    User sets WorkItem identifier    User runs method execution    System return test results history of WorkItem
+     -  Use case  User sets WorkItem identifier  User runs method execution  System return test results history of WorkItem
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -587,7 +587,7 @@ open class WorkItemsAPI {
     /**
      Set WorkItem as actual
      - POST /api/v2/workItems/{id}/version/{versionId}/actual
-     -   Use case    User sets work item identifier    User runs method execution    System set WorkItem as actual
+     -  Use case  User sets work item identifier  User runs method execution  System set WorkItem as actual
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -709,7 +709,7 @@ open class WorkItemsAPI {
     /**
      Move WorkItem to another section
      - POST /api/v2/workItems/move
-     -   Use case    User sets WorkItem identifier    User runs method execution    System move WorkItem to another section
+     -  Use case  User sets WorkItem identifier  User runs method execution  System move WorkItem to another section
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -808,7 +808,7 @@ open class WorkItemsAPI {
     /**
      Update Test Case, Checklist or Shared Step
      - PUT /api/v2/workItems
-     -   Use case    User sets work item properties (listed in request parameters)    User runs method execution    System updates work item by identifier    System returns updated work item model (listed in response parameters)
+     -  Use case  User sets work item properties (listed in request parameters)  User runs method execution  System updates work item by identifier  System returns updated work item model (listed in response parameters)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -931,7 +931,7 @@ open class WorkItemsAPI {
     /**
      Get SharedStep references in sections
      - POST /api/v2/workItems/{sharedStepId}/references/sections
-     -   Use case    User sets SharedStep identifier    User runs method execution    System return SharedStep references
+     -  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1004,7 +1004,7 @@ open class WorkItemsAPI {
     /**
      Get SharedStep references in work items
      - POST /api/v2/workItems/{sharedStepId}/references/workItems
-     -   Use case    User sets SharedStep identifier    User runs method execution    System return SharedStep references
+     -  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1072,7 +1072,7 @@ open class WorkItemsAPI {
     /**
      Get SharedStep references
      - GET /api/v2/workItems/sharedSteps/{sharedStepId}/references
-     -   Use case    User sets SharedStep identifier    User runs method execution    System return SharedStep references
+     -  Use case  User sets SharedStep identifier  User runs method execution  System return SharedStep references
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1107,7 +1107,7 @@ open class WorkItemsAPI {
     /**
      Delete all links AutoTests from WorkItem by Id or GlobalId
      
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1126,14 +1126,14 @@ open class WorkItemsAPI {
     /**
      Delete all links AutoTests from WorkItem by Id or GlobalId
      - DELETE /api/v2/workItems/{id}/autoTests
-     -   Use case    User sets work item identifier    User runs method execution    System search work item by identifier    System search and delete all autotests, related to found work item    System returns no content response
+     -  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search and delete all autotests, related to found work item  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - returns: RequestBuilder<Void> 
      */
     open class func deleteAllWorkItemsFromAutoTestWithRequestBuilder(id: String) -> RequestBuilder<Void> {
@@ -1160,7 +1160,7 @@ open class WorkItemsAPI {
     /**
      Delete Test Case, Checklist or Shared Step by Id or GlobalId
      
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1179,14 +1179,14 @@ open class WorkItemsAPI {
     /**
      Delete Test Case, Checklist or Shared Step by Id or GlobalId
      - DELETE /api/v2/workItems/{id}
-     -   Use case    User sets work item identifier    User runs method execution    System deletes work item    System returns no content response
+     -  Use case  User sets work item identifier  User runs method execution  System deletes work item  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - returns: RequestBuilder<Void> 
      */
     open class func deleteWorkItemWithRequestBuilder(id: String) -> RequestBuilder<Void> {
@@ -1213,7 +1213,7 @@ open class WorkItemsAPI {
     /**
      Get all AutoTests linked to WorkItem by Id or GlobalId
      
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1232,14 +1232,14 @@ open class WorkItemsAPI {
     /**
      Get all AutoTests linked to WorkItem by Id or GlobalId
      - GET /api/v2/workItems/{id}/autoTests
-     -   Use case    User sets work item identifier    User runs method execution    System search work item by identifier    System search all autotests, related to found work item    System returns list of found autotests
+     -  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search all autotests, related to found work item  System returns list of found autotests
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - returns: RequestBuilder<[AutoTestModel]> 
      */
     open class func getAutoTestsForWorkItemWithRequestBuilder(id: String) -> RequestBuilder<[AutoTestModel]> {
@@ -1266,7 +1266,7 @@ open class WorkItemsAPI {
     /**
      Get iterations by work item Id or GlobalId
      
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter versionId: (query) WorkItem version (guid format) identifier (optional)
      - parameter versionNumber: (query) WorkItem version number (0 is the last version)\&quot; (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -1293,7 +1293,7 @@ open class WorkItemsAPI {
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter versionId: (query) WorkItem version (guid format) identifier (optional)
      - parameter versionNumber: (query) WorkItem version number (0 is the last version)\&quot; (optional)
      - returns: RequestBuilder<[IterationModel]> 
@@ -1326,7 +1326,7 @@ open class WorkItemsAPI {
     /**
      Get Test Case, Checklist or Shared Step by Id or GlobalId
      
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter versionId: (query) WorkItem version (guid format) identifier\&quot; (optional)
      - parameter versionNumber: (query) WorkItem version number (0 is the last version)\&quot; (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -1347,14 +1347,14 @@ open class WorkItemsAPI {
     /**
      Get Test Case, Checklist or Shared Step by Id or GlobalId
      - GET /api/v2/workItems/{id}
-     -   Use case    User sets work item identifier    [Optional] User sets work item version identifier    [Optional] User sets work item version number    User runs method execution    System search work item by identifier    [Optional] if User sets work item version identifier, system search work item version by identifier.    [Optional] if user sets work item version number, system search work item version by number    Otherwise, system search last work item version    System returns work item
+     -  Use case  User sets work item identifier  [Optional] User sets work item version identifier  [Optional] User sets work item version number  User runs method execution  System search work item by identifier  [Optional] if User sets work item version identifier, system search work item version by identifier.  [Optional] if user sets work item version number, system search work item version by number  Otherwise, system search last work item version  System returns work item
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
      - parameter versionId: (query) WorkItem version (guid format) identifier\&quot; (optional)
      - parameter versionNumber: (query) WorkItem version number (0 is the last version)\&quot; (optional)
      - returns: RequestBuilder<WorkItemApiResult> 
@@ -1407,7 +1407,7 @@ open class WorkItemsAPI {
     /**
      Get WorkItem chronology by Id or GlobalId
      - GET /api/v2/workItems/{id}/chronology
-     -   Use case    User sets work item identifier    User runs method execution    System search work item by identifier    System search test results of all autotests, related to found work item    System sort results by CompletedOn ascending, then by CreatedDate ascending    System returns sorted collection of test results
+     -  Use case  User sets work item identifier  User runs method execution  System search work item by identifier  System search test results of all autotests, related to found work item  System sort results by CompletedOn ascending, then by CreatedDate ascending  System returns sorted collection of test results
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1442,9 +1442,9 @@ open class WorkItemsAPI {
     /**
      Get WorkItem versions
      
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
-     - parameter workItemVersionId: (query) WorkItem version (guid format)  identifier\&quot; (optional)
-     - parameter versionNumber: (query) WorkItem version (integer format)  number\&quot; (optional)
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
+     - parameter workItemVersionId: (query) WorkItem version (guid format) identifier\&quot; (optional)
+     - parameter versionNumber: (query) WorkItem version (integer format) number\&quot; (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1463,16 +1463,16 @@ open class WorkItemsAPI {
     /**
      Get WorkItem versions
      - GET /api/v2/workItems/{id}/versions
-     -   Use case    User sets work item identifier    [Optional] User sets work item version identifier    User runs method execution    System search work item by identifier    [Optional] If User set work item version identifier, System search work item version by version identifier                      Otherwise, system search all version of work item    System returns array of work item version models (listed in response example)
+     -  Use case  User sets work item identifier  [Optional] User sets work item version identifier  User runs method execution  System search work item by identifier  [Optional] If User set work item version identifier, System search work item version by version identifier                     Otherwise, system search all version of work item  System returns array of work item version models (listed in response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) WorkItem internal (guid format) or  global(integer format) identifier\&quot; 
-     - parameter workItemVersionId: (query) WorkItem version (guid format)  identifier\&quot; (optional)
-     - parameter versionNumber: (query) WorkItem version (integer format)  number\&quot; (optional)
+     - parameter id: (path) WorkItem internal (guid format) or global(integer format) identifier\&quot; 
+     - parameter workItemVersionId: (query) WorkItem version (guid format) identifier\&quot; (optional)
+     - parameter versionNumber: (query) WorkItem version (integer format) number\&quot; (optional)
      - returns: RequestBuilder<[WorkItemVersionModel]> 
      */
     open class func getWorkItemVersionsWithRequestBuilder(id: String, workItemVersionId: UUID? = nil, versionNumber: Int? = nil) -> RequestBuilder<[WorkItemVersionModel]> {

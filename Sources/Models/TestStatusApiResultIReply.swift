@@ -11,12 +11,15 @@ import AnyCodable
 #endif
 
 public enum TestStatusApiResultIReply: Codable, JSONEncodable, Hashable {
+    case typeTestStatusApiResultCountReply(TestStatusApiResultCountReply)
     case typeTestStatusApiResultGroupedReply(TestStatusApiResultGroupedReply)
     case typeTestStatusApiResultReply(TestStatusApiResultReply)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeTestStatusApiResultCountReply(let value):
+            try container.encode(value)
         case .typeTestStatusApiResultGroupedReply(let value):
             try container.encode(value)
         case .typeTestStatusApiResultReply(let value):
@@ -26,7 +29,9 @@ public enum TestStatusApiResultIReply: Codable, JSONEncodable, Hashable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(TestStatusApiResultGroupedReply.self) {
+        if let value = try? container.decode(TestStatusApiResultCountReply.self) {
+            self = .typeTestStatusApiResultCountReply(value)
+        } else if let value = try? container.decode(TestStatusApiResultGroupedReply.self) {
             self = .typeTestStatusApiResultGroupedReply(value)
         } else if let value = try? container.decode(TestStatusApiResultReply.self) {
             self = .typeTestStatusApiResultReply(value)

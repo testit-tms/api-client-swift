@@ -11,12 +11,15 @@ import AnyCodable
 #endif
 
 public enum ProjectShortApiResultIReply: Codable, JSONEncodable, Hashable {
+    case typeProjectShortApiResultCountReply(ProjectShortApiResultCountReply)
     case typeProjectShortApiResultGroupedReply(ProjectShortApiResultGroupedReply)
     case typeProjectShortApiResultReply(ProjectShortApiResultReply)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeProjectShortApiResultCountReply(let value):
+            try container.encode(value)
         case .typeProjectShortApiResultGroupedReply(let value):
             try container.encode(value)
         case .typeProjectShortApiResultReply(let value):
@@ -26,7 +29,9 @@ public enum ProjectShortApiResultIReply: Codable, JSONEncodable, Hashable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(ProjectShortApiResultGroupedReply.self) {
+        if let value = try? container.decode(ProjectShortApiResultCountReply.self) {
+            self = .typeProjectShortApiResultCountReply(value)
+        } else if let value = try? container.decode(ProjectShortApiResultGroupedReply.self) {
             self = .typeProjectShortApiResultGroupedReply(value)
         } else if let value = try? container.decode(ProjectShortApiResultReply.self) {
             self = .typeProjectShortApiResultReply(value)

@@ -5,7 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | 
 **name** | **String** |  | 
-**projectId** | **UUID** |  | 
 **parentId** | **UUID** |  | [optional] 
 **preconditionSteps** | [StepPutModel] |  | [optional] 
 **postconditionSteps** | [StepPutModel] |  | [optional] 

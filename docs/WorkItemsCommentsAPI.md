@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Delete WorkItem comment
 
-  Use case    User sets comment identifier    User runs method execution    System delete comment    System returns success status code
+ Use case  User sets comment identifier  User runs method execution  System delete comment  System returns success status code
 
 ### Example
 ```swift
@@ -68,7 +68,7 @@ Void (empty response body)
 
 Create WorkItem comment
 
-  Use case    User sets comment properties (listed in request parameters)    User runs method execution    System creates comment    System returns comment model (listed in response parameters)
+ Use case  User sets comment properties (listed in request parameters)  User runs method execution  System creates comment  System returns comment model (listed in response parameters)
 
 ### Example
 ```swift

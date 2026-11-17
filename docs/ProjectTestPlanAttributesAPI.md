@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Add attributes to project's test plans
 
-  Use case    User sets project internal or global identifier and attributes identifiers    User runs method execution    System updates project and add attributes to project for test plans    System returns no content response
+ Use case  User sets project internal or global identifier and attributes identifiers  User runs method execution  System updates project and add attributes to project for test plans  System returns no content response
 
 ### Example
 ```swift
@@ -70,7 +70,7 @@ Void (empty response body)
 
 Delete attribute from project's test plans
 
-  Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
+ Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
 
 ### Example
 ```swift
@@ -122,7 +122,7 @@ Void (empty response body)
 
 Get project's test plan attributes
 
-  Use case    User runs method execution    System returns project for test plans attributes by project identifier
+ Use case  User runs method execution  System returns project for test plans attributes by project identifier
 
 ### Example
 ```swift
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 # **searchTestPlanAttributesInProject**
 ```swift
-    open class func searchTestPlanAttributesInProject(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil, completion: @escaping (_ data: [CustomAttributeGetModel]?, _ error: Error?) -> Void)
+    open class func searchTestPlanAttributesInProject(projectId: String, skip: Int? = nil, take: Int? = nil, orderBy: String? = nil, searchField: String? = nil, searchValue: String? = nil, projectAttributesFilterModel: ProjectAttributesFilterModel? = nil, completion: @escaping (_ data: [CustomAttributeModel]?, _ error: Error?) -> Void)
 ```
 
 Search for attributes used in the project test plans
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[CustomAttributeGetModel]**](CustomAttributeGetModel.md)
+[**[CustomAttributeModel]**](CustomAttributeModel.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 Update attribute of project's test plans
 
-  Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
+ Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
 
 ### Example
 ```swift

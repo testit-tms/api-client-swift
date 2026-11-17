@@ -11,12 +11,15 @@ import AnyCodable
 #endif
 
 public enum ExternalIssueApiFieldSuggestionIReply: Codable, JSONEncodable, Hashable {
+    case typeExternalIssueApiFieldSuggestionCountReply(ExternalIssueApiFieldSuggestionCountReply)
     case typeExternalIssueApiFieldSuggestionGroupedReply(ExternalIssueApiFieldSuggestionGroupedReply)
     case typeExternalIssueApiFieldSuggestionReply(ExternalIssueApiFieldSuggestionReply)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeExternalIssueApiFieldSuggestionCountReply(let value):
+            try container.encode(value)
         case .typeExternalIssueApiFieldSuggestionGroupedReply(let value):
             try container.encode(value)
         case .typeExternalIssueApiFieldSuggestionReply(let value):
@@ -26,7 +29,9 @@ public enum ExternalIssueApiFieldSuggestionIReply: Codable, JSONEncodable, Hasha
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(ExternalIssueApiFieldSuggestionGroupedReply.self) {
+        if let value = try? container.decode(ExternalIssueApiFieldSuggestionCountReply.self) {
+            self = .typeExternalIssueApiFieldSuggestionCountReply(value)
+        } else if let value = try? container.decode(ExternalIssueApiFieldSuggestionGroupedReply.self) {
             self = .typeExternalIssueApiFieldSuggestionGroupedReply(value)
         } else if let value = try? container.decode(ExternalIssueApiFieldSuggestionReply.self) {
             self = .typeExternalIssueApiFieldSuggestionReply(value)

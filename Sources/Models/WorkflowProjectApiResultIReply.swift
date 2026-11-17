@@ -11,12 +11,15 @@ import AnyCodable
 #endif
 
 public enum WorkflowProjectApiResultIReply: Codable, JSONEncodable, Hashable {
+    case typeWorkflowProjectApiResultCountReply(WorkflowProjectApiResultCountReply)
     case typeWorkflowProjectApiResultGroupedReply(WorkflowProjectApiResultGroupedReply)
     case typeWorkflowProjectApiResultReply(WorkflowProjectApiResultReply)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeWorkflowProjectApiResultCountReply(let value):
+            try container.encode(value)
         case .typeWorkflowProjectApiResultGroupedReply(let value):
             try container.encode(value)
         case .typeWorkflowProjectApiResultReply(let value):
@@ -26,7 +29,9 @@ public enum WorkflowProjectApiResultIReply: Codable, JSONEncodable, Hashable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(WorkflowProjectApiResultGroupedReply.self) {
+        if let value = try? container.decode(WorkflowProjectApiResultCountReply.self) {
+            self = .typeWorkflowProjectApiResultCountReply(value)
+        } else if let value = try? container.decode(WorkflowProjectApiResultGroupedReply.self) {
             self = .typeWorkflowProjectApiResultGroupedReply(value)
         } else if let value = try? container.decode(WorkflowProjectApiResultReply.self) {
             self = .typeWorkflowProjectApiResultReply(value)

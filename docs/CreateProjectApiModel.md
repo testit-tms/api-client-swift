@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **description** | **String** | Description of the project | [optional] 
 **isFavorite** | **Bool** | Indicates if the project is marked as favorite | [optional] 
 **workflowId** | **UUID** | Identifier of the workflow project should use | [optional] 
+**testStrategy** | [**TestStrategy**](TestStrategy.md) |  | 
+**testCaseCoverageMode** | [**TestCaseCoverageMode**](TestCaseCoverageMode.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

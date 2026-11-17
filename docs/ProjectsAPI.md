@@ -37,7 +37,7 @@ Method | HTTP request | Description
 
 Add global attributes to project
 
-  Use case    User sets project internal or global identifier and attributes identifiers    System search project    System relates global attributes with project    System returns no content response
+ Use case  User sets project internal or global identifier and attributes identifiers  System search project  System relates global attributes with project  System returns no content response
 
 ### Example
 ```swift
@@ -235,7 +235,7 @@ Void (empty response body)
 
 Get Project filters
 
-  Use case    User sets project internal or global identifier    User runs method execution    System returns project filters
+ Use case  User sets project internal or global identifier  User runs method execution  System returns project filters
 
 ### Example
 ```swift
@@ -433,7 +433,7 @@ Void (empty response body)
 
 Delete attribute from project's test plans
 
-  Use case    User sets project internal or global identifier and attribute identifier    User runs method execution    System updates project and delete attribute from project for test plans    System returns no content response
+ Use case  User sets project internal or global identifier and attribute identifier  User runs method execution  System updates project and delete attribute from project for test plans  System returns no content response
 
 ### Example
 ```swift
@@ -485,7 +485,7 @@ Void (empty response body)
 
 Update attribute of project's test plans
 
-  Use case    User sets project internal or global identifier and attribute model    User runs method execution    System updates project and project attribute for test plan    System returns no content response
+ Use case  User sets project internal or global identifier and attribute model  User runs method execution  System updates project and project attribute for test plan  System returns no content response
 
 ### Example
 ```swift
@@ -537,7 +537,7 @@ Void (empty response body)
 
 Get Project TestRuns full models
 
-  Use case    User sets project internal or global identifier    User sets query params    User runs method execution    System returns project test runs full models
+ Use case  User sets project internal or global identifier  User sets query params  User runs method execution  System returns project test runs full models
 
 ### Example
 ```swift
@@ -667,7 +667,7 @@ Purge multiple projects
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
+let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int64RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
 
 // Purge multiple projects
 ProjectsAPI.apiV2ProjectsPurgeBulkPost(projectSelectModel: projectSelectModel) { (response, error) in
@@ -715,7 +715,7 @@ Restore multiple projects
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
+let projectSelectModel = ProjectSelectModel(filter: ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int64RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]), extractionModel: ProjectExtractionModel(ids: GuidExtractionModel(include: [123], exclude: [123]))) // ProjectSelectModel |  (optional)
 
 // Restore multiple projects
 ProjectsAPI.apiV2ProjectsRestoreBulkPost(projectSelectModel: projectSelectModel) { (response, error) in
@@ -768,7 +768,7 @@ let take = 987 // Int | Amount of items to be taken (limit) (optional)
 let orderBy = "orderBy_example" // String | SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
 let searchField = "searchField_example" // String | Property name for searching (optional)
 let searchValue = "searchValue_example" // String | Value for searching (optional)
-let projectsFilterModel = ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int32RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]) // ProjectsFilterModel |  (optional)
+let projectsFilterModel = ProjectsFilterModel(name: "name_example", isFavorite: false, isDeleted: false, testCasesCount: Int64RangeSelectorModel(from: 123, to: 123), checklistsCount: nil, sharedStepsCount: nil, autotestsCount: nil, globalIds: [123], createdDate: DateTimeRangeSelectorModel(from: Date(), to: Date()), createdByIds: [123], types: [ProjectTypeModel()]) // ProjectsFilterModel |  (optional)
 
 // Search for projects
 ProjectsAPI.apiV2ProjectsSearchPost(skip: skip, take: take, orderBy: orderBy, searchField: searchField, searchValue: searchValue, projectsFilterModel: projectsFilterModel) { (response, error) in
@@ -816,14 +816,14 @@ Name | Type | Description  | Notes
 
 Get projects short models
 
-  Use case    User sets query params    User runs method execution    System return projects short models
+ Use case  User sets query params  User runs method execution  System return projects short models
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let getShortProjectsApiModel = GetShortProjectsApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), permissionName: "permissionName_example", permissionType: "permissionType_example") // GetShortProjectsApiModel |  (optional)
+let getShortProjectsApiModel = GetShortProjectsApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: JsonElement(valueKind: JsonValueKind()), field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123), mode: Mode()), permissionName: "permissionName_example", permissionType: "permissionType_example") // GetShortProjectsApiModel |  (optional)
 
 // Get projects short models
 ProjectsAPI.apiV2ProjectsShortsPost(getShortProjectsApiModel: getShortProjectsApiModel) { (response, error) in
@@ -866,14 +866,14 @@ Name | Type | Description  | Notes
 
 Create project
 
-  Use case    User sets project parameters (listed in request example) and runs method execution    System creates project    System returns project model (example listed in response parameters)
+ Use case  User sets project parameters (listed in request example) and runs method execution  System creates project  System returns project model (example listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let createProjectApiModel = CreateProjectApiModel(name: "name_example", description: "description_example", isFavorite: false, workflowId: 123) // CreateProjectApiModel |  (optional)
+let createProjectApiModel = CreateProjectApiModel(name: "name_example", description: "description_example", isFavorite: false, workflowId: 123, testStrategy: TestStrategy(), testCaseCoverageMode: TestCaseCoverageMode()) // CreateProjectApiModel |  (optional)
 
 // Create project
 ProjectsAPI.createProject(createProjectApiModel: createProjectApiModel) { (response, error) in
@@ -964,7 +964,7 @@ Void (empty response body)
 
 Get all projects
 
-  Use case    [Optional] User sets isDeleted field value    [Optional] If User sets isDeleted field value as true, System search all deleted projects    [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted    If User did not set isDeleted field value, System search all projects    System returns array of all found projects(listed in response model)
+ Use case  [Optional] User sets isDeleted field value  [Optional] If User sets isDeleted field value as true, System search all deleted projects  [Optional] If User sets isDeleted field value as false, System search all projects which are not deleted  If User did not set isDeleted field value, System search all projects  System returns array of all found projects(listed in response model)
 
 ### Example
 ```swift
@@ -1026,7 +1026,7 @@ Name | Type | Description  | Notes
 
 Get namespaces of autotests in project
 
-  Use case    User sets project internal or global identifier and runs method execution    System search project    System search all autotest related to the project    System returns array of autotest with namespaces and classnames (listed in response)
+ Use case  User sets project internal or global identifier and runs method execution  System search project  System search all autotest related to the project  System returns array of autotest with namespaces and classnames (listed in response)
 
 ### Example
 ```swift
@@ -1076,7 +1076,7 @@ Name | Type | Description  | Notes
 
 Get project by ID
 
-  Use case    User sets project internal or global identifier and runs method execution    System search project    System returns project (example listed in response parameters)
+ Use case  User sets project internal or global identifier and runs method execution  System search project  System returns project (example listed in response parameters)
 
 ### Example
 ```swift
@@ -1126,7 +1126,7 @@ Name | Type | Description  | Notes
 
 Get project test plans
 
-  Use case    User sets project internal or global identifier    [Optional] User sets isDeleted field value    User runs method execution    System search project    [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to                      project    [Optional] If User sets isDeleted field value as false, System search all test plans related to project which                      are not deleted    [Optional] If User did not set isDeleted field value, System search all v related to project    System returns array of found test plans (listed in response model)
+ Use case  User sets project internal or global identifier  [Optional] User sets isDeleted field value  User runs method execution  System search project  [Optional] If User sets isDeleted field value as true, System search all deleted test plans related to                     project  [Optional] If User sets isDeleted field value as false, System search all test plans related to project which                     are not deleted  [Optional] If User did not set isDeleted field value, System search all v related to project  System returns array of found test plans (listed in response model)
 
 ### Example
 ```swift
@@ -1178,7 +1178,7 @@ Name | Type | Description  | Notes
 
 Get project test runs
 
-  Use case    User sets project internal or global identifier    User runs method execution    System search project    System search all test runs related to project    System returns array of found test runs (listed in response model)
+ Use case  User sets project internal or global identifier  User runs method execution  System search project  System search all test runs related to project  System returns array of found test runs (listed in response model)
 
 ### Example
 ```swift
@@ -1252,14 +1252,14 @@ Name | Type | Description  | Notes
 
 Update project
 
-  Use case    User sets project parameters (listed in request example) and runs method execution    System updates project    System returns updated project model (example listed in response parameters)
+ Use case  User sets project parameters (listed in request example) and runs method execution  System updates project  System returns updated project model (example listed in response parameters)
 
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let updateProjectApiModel = UpdateProjectApiModel(id: 123, name: "name_example", description: "description_example", isFavorite: false, workflowId: 123) // UpdateProjectApiModel |  (optional)
+let updateProjectApiModel = UpdateProjectApiModel(id: 123, name: "name_example", description: "description_example", isFavorite: false, workflowId: 123, testStrategy: TestStrategy(), testCaseCoverageMode: TestCaseCoverageMode()) // UpdateProjectApiModel |  (optional)
 
 // Update project
 ProjectsAPI.updateProject(updateProjectApiModel: updateProjectApiModel) { (response, error) in

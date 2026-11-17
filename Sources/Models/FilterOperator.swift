@@ -11,14 +11,16 @@ import AnyCodable
 #endif
 
 public enum FilterOperator: String, Codable, CaseIterable {
-    case equal = "="
-    case notEqual = "!="
-    case tilde = "~"
-    case exclamationTilde = "!~"
-    case lessThan = "<"
-    case lessThanOrEqualTo = "<="
-    case greaterThan = ">"
-    case greaterThanOrEqualTo = ">="
-    case star = "*"
-    case exclamationStar = "!*"
+    case equalTo = "EqualTo"
+    case notEqualTo = "NotEqualTo"
+    case contains = "Contains"
+    case notContains = "NotContains"
+    case lessThan = "LessThan"
+    case lessThanOrEqualTo = "LessThanOrEqualTo"
+    case greaterThan = "GreaterThan"
+    case greaterThanOrEqualTo = "GreaterThanOrEqualTo"
+    case empty = "Empty"
+    case notEmpty = "NotEmpty"
+    case _in = "In"
+    case notIn = "NotIn"
 }

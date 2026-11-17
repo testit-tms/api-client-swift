@@ -30,4 +30,6 @@ public enum BackgroundJobType: String, Codable, CaseIterable {
     case deleteCompletedJobs = "DeleteCompletedJobs"
     case copySections = "CopySections"
     case deleteSection = "DeleteSection"
+    case importAutoTestsReport = "ImportAutoTestsReport"
+    case analyzeAutoTestLayers = "AnalyzeAutoTestLayers"
 }

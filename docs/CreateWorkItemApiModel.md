@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **postconditionSteps** | [CreateStepApiModel] | Set of postcondition steps that are executed after completing the main steps | [optional] 
 **iterations** | [AssignIterationApiModel] | Set of iterations associated with the work item | [optional] 
 **autoTests** | [AutoTestIdModel] | Set of automated tests linked to the work item | [optional] 
+**manualTestId** | **UUID** | Identifier of the linked manual test | [optional] 
+**autoTestCases** | [AssignAutoTestCaseIdApiModel] | Set of automated test cases linked to the work item | [optional] 
 **attachments** | [AssignAttachmentApiModel] | Set of files attached to the work item | [optional] 
 **links** | [CreateLinkApiModel] | Set of links related to the work item | [optional] 
 **parameters** | [WorkItemParameterKeyApiModel] | Set of parameter keys associated with the work item | [optional] 

@@ -15,8 +15,8 @@ public struct AutoTestProjectSettingsApiModel: Codable, JSONEncodable, Hashable 
     static let flakyStabilityPercentageRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 100, exclusiveMaximum: false, multipleOf: nil)
     static let flakyTestRunCountRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 1000, exclusiveMaximum: false, multipleOf: nil)
     static let rerunAttemptsCountRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 10, exclusiveMaximum: false, multipleOf: nil)
-    static let testRunsRetentionPeriodDaysRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 1000, exclusiveMaximum: false, multipleOf: nil)
-    static let maxActiveTestRunsCountRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: 10000, exclusiveMaximum: false, multipleOf: nil)
+    static let testRunsRetentionPeriodDaysRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 1000, exclusiveMaximum: false, multipleOf: nil)
+    static let maxActiveTestRunsCountRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 10000, exclusiveMaximum: false, multipleOf: nil)
     /** Indicates if the status \"Flaky/Stable\" sets automatically */
     public var isFlakyAuto: Bool? = false
     /** Stability percentage for autotest flaky computing */
@@ -35,9 +35,9 @@ public struct AutoTestProjectSettingsApiModel: Codable, JSONEncodable, Hashable 
     public var archiveOutdatedTestRunsEnabled: Bool
     /** Indicates whether a limit is enforced on the number of archived test runs. */
     public var testRunsArchiveLimitEnabled: Bool
-    /**  The retention period in days for test runs. After this period,  outdated test runs may be archived based on project settings */
+    /**  The retention period in days for test runs. After this period, outdated test runs may be archived based on project settings */
     public var testRunsRetentionPeriodDays: Int? = 180
-    /** Maximum number of active test runs to keep. When this limit is exceeded,  older test runs are automatically archived */
+    /** Maximum number of active test runs to keep. When this limit is exceeded, older test runs are automatically archived */
     public var maxActiveTestRunsCount: Int? = 500
 
     public init(isFlakyAuto: Bool? = false, flakyStabilityPercentage: Int? = 100, flakyTestRunCount: Int? = 100, rerunEnabled: Bool, rerunAttemptsCount: Int, workItemUpdatingEnabled: Bool? = false, workItemUpdatingFields: WorkItemUpdatingFieldsApiModel, archiveOutdatedTestRunsEnabled: Bool, testRunsArchiveLimitEnabled: Bool, testRunsRetentionPeriodDays: Int? = 180, maxActiveTestRunsCount: Int? = 500) {

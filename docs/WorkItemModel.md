@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **entityTypeName** | [**WorkItemTypeModel**](WorkItemTypeModel.md) |  | 
 **isAutomated** | **Bool** |  | 
 **autoTests** | [AutoTestModel] |  | [optional] 
+**manualTestId** | **UUID** |  | [optional] 
+**autoTestCases** | [AutoTestCaseResult] |  | [optional] 
 **attachments** | [AttachmentModel] |  | [optional] 
 **sectionPreconditionSteps** | [StepModel] |  | [optional] 
 **sectionPostconditionSteps** | [StepModel] |  | [optional] 
@@ -22,6 +24,7 @@ Name | Type | Description | Notes
 **createdById** | **UUID** |  | 
 **modifiedById** | **UUID** |  | [optional] 
 **globalId** | **Int64** |  | 
+**externalId** | **String** |  | [optional] 
 **id** | **UUID** |  | 
 **sectionId** | **UUID** |  | 
 **description** | **String** |  | [optional] 

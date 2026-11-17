@@ -39,11 +39,14 @@ public struct AutoTestApiResult: Codable, JSONEncodable, Hashable {
     public var lastTestResultOutcome: String?
     public var lastTestResultStatus: TestStatusApiResult?
     public var stabilityPercentage: Int64?
+    /** Model of auto test layer for use in responses. */
+    public var layer: LayerApiResult?
     public var links: [LinkApiResult]?
     public var labels: [LabelApiResult]?
     public var tags: [String]?
+    public var manualTestId: UUID?
 
-    public init(id: UUID, projectId: UUID, externalId: String? = nil, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepApiResult]? = nil, setup: [AutoTestStepApiResult]? = nil, teardown: [AutoTestStepApiResult]? = nil, title: String? = nil, description: String? = nil, isFlaky: Bool, externalKey: String? = nil, globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShortApiResult? = nil, lastTestResultOutcome: String? = nil, lastTestResultStatus: TestStatusApiResult? = nil, stabilityPercentage: Int64? = nil, links: [LinkApiResult]? = nil, labels: [LabelApiResult]? = nil, tags: [String]? = nil) {
+    public init(id: UUID, projectId: UUID, externalId: String? = nil, name: String, namespace: String? = nil, classname: String? = nil, steps: [AutoTestStepApiResult]? = nil, setup: [AutoTestStepApiResult]? = nil, teardown: [AutoTestStepApiResult]? = nil, title: String? = nil, description: String? = nil, isFlaky: Bool, externalKey: String? = nil, globalId: Int64, isDeleted: Bool, mustBeApproved: Bool, createdDate: Date, modifiedDate: Date? = nil, createdById: UUID, modifiedById: UUID? = nil, lastTestRunId: UUID? = nil, lastTestRunName: String? = nil, lastTestResultId: UUID? = nil, lastTestResultConfiguration: ConfigurationShortApiResult? = nil, lastTestResultOutcome: String? = nil, lastTestResultStatus: TestStatusApiResult? = nil, stabilityPercentage: Int64? = nil, layer: LayerApiResult? = nil, links: [LinkApiResult]? = nil, labels: [LabelApiResult]? = nil, tags: [String]? = nil, manualTestId: UUID? = nil) {
         self.id = id
         self.projectId = projectId
         self.externalId = externalId
@@ -71,9 +74,11 @@ public struct AutoTestApiResult: Codable, JSONEncodable, Hashable {
         self.lastTestResultOutcome = lastTestResultOutcome
         self.lastTestResultStatus = lastTestResultStatus
         self.stabilityPercentage = stabilityPercentage
+        self.layer = layer
         self.links = links
         self.labels = labels
         self.tags = tags
+        self.manualTestId = manualTestId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -104,9 +109,11 @@ public struct AutoTestApiResult: Codable, JSONEncodable, Hashable {
         case lastTestResultOutcome
         case lastTestResultStatus
         case stabilityPercentage
+        case layer
         case links
         case labels
         case tags
+        case manualTestId
     }
 
     // Encodable protocol methods
@@ -140,9 +147,11 @@ public struct AutoTestApiResult: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(lastTestResultOutcome, forKey: .lastTestResultOutcome)
         try container.encodeIfPresent(lastTestResultStatus, forKey: .lastTestResultStatus)
         try container.encodeIfPresent(stabilityPercentage, forKey: .stabilityPercentage)
+        try container.encodeIfPresent(layer, forKey: .layer)
         try container.encodeIfPresent(links, forKey: .links)
         try container.encodeIfPresent(labels, forKey: .labels)
         try container.encodeIfPresent(tags, forKey: .tags)
+        try container.encodeIfPresent(manualTestId, forKey: .manualTestId)
     }
 }
 

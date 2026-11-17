@@ -24,7 +24,7 @@ Get failure categories with support for filtering, sorting and grouping
 import TestitApiClient
 
 let projectId = "projectId_example" // String | Internal (UUID) or global (integer) identifier
-let failureCategoryGroupSearchApiModel = FailureCategoryGroupSearchApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), group: FailureCategoryGroupApiModel(field: "field_example", displayField: "displayField_example")) // FailureCategoryGroupSearchApiModel |  (optional)
+let failureCategoryGroupSearchApiModel = FailureCategoryGroupSearchApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: JsonElement(valueKind: JsonValueKind()), field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123), mode: Mode()), group: FailureCategoryGroupApiModel(field: "field_example", displayField: "displayField_example")) // FailureCategoryGroupSearchApiModel |  (optional)
 
 // Get failure categories with support for filtering, sorting and grouping
 ProjectFailureCategoriesAPI.apiV2ProjectsProjectIdAutotestsFailureCategoriesGroupingSearchPost(projectId: projectId, failureCategoryGroupSearchApiModel: failureCategoryGroupSearchApiModel) { (response, error) in

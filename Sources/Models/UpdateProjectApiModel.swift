@@ -23,13 +23,17 @@ public struct UpdateProjectApiModel: Codable, JSONEncodable, Hashable {
     public var isFavorite: Bool?
     /** Identifier of the workflow project should use */
     public var workflowId: UUID?
+    public var testStrategy: TestStrategy
+    public var testCaseCoverageMode: TestCaseCoverageMode
 
-    public init(id: UUID, name: String, description: String? = nil, isFavorite: Bool? = nil, workflowId: UUID? = nil) {
+    public init(id: UUID, name: String, description: String? = nil, isFavorite: Bool? = nil, workflowId: UUID? = nil, testStrategy: TestStrategy, testCaseCoverageMode: TestCaseCoverageMode) {
         self.id = id
         self.name = name
         self.description = description
         self.isFavorite = isFavorite
         self.workflowId = workflowId
+        self.testStrategy = testStrategy
+        self.testCaseCoverageMode = testCaseCoverageMode
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -38,6 +42,8 @@ public struct UpdateProjectApiModel: Codable, JSONEncodable, Hashable {
         case description
         case isFavorite
         case workflowId
+        case testStrategy
+        case testCaseCoverageMode
     }
 
     // Encodable protocol methods
@@ -49,6 +55,8 @@ public struct UpdateProjectApiModel: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(isFavorite, forKey: .isFavorite)
         try container.encodeIfPresent(workflowId, forKey: .workflowId)
+        try container.encode(testStrategy, forKey: .testStrategy)
+        try container.encode(testCaseCoverageMode, forKey: .testCaseCoverageMode)
     }
 }
 

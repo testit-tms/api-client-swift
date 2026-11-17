@@ -32,7 +32,7 @@ Get failure categories with support for filtering, sorting and grouping
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let failureCategoryGroupSearchApiModel = FailureCategoryGroupSearchApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), group: FailureCategoryGroupApiModel(field: "field_example", displayField: "displayField_example")) // FailureCategoryGroupSearchApiModel |  (optional)
+let failureCategoryGroupSearchApiModel = FailureCategoryGroupSearchApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: JsonElement(valueKind: JsonValueKind()), field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123), mode: Mode()), group: FailureCategoryGroupApiModel(field: "field_example", displayField: "displayField_example")) // FailureCategoryGroupSearchApiModel |  (optional)
 
 // Get failure categories with support for filtering, sorting and grouping
 FailureCategoriesAPI.apiV2AutotestsFailureCategoriesGroupingSearchPost(failureCategoryGroupSearchApiModel: failureCategoryGroupSearchApiModel) { (response, error) in
@@ -379,7 +379,7 @@ Get failure categories with support for filtering, sorting and grouping
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import TestitApiClient
 
-let failureCategoryGroupSearchApiModel = FailureCategoryGroupSearchApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: "value_example", field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123)), group: FailureCategoryGroupApiModel(field: "field_example", displayField: "displayField_example")) // FailureCategoryGroupSearchApiModel |  (optional)
+let failureCategoryGroupSearchApiModel = FailureCategoryGroupSearchApiModel(inquiry: Inquiry(group: Group(field: "field_example", displayField: "displayField_example"), filter: CompositeFilter(filters: [IFilter(filters: [nil], _operator: CollectionOperator(), value: JsonElement(valueKind: JsonValueKind()), field: "field_example", filter: nil)], _operator: LogicalOperator()), order: [Order(field: "field_example", direction: ListSortDirection())], page: Page(skip: 123, take: 123), mode: Mode()), group: FailureCategoryGroupApiModel(field: "field_example", displayField: "displayField_example")) // FailureCategoryGroupSearchApiModel |  (optional)
 
 // Get failure categories with support for filtering, sorting and grouping
 FailureCategoriesAPI.apiV2AutotestsResultReasonsGroupingSearchPost(failureCategoryGroupSearchApiModel: failureCategoryGroupSearchApiModel) { (response, error) in

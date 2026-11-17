@@ -13,10 +13,10 @@ import AnyCodable
 public struct Filter: Codable, JSONEncodable, Hashable {
 
     public var _operator: FilterOperator
-    public var value: String?
+    public var value: JsonElement
     public var field: String
 
-    public init(_operator: FilterOperator, value: String? = nil, field: String) {
+    public init(_operator: FilterOperator, value: JsonElement, field: String) {
         self._operator = _operator
         self.value = value
         self.field = field
@@ -33,7 +33,7 @@ public struct Filter: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(_operator, forKey: ._operator)
-        try container.encodeIfPresent(value, forKey: .value)
+        try container.encode(value, forKey: .value)
         try container.encode(field, forKey: .field)
     }
 }

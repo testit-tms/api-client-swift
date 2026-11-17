@@ -41,6 +41,8 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
     /** Priority level of the work item */
     public var priority: WorkItemPriorityApiModel
     public var isAutomated: Bool
+    /** External identifier of the work item from external systems */
+    public var externalId: String?
     /** Set of custom attributes associated with the work item */
     public var attributes: [String: AnyCodable]
     /** Set of tags applied to the work item */
@@ -59,6 +61,12 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
     public var iterations: [IterationModel]
     /** Automated tests associated with the work item */
     public var autoTests: [AutoTestModel]
+    /** Identifier of the linked manual test */
+    public var manualTestId: UUID?
+    /** Set of automated test cases linked to the work item */
+    public var autoTestCases: [AutoTestCaseApiModel]
+    /** Test pyramid layer of the work item */
+    public var layer: WorkItemLayerApiResult?
     /** Files attached to the work item */
     public var attachments: [AttachmentModel]
     /** Set of links related to the work item */
@@ -78,7 +86,7 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
     /** Indicates whether the work item is marked as deleted */
     public var isDeleted: Bool
 
-    public init(id: UUID, globalId: Int64, versionId: UUID, versionNumber: Int, projectId: UUID, sectionId: UUID, name: String, description: String? = nil, sourceType: WorkItemSourceTypeApiModel, entityTypeName: WorkItemEntityTypeApiModel, duration: Int, medianDuration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, isAutomated: Bool, attributes: [String: AnyCodable], tags: [TagModel], sectionPreconditionSteps: [StepModel], sectionPostconditionSteps: [StepModel], preconditionSteps: [StepModel], steps: [StepModel], postconditionSteps: [StepModel], iterations: [IterationModel], autoTests: [AutoTestModel], attachments: [AttachmentModel], links: [LinkModel], externalIssues: [ExternalIssueApiResult], parameters: [WorkItemParameterKeyApiResult], createdDate: Date, createdById: UUID, modifiedDate: Date? = nil, modifiedById: UUID? = nil, isDeleted: Bool) {
+    public init(id: UUID, globalId: Int64, versionId: UUID, versionNumber: Int, projectId: UUID, sectionId: UUID, name: String, description: String? = nil, sourceType: WorkItemSourceTypeApiModel, entityTypeName: WorkItemEntityTypeApiModel, duration: Int, medianDuration: Int64, state: WorkItemStateApiModel, priority: WorkItemPriorityApiModel, isAutomated: Bool, externalId: String? = nil, attributes: [String: AnyCodable], tags: [TagModel], sectionPreconditionSteps: [StepModel], sectionPostconditionSteps: [StepModel], preconditionSteps: [StepModel], steps: [StepModel], postconditionSteps: [StepModel], iterations: [IterationModel], autoTests: [AutoTestModel], manualTestId: UUID? = nil, autoTestCases: [AutoTestCaseApiModel], layer: WorkItemLayerApiResult? = nil, attachments: [AttachmentModel], links: [LinkModel], externalIssues: [ExternalIssueApiResult], parameters: [WorkItemParameterKeyApiResult], createdDate: Date, createdById: UUID, modifiedDate: Date? = nil, modifiedById: UUID? = nil, isDeleted: Bool) {
         self.id = id
         self.globalId = globalId
         self.versionId = versionId
@@ -94,6 +102,7 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
         self.state = state
         self.priority = priority
         self.isAutomated = isAutomated
+        self.externalId = externalId
         self.attributes = attributes
         self.tags = tags
         self.sectionPreconditionSteps = sectionPreconditionSteps
@@ -103,6 +112,9 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
         self.postconditionSteps = postconditionSteps
         self.iterations = iterations
         self.autoTests = autoTests
+        self.manualTestId = manualTestId
+        self.autoTestCases = autoTestCases
+        self.layer = layer
         self.attachments = attachments
         self.links = links
         self.externalIssues = externalIssues
@@ -130,6 +142,7 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
         case state
         case priority
         case isAutomated
+        case externalId
         case attributes
         case tags
         case sectionPreconditionSteps
@@ -139,6 +152,9 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
         case postconditionSteps
         case iterations
         case autoTests
+        case manualTestId
+        case autoTestCases
+        case layer
         case attachments
         case links
         case externalIssues
@@ -169,6 +185,7 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(state, forKey: .state)
         try container.encode(priority, forKey: .priority)
         try container.encode(isAutomated, forKey: .isAutomated)
+        try container.encodeIfPresent(externalId, forKey: .externalId)
         try container.encode(attributes, forKey: .attributes)
         try container.encode(tags, forKey: .tags)
         try container.encode(sectionPreconditionSteps, forKey: .sectionPreconditionSteps)
@@ -178,6 +195,9 @@ public struct WorkItemApiResult: Codable, JSONEncodable, Hashable {
         try container.encode(postconditionSteps, forKey: .postconditionSteps)
         try container.encode(iterations, forKey: .iterations)
         try container.encode(autoTests, forKey: .autoTests)
+        try container.encodeIfPresent(manualTestId, forKey: .manualTestId)
+        try container.encode(autoTestCases, forKey: .autoTestCases)
+        try container.encodeIfPresent(layer, forKey: .layer)
         try container.encode(attachments, forKey: .attachments)
         try container.encode(links, forKey: .links)
         try container.encode(externalIssues, forKey: .externalIssues)

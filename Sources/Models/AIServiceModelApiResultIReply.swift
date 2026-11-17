@@ -11,12 +11,15 @@ import AnyCodable
 #endif
 
 public enum AIServiceModelApiResultIReply: Codable, JSONEncodable, Hashable {
+    case typeAIServiceModelApiResultCountReply(AIServiceModelApiResultCountReply)
     case typeAIServiceModelApiResultGroupedReply(AIServiceModelApiResultGroupedReply)
     case typeAIServiceModelApiResultReply(AIServiceModelApiResultReply)
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
+        case .typeAIServiceModelApiResultCountReply(let value):
+            try container.encode(value)
         case .typeAIServiceModelApiResultGroupedReply(let value):
             try container.encode(value)
         case .typeAIServiceModelApiResultReply(let value):
@@ -26,7 +29,9 @@ public enum AIServiceModelApiResultIReply: Codable, JSONEncodable, Hashable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(AIServiceModelApiResultGroupedReply.self) {
+        if let value = try? container.decode(AIServiceModelApiResultCountReply.self) {
+            self = .typeAIServiceModelApiResultCountReply(value)
+        } else if let value = try? container.decode(AIServiceModelApiResultGroupedReply.self) {
             self = .typeAIServiceModelApiResultGroupedReply(value)
         } else if let value = try? container.decode(AIServiceModelApiResultReply.self) {
             self = .typeAIServiceModelApiResultReply(value)

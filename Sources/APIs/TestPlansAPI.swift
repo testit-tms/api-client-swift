@@ -15,11 +15,12 @@ open class TestPlansAPI {
     /**
      Add test-points to TestPlan with sections
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter workItemSelectModel: (body) Filter object to retrieve work items for test-suite&#39;s project (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func addTestPointsWithSections(id: String, workItemSelectModel: WorkItemSelectModel? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return addTestPointsWithSectionsWithRequestBuilder(id: id, workItemSelectModel: workItemSelectModel).execute(apiResponseQueue) { result in
@@ -41,10 +42,11 @@ open class TestPlansAPI {
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter workItemSelectModel: (body) Filter object to retrieve work items for test-suite&#39;s project (optional)
      - returns: RequestBuilder<Void> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func addTestPointsWithSectionsWithRequestBuilder(id: String, workItemSelectModel: WorkItemSelectModel? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/testPlans/{id}/test-points/withSections"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
@@ -69,11 +71,12 @@ open class TestPlansAPI {
     /**
      Add WorkItems to TestPlan with Sections as TestSuites
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter requestBody: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func addWorkItemsWithSections(id: String, requestBody: Set<UUID>? = nil, apiResponseQueue: DispatchQueue = TestitApiClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return addWorkItemsWithSectionsWithRequestBuilder(id: id, requestBody: requestBody).execute(apiResponseQueue) { result in
@@ -89,17 +92,18 @@ open class TestPlansAPI {
     /**
      Add WorkItems to TestPlan with Sections as TestSuites
      - POST /api/v2/testPlans/{id}/workItems/withSections
-     -   Use case    User sets TestPlan identifier    User sets WorkItem identifiers (listed in request example)    User runs method execution    System added WorkItems and Sections to TestPlan    System returns no content response
+     -  Use case  User sets TestPlan identifier  User sets WorkItem identifiers (listed in request example)  User runs method execution  System added WorkItems and Sections to TestPlan  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter requestBody: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func addWorkItemsWithSectionsWithRequestBuilder(id: String, requestBody: Set<UUID>? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/v2/testPlans/{id}/workItems/withSections"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
@@ -124,7 +128,7 @@ open class TestPlansAPI {
     /**
      Get analytics by TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -143,14 +147,14 @@ open class TestPlansAPI {
     /**
      Get analytics by TestPlan
      - GET /api/v2/testPlans/{id}/analytics
-     -   Use case    User sets test plan identifier    User runs method execution    System returns analytics by test plan
+     -  Use case  User sets test plan identifier  User runs method execution  System returns analytics by test plan
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<TestPointAnalyticResult> 
      */
     open class func apiV2TestPlansIdAnalyticsGetWithRequestBuilder(id: String) -> RequestBuilder<TestPointAnalyticResult> {
@@ -236,7 +240,7 @@ open class TestPlansAPI {
     /**
      Get TestPlan configurations
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -255,14 +259,14 @@ open class TestPlansAPI {
     /**
      Get TestPlan configurations
      - GET /api/v2/testPlans/{id}/configurations
-     -   Use case    User sets test plan identifier    User runs method execution    System return test plan configurations
+     -  Use case  User sets test plan identifier  User runs method execution  System return test plan configurations
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<[ConfigurationModel]> 
      */
     open class func apiV2TestPlansIdConfigurationsGetWithRequestBuilder(id: String) -> RequestBuilder<[ConfigurationModel]> {
@@ -289,7 +293,7 @@ open class TestPlansAPI {
     /**
      Export TestPoints from TestPlan in xls format
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter timeZoneOffsetInMinutes: (header)  (optional)
      - parameter getXlsxTestPointsByTestPlanApiModel: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
@@ -310,14 +314,14 @@ open class TestPlansAPI {
     /**
      Export TestPoints from TestPlan in xls format
      - POST /api/v2/testPlans/{id}/export/testPoints/xlsx
-     -   Use case    User sets test plan identifier    User sets filter model (listed in request example)    User runs method execution    System return export xlsx file
+     -  Use case  User sets test plan identifier  User sets filter model (listed in request example)  User runs method execution  System return export xlsx file
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter timeZoneOffsetInMinutes: (header)  (optional)
      - parameter getXlsxTestPointsByTestPlanApiModel: (body)  (optional)
      - returns: RequestBuilder<Void> 
@@ -347,7 +351,7 @@ open class TestPlansAPI {
     /**
      Export TestResults history from TestPlan in xls format
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter mustReturnOnlyLastTestResult: (query)  (optional)
      - parameter includeSteps: (query)  (optional)
      - parameter includeDeletedTestSuites: (query)  (optional)
@@ -370,14 +374,14 @@ open class TestPlansAPI {
     /**
      Export TestResults history from TestPlan in xls format
      - POST /api/v2/testPlans/{id}/export/testResultHistory/xlsx
-     -   Use case    User sets test plan identifier    User sets filter model (listed in request example)    User runs method execution    System return export xlsx file
+     -  Use case  User sets test plan identifier  User sets filter model (listed in request example)  User runs method execution  System return export xlsx file
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter mustReturnOnlyLastTestResult: (query)  (optional)
      - parameter includeSteps: (query)  (optional)
      - parameter includeDeletedTestSuites: (query)  (optional)
@@ -413,7 +417,7 @@ open class TestPlansAPI {
     /**
      Get TestPlan history
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -437,7 +441,7 @@ open class TestPlansAPI {
     /**
      Get TestPlan history
      - GET /api/v2/testPlans/{id}/history
-     -   Use case    User sets test plan identifier    User runs method execution    System return test plan history
+     -  Use case  User sets test plan identifier  User runs method execution  System return test plan history
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -445,7 +449,7 @@ open class TestPlansAPI {
        - type: apiKey session 
        - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -484,7 +488,7 @@ open class TestPlansAPI {
     /**
      Get Links of TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter skip: (query)  (optional)
      - parameter take: (query)  (optional)
      - parameter orderBy: (query)  (optional)
@@ -506,14 +510,14 @@ open class TestPlansAPI {
     /**
      Get Links of TestPlan
      - GET /api/v2/testPlans/{id}/links
-     -   Use case    User sets test plan identifier    User sets pagination filter (listed in request example)    User runs method execution    System returns links of TestPlan
+     -  Use case  User sets test plan identifier  User sets pagination filter (listed in request example)  User runs method execution  System returns links of TestPlan
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter skip: (query)  (optional)
      - parameter take: (query)  (optional)
      - parameter orderBy: (query)  (optional)
@@ -603,7 +607,7 @@ open class TestPlansAPI {
     /**
      Get summary by TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -622,14 +626,14 @@ open class TestPlansAPI {
     /**
      Get summary by TestPlan
      - GET /api/v2/testPlans/{id}/summaries
-     -   Use case    User sets test plan identifier    User runs method execution    System returns summary by test plan
+     -  Use case  User sets test plan identifier  User runs method execution  System returns summary by test plan
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<TestPlanSummaryModel> 
      */
     open class func apiV2TestPlansIdSummariesGetWithRequestBuilder(id: String) -> RequestBuilder<TestPlanSummaryModel> {
@@ -656,7 +660,7 @@ open class TestPlansAPI {
     /**
      Get TestPoints with last result from TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter testerId: (query)  (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -682,7 +686,7 @@ open class TestPlansAPI {
     /**
      Get TestPoints with last result from TestPlan
      - GET /api/v2/testPlans/{id}/testPoints/lastResults
-     -   Use case    User sets test plan identifier    User sets filter (listed in request example)    User runs method execution    System return test points with last result from test plan
+     -  Use case  User sets test plan identifier  User sets filter (listed in request example)  User runs method execution  System return test points with last result from test plan
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -690,7 +694,7 @@ open class TestPlansAPI {
        - type: apiKey session 
        - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter testerId: (query)  (optional)
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
@@ -732,7 +736,7 @@ open class TestPlansAPI {
     /**
      Reset TestPoints status of TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter requestBody: (body)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
@@ -752,14 +756,14 @@ open class TestPlansAPI {
     /**
      Reset TestPoints status of TestPlan
      - POST /api/v2/testPlans/{id}/testPoints/reset
-     -   Use case    User sets test plan identifier    User sets test points identifiers    User runs method execution    System reset test points statuses of test plan
+     -  Use case  User sets test plan identifier  User sets test points identifiers  User runs method execution  System reset test points statuses of test plan
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter requestBody: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
@@ -900,7 +904,7 @@ open class TestPlansAPI {
     /**
      Get TestRuns of TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter notStarted: (query)  (optional)
      - parameter inProgress: (query)  (optional)
      - parameter stopped: (query)  (optional)
@@ -928,7 +932,7 @@ open class TestPlansAPI {
     /**
      Get TestRuns of TestPlan
      - GET /api/v2/testPlans/{id}/testRuns
-     -   Use case    User sets test plan identifier    User sets TestRun status filter (listed in request example)    User runs method execution    System returns TestRuns for TestPlan
+     -  Use case  User sets test plan identifier  User sets TestRun status filter (listed in request example)  User runs method execution  System returns TestRuns for TestPlan
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -936,7 +940,7 @@ open class TestPlansAPI {
        - type: apiKey session 
        - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter notStarted: (query)  (optional)
      - parameter inProgress: (query)  (optional)
      - parameter stopped: (query)  (optional)
@@ -983,7 +987,7 @@ open class TestPlansAPI {
     /**
      Search TestRuns of TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -1008,7 +1012,7 @@ open class TestPlansAPI {
     /**
      Search TestRuns of TestPlan
      - POST /api/v2/testPlans/{id}/testRuns/search
-     -   Use case    User sets test plan identifier    User sets TestRuns filter (listed in request example)    User runs method execution    System returns TestRuns for TestPlan
+     -  Use case  User sets test plan identifier  User sets TestRuns filter (listed in request example)  User runs method execution  System returns TestRuns for TestPlan
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1016,7 +1020,7 @@ open class TestPlansAPI {
        - type: apiKey session 
        - name: Cookies
      - responseHeaders: [Pagination-Skip(Int), Pagination-Take(Int), Pagination-Pages(Int), Pagination-Total-Items(Int)]
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter skip: (query) Amount of items to be skipped (offset) (optional)
      - parameter take: (query) Amount of items to be taken (limit) (optional)
      - parameter orderBy: (query) SQL-like  ORDER BY statement (column1 ASC|DESC , column2 ASC|DESC) (optional)
@@ -1108,7 +1112,7 @@ open class TestPlansAPI {
     /**
      Send unlock TestPlan notification
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1127,14 +1131,14 @@ open class TestPlansAPI {
     /**
      Send unlock TestPlan notification
      - POST /api/v2/testPlans/{id}/unlock/request
-     -   Use case    User sets test plan identifier    User runs method execution    System send unlock test plan notification
+     -  Use case  User sets test plan identifier  User runs method execution  System send unlock test plan notification
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<Void> 
      */
     open class func apiV2TestPlansIdUnlockRequestPostWithRequestBuilder(id: String) -> RequestBuilder<Void> {
@@ -1181,7 +1185,7 @@ open class TestPlansAPI {
     /**
      Get TestPlans short models by Project identifiers
      - POST /api/v2/testPlans/shorts
-     -   Use case    User sets projects identifiers    User runs method execution    System return test plans short models (listed in response example)
+     -  Use case  User sets projects identifiers  User runs method execution  System return test plans short models (listed in response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1216,7 +1220,7 @@ open class TestPlansAPI {
     /**
      Clone TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1235,14 +1239,14 @@ open class TestPlansAPI {
     /**
      Clone TestPlan
      - POST /api/v2/testPlans/{id}/clone
-     -   Use case    User sets test plan identifier    User runs method execution    System clones test plan    System returns test plan (listed in response example)
+     -  Use case  User sets test plan identifier  User runs method execution  System clones test plan  System returns test plan (listed in response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<TestPlanModel> 
      */
     open class func cloneWithRequestBuilder(id: String) -> RequestBuilder<TestPlanModel> {
@@ -1269,7 +1273,7 @@ open class TestPlansAPI {
     /**
      Complete TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1288,14 +1292,14 @@ open class TestPlansAPI {
     /**
      Complete TestPlan
      - POST /api/v2/testPlans/{id}/complete
-     -   Use case    User sets test plan identifier    User runs method execution    System completes the test plan and updates test plan status    System returns no content response
+     -  Use case  User sets test plan identifier  User runs method execution  System completes the test plan and updates test plan status  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<Void> 
      */
     open class func completeWithRequestBuilder(id: String) -> RequestBuilder<Void> {
@@ -1341,7 +1345,7 @@ open class TestPlansAPI {
     /**
      Create TestPlan
      - POST /api/v2/testPlans
-     -   Use case    User sets test plan properties (listed in request example)    User runs method execution    System creates test plan    System returns test plan (listed in response example)
+     -  Use case  User sets test plan properties (listed in request example)  User runs method execution  System creates test plan  System returns test plan (listed in response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
@@ -1372,7 +1376,7 @@ open class TestPlansAPI {
     /**
      Delete TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1391,14 +1395,14 @@ open class TestPlansAPI {
     /**
      Delete TestPlan
      - DELETE /api/v2/testPlans/{id}
-     -   Use case    User sets test plan identifier    User runs method execution    System delete test plan    System returns no content response
+     -  Use case  User sets test plan identifier  User runs method execution  System delete test plan  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<Void> 
      */
     open class func deleteTestPlanWithRequestBuilder(id: String) -> RequestBuilder<Void> {
@@ -1425,7 +1429,7 @@ open class TestPlansAPI {
     /**
      Get TestPlan by Id
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1444,14 +1448,14 @@ open class TestPlansAPI {
     /**
      Get TestPlan by Id
      - GET /api/v2/testPlans/{id}
-     -   Use case    User sets test plan identifier    User runs method execution    System search  test plan by the identifier    System returns test plan
+     -  Use case  User sets test plan identifier  User runs method execution  System search  test plan by the identifier  System returns test plan
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<TestPlanModel> 
      */
     open class func getTestPlanByIdWithRequestBuilder(id: String) -> RequestBuilder<TestPlanModel> {
@@ -1478,7 +1482,7 @@ open class TestPlansAPI {
     /**
      Get TestSuites Tree By Id
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1497,14 +1501,14 @@ open class TestPlansAPI {
     /**
      Get TestSuites Tree By Id
      - GET /api/v2/testPlans/{id}/testSuites
-     -   Use case    User sets test plan identifier    User runs method execution    System finds test suites related to the test plan    System returns test suites as a tree model (listed in response example)
+     -  Use case  User sets test plan identifier  User runs method execution  System finds test suites related to the test plan  System returns test suites as a tree model (listed in response example)
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<[TestSuiteHierarchyApiResult]> 
      */
     open class func getTestSuitesByIdWithRequestBuilder(id: String) -> RequestBuilder<[TestSuiteHierarchyApiResult]> {
@@ -1531,7 +1535,7 @@ open class TestPlansAPI {
     /**
      Pause TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1550,14 +1554,14 @@ open class TestPlansAPI {
     /**
      Pause TestPlan
      - POST /api/v2/testPlans/{id}/pause
-     -   Use case    User sets test plan identifier    User runs method execution    System pauses the test plan and updates test plan status    System returns no content response
+     -  Use case  User sets test plan identifier  User runs method execution  System pauses the test plan and updates test plan status  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<Void> 
      */
     open class func pauseWithRequestBuilder(id: String) -> RequestBuilder<Void> {
@@ -1636,7 +1640,7 @@ open class TestPlansAPI {
     /**
      Restore TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1655,14 +1659,14 @@ open class TestPlansAPI {
     /**
      Restore TestPlan
      - POST /api/v2/testPlans/{id}/restore
-     -   Use case    User sets test plan identifier    User runs method execution    System restores test plan    System returns no content response
+     -  Use case  User sets test plan identifier  User runs method execution  System restores test plan  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<Void> 
      */
     open class func restoreTestPlanWithRequestBuilder(id: String) -> RequestBuilder<Void> {
@@ -1689,7 +1693,7 @@ open class TestPlansAPI {
     /**
      Start TestPlan
      
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1708,14 +1712,14 @@ open class TestPlansAPI {
     /**
      Start TestPlan
      - POST /api/v2/testPlans/{id}/start
-     -   Use case    User sets test plan identifier    User runs method execution    System starts the test plan and updates test plan status    System returns no content response
+     -  Use case  User sets test plan identifier  User runs method execution  System starts the test plan and updates test plan status  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
      - API Key:
        - type: apiKey session 
        - name: Cookies
-     - parameter id: (path) Test plan internal (guid format) or global (int  format) identifier 
+     - parameter id: (path) Test plan internal (guid format) or global (int format) identifier 
      - returns: RequestBuilder<Void> 
      */
     open class func startWithRequestBuilder(id: String) -> RequestBuilder<Void> {
@@ -1761,7 +1765,7 @@ open class TestPlansAPI {
     /**
      Update TestPlan
      - PUT /api/v2/testPlans
-     -   Use case    User sets test plan properties(listed in request example)    User runs method execution    System updates test plan    System returns no content response
+     -  Use case  User sets test plan properties(listed in request example)  User runs method execution  System updates test plan  System returns no content response
      - API Key:
        - type: apiKey Authorization (HEADER)
        - name: PrivateToken
